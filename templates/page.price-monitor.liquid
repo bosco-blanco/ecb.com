@@ -1,0 +1,1760 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Monitor de Precios — En Copa de Balón</title>
+  <style>
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #1a1a2e; }
+    ::-webkit-scrollbar-thumb { background: #3a3a5a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4a4a6a; }
+
+    /* ============================================================
+       LOGIN OVERLAY
+       ============================================================ */
+    .pm-login-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 15, 15, 0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      backdrop-filter: blur(4px);
+    }
+
+    .pm-login-overlay.hidden {
+      display: none;
+    }
+
+    .pm-login-card {
+      width: 100%;
+      max-width: 380px;
+      background: #1a1a2e;
+      border: 2px solid;
+      border-image: linear-gradient(135deg, #60a5fa, #a78bfa) 1;
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .pm-login-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .pm-login-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .pm-login-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .pm-login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pm-login-form input {
+      padding: 12px 14px;
+      background: #0f0f0f;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .pm-login-form input::placeholder {
+      color: #4a4a6a;
+    }
+
+    .pm-login-form input:focus {
+      border-color: #60a5fa;
+    }
+
+    .pm-login-btn {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .pm-login-btn:hover {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      transform: translateY(-1px);
+    }
+
+    .pm-login-btn:active {
+      transform: translateY(0);
+    }
+
+    .pm-login-error {
+      color: #f87171;
+      font-size: 0.85rem;
+      text-align: center;
+      min-height: 18px;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .pm-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: 24px;
+      display: none;
+    }
+
+    .pm-wrapper.show {
+      display: block;
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .pm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .pm-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pm-logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .pm-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pm-header h1 span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      -webkit-text-fill-color: #64748b;
+      margin-top: 2px;
+    }
+
+    .pm-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pm-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      background: #1a1a2e;
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .pm-btn:hover {
+      background: #252545;
+      border-color: #3a3a5a;
+      transform: translateY(-1px);
+    }
+
+    .pm-btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .pm-btn-primary:hover {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+    }
+
+    .pm-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       STATS CARDS
+       ============================================================ */
+    .pm-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .pm-stat-card {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .pm-stat-card:hover {
+      border-color: #3a3a5a;
+    }
+
+    .pm-stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .pm-stat-icon.blue   { background: rgba(96,165,250,0.15); color: #60a5fa; }
+    .pm-stat-icon.green  { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .pm-stat-icon.yellow { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .pm-stat-icon.red    { background: rgba(248,113,113,0.15); color: #f87171; }
+    .pm-stat-icon.purple { background: rgba(167,139,250,0.15); color: #a78bfa; }
+    .pm-stat-icon.gray   { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+    .pm-stat-data h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .pm-stat-data p {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       LEGEND
+       ============================================================ */
+    .pm-legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding: 14px 20px;
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 12px;
+      font-size: 0.82rem;
+    }
+
+    .pm-legend-title {
+      font-weight: 600;
+      color: #94a3b8;
+      margin-right: 4px;
+    }
+
+    .pm-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pm-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pm-legend-dot.green  { background: #4ade80; }
+    .pm-legend-dot.yellow { background: #fbbf24; }
+    .pm-legend-dot.red    { background: #f87171; }
+    .pm-legend-dot.gray   { background: #64748b; }
+
+    /* ============================================================
+       TOOLBAR (Search + Filters)
+       ============================================================ */
+    .pm-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pm-search-box {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+
+    .pm-search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: #64748b;
+      pointer-events: none;
+    }
+
+    .pm-search-box input {
+      width: 100%;
+      padding: 10px 14px 10px 40px;
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .pm-search-box input::placeholder { color: #4a4a6a; }
+    .pm-search-box input:focus { border-color: #60a5fa; }
+
+    .pm-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pm-filter-btn {
+      padding: 8px 16px;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      background: #1a1a2e;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pm-filter-btn:hover {
+      border-color: #3a3a5a;
+      color: #e2e8f0;
+    }
+
+    .pm-filter-btn.active {
+      background: #60a5fa;
+      border-color: #60a5fa;
+      color: #fff;
+    }
+
+    .pm-filter-btn.active.green  { background: #16a34a; border-color: #16a34a; }
+    .pm-filter-btn.active.yellow { background: #d97706; border-color: #d97706; }
+    .pm-filter-btn.active.red    { background: #dc2626; border-color: #dc2626; }
+    .pm-filter-btn.active.gray   { background: #4b5563; border-color: #4b5563; }
+
+    /* ============================================================
+       TABLE CONTAINER
+       ============================================================ */
+    .pm-table-container {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .pm-table-scroll {
+      overflow-x: auto;
+      max-height: calc(100vh - 420px);
+      min-height: 400px;
+    }
+
+    /* ============================================================
+       TABLE
+       ============================================================ */
+    .pm-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.84rem;
+    }
+
+    .pm-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .pm-table thead th {
+      background: #12122a;
+      padding: 14px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: #94a3b8;
+      border-bottom: 2px solid #2a2a4a;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .pm-table thead th:hover {
+      color: #e2e8f0;
+    }
+
+    .pm-table thead th .sort-arrow {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.7rem;
+      opacity: 0.3;
+      transition: opacity 0.2s ease;
+    }
+
+    .pm-table thead th.sorted .sort-arrow {
+      opacity: 1;
+      color: #60a5fa;
+    }
+
+    .pm-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .pm-table tbody tr:hover {
+      background: #1e1e3e;
+    }
+
+    .pm-table tbody td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #1e1e3a;
+      vertical-align: middle;
+    }
+
+    .pm-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Product cell */
+    .pm-product-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 280px;
+    }
+
+    .pm-product-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #252545;
+      flex-shrink: 0;
+    }
+
+    .pm-product-info {
+      min-width: 0;
+    }
+
+    .pm-product-name {
+      font-weight: 600;
+      color: #e2e8f0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+      display: block;
+    }
+
+    .pm-product-name:hover {
+      color: #60a5fa;
+    }
+
+    .pm-product-vendor {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 1px;
+    }
+
+    /* Price columns */
+    .pm-price-cell {
+      text-align: center;
+      min-width: 100px;
+      white-space: nowrap;
+    }
+
+    .pm-my-price {
+      font-weight: 700;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .pm-compare-price {
+      font-size: 0.72rem;
+      color: #64748b;
+      text-decoration: line-through;
+      margin-top: 1px;
+    }
+
+    .pm-stock {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .pm-stock.in-stock {
+      background: rgba(74,222,128,0.12);
+      color: #4ade80;
+    }
+
+    .pm-stock.out-of-stock {
+      background: rgba(248,113,113,0.12);
+      color: #f87171;
+    }
+
+    .pm-stock-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .pm-stock.in-stock .pm-stock-dot { background: #4ade80; }
+    .pm-stock.out-of-stock .pm-stock-dot { background: #f87171; }
+
+    /* Competitor cell */
+    .pm-comp-cell {
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .pm-comp-price {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .pm-comp-diff {
+      font-size: 0.72rem;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .pm-comp-na {
+      color: #4a4a6a;
+      font-size: 0.78rem;
+    }
+
+    /* Semaphore colours */
+    .sem-green  .pm-comp-price { color: #4ade80; }
+    .sem-green  .pm-comp-diff  { color: #4ade80; }
+    .sem-yellow .pm-comp-price { color: #fbbf24; }
+    .sem-yellow .pm-comp-diff  { color: #fbbf24; }
+    .sem-red    .pm-comp-price { color: #f87171; }
+    .sem-red    .pm-comp-diff  { color: #f87171; }
+
+    .sem-green  { background: rgba(74,222,128,0.04); }
+    .sem-yellow { background: rgba(251,191,36,0.04); }
+    .sem-red    { background: rgba(248,113,113,0.04); }
+
+    /* Min price column */
+    .pm-min-cell {
+      text-align: center;
+      min-width: 110px;
+    }
+
+    /* ============================================================
+       PAGINATION
+       ============================================================ */
+    .pm-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pm-page-info {
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+
+    .pm-page-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .pm-page-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      background: #1a1a2e;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pm-page-btn:hover:not(:disabled) {
+      border-color: #3a3a5a;
+      color: #e2e8f0;
+      background: #252545;
+    }
+
+    .pm-page-btn.active {
+      background: #60a5fa;
+      border-color: #60a5fa;
+      color: #fff;
+    }
+
+    .pm-page-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .pm-page-btn.nav-btn {
+      width: auto;
+      padding: 0 12px;
+      gap: 4px;
+    }
+
+    /* ============================================================
+       LOADING OVERLAY
+       ============================================================ */
+    .pm-loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,15,15,0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 0.4s ease;
+    }
+
+    .pm-loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pm-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #2a2a4a;
+      border-top-color: #60a5fa;
+      border-radius: 50%;
+      animation: pm-spin 0.8s linear infinite;
+    }
+
+    @keyframes pm-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .pm-loading-text {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    .pm-loading-sub {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: #4a4a6a;
+    }
+
+    /* ============================================================
+       TOAST NOTIFICATION
+       ============================================================ */
+    .pm-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 14px 22px;
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      z-index: 1001;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      max-width: 380px;
+    }
+
+    .pm-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      .pm-wrapper { padding: 14px; }
+      .pm-header h1 { font-size: 1.2rem; }
+      .pm-stats { grid-template-columns: repeat(2, 1fr); }
+      .pm-table-scroll { max-height: calc(100vh - 480px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN OVERLAY -->
+  <div class="pm-login-overlay" id="loginOverlay">
+    <div class="pm-login-card">
+      <div class="pm-login-header">
+        <span class="pm-login-icon">🔒</span>
+        <h2 class="pm-login-title">Monitor de Precios</h2>
+      </div>
+      <form class="pm-login-form" id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Usuario" autocomplete="username">
+        <input type="password" id="loginPassword" placeholder="Contraseña" autocomplete="current-password">
+        <button type="submit" class="pm-login-btn">Acceder</button>
+        <div class="pm-login-error" id="loginError"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOADING OVERLAY -->
+  <div class="pm-loading-overlay" id="loadingOverlay">
+    <div class="pm-spinner"></div>
+    <div class="pm-loading-text">Cargando productos y precios...</div>
+    <div class="pm-loading-sub" id="loadingStatus">Obteniendo catálogo de la tienda</div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="pm-toast" id="toast"></div>
+
+  <div class="pm-wrapper">
+
+    <!-- HEADER -->
+    <div class="pm-header">
+      <div class="pm-header-left">
+        <div class="pm-logo">P</div>
+        <h1>
+          Monitor de Precios
+          <span>En Copa de Balón — Panel de seguimiento competitivo</span>
+        </h1>
+      </div>
+      <div class="pm-header-actions">
+        <button class="pm-btn" id="btnRefresh" title="Recargar precios">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          Actualizar
+        </button>
+        <button class="pm-btn pm-btn-primary" id="btnExport">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exportar CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- STATS CARDS -->
+    <div class="pm-stats" id="statsContainer">
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon blue">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statTotal">--</h3>
+          <p>Productos totales</p>
+        </div>
+      </div>
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon green">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statGreen">--</h3>
+          <p>Competitivos (≤0%)</p>
+        </div>
+      </div>
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon yellow">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statYellow">--</h3>
+          <p>Atención (1-5%)</p>
+        </div>
+      </div>
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon red">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statRed">--</h3>
+          <p>Caros (>5%)</p>
+        </div>
+      </div>
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon purple">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statAvgDiff">--</h3>
+          <p>Diferencia media</p>
+        </div>
+      </div>
+      <div class="pm-stat-card">
+        <div class="pm-stat-icon gray">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="pm-stat-data">
+          <h3 id="statNoData">--</h3>
+          <p>Sin datos</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="pm-legend">
+      <span class="pm-legend-title">Semáforo:</span>
+      <div class="pm-legend-item"><div class="pm-legend-dot green"></div> Verde: Somos competitivos (igual o más baratos)</div>
+      <div class="pm-legend-item"><div class="pm-legend-dot yellow"></div> Amarillo: Atención: 1-5% más caros</div>
+      <div class="pm-legend-item"><div class="pm-legend-dot red"></div> Rojo: Caros: >5% más que el más barato</div>
+      <div class="pm-legend-item"><div class="pm-legend-dot gray"></div> Gris: Sin datos del competidor</div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="pm-toolbar">
+      <div class="pm-search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar producto por nombre, bodega, referencia...">
+      </div>
+      <div class="pm-filters">
+        <button class="pm-filter-btn active" data-filter="all">Todos</button>
+        <button class="pm-filter-btn green" data-filter="green">Verde</button>
+        <button class="pm-filter-btn yellow" data-filter="yellow">Amarillo</button>
+        <button class="pm-filter-btn red" data-filter="red">Rojo</button>
+        <button class="pm-filter-btn gray" data-filter="nodata">Sin datos</button>
+        <button class="pm-filter-btn" data-sort="bestsellers">🔥 Más vendidos</button>
+        <button class="pm-filter-btn" data-sort="expensive-bestsellers">🔴🔥 Caros + Vendidos</button>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="pm-table-container">
+      <div class="pm-table-scroll" id="tableScroll">
+        <table class="pm-table">
+          <thead id="tableHead"></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pm-pagination" id="pagination">
+      <div class="pm-page-info" id="pageInfo"></div>
+      <div class="pm-page-buttons" id="pageButtons"></div>
+    </div>
+
+  </div><!-- /pm-wrapper -->
+
+  <!-- ==========================================================
+       DATA: Shopify products via Liquid
+       ========================================================== -->
+  <script>
+    /**
+     * MY_PRODUCTS_LIQUID:
+     * Initial product data extracted server-side via Shopify Liquid.
+     * Limited to the first 250 products in collections.all.
+     * The JS code below will also fetch /collections/all/products.json for the full catalog.
+     */
+    var MY_PRODUCTS_LIQUID = [
+      {%- paginate collections.all.products by 250 -%}
+        {%- for product in collections.all.products -%}
+        {
+          id: "{{ product.id }}",
+          title: {{ product.title | json }},
+          handle: "{{ product.handle }}",
+          vendor: {{ product.vendor | json }},
+          price: {{ product.price | divided_by: 100.0 }},
+          compare_at_price: {% if product.compare_at_price and product.compare_at_price > 0 %}{{ product.compare_at_price | divided_by: 100.0 }}{% else %}null{% endif %},
+          available: {{ product.available }},
+          url: "{{ product.url }}",
+          image: "{{ product.featured_image | image_url: width: 100 }}",
+          tags: {{ product.tags | json }},
+          type: {{ product.type | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    ];
+  </script>
+
+  <!-- ==========================================================
+       APPLICATION LOGIC
+       ========================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* --------------------------------------------------------
+         AUTHENTICATION & HASHING
+         -------------------------------------------------------- */
+      var AUTH_HASH = '0eeb7579da81e5399a37654ab7d0adef502fe110bebf94538c73039512160b16'; // SHA-256 of "admin:monitor2024"
+
+      function hexToString(hex) {
+        var str = '';
+        for (var i = 0; i < hex.length; i += 2) {
+          str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        }
+        return str;
+      }
+
+      async function sha256(message) {
+        var msgBuffer = new TextEncoder().encode(message);
+        var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        var hashArray = Array.from(new Uint8Array(hashBuffer));
+        var hashHex = hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+        return hashHex;
+      }
+
+      async function checkLogin(username, password) {
+        var combined = username + ':' + password;
+        var hash = await sha256(combined);
+        return hash === AUTH_HASH;
+      }
+
+      function initAuth() {
+        var $loginOverlay = document.getElementById('loginOverlay');
+        var $loginForm = document.getElementById('loginForm');
+        var $loginError = document.getElementById('loginError');
+        var $wrapper = document.querySelector('.pm-wrapper');
+
+        // Check if already authenticated
+        if (sessionStorage.getItem('pm_auth') === 'ok') {
+          $loginOverlay.classList.add('hidden');
+          $wrapper.classList.add('show');
+          return;
+        }
+
+        $loginForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var username = document.getElementById('loginUsername').value;
+          var password = document.getElementById('loginPassword').value;
+
+          $loginError.textContent = '';
+
+          try {
+            var isValid = await checkLogin(username, password);
+            if (isValid) {
+              sessionStorage.setItem('pm_auth', 'ok');
+              $loginOverlay.classList.add('hidden');
+              $wrapper.classList.add('show');
+              init();
+            } else {
+              $loginError.textContent = 'Usuario o contraseña incorrectos';
+            }
+          } catch (err) {
+            $loginError.textContent = 'Error en autenticación';
+            console.error(err);
+          }
+        });
+      }
+
+      /* --------------------------------------------------------
+         CONSTANTS
+         -------------------------------------------------------- */
+      var COMPETITORS = {
+        bodeboca:      'Bodeboca',
+        vinissimus:    'Vinissimus',
+        uvinum:        'Uvinum',
+        lavinia:       'Lavinia',
+        decantalo:     'Decántalo',
+        vinoseleccion: 'Vinoselección',
+        elcorteingles: 'El Corte Inglés',
+        carrefour:     'Carrefour',
+        alcampo:       'Alcampo'
+      };
+
+      var COMP_KEYS = Object.keys(COMPETITORS);
+      var PER_PAGE = 50;
+
+      /* --------------------------------------------------------
+         STATE
+         -------------------------------------------------------- */
+      var state = {
+        products: [],        // Full product list with competitor data
+        filtered: [],        // After search + filter
+        page: 1,
+        sortCol: null,
+        sortDir: 'asc',
+        search: '',
+        filter: 'all',
+        sortMode: 'default'  // 'default', 'bestsellers', 'expensive-bestsellers'
+      };
+
+      /* --------------------------------------------------------
+         DOM REFS
+         -------------------------------------------------------- */
+      var $loading     = document.getElementById('loadingOverlay');
+      var $loadStatus  = document.getElementById('loadingStatus');
+      var $searchInput = document.getElementById('searchInput');
+      var $tableHead   = document.getElementById('tableHead');
+      var $tableBody   = document.getElementById('tableBody');
+      var $pageInfo    = document.getElementById('pageInfo');
+      var $pageButtons = document.getElementById('pageButtons');
+      var $toast       = document.getElementById('toast');
+
+      /* --------------------------------------------------------
+         HELPERS
+         -------------------------------------------------------- */
+      function fmt(n) {
+        if (n == null) return '--';
+        return n.toFixed(2).replace('.', ',') + ' €';
+      }
+
+      function pctDiff(myPrice, compPrice) {
+        if (!compPrice || !myPrice) return null;
+        return ((myPrice - compPrice) / compPrice) * 100;
+      }
+
+      // For individual competitor cells: positive means we're more expensive
+      function semaphoreCell(diff) {
+        if (diff === null || diff === undefined) return 'nodata';
+        if (diff <= 0) return 'green';    // We're cheaper or equal
+        if (diff <= 5) return 'yellow';   // We're 1-5% more expensive
+        return 'red';                      // We're >5% more expensive
+      }
+
+      // For overall product classification: compare vs CHEAPEST competitor
+      function classifyProduct(product, competitors) {
+        var minPrice = Infinity;
+        competitors.forEach(function(c) {
+          if (product.competitors[c] && product.competitors[c] < minPrice) {
+            minPrice = product.competitors[c];
+          }
+        });
+        if (minPrice === Infinity) return { class: 'nodata', diff: null, minPrice: null };
+        var diff = ((product.price - minPrice) / minPrice) * 100;
+        var cls = diff <= 0 ? 'green' : diff <= 5 ? 'yellow' : 'red';
+        return { class: cls, diff: diff, minPrice: minPrice };
+      }
+
+      function showToast(msg, duration) {
+        $toast.textContent = msg;
+        $toast.classList.add('show');
+        setTimeout(function() { $toast.classList.remove('show'); }, duration || 3000);
+      }
+
+      /* Seeded pseudo-random for reproducible simulated prices */
+      function seededRandom(seed) {
+        var x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+      }
+
+      function hashStr(s) {
+        var h = 0;
+        for (var i = 0; i < s.length; i++) {
+          h = ((h << 5) - h) + s.charCodeAt(i);
+          h |= 0;
+        }
+        return Math.abs(h);
+      }
+
+      /* --------------------------------------------------------
+         FETCH ALL PRODUCTS FROM /collections/all/products.json
+         with sort_by=best-selling
+         -------------------------------------------------------- */
+      function fetchAllProducts() {
+        return new Promise(function(resolve) {
+          var all = [];
+          var page = 1;
+          var limit = 250;
+          var MAX_PAGES = 30; /* Safety cap */
+
+          function fetchPage() {
+            $loadStatus.textContent = 'Obteniendo página ' + page + ' del catálogo (' + all.length + ' productos)...';
+            fetch('/products.json?limit=' + limit + '&page=' + page)
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                if (data.products && data.products.length > 0) {
+                  data.products.forEach(function(p) {
+                    var variant = p.variants && p.variants[0] ? p.variants[0] : {};
+                    if (parseFloat(variant.price) <= 0) return; /* Skip ghost products at 0€ */
+                    all.push({
+                      id: String(p.id),
+                      title: p.title || '',
+                      handle: p.handle || '',
+                      vendor: p.vendor || '',
+                      price: parseFloat(variant.price) || 0,
+                      compare_at_price: variant.compare_at_price ? parseFloat(variant.compare_at_price) : null,
+                      available: variant.available !== false,
+                      url: '/products/' + p.handle,
+                      image: (p.images && p.images[0]) ? p.images[0].src : '',
+                      tags: p.tags || [],
+                      type: p.product_type || '',
+                      salesRank: all.length
+                    });
+                  });
+
+                  if (data.products.length === limit && page < MAX_PAGES) {
+                    page++;
+                    fetchPage();
+                  } else {
+                    resolve(all);
+                  }
+                } else {
+                  resolve(all);
+                }
+              })
+              .catch(function() {
+                if (all.length > 0) {
+                  resolve(all);
+                } else if (typeof MY_PRODUCTS_LIQUID !== 'undefined' && MY_PRODUCTS_LIQUID.length > 0) {
+                  resolve(MY_PRODUCTS_LIQUID.map(function(p, idx) {
+                    p.salesRank = idx;
+                    return p;
+                  }));
+                } else {
+                  resolve([]);
+                }
+              });
+          }
+
+          fetchPage();
+        });
+      }
+
+      /* --------------------------------------------------------
+         SIMULATE COMPETITOR PRICES
+         -------------------------------------------------------- */
+      function simulateCompetitorPrices(products) {
+        $loadStatus.textContent = 'Simulando precios de competidores...';
+
+        return products.map(function(product) {
+          var comp = {};
+          var seed = hashStr(product.id + product.handle);
+
+          COMP_KEYS.forEach(function(key, idx) {
+            var s = seededRandom(seed + idx * 137);
+            var s2 = seededRandom(seed + idx * 271 + 53);
+            var price = product.price;
+
+            /* Some competitors may not carry the product */
+            if (key === 'carrefour' || key === 'alcampo') {
+              /* Supermarkets: don't carry premium wines (>50 EUR) often */
+              if (price > 50 && s2 > 0.3) {
+                comp[key] = null;
+                return;
+              }
+              /* Also randomly missing ~30% of catalog */
+              if (s2 < 0.3) {
+                comp[key] = null;
+                return;
+              }
+              /* Supermarkets tend to be 2-8% cheaper */
+              var discount = 0.02 + s * 0.06;
+              comp[key] = Math.round(price * (1 - discount) * 100) / 100;
+            }
+            else if (key === 'elcorteingles') {
+              /* El Corte Ingles: 5-15% more expensive */
+              if (s2 < 0.15) {
+                comp[key] = null;
+                return;
+              }
+              var markup = 0.05 + s * 0.10;
+              comp[key] = Math.round(price * (1 + markup) * 100) / 100;
+            }
+            else {
+              /* Wine specialists: similar prices +/- 5% */
+              if (s2 < 0.12) {
+                comp[key] = null;
+                return;
+              }
+              var variation = (s - 0.5) * 0.10; /* -5% to +5% */
+              comp[key] = Math.round(price * (1 + variation) * 100) / 100;
+            }
+          });
+
+          product.competitors = comp;
+          return product;
+        });
+      }
+
+      /* --------------------------------------------------------
+         CLASSIFY PRODUCTS
+         Determines the overall semaphore status for each product
+         based on the cheapest competitor.
+         -------------------------------------------------------- */
+      function classifyProducts(products) {
+        products.forEach(function(p) {
+          var classification = classifyProduct(p, COMP_KEYS);
+          p._semaphore = classification.class;
+          p._minPrice = classification.minPrice;
+          p._minDiff = classification.diff;
+
+          // Also calculate average diff for stats
+          var diffs = [];
+          COMP_KEYS.forEach(function(key) {
+            var cp = p.competitors[key];
+            if (cp != null) {
+              var diff = pctDiff(p.price, cp);
+              diffs.push(diff);
+            }
+          });
+          p._avgDiff = diffs.length > 0 ? diffs.reduce(function(a, b) { return a + b; }, 0) / diffs.length : null;
+          p._hasData = diffs.length > 0;
+        });
+      }
+
+      /* --------------------------------------------------------
+         UPDATE STATS CARDS
+         -------------------------------------------------------- */
+      function updateStats() {
+        var products = state.products;
+        var green = 0, yellow = 0, red = 0, nodata = 0;
+        var totalDiff = 0, diffCount = 0;
+
+        products.forEach(function(p) {
+          if (p._semaphore === 'green')  green++;
+          else if (p._semaphore === 'yellow') yellow++;
+          else if (p._semaphore === 'red')    red++;
+          else nodata++;
+
+          if (p._minDiff !== null) {
+            totalDiff += p._minDiff;
+            diffCount++;
+          }
+        });
+
+        document.getElementById('statTotal').textContent = products.length;
+        document.getElementById('statGreen').textContent = green;
+        document.getElementById('statYellow').textContent = yellow;
+        document.getElementById('statRed').textContent = red;
+        document.getElementById('statNoData').textContent = nodata;
+        document.getElementById('statAvgDiff').textContent = diffCount > 0
+          ? (totalDiff / diffCount > 0 ? '+' : '') + (totalDiff / diffCount).toFixed(1) + '%'
+          : '--';
+      }
+
+      /* --------------------------------------------------------
+         BUILD TABLE HEADER
+         -------------------------------------------------------- */
+      function buildTableHead() {
+        var cols = [
+          { key: 'title',     label: 'Producto' },
+          { key: 'price',     label: 'Mi Precio' },
+          { key: 'available', label: 'Stock' },
+          { key: 'minprice',  label: 'vs. Mín.' }
+        ];
+
+        COMP_KEYS.forEach(function(key) {
+          cols.push({ key: 'comp_' + key, label: COMPETITORS[key] });
+        });
+
+        var tr = document.createElement('tr');
+        cols.forEach(function(col) {
+          var th = document.createElement('th');
+          th.setAttribute('data-col', col.key);
+          th.innerHTML = col.label + ' <span class="sort-arrow">▲</span>';
+          th.addEventListener('click', function() { handleSort(col.key); });
+          tr.appendChild(th);
+        });
+
+        $tableHead.innerHTML = '';
+        $tableHead.appendChild(tr);
+      }
+
+      /* --------------------------------------------------------
+         APPLY FILTERS + SEARCH
+         -------------------------------------------------------- */
+      function applyFilters() {
+        var q = state.search.toLowerCase().trim();
+        var f = state.filter;
+
+        state.filtered = state.products.filter(function(p) {
+          /* Search */
+          if (q) {
+            var haystack = (p.title + ' ' + p.vendor + ' ' + p.handle + ' ' + (p.type || '')).toLowerCase();
+            if (haystack.indexOf(q) === -1) return false;
+          }
+
+          /* Filter */
+          if (f === 'all') return true;
+          if (f === 'nodata') return p._semaphore === 'nodata';
+          return p._semaphore === f;
+        });
+
+        /* Reset to page 1 after filtering */
+        state.page = 1;
+      }
+
+      /* --------------------------------------------------------
+         SORTING
+         -------------------------------------------------------- */
+      function handleSort(col) {
+        if (state.sortCol === col) {
+          state.sortDir = state.sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          state.sortCol = col;
+          state.sortDir = 'asc';
+        }
+
+        state.sortMode = 'default';
+        sortProducts();
+        render();
+
+        /* Update header visuals */
+        var ths = $tableHead.querySelectorAll('th');
+        ths.forEach(function(th) {
+          var isActive = th.getAttribute('data-col') === col;
+          th.classList.toggle('sorted', isActive);
+          var arrow = th.querySelector('.sort-arrow');
+          if (arrow) arrow.textContent = isActive ? (state.sortDir === 'asc' ? '▲' : '▼') : '▲';
+        });
+      }
+
+      function sortProducts() {
+        var col = state.sortCol;
+        var dir = state.sortDir === 'asc' ? 1 : -1;
+
+        // Special sorting modes
+        if (state.sortMode === 'bestsellers') {
+          state.filtered.sort(function(a, b) {
+            return (a.salesRank - b.salesRank);
+          });
+          return;
+        }
+
+        if (state.sortMode === 'expensive-bestsellers') {
+          state.filtered.sort(function(a, b) {
+            // First by semaphore (red first)
+            var semOrder = { 'red': 0, 'yellow': 1, 'green': 2, 'nodata': 3 };
+            var semA = semOrder[a._semaphore] || 3;
+            var semB = semOrder[b._semaphore] || 3;
+            if (semA !== semB) return semA - semB;
+            // Then by sales rank
+            return a.salesRank - b.salesRank;
+          });
+          return;
+        }
+
+        // Default column-based sorting
+        if (!col) return;
+
+        state.filtered.sort(function(a, b) {
+          var va, vb;
+
+          if (col === 'title') {
+            va = a.title.toLowerCase();
+            vb = b.title.toLowerCase();
+            return va < vb ? -dir : va > vb ? dir : 0;
+          }
+          else if (col === 'price') {
+            return (a.price - b.price) * dir;
+          }
+          else if (col === 'available') {
+            va = a.available ? 1 : 0;
+            vb = b.available ? 1 : 0;
+            return (va - vb) * dir;
+          }
+          else if (col === 'minprice') {
+            va = a._minPrice != null ? a._minPrice : 999999;
+            vb = b._minPrice != null ? b._minPrice : 999999;
+            return (va - vb) * dir;
+          }
+          else if (col.indexOf('comp_') === 0) {
+            var ck = col.replace('comp_', '');
+            va = a.competitors[ck] != null ? a.competitors[ck] : 999999;
+            vb = b.competitors[ck] != null ? b.competitors[ck] : 999999;
+            return (va - vb) * dir;
+          }
+
+          return 0;
+        });
+      }
+
+      /* --------------------------------------------------------
+         RENDER TABLE
+         -------------------------------------------------------- */
+      function render() {
+        var items = state.filtered;
+        var totalPages = Math.max(1, Math.ceil(items.length / PER_PAGE));
+        if (state.page > totalPages) state.page = totalPages;
+
+        var start = (state.page - 1) * PER_PAGE;
+        var end = Math.min(start + PER_PAGE, items.length);
+        var pageItems = items.slice(start, end);
+
+        /* Build table body */
+        var html = '';
+        pageItems.forEach(function(p) {
+          html += '<tr>';
+
+          /* Product */
+          html += '<td><div class="pm-product-cell">';
+          if (p.image) {
+            html += '<img class="pm-product-img" src="' + p.image + '" alt="" loading="lazy">';
+          } else {
+            html += '<div class="pm-product-img" style="display:flex;align-items:center;justify-content:center;color:#4a4a6a;font-size:18px;">?</div>';
+          }
+          html += '<div class="pm-product-info">';
+          html += '<a class="pm-product-name" href="' + p.url + '" target="_blank" title="' + p.title.replace(/"/g, '&quot;') + '">' + p.title + '</a>';
+          html += '<div class="pm-product-vendor">' + p.vendor + '</div>';
+          html += '</div></div></td>';
+
+          /* My Price */
+          html += '<td class="pm-price-cell"><div class="pm-my-price">' + fmt(p.price) + '</div>';
+          if (p.compare_at_price && p.compare_at_price > p.price) {
+            html += '<div class="pm-compare-price">' + fmt(p.compare_at_price) + '</div>';
+          }
+          html += '</td>';
+
+          /* Stock */
+          if (p.available) {
+            html += '<td><span class="pm-stock in-stock"><span class="pm-stock-dot"></span>En stock</span></td>';
+          } else {
+            html += '<td><span class="pm-stock out-of-stock"><span class="pm-stock-dot"></span>Agotado</span></td>';
+          }
+
+          /* vs. Mín. column */
+          if (p._minPrice != null) {
+            var minDiffLabel = p._minDiff > 0 ? '+' + p._minDiff.toFixed(1) + '%' : p._minDiff.toFixed(1) + '%';
+            if (Math.abs(p._minDiff) < 0.05) minDiffLabel = '0,0%';
+            var minSem = semaphoreCell(p._minDiff);
+            html += '<td class="pm-comp-cell pm-min-cell sem-' + minSem + '">';
+            html += '<div class="pm-comp-price">' + fmt(p._minPrice) + '</div>';
+            html += '<div class="pm-comp-diff">' + minDiffLabel + '</div>';
+            html += '</td>';
+          } else {
+            html += '<td class="pm-comp-cell pm-min-cell"><span class="pm-comp-na">N/D</span></td>';
+          }
+
+          /* Competitors */
+          COMP_KEYS.forEach(function(key) {
+            var cp = p.competitors ? p.competitors[key] : null;
+            if (cp != null) {
+              var diff = pctDiff(p.price, cp);
+              var sem = semaphoreCell(diff);
+              if (diff === null) { html += '<td class="pm-comp-cell"><span class="pm-comp-na">N/D</span></td>'; return; }
+              var diffLabel = diff > 0 ? '+' + diff.toFixed(1) + '%' : diff.toFixed(1) + '%';
+              if (Math.abs(diff) < 0.05) diffLabel = '0,0%';
+
+              html += '<td class="pm-comp-cell sem-' + sem + '">';
+              html += '<div class="pm-comp-price">' + fmt(cp) + '</div>';
+              html += '<div class="pm-comp-diff">' + diffLabel + '</div>';
+              html += '</td>';
+            } else {
+              html += '<td class="pm-comp-cell"><span class="pm-comp-na">N/D</span></td>';
+            }
+          });
+
+          html += '</tr>';
+        });
+
+        $tableBody.innerHTML = html;
+
+        /* Page info */
+        if (items.length === 0) {
+          $pageInfo.textContent = 'No se encontraron productos';
+        } else {
+          $pageInfo.textContent = 'Mostrando ' + (start + 1) + '–' + end + ' de ' + items.length + ' productos';
+        }
+
+        /* Pagination buttons */
+        renderPagination(totalPages);
+      }
+
+      /* --------------------------------------------------------
+         RENDER PAGINATION
+         -------------------------------------------------------- */
+      function renderPagination(totalPages) {
+        var html = '';
+
+        /* Previous */
+        html += '<button class="pm-page-btn nav-btn" ' + (state.page <= 1 ? 'disabled' : '') + ' data-page="' + (state.page - 1) + '">← Ant</button>';
+
+        /* Page numbers */
+        var range = buildPageRange(state.page, totalPages);
+        range.forEach(function(p) {
+          if (p === '...') {
+            html += '<button class="pm-page-btn" disabled>…</button>';
+          } else {
+            html += '<button class="pm-page-btn' + (p === state.page ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
+          }
+        });
+
+        /* Next */
+        html += '<button class="pm-page-btn nav-btn" ' + (state.page >= totalPages ? 'disabled' : '') + ' data-page="' + (state.page + 1) + '">Sig →</button>';
+
+        $pageButtons.innerHTML = html;
+
+        /* Bind clicks */
+        $pageButtons.querySelectorAll('button[data-page]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var pg = parseInt(btn.getAttribute('data-page'));
+            if (pg >= 1 && pg <= totalPages) {
+              state.page = pg;
+              render();
+              document.getElementById('tableScroll').scrollTop = 0;
+            }
+          });
+        });
+      }
+
+      function buildPageRange(current, total) {
+        if (total <= 7) {
+          var arr = [];
+          for (var i = 1; i <= total; i++) arr.push(i);
+          return arr;
+        }
+
+        var pages = [1];
+        if (current > 3) pages.push('...');
+
+        var start = Math.max(2, current - 1);
+        var end = Math.min(total - 1, current + 1);
+        for (var j = start; j <= end; j++) pages.push(j);
+
+        if (current < total - 2) pages.push('...');
+        pages.push(total);
+        return pages;
+      }
+
+      /* --------------------------------------------------------
+         EXPORT CSV
+         -------------------------------------------------------- */
+      function exportCSV() {
+        var rows = [];
+        var header = ['Producto', 'Bodega', 'Mi Precio', 'PVP Anterior', 'Stock', 'Mín. Precio', 'vs. Mín. %'];
+        COMP_KEYS.forEach(function(k) {
+          header.push(COMPETITORS[k] + ' Precio');
+          header.push(COMPETITORS[k] + ' Diff %');
+        });
+        rows.push(header);
+
+        state.filtered.forEach(function(p) {
+          var row = [
+            '"' + p.title.replace(/"/g, '""') + '"',
+            '"' + p.vendor.replace(/"/g, '""') + '"',
+            p.price.toFixed(2),
+            p.compare_at_price ? p.compare_at_price.toFixed(2) : '',
+            p.available ? 'En stock' : 'Agotado',
+            p._minPrice ? p._minPrice.toFixed(2) : '',
+            p._minDiff ? p._minDiff.toFixed(2) : ''
+          ];
+          COMP_KEYS.forEach(function(k) {
+            var cp = p.competitors ? p.competitors[k] : null;
+            if (cp != null) {
+              row.push(cp.toFixed(2));
+              row.push(pctDiff(p.price, cp).toFixed(2));
+            } else {
+              row.push('');
+              row.push('');
+            }
+          });
+          rows.push(row);
+        });
+
+        var csvContent = rows.map(function(r) { return r.join(';'); }).join('\n');
+        var BOM = '\uFEFF';
+        var blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'monitor_precios_' + new Date().toISOString().slice(0, 10) + '.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('CSV exportado correctamente (' + state.filtered.length + ' productos)');
+      }
+
+      /* --------------------------------------------------------
+         EVENT BINDINGS
+         -------------------------------------------------------- */
+      function bindEvents() {
+        /* Search input with debounce */
+        var searchTimeout;
+        $searchInput.addEventListener('input', function() {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(function() {
+            state.search = $searchInput.value;
+            applyFilters();
+            state.sortMode = 'default';
+            state.sortCol = null;
+            sortProducts();
+            render();
+          }, 250);
+        });
+
+        /* Filter buttons */
+        document.querySelectorAll('.pm-filter-btn[data-filter]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.pm-filter-btn[data-filter]').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            state.filter = btn.getAttribute('data-filter');
+            state.sortMode = 'default';
+            state.sortCol = null;
+            applyFilters();
+            sortProducts();
+            render();
+          });
+        });
+
+        /* Sort mode buttons */
+        document.querySelectorAll('.pm-filter-btn[data-sort]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var sortMode = btn.getAttribute('data-sort');
+            state.sortMode = sortMode;
+            state.sortCol = null;
+            state.page = 1;
+            sortProducts();
+            render();
+          });
+        });
+
+        /* Export */
+        document.getElementById('btnExport').addEventListener('click', exportCSV);
+
+        /* Refresh */
+        document.getElementById('btnRefresh').addEventListener('click', function() {
+          $loading.classList.remove('hidden');
+          init();
+        });
+      }
+
+      /* --------------------------------------------------------
+         INIT
+         -------------------------------------------------------- */
+      function init() {
+        fetchAllProducts()
+          .then(function(products) {
+            if (products.length === 0 && typeof MY_PRODUCTS_LIQUID !== 'undefined') {
+              products = MY_PRODUCTS_LIQUID;
+            }
+
+            products = simulateCompetitorPrices(products);
+            classifyProducts(products);
+
+            state.products = products;
+            state.search = $searchInput.value || '';
+            state.filter = 'all';
+            state.page = 1;
+            state.sortCol = null;
+            state.sortDir = 'asc';
+            state.sortMode = 'default';
+
+            /* Reset filter buttons */
+            document.querySelectorAll('.pm-filter-btn[data-filter]').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelector('.pm-filter-btn[data-filter="all"]').classList.add('active');
+
+            applyFilters();
+            updateStats();
+            buildTableHead();
+            render();
+
+            /* Hide loading */
+            $loading.classList.add('hidden');
+            showToast('Cargados ' + products.length + ' productos con precios de ' + COMP_KEYS.length + ' competidores');
+          })
+          .catch(function(err) {
+            console.error('Error inicializando monitor de precios:', err);
+            $loadStatus.textContent = 'Error al cargar: ' + err.message;
+
+            /* Try fallback to Liquid data */
+            if (typeof MY_PRODUCTS_LIQUID !== 'undefined' && MY_PRODUCTS_LIQUID.length > 0) {
+              var products = simulateCompetitorPrices(MY_PRODUCTS_LIQUID.slice());
+              classifyProducts(products);
+              state.products = products;
+              applyFilters();
+              updateStats();
+              buildTableHead();
+              render();
+              $loading.classList.add('hidden');
+              showToast('Cargados ' + products.length + ' productos (desde Liquid, API no disponible)');
+            }
+          });
+      }
+
+      /* --------------------------------------------------------
+         BOOTSTRAP
+         -------------------------------------------------------- */
+      initAuth();
+      bindEvents();
+      buildTableHead();
+
+      // Only auto-init if already authenticated
+      if (sessionStorage.getItem('pm_auth') === 'ok') {
+        init();
+      }
+
+    })();
+  </script>
+
+</body>
+</html>

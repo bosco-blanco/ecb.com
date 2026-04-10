@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="">
+    {% comment %} <h1 class="heading text-center"><span>{{ page_title }}</span></h1> {% endcomment %}
+    <div class="page_content">  
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'banner' %}
+                    <div class="wbaboutimgblock">
+                        <div>
+                            {% if block.settings.banner != blank %}
+                            <img loading="lazy"
+                                srcset="{%- if block.settings.banner.width >= 375 -%}{{ block.settings.banner | image_url: width: 375 }} 375w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 550 -%}{{ block.settings.banner | image_url: width: 550 }} 550w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 750 -%}{{ block.settings.banner | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 1100 -%}{{ block.settings.banner | image_url: width: 1100 }} 1100w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 1500 -%}{{ block.settings.banner | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 1780 -%}{{ block.settings.banner | image_url: width: 1780 }} 1780w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 2000 -%}{{ block.settings.banner | image_url: width: 2000 }} 2000w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 3000 -%}{{ block.settings.banner | image_url: width: 3000 }} 3000w,{%- endif -%}
+                      {%- if block.settings.banner.width >= 3840 -%}{{ block.settings.banner | image_url: width: 3840 }} 3840w,{%- endif -%}
+                      {{ block.settings.banner | image_url }} {{ block.settings.banner.width }}w"
+                                src="{{ block.settings.banner | image_url }}" alt="{{ block.settings.banner.alt }}" class="img-fluid mx-auto lazyload" width="{{ block.settings.banner.width }}" height="{{ block.settings.banner.height }}"/>
+                            {% else %}
+                                <div class="dummysvg">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                            {% endif %}
+                        </div>
+                        <h2 style="color: {{ block.settings.color_head }};"><span>{{ page_title }}</span></h2>
+                    </div>
+
+                {% when 'text-block' %}
+                    <div class="wbabttxt container">
+                        {% if block.settings.title != blank %}
+                            <h2 class="inline-richtext"><span>{{ block.settings.title }}</span></h2>
+                        {% endif %}
+
+                        {% if block.settings.text != blank %}
+                            <div>{{ block.settings.text }}</div>
+                        {% endif %}
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "About us",
+        "class": "section",
+        "max_blocks": 8,
+        "settings": [
+
+        ],
+        "blocks": [
+            {
+                "type": "banner",
+                "name": "Banner",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "banner",
+                        "label": "Image"
+                    },
+                    {
+                      "type": "color",
+                      "id": "color_head",
+                      "label": "Heading Color",
+                      "default": "#ffffff"
+                    }
+                ]
+            },
+            {
+                "type": "text-block",
+                "name": "Text block",
+                "settings": [
+                    {
+                        "type": "inline_richtext",
+                        "id": "title",
+                        "label": "Heading",
+                        "default": "Main heading"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "text",
+                        "label": "Text",
+                        "default": "<p>Share information about your brand with your customers. Describe a  product, make announcements, or welcome customers to your store.</p>"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

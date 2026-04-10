@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Envíos gratis en pedidos superiores a 130€",
+            "link": ""
+          }
+        },
+        "1ec10fdf-be69-4f31-94ae-df0ce5067464": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Add Announcement/Promotion Here",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "1ec10fdf-be69-4f31-94ae-df0ce5067464"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_home_only": false,
+        "show_social": true,
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "color_scheme": "background-2",
+        "mobile_bar": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        "a {font-weight: 300;}",
+        ".header {padding-top: 20px; padding-bottom: 20px;}"
+      ],
+      "settings": {
+        "logo_position": "top-left",
+        "color_scheme": "accent-2",
+        "logo": "shopify://shop_images/logo.png",
+        "logo_width": 162,
+        "mobile_logo_width": 98,
+        "show_stxt": "show_siconinr",
+        "show_acicon": "show_acicontext",
+        "color_schememenu": "accent-1",
+        "color_dropmenu": "accent-2",
+        "menu": "main-menu",
+        "secmenu": "",
+        "contact_icon": "map_pin",
+        "contact_text": "",
+        "contact_link": "",
+        "contact_icon2": "leather",
+        "contact_text2": "",
+        "contact_link2": "",
+        "sticky_header_type": "always",
+        "margin_bottom": 12,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_Ybg96D": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"application/ld+json\">\n[{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"En Copa de Balon – La Casita\",\"image\":\"https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png\",\"url\":\"https://www.encopadebalon.com\",\"telephone\":\"+34 915 45 21 81\",\"description\":\"Vinoteca y restaurante en Madrid. Vinos seleccionados por sumilleres desde 1991.\",\"priceRange\":\"$$\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle del General Díaz Porlier, 13\",\"addressLocality\":\"Madrid\",\"addressRegion\":\"Madrid\",\"postalCode\":\"28001\",\"addressCountry\":\"ES\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":40.4265,\"longitude\":-3.6785},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\"],\"opens\":\"10:00\",\"closes\":\"22:00\"},{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Saturday\"],\"opens\":\"11:00\",\"closes\":\"22:00\"},{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Sunday\"],\"opens\":\"12:00\",\"closes\":\"16:00\"}]},{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"En Copa de Balon – El Rincón\",\"image\":\"https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png\",\"url\":\"https://www.encopadebalon.com\",\"telephone\":\"+34 910 52 33 44\",\"description\":\"Vinoteca y restaurante en Madrid. Tapas y vinos selectos.\",\"priceRange\":\"$$\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle de Lagasca, 62\",\"addressLocality\":\"Madrid\",\"addressRegion\":\"Madrid\",\"postalCode\":\"28001\",\"addressCountry\":\"ES\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":40.4290,\"longitude\":-3.6810},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\"],\"opens\":\"12:00\",\"closes\":\"00:00\"},{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Saturday\"],\"opens\":\"12:00\",\"closes\":\"00:00\"},{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Sunday\"],\"opens\":\"12:00\",\"closes\":\"17:00\"}]},{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"En Copa de Balon – La Terraza\",\"image\":\"https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png\",\"url\":\"https://www.encopadebalon.com\",\"telephone\":\"+34 916 78 90 12\",\"description\":\"Terraza con vinos y gastronomía mediterránea.\",\"priceRange\":\"$$\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle de Serrano, 45\",\"addressLocality\":\"Madrid\",\"addressRegion\":\"Madrid\",\"postalCode\":\"28006\",\"addressCountry\":\"ES\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":40.4310,\"longitude\":-3.6870},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"],\"opens\":\"11:00\",\"closes\":\"23:00\"},{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Sunday\"],\"opens\":\"11:00\",\"closes\":\"18:00\"}]}]\n</script>\n\n<!-- SEO Schema Fixes - 2026-03-02 -->\n{% if template contains 'product' %}\n{% assign seo_coll = nil %}\n{% assign seo_fallback = nil %}\n{% for c in product.collections %}\n  {% assign h = c.handle %}\n  {% if h == 'vino-tinto' or h == 'vino-blanco' or h == 'vino-rosado' or h == 'espumosos-1' or h == 'generosos' or h == 'destilados' or h == 'alimentacion' %}\n    {% unless seo_coll %}\n      {% assign seo_coll = c %}\n    {% endunless %}\n  {% endif %}\n  {% if h contains 'vino' or h contains 'destilado' or h contains 'espumoso' %}\n    {% unless seo_fallback %}\n      {% assign seo_fallback = c %}\n    {% endunless %}\n  {% endif %}\n{% endfor %}\n{% unless seo_coll %}{% assign seo_coll = seo_fallback %}{% endunless %}\n{% unless seo_coll %}{% assign seo_coll = product.collections.first %}{% endunless %}\n{% if seo_coll %}\n<div id=\"seo-collection-data\" data-name=\"{{ seo_coll.title }}\" data-url=\"{{ seo_coll.url }}\" style=\"display:none\"></div>\n{% endif %}\n{% endif %}\n<script>\ndocument.addEventListener('DOMContentLoaded', function() {\n  var schemas = document.querySelectorAll('script[type=\"application/ld+json\"]');\n  var productSchemas = [];\n  schemas.forEach(function(s) {\n    try { var d = JSON.parse(s.textContent); if (d['@type'] === 'Product') productSchemas.push(s); } catch(e) {}\n  });\n  for (var i = 1; i < productSchemas.length; i++) productSchemas[i].remove();\n\n  var collData = document.getElementById('seo-collection-data');\n  if (collData && collData.dataset.name && collData.dataset.url) {\n    schemas = document.querySelectorAll('script[type=\"application/ld+json\"]');\n    schemas.forEach(function(s) {\n      try {\n        var d = JSON.parse(s.textContent);\n        if (d['@type'] === 'BreadcrumbList' && d.itemListElement && d.itemListElement.length === 2) {\n          d.itemListElement[1].position = 3;\n          d.itemListElement.splice(1, 0, {\"@type\": \"ListItem\", \"position\": 2, \"item\": {\"@type\": \"WebPage\", \"@id\": window.location.origin + collData.dataset.url, \"name\": collData.dataset.name}});\n          s.textContent = JSON.stringify(d);\n        }\n      } catch(e) {}\n    });\n  }\n});\n</script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "custom_liquid_Ybg96D"
+  ]
+}

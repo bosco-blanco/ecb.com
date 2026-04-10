@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "columns_desktop": 3,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "display_product_type": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "button_style": "solid",
+        "show_quick_view": true,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "article_show_date": true,
+        "article_show_author": true,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

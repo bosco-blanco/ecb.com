@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_hFjqrw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mXkHbz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nuestros Restaurantes",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mXkHbz"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_9VRmWr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_AFMycQ": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "La Casita Juan Bravo",
+            "heading_size": "h0"
+          }
+        },
+        "caption_4p7K7F": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 91 545 21 81</p>"
+          }
+        },
+        "caption_whhV4X": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>C. de Claudio Coello, 121, Salamanca, 28006 Madrid</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AFMycQ",
+        "caption_4p7K7F",
+        "caption_whhV4X"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_ehJBif": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_znwNeX": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "El Almacén",
+            "heading_size": "h0"
+          }
+        },
+        "caption_YRyEtH": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 910 51 13 65</p>"
+          }
+        },
+        "caption_KxnWdU": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Calle de Núñez de Balboa 24, 28001 Madrid</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_znwNeX",
+        "caption_YRyEtH",
+        "caption_KxnWdU"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_Qzi6hT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YxwqLx": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Arturo Soria Plaza",
+            "heading_size": "h0"
+          }
+        },
+        "caption_N8QaXA": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 915 35 85 57</p>"
+          }
+        },
+        "caption_LGh8NT": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Calle de Arturo Soria 126, 28043 Madrid</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YxwqLx",
+        "caption_N8QaXA",
+        "caption_LGh8NT"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "rich_text_NykJNi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JMqP8T": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nuestros Restaurantes",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JMqP8T"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 32
+      }
+    },
+    "image_with_text_8gMdcX": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VpMrL6": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "El Almacén En Copa de Balón Núñez de Balboa, 24",
+            "heading_size": "h0"
+          }
+        },
+        "caption_4pDEzn": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 91 051 13 65</p>"
+          }
+        },
+        "caption_XygcmY": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>C. de Núñez de Balboa, 24, Salamanca, 28001 Madrid</p>"
+          }
+        },
+        "button_cz7x8j": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Reservar mesa",
+            "link": "",
+            "button_style": "link",
+            "button_size": "bs_default"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VpMrL6",
+        "caption_4pDEzn",
+        "caption_XygcmY",
+        "button_cz7x8j"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Majadahonda.webp",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_qVG8Vi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_GQPgdd": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Enolounge Moraleja",
+            "heading_size": "h0"
+          }
+        },
+        "caption_hCztiF": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 918 05 30 71</p>"
+          }
+        },
+        "caption_RVAdCm": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Calle de la Begonia 135, 28109 Alcobendas</p>"
+          }
+        },
+        "button_JiYJdG": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Reservar mesa",
+            "link": "",
+            "button_style": "link",
+            "button_size": "bs_default"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GQPgdd",
+        "caption_hCztiF",
+        "caption_RVAdCm",
+        "button_JiYJdG"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Majadahonda.webp",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_hFjqrw",
+    "image_with_text_9VRmWr",
+    "image_with_text_ehJBif",
+    "image_with_text_Qzi6hT",
+    "rich_text_NykJNi",
+    "image_with_text_8gMdcX",
+    "image_with_text_qVG8Vi"
+  ]
+}

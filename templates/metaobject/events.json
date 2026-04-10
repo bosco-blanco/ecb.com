@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_MiRk6z": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_LKzVWp": {
+          "type": "caption",
+          "settings": {
+            "caption": "{{ metaobject.date | metafield_text }}",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_GcNPWe": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ metaobject.title_internal.value }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_qAxdQq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ metaobject.address.value }}</p>"
+          }
+        },
+        "text_EqM8bc": {
+          "type": "text",
+          "settings": {
+            "text": "{{ metaobject.description | metafield_tag }}"
+          }
+        },
+        "button_zWJdrz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Reserva",
+            "button_link": "{{ metaobject.link.value }}",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_LKzVWp",
+        "heading_GcNPWe",
+        "text_qAxdQq",
+        "text_EqM8bc",
+        "button_zWJdrz"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "rich_text_MiRk6z"
+  ]
+}

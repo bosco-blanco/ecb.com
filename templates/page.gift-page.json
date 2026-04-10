@@ -1,0 +1,712 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_ybetiJ": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_dbKTPx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home_image_2.png",
+            "hcaption": "",
+            "heading": "Tradición de los vinos y el buen comer",
+            "button_h_upp": false,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Ver todo",
+            "link": "shopify://collections/all",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_qi6zhY": {
+          "type": "slide",
+          "settings": {
+            "hcaption": "<p> Tell your brand's story through images </p><p></p>",
+            "heading": "Image slide",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "Tell your brand's story through images",
+            "subheadingtext": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "link": "",
+            "button_style": "outline",
+            "button_size": "medium-btn",
+            "button_txt_upp": true,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_dbKTPx",
+        "slide_qi6zhY"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "small",
+        "slider_visual": "dots",
+        "pagicolor": "#ffffff",
+        "pagination_alignment": "center",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "ambient",
+        "show_text_below": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "text_with_icons_FAzNJk": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_kbg9fN": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "ENVÍO GRATUITO",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_Y6eLj6": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "PAGO SEGURO",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_P9nneb": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "RECOGIDA EN TIENDA",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_Vq4LJL": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "ASESORAMIENTO ONLINE",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_kbg9fN",
+        "image_Y6eLj6",
+        "image_P9nneb",
+        "image_Vq4LJL"
+      ],
+      "custom_css": [
+        "div {background-color: #9fa185; color: rgb(var(--color-background));}",
+        "p {color: rgb(var(--color-background));}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "head_align": "center",
+        "hide_mobile": true,
+        "hide_desktop": false,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-2",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "collection_icon_list_anDDtJ": {
+      "type": "collection-icon-list",
+      "blocks": {
+        "featured_collection_UJXy6C": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "los-mas-vendidos-vinos-y-destilados-favoritos-en-copa-de-balon",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_LrdBUK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vinos",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_R93iV4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cerveza",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_DnkpH8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sin-alcohol",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_pJ3C9U": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "destilados",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_rhPpiq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "espumosos-1",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_AYqAQr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "alimentacion-selecta",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_EFDTiW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ideas-regalo",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        },
+        "featured_collection_RmMgwe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ofertas",
+            "coll_desc": "Share information about your collection with customers."
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_UJXy6C",
+        "featured_collection_LrdBUK",
+        "featured_collection_R93iV4",
+        "featured_collection_DnkpH8",
+        "featured_collection_pJ3C9U",
+        "featured_collection_rhPpiq",
+        "featured_collection_AYqAQr",
+        "featured_collection_EFDTiW",
+        "featured_collection_RmMgwe"
+      ],
+      "custom_css": [
+        "div {background-color: #9fa185;}",
+        "a {color: rgb(var(--color-background));}"
+      ],
+      "settings": {
+        "sec_full_width": true,
+        "heading_position": "coll_center",
+        "columns_desktop": 9,
+        "title": "",
+        "heading_size": "h1",
+        "subheading": "",
+        "btntxt": "See all",
+        "link": "",
+        "button_style": "outline",
+        "image_ratio": "square",
+        "icon_padding": 24,
+        "ct_alignment": "center",
+        "coll_upper": false,
+        "coll_des": false,
+        "overlay_btn": false,
+        "wboverlaycolor": "#ffffff",
+        "wboverlaybg": "#ffffff",
+        "wboverlayoutline": "#ffffff",
+        "wboverlayhcolor": "#ffffff",
+        "wboverlayhbg": "#000000",
+        "wboverlayhoutline": "#000000",
+        "columns_mobile": "3",
+        "rows": 3,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_LPFgFj": {
+      "type": "featured-collection",
+      "custom_css": [
+        "div {color: rgb(var(--color-base-background-1));}",
+        "a {color: rgb(var(--color-base-background-1));}",
+        "h2 {color: rgb(var(--color-base-background-1));}",
+        ".quantity {color: rgb(var(--color-base-background-1));}",
+        ".cartb {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}"
+      ],
+      "settings": {
+        "title": "Top ventas",
+        "heading_size": "h1",
+        "head_align": "center",
+        "collection": "los-mas-vendidos-vinos-y-destilados-favoritos-en-copa-de-balon",
+        "products_to_show": 8,
+        "columns_desktop": 8,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "arrow_position": "inline",
+        "image_ratio": "portrait",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    },
+    "sponsored_collection_atLm4w": {
+      "type": "sponsored-collection",
+      "custom_css": [
+        "div {color: rgb(var(--color-base-background-1));}",
+        "a {color: rgb(var(--color-base-background-1));}",
+        "h2 {color: rgb(var(--color-base-background-1));}",
+        ".quantity {color: rgb(var(--color-base-background-1));}",
+        ".cartb {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}",
+        ".banner-cta {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}"
+      ],
+      "settings": {
+        "title": "Sponsored collection",
+        "collection": "whiskies",
+        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image_height": 400,
+        "image_align": "left",
+        "call_to_action": "Regala ya!",
+        "heading_size": "h1",
+        "head_align": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "arrow_position": "inline",
+        "image_ratio": "portrait",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "sponsored_collection_Pnr8zr": {
+      "type": "sponsored-collection",
+      "custom_css": [
+        "div {color: rgb(var(--color-base-background-1));}",
+        "a {color: rgb(var(--color-base-background-1));}",
+        "h2 {color: rgb(var(--color-base-background-1));}",
+        ".quantity {color: rgb(var(--color-base-background-1));}",
+        ".cartb {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}",
+        ".banner-cta {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}"
+      ],
+      "settings": {
+        "title": "Sponsored collection",
+        "collection": "whiskies",
+        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image_height": 400,
+        "image_align": "right",
+        "call_to_action": "Regala ya!",
+        "heading_size": "h1",
+        "head_align": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "arrow_position": "inline",
+        "image_ratio": "portrait",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "sponsored_collection_ADMHD7": {
+      "type": "sponsored-collection",
+      "custom_css": [
+        "div {color: rgb(var(--color-base-background-1));}",
+        "a {color: rgb(var(--color-base-background-1));}",
+        "h2 {color: rgb(var(--color-base-background-1));}",
+        ".quantity {color: rgb(var(--color-base-background-1));}",
+        ".cartb {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}",
+        ".banner-cta {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}"
+      ],
+      "settings": {
+        "title": "Sponsored collection",
+        "collection": "whiskies",
+        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image_height": 400,
+        "image_align": "left",
+        "call_to_action": "Regala ya!",
+        "heading_size": "h1",
+        "head_align": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "arrow_position": "inline",
+        "image_ratio": "portrait",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_qeMC8g": {
+      "type": "featured-collection",
+      "custom_css": [
+        "div {color: rgb(var(--color-base-background-1));}",
+        "a {color: rgb(var(--color-base-background-1));}",
+        "h2 {color: rgb(var(--color-base-background-1));}",
+        ".quantity {color: rgb(var(--color-base-background-1));}",
+        ".cartb {color: rgb(var(--color-base-background-1)); background-color: #d4b974;}"
+      ],
+      "settings": {
+        "title": "Nuestras recomendaciones",
+        "heading_size": "h1",
+        "head_align": "center",
+        "collection": "los-mas-vendidos-vinos-y-destilados-favoritos-en-copa-de-balon",
+        "products_to_show": 8,
+        "columns_desktop": 8,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "arrow_position": "inline",
+        "image_ratio": "portrait",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    },
+    "image_gallery_hQNtxY": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_nXqgg8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/juan-bravo.png",
+            "storytitle": "Heading",
+            "heading_position": "bottom",
+            "showtext": "Button label",
+            "link": ""
+          }
+        },
+        "image_brKYqm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/aravaca.png",
+            "storytitle": "Heading",
+            "heading_position": "bottom",
+            "showtext": "Button label",
+            "link": ""
+          }
+        },
+        "image_PPCWrK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/arturo-soria.png",
+            "storytitle": "Heading",
+            "heading_position": "bottom",
+            "showtext": "Button label",
+            "link": ""
+          }
+        },
+        "image_H8RtaM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/nunez-balboa.png",
+            "storytitle": "Heading",
+            "heading_position": "bottom",
+            "showtext": "Button label",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_nXqgg8",
+        "image_brKYqm",
+        "image_PPCWrK",
+        "image_H8RtaM"
+      ],
+      "custom_css": [
+        "{background-color: #9fa185;}",
+        "h2 {color: rgb(var(--color-base-background-1));}"
+      ],
+      "settings": {
+        "m_title": "Visita nuestras Tiendas y Restaurantes",
+        "heading_size": "h0",
+        "head_align": "left",
+        "image_height": "small",
+        "enable_desktop_slider": false,
+        "columns_desktop": 4,
+        "swipe_on_mobile": false,
+        "wbgltext": "#f0ede1",
+        "wboverlaycolor": "#ffffff",
+        "wboverlaybg": "#d4b974",
+        "wboverlayoutline": "#ffffff",
+        "wboverlayhcolor": "#ffffff",
+        "wboverlayhbg": "#000000",
+        "wboverlayhoutline": "#000000",
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    },
+    "logo_bar_hgcrGG": {
+      "type": "logo-bar",
+      "blocks": {
+        "logo_image_hggNcR": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_KXaALG": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_EgThc7": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_ifgJCh": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_j4VFBF": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_xriVfc": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_xVeFzm": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_UK4tHU": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_hggNcR",
+        "logo_image_KXaALG",
+        "logo_image_EgThc7",
+        "logo_image_ifgJCh",
+        "logo_image_j4VFBF",
+        "logo_image_xriVfc",
+        "logo_image_xVeFzm",
+        "logo_image_UK4tHU"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {background-color: #9fa185;}",
+        "h2 {color: rgb(var(--color-base-background-1));}"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Marcas destacadas",
+        "heading_size": "h2",
+        "head_align": "center",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "columns_desktop": 7,
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 24
+      }
+    },
+    "text_with_icons_QUVaCd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_x87daW": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "ENVÍO GRATUITO",
+            "demotext": "Pedidos superiores a 100€y Madrid Capital"
+          }
+        },
+        "image_AgiWc9": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "PAGO SEGURO",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_MHR7Fa": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "RECOGIDA EN TIENDA",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_VnJa3b": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "ASESORAMIENTO ONLINE",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_x87daW",
+        "image_AgiWc9",
+        "image_MHR7Fa",
+        "image_VnJa3b"
+      ],
+      "custom_css": [
+        "div {background-color: #9fa185; color: rgb(var(--color-background));}",
+        "p {color: rgb(var(--color-background));}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "head_align": "center",
+        "hide_mobile": false,
+        "hide_desktop": true,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-2",
+        "service_upper": true,
+        "padding_top": 48,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_ybetiJ",
+    "text_with_icons_FAzNJk",
+    "collection_icon_list_anDDtJ",
+    "featured_collection_LPFgFj",
+    "sponsored_collection_atLm4w",
+    "sponsored_collection_Pnr8zr",
+    "sponsored_collection_ADMHD7",
+    "featured_collection_qeMC8g",
+    "image_gallery_hQNtxY",
+    "logo_bar_hgcrGG",
+    "text_with_icons_QUVaCd"
+  ]
+}

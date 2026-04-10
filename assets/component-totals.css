@@ -1,0 +1,35 @@
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+.totals > * {
+  margin: 0;
+}
+.totals * {
+  line-height: 1;
+}
+.totals > * + * {
+  margin-left: 15px;
+}
+.totals__subtotal-value {
+  font-size: calc(var(--font-body-scale) * 22px);
+  color: rgb(var(--color-foreground));
+}
+.totals__subtotal{
+  font-size: calc(var(--font-body-scale) * 16px);
+  font-weight: var(--font-body-weight-medium);
+}
+.cart__ctas + .totals {
+  margin-top: 2rem;
+}
+#main-cart-footer cart-note.cart__note.field::before,#main-cart-footer cart-note.cart__note.field::after{
+    display: none;
+}
+#main-cart-footer #Cart-note{
+    border: 1px solid rgba(var(--color-foreground),0.08);
+    border-width: var(--inputs-border-width);
+    border-radius: var(--inputs-radius-outset);
+    box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text),var(--inputs-shadow-opacity));
+}

@@ -1,0 +1,203 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_hFjqrw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mXkHbz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nuestras Tiendas",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mXkHbz"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_9VRmWr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_AFMycQ": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "La Casita Juan Bravo",
+            "heading_size": "h0"
+          }
+        },
+        "caption_4p7K7F": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 91 545 21 81</p>"
+          }
+        },
+        "caption_whhV4X": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>C. de Claudio Coello, 121, Salamanca, 28006 Madrid</p>"
+          }
+        },
+        "button_BFNRfj": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ver Todo",
+            "link": "shopify://collections/all",
+            "button_style": "outline",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AFMycQ",
+        "caption_4p7K7F",
+        "caption_whhV4X",
+        "button_BFNRfj"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_ehJBif": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_znwNeX": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "El Almacén",
+            "heading_size": "h0"
+          }
+        },
+        "caption_YRyEtH": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 910 51 13 65</p>"
+          }
+        },
+        "caption_KxnWdU": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Calle de Núñez de Balboa 24, 28001 Madrid</p>"
+          }
+        },
+        "button_aGrwU7": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ver Todo",
+            "link": "shopify://collections/all",
+            "button_style": "outline",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_znwNeX",
+        "caption_YRyEtH",
+        "caption_KxnWdU",
+        "button_aGrwU7"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_Qzi6hT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YxwqLx": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Arturo Soria Plaza",
+            "heading_size": "h0"
+          }
+        },
+        "caption_N8QaXA": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 915 35 85 57</p>"
+          }
+        },
+        "caption_LGh8NT": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Calle de Arturo Soria 126, 28043 Madrid</p>"
+          }
+        },
+        "button_FiVnYn": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ver Todo",
+            "link": "shopify://collections/all",
+            "button_style": "outline",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YxwqLx",
+        "caption_N8QaXA",
+        "caption_LGh8NT",
+        "button_FiVnYn"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/juan-bravo.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_hFjqrw",
+    "image_with_text_9VRmWr",
+    "image_with_text_ehJBif",
+    "image_with_text_Qzi6hT"
+  ]
+}

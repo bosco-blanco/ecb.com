@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "wbquickview",
+  "sections": {
+    "main": {
+      "type": "wbquickview",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "a0149732-0bef-49b6-aeeb-e441882a9964": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "f81d7ae0-279b-4765-938e-4885af013c1c": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "show_colorswatch": true
+          }
+        },
+        "2d286980-47fb-4df0-9e39-0dfd54926f46": {
+          "type": "stock_countdown",
+          "settings": {
+            "max_stock": 150,
+            "limited_stock_cut_off": 10,
+            "limited_stock_message": "Only {stock_number} units left",
+            "instock_message": "In stock ({stock_number} units), ready to be shipped",
+            "continue_selling_message": "Re-stocking soon",
+            "limited_stock_color": "#ff0000",
+            "in_stock_color": "#008a00",
+            "continue_selling_color": "#ff0000"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "a0149732-0bef-49b6-aeeb-e441882a9964",
+        "price",
+        "f81d7ae0-279b-4765-938e-4885af013c1c",
+        "variant_picker",
+        "2d286980-47fb-4df0-9e39-0dfd54926f46",
+        "quantity_selector",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "small",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "56e65731-41fd-4c8d-9a4e-2c9b8be933de": {
+      "type": "image-gallery",
+      "blocks": {
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-0": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "showtext": "Button label",
+            "link": "shopify://collections"
+          }
+        },
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-1": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "showtext": "Button label",
+            "link": "shopify://collections"
+          }
+        },
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-2": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "showtext": "Button label",
+            "link": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-0",
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-1",
+        "template--15830621257785__56e65731-41fd-4c8d-9a4e-2c9b8be933de-1678098501d1777b23-2"
+      ],
+      "settings": {
+        "m_title": "",
+        "heading_size": "h0",
+        "image_height": "adapt",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "wbgltext": "#ffffff",
+        "wboverlaycolor": "#000000",
+        "wboverlaybg": "#ffffff",
+        "wboverlayoutline": "#ffffff",
+        "wboverlayhcolor": "#ffffff",
+        "wboverlayhbg": "#000000",
+        "wboverlayhoutline": "#000000",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "dc511ad4-fd0f-4096-8bda-49fb5bfba04f": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-0": {
+          "type": "image",
+          "settings": {
+            "icon1": "shipping",
+            "title": "Heading",
+            "demotext": "Add subheading here"
+          }
+        },
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-1": {
+          "type": "image",
+          "settings": {
+            "icon1": "shipping",
+            "title": "Heading",
+            "demotext": "Add subheading here"
+          }
+        },
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-2": {
+          "type": "image",
+          "settings": {
+            "icon1": "shipping",
+            "title": "Heading",
+            "demotext": "Add subheading here"
+          }
+        }
+      },
+      "block_order": [
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-0",
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-1",
+        "template--15830621257785__dc511ad4-fd0f-4096-8bda-49fb5bfba04f-16780988000e652752-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h0",
+        "iconwidth": 65,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "56e65731-41fd-4c8d-9a4e-2c9b8be933de",
+    "dc511ad4-fd0f-4096-8bda-49fb5bfba04f"
+  ]
+}

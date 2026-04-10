@@ -1,0 +1,69 @@
+{% comment %}
+    Renders an article card for a given blog with settings to either show the image or not.
+
+    Accepts:
+    - blog: {Object} Blog object
+    - article: {Object} Article object
+    - image_height: {String} The setting changes the height of the article image, if shown
+    - show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+    - show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+    - show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+    Usage:
+    {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+
+<article class="article-card">
+    {%- if show_image == true and article.image -%}
+        <div class="wbblogimg">
+            <a href="{{ article.url }}" class="article-content motion-reduce media media media--{{ image_height }} media--hover-effect global-media-settings" {% if image_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                <img
+                srcset="{{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                src="{{ article.image.src | image_url: width: 533 }}"
+                alt="{{ article.image.src.alt | escape }}"
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+                loading="lazy"
+                class="motion-reduce img-fluid mx-auto lazyload">
+            </a>
+        </div>
+    {%- endif -%}
+
+    <div class="wbblogimgdesc {{ blog_alignment }}">
+        <h3><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
+        {%- if show_desc -%}
+            {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                <p class="wbblogtxt">
+                    {%- if article.excerpt.size > 0 -%}
+                        {{ article.excerpt | strip_html | truncatewords: 12 }}
+                    {%- else -%}
+                        {{ article.content | strip_html | truncatewords: 12 }}
+                    {%- endif -%}
+                </p>
+            {%- endif -%}
+        {%- endif -%}
+        {%- if show_date -%}
+            <div class="wbblogdate">{{- article.published_at | date: "%b %d, %Y" -}}</div>
+        {%- endif -%}
+        <div class="wbuserdate">
+            {%- if show_author -%}
+                <div class="wbblogauth">{% render 'icon-login' %}&nbsp;{{ article.author -}}</div>
+            {%- endif -%}
+            {% if show_author and show_cmment %}<span class="blogpipe"></span>{% endif %}
+            {%- if show_cmment -%}
+                <div class="article-card__footer">
+                    {%- if blog.comments_enabled? -%}
+                        <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+        </div>
+        {%- if show_readmore_button -%}
+            <div class="rm_btn">
+                <a href="{{ article.url }}" class="{% if section.settings.read_more_style == 'link' %} link underlined-link {% elsif section.settings.read_more_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %}">
+                  {{ 'wbcustomlabel.wballtext.readmore' | t }}
+                </a>
+            </div>
+        {%- endif -%}
+    </div>
+</article>

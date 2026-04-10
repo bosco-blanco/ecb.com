@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "a6156576-7767-482c-acbf-d8dce908c311": {
+      "type": "main-faq",
+      "blocks": {
+        "template--15816977809465__a6156576-7767-482c-acbf-d8dce908c311-16764675462315d79a-0": {
+          "type": "question",
+          "settings": {
+            "title": "¿Cómo me registro?",
+            "text": "<p>Desde la página de inicio, accede a “Iniciar Sesión” y a continuación rellena tus datos. Desde el momento que pulses “Crear una cuenta”, ya estarás registrado y podrás comenzar con tus compras.</p>"
+          }
+        },
+        "template--15816977809465__a6156576-7767-482c-acbf-d8dce908c311-16764675462315d79a-1": {
+          "type": "question",
+          "settings": {
+            "title": "¿Necesito registrarme para comprar?",
+            "text": "<p>Sí, es necesario registrarte. Una vez registrado, puedes realizar tus compras con facilidad.</p>"
+          }
+        },
+        "question_JiTDWR": {
+          "type": "question",
+          "settings": {
+            "title": "¿Puedo dejar mis datos con confianza?",
+            "text": "<p>Los datos facilitados se guardarán en la base de datos de Distribuidora Bebidas Europa S.A. con domicilio en Calle Trueno, 78 - Leganés (Pol. ind. San José de Valderas II), 28918 Madrid, numero de CIF A80176902.</p><p>La finalidad de los datos es procesar el pedido del cliente y facilitar rapidez y comodidad en sus próximas compras.</p><p>Si el cliente lo acepta, también se utilizarán para enviar promociones y ofertas especiales.</p><p>Los datos personales recibidos serán tratados de acuerdo con la Ley Orgánica de 13 de Diciembre de Protección de Datos de Carácter Personal. Los clientes de esta página web podrán en todo momento acceder, rectificar y cancelar los datos de registro.</p>"
+          }
+        },
+        "question_AKaJfH": {
+          "type": "question",
+          "settings": {
+            "title": "¿Es seguro realizar mis compras en la tienda online de En Copa de Balón?",
+            "text": "<p>Sí, disponemos de los recursos necesarios que garantizan la seguridad de tus compras y de tus datos.</p><p>Con el objetivo de dotar de la máxima seguridad al sistema de pago, En Copa de Balón utiliza sistemas de \"pago seguro\" de entidades financieras preparadas para el comercio electrónico.</p>"
+          }
+        },
+        "question_yNTjBc": {
+          "type": "question",
+          "settings": {
+            "title": "¿Cómo puedo pagar el pedido?",
+            "text": "<p>Las compras se podrán pagar con tarjeta de crédito o débito Visa o Mastercard. En los pagos con tarjeta de crédito o débito, el cargo se realizará online, en tiempo real, una vez se hayan comprobado que los datos registrados son correctos.También se puede realizar el pago a través de transferencia bancaria.</p>"
+          }
+        },
+        "question_wmG8qV": {
+          "type": "question",
+          "settings": {
+            "title": "¿Cuánto cuesta el envío?",
+            "text": "<p>Accede a nuestra sección “Gastos de envío” para obtener toda la información necesaria.¿A qué zonas se realizan envíos?Servimos únicamente en Península.</p>"
+          }
+        },
+        "question_9DdpDC": {
+          "type": "question",
+          "settings": {
+            "title": "¿Cuáles son los plazos de entrega?",
+            "text": "<p>Los pedidos se entregan de lunes a viernes, con un plazo máximo de una semana.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15816977809465__a6156576-7767-482c-acbf-d8dce908c311-16764675462315d79a-0",
+        "template--15816977809465__a6156576-7767-482c-acbf-d8dce908c311-16764675462315d79a-1",
+        "question_JiTDWR",
+        "question_AKaJfH",
+        "question_yNTjBc",
+        "question_wmG8qV",
+        "question_9DdpDC"
+      ],
+      "settings": {
+        "title": "FAQs",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a6156576-7767-482c-acbf-d8dce908c311"
+  ]
+}

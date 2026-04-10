@@ -1,0 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h0"
+          }
+        },
+        "bodega_link_gN8eUA": {
+          "type": "bodega_link",
+          "settings": {}
+        },
+        "custom_liquid_PzrYn3": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign logotipo_url_denominacion = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Region.svg?v=1733170429\" %}\n{% assign logotipo_url_tipo_vino = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Tipo_de_Vino.svg?v=1733170431\" %}\n{% assign logotipo_url_uva = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Bodega.svg?v=17331704291\" %}\n{% assign logotipo_url_anada = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Bodega.svg?v=1733170429\" %}\n{% assign logotipo_url_Parker = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Parker.svg?v=1733170428\" %}\n{% assign logotipo_url_penin = \"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Penin.svg?v=1733170428\" %}\n{% if product.metafields.custom.tipo_de_vino %}\n  <p>\n    <img src=\"{{ logotipo_url_tipo_vino }}\" alt=\"Logotipo\" style=\"width: 25px; height: 25px; vertical-align: middle; margin-right: 5px;\">\n    <b>Tipo: </b>\n    <a href=\"/search?q={{ product.metafields.custom.tipo_de_vino.value | escape }}\" target=\"_blank\" style=\"text-decoration: underline; color: inherit;\">\n      {{ product.metafields.custom.tipo_de_vino.value }}\n    </a>\n  </p>\n{% endif %}\n\n\n\n{% if product.metafields.custom.denominaci_n_de_origen %}\n  {% assign denominacion = product.metafields.custom.denominaci_n_de_origen.value %}\n  {% assign denominacion_url = '' %}\n\n  {% case denominacion %}\n    {% when \"Rioja\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/rioja-1?_pos=1&_psq=rioja&_ss=e&_v=1.0\" %}\n    {% when \"Ribera del Duero\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ribera-del-duero-1?_pos=5&_psq=ribe&_ss=e&_v=1.0\" %}\n    {% when \"Rueda\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/rueda-1?_pos=1&_psq=rueda&_ss=e&_v=1.0\" %}\n    {% when \"Rías Baixas\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/rias-baixas-1?_pos=1&_psq=rias&_ss=e&_v=1.0\" %}\n    {% when \"Ribeiro\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ribeiro-1?_pos=1&_psq=ribeiro&_ss=e&_v=1.0\" %}\n    {% when \"Ribeira Sacra\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ribeira-sacra?_pos=2&_psq=ribeir&_ss=e&_v=1.0\" %}\n    {% when \"Valdeorras\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/valdeorras-1?_pos=1&_psq=valdeorr&_ss=e&_v=1.0\" %}\n    {% when \"Monterrei\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/monterrei?_pos=1&_psq=monterr&_ss=e&_v=1.0\" %}\n    {% when \"Getariako txakolina\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/getariako-txakolina?_pos=1&_psq=getar&_ss=e&_v=1.0\" %}\n    {% when \"V.T. Castilla León\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/v-t-castilla-leon?_pos=1&_psq=V.T.+Castilla+Le%C3%B3n&_ss=e&_v=1.0\" %}\n    {% when \"Toro\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/toro-1?_pos=1&_psq=toro&_ss=e&_v=1.0\" %}\n    {% when \"Somontano\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/somontano-1?_pos=1&_psq=somon&_ss=e&_v=1.0\" %}\n    {% when \"Bierzo\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/bierzo-1?_pos=1&_psq=bierzo&_ss=e&_v=1.0\" %}\n    {% when \"Vinos de Madrid\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/vinos-de-madrid-1?_pos=1&_psq=vinos+de+madrid&_ss=e&_v=1.0\" %}\n    {% when \"Cava\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/cava-1?_pos=1&_psq=cava&_ss=e&_v=1.0\" %}\n    {% when \"Utiel-Requena\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/utiel-requena?_pos=1&_psq=utiel-re&_ss=e&_v=1.0\" %}\n    {% when \"Jumilla\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/jumilla-1?_pos=1&_psq=jumilla&_ss=e&_v=1.0\" %}\n    {% when \"Bullas\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/bullas?_pos=1&_psq=bullas&_ss=e&_v=1.0\" %}\n    {% when \"Ribera del Guadiana\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ribera-del-guadiana?_pos=1&_psq=ribera+del+gua&_ss=e&_v=1.0\" %}\n    {% when \"Almansa\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/almansa?_pos=1&_psq=almansa&_ss=e&_v=1.0\" %}\n    {% when \"Calatayud\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/calatayud-1?_pos=1&_psq=cala&_ss=e&_v=1.0\" %}\n    {% when \"Sierras de Málaga\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/sierras-de-malaga?_pos=1&_psq=sierras+de+m%C3%A1laga&_ss=e&_v=1.0\" %}\n    {% when \"Campo de Borja\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/campo-de-borja-1?_pos=1&_psq=campo+de+borja&_ss=e&_v=1.0\" %}\n    {% when \"Arlanza\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/arlanza?_pos=1&_psq=arlanza&_ss=e&_v=1.0\" %}\n    {% when \"V.T. Cádiz\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/v-t-cadiz?_pos=2&_psq=v.t&_ss=e&_v=1.0\" %}\n    {% when \"Cebreros\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/cebreros?_pos=1&_psq=cebrer&_ss=e&_v=1.0\" %}\n    {% when \"Montsant\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/montsant?_pos=2&_psq=mont&_ss=e&_v=1.0\" %}\n    {% when \"Priorat\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/priorat?_pos=1&_psq=priora&_ss=e&_v=1.0\" %}\n    {% when \"Terra Alta\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/terra-alta-1?_pos=1&_psq=terra&_ss=e&_v=1.0\" %}\n    {% when \"Penedés\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/penedes?_pos=1&_psq=pened%C3%A9s&_ss=e&_v=1.0\" %}\n    {% when \"Conca Barbera\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/conca-barbera?_pos=1&_psq=conca&_ss=e&_v=1.0\" %}\n    {% when \"Uclés\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ucles-1?_pos=1&_psq=ucl%C3%A9s&_ss=e&_v=1.0\" %}\n    {% when \"Jerez\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/jerez?_pos=1&_psq=jere&_ss=e&_v=1.0\" %}\n    {% when \"Tokaj\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/tokaj?_pos=1&_psq=tokaj&_ss=e&_v=1.0\" %}\n    {% when \"Mendoza\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/mendoza?_pos=1&_psq=mendoza&_ss=e&_v=1.0\" %}\n\n{% when \"Piemonte\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/piemonte?_pos=1&_psq=piemonte&_ss=e&_v=1.0\" %}\n    {% when \"Vinos de Pago\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/vinos-de-pago?_pos=1&_psq=vinos+de&_ss=e&_v=1.0\" %}\n    {% when \"Mosel\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/mosel?_pos=1&_psq=mosel&_ss=e&_v=1.0\" %}\n    {% when \"Burdeos\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/burdeos?_pos=1&_psq=burdeo&_ss=e&_v=1.0\" %}\n    {% when \"A.O.C Cotes de Provence\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/aoc-cotes-des-provenze?_pos=1&_psq=Cotes+de+Provence&_ss=e&_v=1.0\" %}\n    {% when \"Mclaren vale\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/mclaren-vale?_pos=1&_psq=mclare&_ss=e&_v=1.0\" %}\n    {% when \"Borgoña\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/borgona?_pos=1&_psq=borgo%C3%B1a&_ss=e&_v=1.0\" %}\n    {% when \"Champagne\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/champagne-1?_pos=1&_psq=champa&_ss=e&_v=1.0\" %}\n    {% when \"Marlborough\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/marlborough?_pos=1&_psq=Marlborough&_ss=e&_v=1.0\" %}\n    {% when \"Catalunya\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/catalunya?_pos=1&_psq=catal&_ss=e&_v=1.0\" %}\n    {% when \"Corpinnat\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/corpinnat?_pos=1&_psq=corpinn&_ss=e&_v=1.0\" %}\n    {% when \"Martinborough\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/martinborough?_pos=1&_psq=Martinborough&_ss=e&_v=1.0\" %}\n    {% when \"Elgin\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/elgin?_pos=1&_psq=elg&_ss=e&_v=1.0\" %}\n    {% when \"Méntrida\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/mentrida?_pos=1&_psq=m%C3%A9ntr&_ss=e&_v=1.0\" %}\n    {% when \"Languedoc\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/languedoc?_pos=1&_psq=langue&_ss=e&_v=1.0\" %}\n    {% when \"Moscato D'Asti\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/moscato-dasti?_pos=1&_psq=mosca&_ss=e&_v=1.0\" %}\n    {% when \"Alsace\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/alsacia?_pos=1&_psq=alsa&_ss=e&_v=1.0\" %}\n    {% when \"A.O.C. Duché d'Uzés\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/a-o-c-duche-duzes?_pos=1&_psq=A.O.C.+Duch%C3%A9+d%27Uz%C3%A9s&_ss=e&_v=1.0\" %}\n    {% when \"Valle del loira\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/valle-del-loira?_pos=1&_psq=valle+de&_ss=e&_v=1.0\" %}\n    {% when \"Ródano\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/rodano?_pos=1&_psq=r%C3%B3dan&_ss=e&_v=1.0\" %}\n    {% when \"Chianti\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/chianti?_pos=1&_psq=chianti&_ss=e&_v=1.0\" %}\n    {% when \"V.T. Extremadura\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/v-t-extremadura?_pos=1&_psq=V.T.+Extremadura&_ss=e&_v=1.0\" %}\n    {% when \"Lambrusco\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/lambrusco?_pos=1&_psq=lam&_ss=e&_v=1.0\" %}\n    {% when \"Ardeche\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/ardeche?_pos=1&_psq=ardech&_ss=e&_v=1.0\" %}\n    {% when \"Montilla-moriles\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/montilla-moriles?_pos=1&_psq=montill&_ss=e&_v=1.0\" %}\n    {% when \"Pfalz\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/pfalz?_pos=1&_psq=pfa&_ss=e&_v=1.0\" %}\n    {% when \"Baden\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/baden?_pos=1&_psq=baden&_ss=e&_v=1.0\" %}\n    {% when \"Beaujolais\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/beaujolais?_pos=1&_psq=beau&_ss=e&_v=1.0\" %}\n    {% when \"I.G.P Vino de la tierra de Mallorca\" %}\n      {% assign denominacion_url = \"https://www.encopadebalon.com/collections/i-g-p-vino-de-la-tierra-de-mallorca?_pos=1&_psq=I.G.P+Vino+de+la+tierra+de+Mallorca&_ss=e&_v=1.0\" %}\n    {% else %}\n      {% assign denominacion_url = \"/search?q=\" | append: denominacion | escape %}\n  {% endcase %}\n\n  <p>\n    <img src=\"{{ logotipo_url_denominacion }}\" alt=\"Logotipo\" style=\"width: 25px; height: 25px; vertical-align: middle; margin-right: 5px;\">\n    <b>Denominación de Origen: </b>\n    {% if denominacion_url %}\n      <a href=\"{{ denominacion_url }}\">{{ denominacion }}</a>\n    {% else %}\n      <a href=\"/search?q={{ denominacion | escape }}\" class=\"search-link\">{{ denominacion }}</a>\n    {% endif %}\n  </p>\n{% endif %}\n\n{% if product.metafields.custom.tipo_de_uva %}\n  <p>\n    <img src=\"{{ logotipo_url_uva }}\" alt=\"Logotipo\" style=\"width: 25px; height: 25px; vertical-align: middle; margin-right: 5px;\">\n    <b>Uva: </b>\n    \n    {% assign uvas = product.metafields.custom.tipo_de_uva.value | replace: \" y \", \",\" | split: \",\" %}\n    {% for uva in uvas %}\n      {% assign uva = uva | strip %}\n      {% assign uva_url = '' %}\n\n      {% case uva %}\n        {% when \"Garnacha\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/garnacha?_pos=1&_psq=garna&_ss=e&_v=1.0\" %}\n        {% when \"Cabernet Sauvignon\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/cabernet-sauvignon?_pos=1&_psq=caberne&_ss=e&_v=1.0\" %}\n        {% when \"Tempranillo\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/tempranillo?_pos=1&_psq=tempranill&_ss=e&_v=1.0\" %}\n        {% when \"Graciano\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/graciano?_pos=1&_psq=graci&_ss=e&_v=1.0\" %}\n        {% when \"Cariñena\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/mazuelo?_pos=1&_psq=cari%C3%B1e&_ss=e&_v=1.0\" %}\n        {% when \"Merlot\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/merlot?_pos=2&_psq=mer&_ss=e&_v=1.0\" %}\n        {% when \"Syrah\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/syrah?_pos=1&_psq=syr&_ss=e&_v=1.0\" %}\n        {% when \"Treixadura\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/treixadura?_pos=1&_psq=trei&_ss=e&_v=1.0\" %}\n        {% when \"Albariño\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/albarino?_pos=2&_psq=alba&_ss=e&_v=1.0\" %}\n        {% when \"Godello\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/godello?_pos=1&_psq=godello&_ss=e&_v=1.0\" %}\n        {% when \"Torrontés\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/torrontes?_pos=1&_psq=torront%C3%A9s&_ss=e&_v=1.0\" %}\n        {% when \"Malbec\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/malbec?_pos=3&_psq=mal&_ss=e&_v=1.0\" %}\n        {% when \"Sauvignon Blanc\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/sauvignon-blanc?_pos=1&_psq=sauvig&_ss=e&_v=1.0\" %}\n        {% when \"Verdejo\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/verdejo?_pos=1&_psq=verd&_ss=e&_v=1.0\" %}\n        {% when \"Mencía\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/mencia?_pos=1&_psq=menc&_ss=e&_v=1.0\" %}\n        {% when \"Malvar\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/malvar?_pos=2&_psq=malv&_ss=e&_v=1.0\" %}\n        {% when \"Palomino Fino\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/palomino-fino?_pos=1&_psq=palom&_ss=e&_v=1.0\" %}\n        {% when \"Tintilla de rota\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/tintilla-de-rota?_pos=1&_psq=tinti&_ss=e&_v=1.0\" %}\n        {% when \"Petit Verdot\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/petit-verdot?_pos=2&_psq=peti&_ss=e&_v=1.0\" %}\n        {% when \"Nebbiolo\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/nebbiolo?_pos=1&_psq=nebbio&_ss=e&_v=1.0\" %}\n        {% when \"Gewürztraminer\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/gewurztraminer?_pos=1&_psq=gew&_ss=e&_v=1.0\" %}\n        {% when \"Riesling\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/riesling?_pos=1&_psq=riesl&_ss=e&_v=1.0\" %}\n        {% when \"Viura\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/viura?_pos=1&_psq=viura&_ss=e&_v=1.0\" %}\n        {% when \"Malvasía\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/malvasia?_pos=1&_psq=malvas&_ss=e&_v=1.0\" %}\n        {% when \"Garnacha blanca\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/garnacha-blanca?_pos=1&_psq=garnacha+blanca&_ss=e&_v=1.0\" %}\n        {% when \"Bobal\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/bobal?_pos=1&_psq=boba&_ss=e&_v=1.0\" %}\n        {% when \"Monastrell\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/monastrell?_pos=1&_psq=monastre&_ss=e&_v=1.0\" %}\n        {% when \"Chardonnay\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/chardonnay?_pos=1&_psq=chard&_ss=e&_v=1.0\" %}\n        {% when \"Xarel-lo\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/xarel-lo?_pos=1&_psq=xare&_ss=e&_v=1.0\" %}\n        {% when \"Pinot Noir\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/pinot-noir?_pos=1&_psq=pinot&_ss=e&_v=1.0\" %}\n        {% when \"Semillón\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/semillon?_pos=1&_psq=semil&_ss=e&_v=1.0\" %}\n        {% when \"Albarín Blanco\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/albarin-blanco?_pos=1&_psq=albar%C3%ADn&_ss=e&_v=1.0\" %}\n        {% when \"Albillo Mayor\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/albillo-mayor?_pos=2&_psq=albillo&_ss=e&_v=1.0\" %}\n        {% when \"Garnacha peluda\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/garnacha-peluda?_pos=4&_psq=garnacha&_ss=e&_v=1.0\" %}\n        {% when \"Garnacha tintorera\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/garnacha-tintorera?_pos=1&_psq=garnacha+tin&_ss=e&_v=1.0\" %}\n        {% when \"Albillo Real\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/albillo-real?_pos=1&_psq=albillo&_ss=e&_v=1.0\" %}\n        {% when \"Touriga Nacional\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/touriga-nacional?_pos=2&_psq=touri&_ss=e&_v=1.0\" %}\n        {% when \"Sousón\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/souson?_pos=1&_psq=sous&_ss=e&_v=1.0\" %}\n        {% when \"Zéta\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/zeta?_pos=1&_psq=z%C3%A9&_ss=e&_v=1.0\" %}\n        {% when \"Maturana Blanca\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/maturana-blanca?_pos=2&_psq=matura&_ss=e&_v=1.0\" %}\n        {% when \"Moscatel de Alejandría\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/moscatel-de-alejandria?_pos=2&_psq=mosca&_ss=e&_v=1.0\" %}\n        {% when \"Sangiovese\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/sangiovese?_pos=1&_psq=sangiov&_ss=e&_v=1.0\" %}\n        {% when \"Tinta Amarela\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/tinta-amarela?_pos=1&_psq=tinta+ama&_ss=e&_v=1.0\" %}\n        {% when \"Touriga Franca\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/touriga-franca?_pos=1&_psq=touriga+franca&_ss=e&_v=1.0\" %}\n        {% when \"Parraleta\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/parraleta?_pos=1&_psq=parraleta&_ss=e&_v=1.0\" %}\n        {% when \"Pedro Ximenez\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/pedro-ximenez?_pos=1&_psq=pedro&_ss=e&_v=1.0\" %}\n        {% when \"Mandó\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/mando?_pos=1&_psq=mand%C3%B3&_ss=e&_v=1.0\" %}\n        {% when \"Brancellao\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/brancellao?_pos=1&_psq=branc&_ss=e&_v=1.0\" %}\n        {% when \"Doña Blanca\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/dona-blanca?_pos=1&_psq=do%C3%B1a&_ss=e&_v=1.0\" %}\n        {% when \"Picapoll Tinto\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/picapoll-tinto?_pos=1&_psq=picapoll&_ss=e&_v=1.0\" %}\n        {% when \"Viognier\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/viognier?_pos=1&_psq=viognier&_ss=e&_v=1.0\" %}\n        {% when \"Prieto Picudo\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/prieto-picudo?_pos=1&_psq=prieto&_ss=e&_v=1.0\" %}\n        {% when \"Tinta Roriz\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/tinta-roriz?_pos=2&_psq=tinta&_ss=e&_v=1.0\" %}\n        {% when \"Caiño\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/caino?_pos=1&_psq=cai%C3%B1o&_ss=e&_v=1.0\" %}\n        {% when \"Furmint\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/furmint?_pos=1&_psq=furmi&_ss=e&_v=1.0\" %}\n        {% when \"Hárslevelü\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/harslevelu?_pos=1&_psq=H%C3%A1rslevel%C3%BC&_ss=e&_v=1.0\" %}\n        {% when \"Sárgamuskotály\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/sargamuskotaly?_pos=1&_psq=S%C3%A1rgamuskot%C3%A1ly&_ss=e&_v=1.0\" %}\n        {% when \"Caiño Blanco\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/caino-blanco?_pos=2&_psq=cai%C3%B1o&_ss=e&_v=1.0\" %}\n        {% when \"Tinta Carvalha\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/tinta-carvalha?_pos=1&_psq=tinta+carv&_ss=e&_v=1.0\" %}\n        {% when \"Garnacha Gris\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/garnacha-gris?_pos=1&_psq=garnacha+gris&_ss=e&_v=1.0\" %}\n        {% when \"Hondarribi Beltza\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/hondarribi-beltza?_pos=1&_psq=hondarribi&_ss=e&_v=1.0\" %}\n        {% when \"Fogoneu\" %}\n          {% assign uva_url = \"https://www.encopadebalon.com/collections/fogoneu?_pos=1&_psq=fogone&_ss=e&_v=1.0\" %}\n      {% endcase %}\n\n      {% if uva_url %}\n        <a href=\"{{ uva_url }}\">{{ uva }}</a>{% if forloop.last == false %}, {% endif %}\n      {% endif %}\n    {% endfor %}\n  </p>\n{% endif %}\n\n\n{% if product.metafields.custom.envejecimiento %}\n  <p>\n    <img src=\"{{ logotipo_url_anada }}\" alt=\"Logotipo\" style=\"width: 25px; height: 25px; vertical-align: middle; margin-right: 5px;\">\n    <b>Crianza: </b>{{ product.metafields.custom.envejecimiento.value }}\n  </p>\n{% endif %}\n\n{% if product.metafields.custom.puntos_guia_pe_in %}\n  <p>\n    <img src=\"{{ logotipo_url_penin }}\" alt=\"Logotipo\" style=\"width: 40px; height: 40px; vertical-align: middle; margin-right: 5px;\">\n    <b>Peñin: </b>{{ product.metafields.custom.puntos_guia_pe_in.value }}\n  </p>\n{% endif %}\n\n{% if product.metafields.custom.puntos_robert_parker %}\n  <p>\n    <img src=\"{{ logotipo_url_Parker }}\" alt=\"Logotipo\" style=\"width: 40px; height: 40px; vertical-align: middle; margin-right: 5px;\">\n    <b>Parker: </b>{{ product.metafields.custom.puntos_robert_parker.value }}\n  </p>\n{% endif %}"
+          }
+        },
+        "73cf297d-259e-464c-bd6e-a4dc3925716f": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "pdesc_title": "Sobre este vino"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "show_colorswatch": true
+          }
+        },
+        "7bc1714c-9d6a-4368-b677-08b46b8dee8a": {
+          "type": "stock_countdown",
+          "settings": {
+            "max_stock": 50,
+            "limited_stock_cut_off": 10,
+            "limited_stock_message": "Solo {stock_number} unidades disponibles",
+            "instock_message": "{stock_number} units",
+            "continue_selling_message": "",
+            "limited_stock_color": "#ff0000",
+            "in_stock_color": "#008a00",
+            "continue_selling_color": "#ff0000"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "subscriptions_app_block_RUw68m": {
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "settings": {
+            "color_text_body": "#6d7175",
+            "dividers_color": "#8f8d8d",
+            "bacgkround_color": "#ffffff",
+            "border_thickness": 1,
+            "border_radius": 0,
+            "subscription_policy_url": "",
+            "product": "{{product}}"
+          }
+        },
+        "3293aa46-ec0c-4c30-b783-8c210ee66f5e": {
+          "type": "product_meta",
+          "settings": {
+            "show_vendor": false,
+            "display_product_type": false,
+            "display_tags": false
+          }
+        },
+        "53d1b536-e8c6-416b-81ae-5537d48a8356": {
+          "type": "share_button",
+          "disabled": true,
+          "settings": {
+            "share_facebook": true,
+            "share_twitter": true,
+            "share_pinterest": true
+          }
+        },
+        "27036c39-0467-41e3-84cb-e6b47122d064": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "image_ratio": "square",
+            "show_secondary_image": true,
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 5,
+            "products_per_page": 2
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "bodega_link_gN8eUA",
+        "custom_liquid_PzrYn3",
+        "73cf297d-259e-464c-bd6e-a4dc3925716f",
+        "description",
+        "price",
+        "variant_picker",
+        "7bc1714c-9d6a-4368-b677-08b46b8dee8a",
+        "quantity_selector",
+        "buy_buttons",
+        "subscriptions_app_block_RUw68m",
+        "3293aa46-ec0c-4c30-b783-8c210ee66f5e",
+        "53d1b536-e8c6-416b-81ae-5537d48a8356",
+        "27036c39-0467-41e3-84cb-e6b47122d064"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "small",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "enable_desctab": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "46f83f39-a714-4b34-981d-fa50a976f0f0": {
+      "type": "quick-order-list",
+      "disabled": true,
+      "settings": {
+        "show_image": true,
+        "show_sku": false,
+        "hide_quick": false,
+        "buttons_radius": 0,
+        "color_scheme": "background-2",
+        "padding_top": 32,
+        "padding_bottom": 0
+      }
+    },
+    "ced13132-2bac-4df9-9a2b-db1a3b442dec": {
+      "type": "image-gallery",
+      "blocks": {
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-0": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "heading_position": "inline",
+            "showtext": "Button label",
+            "link": ""
+          }
+        },
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-1": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "heading_position": "inline",
+            "showtext": "Button label",
+            "link": ""
+          }
+        },
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-2": {
+          "type": "image",
+          "settings": {
+            "storytitle": "Heading",
+            "heading_position": "inline",
+            "showtext": "Button label",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-0",
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-1",
+        "template--15816977940537__ced13132-2bac-4df9-9a2b-db1a3b442dec-16764668622e01adb2-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "m_title": "",
+        "heading_size": "h0",
+        "head_align": "center",
+        "image_height": "adapt",
+        "enable_desktop_slider": true,
+        "columns_desktop": 3,
+        "swipe_on_mobile": false,
+        "wbgltext": "#ffffff",
+        "wboverlaycolor": "#000000",
+        "wboverlaybg": "#ffffff",
+        "wboverlayoutline": "#000000",
+        "wboverlayhcolor": "#ffffff",
+        "wboverlayhbg": "#000000",
+        "wboverlayhoutline": "#121212",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "text_with_icons_UPaiMz": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_y6UrBh": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_MqXrhG": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_QnVJaV": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_38QUWA": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_y6UrBh",
+        "image_MqXrhG",
+        "image_QnVJaV",
+        "image_38QUWA"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": false,
+        "hide_desktop": false,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-1",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Productos Relacionados{{ product.metafields.custom.tipo_de_uva_link | metafield_text: field: 'variedad' }}",
+        "heading_size": "h1",
+        "head_align": "center",
+        "products_to_show": 8,
+        "columns_desktop": 5,
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "arrow_position": "inline",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "display_product_type": false,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": false,
+        "picker_type": "button",
+        "show_colorswatch": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "17129047484f8be952": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_yFB9Az": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_yFB9Az"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "46f83f39-a714-4b34-981d-fa50a976f0f0",
+    "ced13132-2bac-4df9-9a2b-db1a3b442dec",
+    "text_with_icons_UPaiMz",
+    "product-recommendations",
+    "17129047484f8be952"
+  ]
+}

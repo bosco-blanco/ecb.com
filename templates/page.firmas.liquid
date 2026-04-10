@@ -1,0 +1,160 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Generador de Firmas — Grupo En Copa de Balón</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#f5f0e8;min-height:100vh}
+    .lock{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+    .lock-box{background:#fff;border-radius:14px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.06);max-width:360px;width:100%;text-align:center}
+    .lock-box h2{font-size:18px;color:#2c2c2c;margin-bottom:4px}
+    .lock-box p{font-size:13px;color:#999;margin-bottom:20px}
+    .lock-box input{width:100%;padding:10px 12px;border:1.5px solid #e5e0d5;border-radius:8px;font-size:14px;text-align:center;background:#faf8f4;outline:none;margin-bottom:12px;font-family:inherit}
+    .lock-box input:focus{border-color:#8a7d5a}
+    .lock-box button{width:100%;padding:11px;background:#3d5a3c;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+    .lock-box button:hover{background:#2e4a2d}
+    .lock-box .err{color:#c0392b;font-size:12px;margin-top:8px;display:none}
+    .app{display:none;padding:30px 20px}
+    .w{max-width:540px;margin:0 auto}
+    .hd{text-align:center;margin-bottom:24px}
+    .bg{display:inline-block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#8a7d5a;background:#ece6d6;padding:5px 14px;border-radius:16px;margin-bottom:8px}
+    h1{font-size:22px;font-weight:700;color:#2c2c2c;margin-bottom:3px}
+    .su{font-size:12px;color:#999}
+    .cd{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.04);margin-bottom:14px}
+    .cd h2{font-size:13px;font-weight:700;color:#2c2c2c;margin-bottom:12px}
+    .f{margin-bottom:10px}
+    .f label{display:block;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:3px}
+    .f input,.f select{width:100%;padding:7px 10px;border:1.5px solid #e5e0d5;border-radius:6px;font-size:13px;color:#2c2c2c;background:#faf8f4;outline:none;font-family:inherit}
+    .f input:focus,.f select:focus{border-color:#8a7d5a}
+    .b1{width:100%;padding:10px;background:#3d5a3c;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+    .b1:hover{background:#2e4a2d}
+    .b2{display:none;width:100%;padding:9px;background:transparent;color:#3d5a3c;border:2px solid #3d5a3c;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px}
+    .b2:hover{background:#3d5a3c;color:#fff}
+    .pv{min-height:80px;background:#faf8f4;border-radius:8px;padding:16px;border:1.5px dashed #e0dbd0}
+    .ph{text-align:center;color:#ccc;font-size:12px;padding:24px 8px}
+    .nf{margin-top:10px;padding:10px;background:#faf8f4;border-radius:6px;font-size:11px;color:#999;line-height:1.5}
+    .nf b{color:#333}
+  </style>
+</head>
+<body>
+
+<div class="lock" id="lockScreen">
+  <div class="lock-box">
+    <h2>&#128274; Acceso interno</h2>
+    <p>Generador de firmas — Grupo ECB</p>
+    <input type="password" id="pwInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">Entrar</button>
+    <p class="err" id="pwErr">Contraseña incorrecta</p>
+  </div>
+</div>
+
+<div class="app" id="appScreen">
+  <div class="w">
+    <div class="hd">
+      <span class="bg">Herramienta Interna</span>
+      <h1>Generador de Firmas</h1>
+      <p class="su">Grupo En Copa de Balón · Firma profesional para Gmail</p>
+    </div>
+    <div class="cd">
+      <h2>Tus datos</h2>
+      <div class="f"><label>Empresa</label><select id="xem"><option value="ecb">En Copa de Balón</option><option value="lm">Las Margaritas</option><option value="dibesa">Distribuidora de Bebidas Europa</option><option value="codeba">CODEBA</option></select></div>
+      <div class="f"><label>Nombre</label><input type="text" id="xn" placeholder="Ej: Ramiro"></div>
+      <div class="f"><label>Apellidos</label><input type="text" id="xa" placeholder="Ej: Maeztu"></div>
+      <div class="f"><label>Cargo</label><input type="text" id="xc" placeholder="Ej: Encargado de Algo"></div>
+      <div class="f"><label>Teléfono</label><input type="text" id="xt" placeholder="Ej: +34 617 623 812"></div>
+      <div class="f"><label>Email</label><input type="email" id="xe" placeholder="Ej: ramichu@encopadebalon.com"></div>
+      <button class="b1" onclick="gen()">Generar firma</button>
+      <button class="b2" id="xcop" onclick="cop()">Copiar al portapapeles</button>
+      <div class="nf"><b>Cómo instalar en Gmail:</b><br>1. Pulsa "Copiar al portapapeles"<br>2. Gmail &#8594; Ajustes &#8594; Ver todos los ajustes<br>3. Baja a Firma &#8594; Pega (Ctrl+V) &#8594; Guardar</div>
+    </div>
+    <div class="cd">
+      <h2>Vista previa</h2>
+      <div class="pv" id="xpv"><p class="ph">Rellena el formulario y pulsa Generar firma</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+window._imgs={
+  ecb:'{{ "firma-header-ecb.png" | file_url }}',
+  lm:'{{ "firma-header-lasmargaritas.png" | file_url }}',
+  dibesa:'{{ "firma-header-dibesa.png" | file_url }}',
+  codeba:'{{ "firma-header-codeba.png" | file_url }}',
+  logos:'{{ "firma-logos-strip.png" | file_url }}'
+};
+</script>
+
+{% raw %}
+<script>
+var PASSWORD='ecb2026';
+function checkPw(){
+  if(document.getElementById('pwInput').value===PASSWORD){
+    document.getElementById('lockScreen').style.display='none';
+    document.getElementById('appScreen').style.display='block';
+    sessionStorage.setItem('ecb-auth','1');
+  }else{
+    document.getElementById('pwErr').style.display='block';
+    document.getElementById('pwInput').value='';
+  }
+}
+if(sessionStorage.getItem('ecb-auth')==='1'){
+  document.getElementById('lockScreen').style.display='none';
+  document.getElementById('appScreen').style.display='block';
+}
+
+function gen(){
+  var n=document.getElementById('xn').value.trim(),
+      a=document.getElementById('xa').value.trim(),
+      c=document.getElementById('xc').value.trim(),
+      t=document.getElementById('xt').value.trim(),
+      e=document.getElementById('xe').value.trim(),
+      em=document.getElementById('xem').value;
+  if(!n||!a){alert('Rellena al menos nombre y apellidos');return}
+
+  var banner=window._imgs[em];
+  var showLogos=(em==='ecb');
+
+  var line1=[];
+  if(e) line1.push('&#9993;&#65039; '+e);
+  if(t) line1.push('&#128222; '+t);
+
+  var line2=[];
+  line2.push('<a href="https://www.encopadebalon.com" style="color:#888;text-decoration:none">&#127760; www.encopadebalon.com</a>');
+  line2.push('<a href="https://www.instagram.com/encopadebalon_/" style="color:#888;text-decoration:none">&#128247; @encopadebalon_</a>');
+
+  var s='<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;width:460px">'
+    +'<tr><td style="width:460px"><img src="'+banner+'" width="460" height="60" style="display:block;width:460px;height:60px" alt="Logo empresa"></td></tr>'
+    +'<tr><td style="padding:6px 0 0 0">'
+    +'<span style="font-size:15px;font-weight:bold;color:#2c2c2c">'+n+' '+a+'</span>'
+    +(c?'<br><span style="font-size:12px;color:#8a7d5a">'+c+'</span>':'')
+    +'</td></tr>'
+    +'<tr><td style="padding:2px 0 0 0;font-size:10px;color:#888">'+line1.join(' &nbsp;&middot;&nbsp; ')+'</td></tr>'
+    +'<tr><td style="padding:2px 0 6px 0;font-size:10px;color:#888">'+line2.join(' &nbsp;&middot;&nbsp; ')+'</td></tr>';
+
+  if(showLogos){
+    s+='<tr><td style="width:460px"><img src="'+window._imgs.logos+'" width="460" height="54" style="display:block;width:460px;height:54px" alt="Marcas del grupo"></td></tr>'
+      +'<tr><td align="center" style="padding:2px 0 0 0"><em style="font-size:13px;color:#b5a060;font-style:italic;letter-spacing:0.3px">Unidos por el vino</em></td></tr>';
+  }
+
+  s+='</table>';
+
+  document.getElementById('xpv').innerHTML=s;
+  document.getElementById('xcop').style.display='block';
+}
+
+function cop(){
+  var el=document.getElementById('xpv'),r=document.createRange();
+  r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+  document.execCommand('copy');s.removeAllRanges();
+  var b=document.getElementById('xcop');b.textContent='\u2713 Copiado!';
+  setTimeout(function(){b.textContent='Copiar al portapapeles'},2000);
+}
+</script>
+{% endraw %}
+
+</body>
+</html>

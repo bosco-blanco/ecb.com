@@ -1,0 +1,414 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'product-with-banner.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rating.css' | asset_url | stylesheet_tag }}</noscript>
+{%- style -%}
+.section-{{ section.id }}-padding .wbproduct-container .card__inner .wbquickv.button {
+  margin: {{ section.settings.space_quick }}px;
+}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+.button-{{ section.id }}-show_mobile {
+    display: none;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+    .button-{{ section.id }}-show_mobile {
+        display: block;
+    }
+    .button-{{ section.id }}-show_desktop {
+        display: none;
+    }
+}
+{%- endstyle -%}
+<div class="wbprobnr section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} isolate gradient">
+    <div class="page-width slider-arrow--inline">
+        <slider-component>
+            <div class="allslideprt slider row rless" id="Slider-{{ section.id }}-{{ block.id }}">
+                {% for block in section.blocks %}
+                    <div class="grid__item col-12 cless slider__slide" id="Slide-{{ section.id }}-{{ block.id }}-{{ forloop.index }}" tabindex="-1">
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-md-7 col-sm-7 col-6 prbnrleft">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-12 col-12 text-center">
+                                        {% if block.settings.storytitle != blank %}
+                                            <h2 class="inline-richtext">{{ block.settings.storytitle }}</h2>
+                                        {% endif %}
+                                        {% if block.settings.storysubtitle != blank %}
+                                            <p>{{ block.settings.storysubtitle }}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 col-12 prbnrleftinr">
+                                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                            <div class="wbprbnrlazy global-media-settings {% if block.settings.image == blank %} wbimgblank_adapt {% endif %} media--{{ block.settings.image_height }} media" {% if block.settings.image_height == 'adapt' and block.settings.image != blank %} style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                                            {% if block.settings.image != blank %}
+                                                {%- capture sizes -%}
+                                                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                                                {%- endcapture -%}
+                                                {{
+                                                  block.settings.image
+                                                  | image_url: width: 1500
+                                                  | image_tag: loading: 'lazy', sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+                                                }} 
+                                            {% else %}
+                                                <div class="dummysvg">{{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                                            {% endif %}
+                                            </div>
+                                        {% if block.settings.link != blank %}</a>{% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-6 prbnrright">
+                                <div class="rless">
+                                    {% if block.settings.product != blank %}
+                                        <div class="grid__item col-12 cless">
+                                            {% render 'card-product-banner',
+                                            card_product: block.settings.product,
+                                            block_id: block.id,
+                                            media_aspect_ratio: section.settings.image_ratio,
+                                            picker_type: section.settings.picker_type,
+                                            show_secondary_image: section.settings.show_secondary_image,
+                                            show_vendor: section.settings.show_vendor,
+                                            show_rating: section.settings.show_rating,
+                                            show_variants: section.settings.show_variants,
+                                            show_colorswatch: section.settings.show_colorswatch,
+                                            show_quick_view: section.settings.show_quick_view,
+                                            quick_v_pos: section.settings.quick_v_pos,
+                                            quick_icon: section.settings.quick_icon,
+                                            button_style: section.settings.button_style,
+                                            section_id: section.id,
+                                            display_product_type: section.settings.display_product_type %}
+                                        </div>
+                                    {% else %}
+                                        <div class="grid__item col-12 cless">
+                                           {%- assign placeholder_image = 'product-apparel-' | append: forloop.index -%}
+                                          {% render 'product-card-placeholder' placeholder_image: placeholder_image %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="wbhomesbtn{% if section.blocks.size < 2 %} hidden{% endif %}">
+                <button type="button" class="button slider-button slider-button--prev focus-inset" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" data-step="1">{% render 'icon-caret' %}</button>
+                <button type="button" class="button slider-button slider-button--next focus-inset" name="next" aria-label="{{ 'general.slider.next_slide' | t }}" data-step="1">{% render 'icon-caret' %}</button>
+            </div>
+        </slider-component>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Product with image",
+    "tag": "section",
+    "class": "spaced-section",
+    "max_blocks": 5,
+    "disabled_on": {
+      "groups": ["header", "footer", "custom.overlay"]
+    },
+    "blocks": [
+      {
+      "type": "image",
+      "name": "Product with image",
+      "settings": [
+          {
+              "type": "header",
+              "content": "Banner settings"
+          },
+          {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "image_height",
+            "options": [
+                {
+                  "value": "adapt",
+                  "label": "Adapt to image"
+                },
+                {
+                  "value": "small",
+                  "label": "Small"
+                },
+                {
+                  "value": "medium",
+                  "label": "Medium"
+                },
+                {
+                  "value": "large",
+                  "label": "Large"
+                }
+            ],
+            "default": "adapt",
+            "label": "t:sections.featured-collection.settings.image_ratio.label"
+          },
+          {
+              "type": "inline_richtext",
+              "id": "storytitle",
+              "label": "Heading",
+              "default": "Image heading"
+          },
+          {
+              "type": "richtext",
+              "id": "storysubtitle",
+              "label": "Subheading",
+              "default": "<p>Share information about your brand with your customers. Describe a product.</p>"
+          },
+
+          {
+              "type": "header",
+              "content": "Product Settings"
+          },
+          {
+              "type": "product",
+              "id": "product",
+              "label": "Product"
+          }
+
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "select",
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "accent-3",
+            "label": "t:sections.all.colors.accent_3.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.all.colors.background_1.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.all.colors.background_2.label"
+          }
+        ],
+        "default": "background-1",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.featured-collection.settings.header.content"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+          },
+          {
+            "value": "portrait",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+          },
+          {
+            "value": "square",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+          }
+        ],
+        "default": "adapt",
+        "label": "t:sections.featured-collection.settings.image_ratio.label"
+      },
+      {
+          "type": "checkbox",
+          "id": "display_product_type",
+          "label": "Show product type",
+          "default": false
+      },
+      {
+          "type": "checkbox",
+          "id": "show_rating",
+          "default": false,
+          "label": "t:sections.featured-collection.settings.show_rating.label",
+          "info": "t:sections.featured-collection.settings.show_rating.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_vendor.label"
+      },
+       
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Add to cart button style on desktop",
+        "options": [
+          {
+            "value": "link",
+            "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__1.label"
+          },
+          {
+            "value": "outline",
+            "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__2.label"
+          },
+          {
+            "value": "solid",
+            "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__3.label"
+          }
+        ],
+        "default": "solid"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quick_view",
+        "default": true,
+        "label": "t:sections.featured-collection.settings.show_quick_view.label"
+      },
+      {
+        "type": "select",
+        "id": "quick_v_pos",
+        "options": [
+          {
+            "value": "top-right",
+            "label": "Top right"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Bottom left"
+          },
+          {
+            "value": "bottom-right",
+            "label": "Bottom right"
+          }
+        ],
+        "default": "bottom-left",
+        "label": "Quick view position on desktop"
+      },
+      {
+        "type": "select",
+        "id": "quick_icon",
+        "options": [
+          {
+            "value": "first-icon",
+            "label": "First icon"
+          },
+          {
+            "value": "second-icon",
+            "label": "Second icon"
+          }
+        ],
+        "default": "first-icon",
+        "label": "Quick view icon"
+      },
+      {
+        "type": "range",
+        "id": "space_quick",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Spacing around quick view on desktop"
+      },
+      {
+        "type": "header",
+        "content": "Variants"
+      },    
+      {
+        "type": "checkbox",
+        "id": "show_variants",
+        "default": true,
+        "label": "Show color/size variants"
+      },
+      {
+        "type": "select",
+        "id": "picker_type",
+        "options": [
+          {
+            "value": "dropdown",
+            "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+          },
+          {
+            "value": "button",
+            "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+          }
+        ],
+        "default": "button",
+        "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+      },
+      {
+          "type": "checkbox",
+          "id": "show_colorswatch",
+          "default": true,
+          "label": "Enable color swatches",
+          "info": "Requires type to be set to 'Pills'. [Learn how to setup swatches](https://www.webibazaar.com/shopify/viola-doc/home#colorswatch)"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 0
+      }
+    ],
+    "presets": [
+      {
+          "name": "Product with image",
+          "blocks": [
+              {
+                  "type": "image"
+              },
+              {
+                  "type": "image"
+              }
+          ]
+      }
+    ]
+  }
+{% endschema %}

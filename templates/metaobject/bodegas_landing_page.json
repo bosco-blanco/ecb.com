@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_rBFftE": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qbwp8k": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ metaobject.title.value }}",
+            "heading_size": "large"
+          }
+        },
+        "text_WBJ3UG": {
+          "type": "text",
+          "settings": {
+            "text": "<em>País: </em><em>{{ metaobject.pais.value }}</em>",
+            "text_style": "subtitle"
+          }
+        },
+        "text_3xyfTW": {
+          "type": "text",
+          "settings": {
+            "text": "<em>Región: </em><em>{{ metaobject.region.value }}</em>",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qbwp8k",
+        "text_WBJ3UG",
+        "text_3xyfTW"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/grapevines-for-days.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_34p3fm": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "head_align": "center",
+        "collection": "{{ metaobject.bodega_collection.value }}",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "arrow_position": "inline",
+        "image_ratio": "square",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_UdcBUj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_DmVgFz": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "{{ metaobject.title.value }}",
+            "heading_size": "h0"
+          }
+        },
+        "caption_6F8EDW": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>{{ metaobject.historia_descripcion.value }}</p>"
+          }
+        },
+        "button_g9bqCG": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Web oficial",
+            "link": "{{ metaobject.website_oficial.value }}",
+            "button_style": "solid",
+            "button_size": "bs_medium"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DmVgFz",
+        "caption_6F8EDW",
+        "button_g9bqCG"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/IMG-20230830-WA0023.jpg",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 60
+      }
+    },
+    "text_with_icons_KBM3Pg": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_xL46hL": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_3VR4DA": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_q34zzT": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_zGzTMi": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_xL46hL",
+        "image_3VR4DA",
+        "image_q34zzT",
+        "image_zGzTMi"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": true,
+        "hide_desktop": false,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-1",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "text_with_icons_q7mNUd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_QqdW4M": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_9LGGpy": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_z643WN": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_D7V63f": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_QqdW4M",
+        "image_9LGGpy",
+        "image_z643WN",
+        "image_D7V63f"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": false,
+        "hide_desktop": true,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-1",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "image_banner_rBFftE",
+    "featured_collection_34p3fm",
+    "image_with_text_UdcBUj",
+    "text_with_icons_KBM3Pg",
+    "text_with_icons_q7mNUd"
+  ]
+}

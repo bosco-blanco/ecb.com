@@ -1,0 +1,177 @@
+.count_pro .product-title {
+  font-size: calc(var(--font-body-scale) * 16px);
+  font-weight: var(--font-body-weight-semibold);
+}
+.count_pro .wbhomevendor {
+  font-size: calc(var(--font-body-scale) * 12px);
+}
+.count_pro .wbhomesbtn {
+  text-align: center;
+  margin-top: 20px;
+}
+.count_pro .wbhomesbtn button {
+  position: relative;
+  left: unset;
+  right: unset;
+  top: unset;
+  bottom: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.count_pro {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.count_head {
+  background: transparent;
+}
+.count_head .link svg{
+  transition: none;
+}
+.count_pro .heading {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.count_pro .description {
+  font-size: calc(var(--font-body-scale) * 24px);
+  color: rgba(var(--color-foreground));
+  margin-bottom: 20px;
+}
+.count_pro ul.grid {
+  margin-bottom: 0;
+}
+.count_pro .description p {
+  color: rgba(var(--color-foreground));
+}
+.count_pro .card {
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+}
+.count_pro .wbimgblock {
+  width: 35%;
+}
+.count_pro .wbproductdes {
+  width: 65%;
+}
+.count_pro .card--standard .wbproductdes {
+  padding-top: 0;
+}
+.count_pro .product-form .button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+}
+.count_pro .product-form .button svg {
+  opacity: 1;
+  transform: unset;
+  width: 18px;
+  height: 18px;
+}
+.count_pro .product-form .button:hover svg{
+  fill: rgb(var(--color-background))
+}
+.count_head {
+  margin-bottom: 60px;
+}
+.card.left .spec_section {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 70% 30%;
+}
+.card.left .spec_section .product-form {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+.count_head.left .count_timer {
+  justify-content: left;
+}
+.count_timer {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px
+}
+.count_timer .time {
+  background: rgba(var(--color-foreground));
+  color: rgba(var(--color-background));
+  min-width: 76px;
+  min-height: 76px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  flex-direction: column;
+}
+.count_timer .count {
+  font-size: calc(var(--font-body-scale) * 24px);
+  font-weight: var(--font-body-weight-semibold)
+}
+.count_timer span {
+  display: block;
+  font-size: calc(var(--font-body-scale) * 14px);
+}
+.countdownMessage {
+  margin-bottom: 20px;
+  font-size: calc(var(--font-body-scale) * 14px);
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .count_pro .grid--4-col-desktop .grid__item {
+    width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  }
+}
+@media (max-width: 767px) {
+  .count_pro .description {
+    font-size: calc(var(--font-body-scale) * 16px);
+  }
+  .count_timer {
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .count_timer .time {
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .count_timer .count {
+    font-size: calc(var(--font-body-scale) * 18px);
+  }
+  .count_timer span {
+    font-size: calc(var(--font-body-scale) * 12px);
+  }
+  .count_head {
+    margin-bottom: 30px;
+  }
+  .count_pro .product-title {
+    font-size: calc(var(--font-body-scale) * 14px);
+  }
+  .count_pro .card {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .count_pro .grid--3-col-tablet .grid__item  {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .count_pro .grid--3-col-tablet .grid__item  {
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  }
+}
+@media (max-width: 575px) {
+  .count_pro .grid--3-col-tablet .grid__item  {
+    width: 100%;
+    max-width: 100%;
+  }
+}

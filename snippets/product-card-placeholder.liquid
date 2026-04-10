@@ -1,0 +1,24 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Usage:
+    {% render 'product-card-placeholder' %}
+{% endcomment %}
+
+<div class="card-wrapper wbproduct-container collagebg">
+    <div class="card card--{{ settings.card_style }} {{ settings.card_text_alignment }}">
+        <div class="wbimgblock">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {%- if placeholder_image -%}
+                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- else -%}
+                {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+        </div>
+        <div class="wbproductdes">
+            <p class="wbprotype">{{ 'products.product.vendor' | t }}</p>
+            <h3 class="product-title">{{ 'onboarding.product_title' | t }}</h3>
+            {% render 'price' %}
+        </div>
+    </div>
+</div>

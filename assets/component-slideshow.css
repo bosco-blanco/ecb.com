@@ -1,0 +1,301 @@
+slideshow-component {
+  position: relative;
+  display: block;
+}
+.spaced-section--full-width:first-child slideshow-component.page-width {
+  margin-top: 5rem;
+}
+.spaced-section--full-width:last-child slideshow-component.page-width {
+  margin-bottom: 5rem;
+}
+@media screen and (min-width: 768px) {
+  .spaced-section--full-width:first-child slideshow-component.page-width {
+    margin-top: calc(5rem + var(--page-width-margin));
+  }
+  .spaced-section--full-width:last-child slideshow-component.page-width {
+    margin-bottom: calc(5rem + var(--page-width-margin));
+  }
+}
+@media screen and (max-width: 991px) {
+    .no-js slideshow-component .slider {
+        padding-bottom: 3rem;
+    }
+}
+slideshow-component .slideshow.banner {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  column-gap: 0;
+  row-gap: 0;
+}
+.slideshow__slide {
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+  .slideshow--placeholder.banner--adapt_image:not(.banner--mobile-bottom) {
+    height: 28rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slideshow--placeholder.banner--adapt_image {
+    height: 56rem;
+  }
+}
+.slideshow__text > * {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  slideshow-component.page-width .slideshow__text {
+    border-right: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
+    border-left: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
+  }
+  .banner--mobile-bottom .slideshow__text-wrapper {
+    flex-grow: 1;
+  }
+  .banner--mobile-bottom .slideshow__text .button {
+    flex-grow: 0;
+  }
+  .slideshow__text.slideshow__text-mobile--left {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slideshow__text.slideshow__text-mobile--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .slideshow__text.slideshow__text--left {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .slideshow__text.slideshow__text--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+.slideshow:not(.banner--mobile-bottom) .slideshow__text-wrapper {
+  height: 100%;
+}
+@media screen and (min-width: 768px) {
+  .slideshow__text-wrapper.banner__content {
+    height: 100%;
+    padding: 15px 15px 40px 15px;
+  }
+  .slideshow__text-wrapper.banner--desktop-transparent.banner__content{
+     padding: 15px 15px 40px 15px;
+  }
+}
+.slideshow__controls {
+  border: 0.1rem solid rgba(var(--color-base-text), 0.08);
+}
+.spaced-section--full-width:last-child slideshow-component:not(.page-width) .slideshow__controls {
+  border-bottom: none;
+}
+@media screen and (min-width: 768px) {
+  .slideshow__controls {
+    position: relative;
+  }
+}
+slideshow-component:not(.page-width) .slider-buttons {
+  border-right: 0;
+  border-left: 0;
+}
+.slideshow__control-wrapper {
+  display: flex;
+}
+.slideshow__autoplay {
+  border-left: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  slideshow-component.page-width .slideshow__autoplay {
+    right: 1.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slideshow__autoplay.slider-button {
+    margin-left: 0.6rem;
+    padding: 0 0 0 0.6rem;
+  }
+}
+.slideshow__autoplay .icon.icon-play,
+.slideshow__autoplay .icon.icon-pause {
+  display: block;
+  position: absolute;
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 150ms ease, opacity 150ms ease;
+  width: 0.8rem;
+  height: 1.2rem;
+}
+.slideshow__autoplay .icon.icon-play {
+  height: 1rem;
+}
+@media screen and (forced-colors: active) {
+  .slideshow__autoplay path,
+  .slideshow__autoplay:hover path{
+    fill: CanvasText;
+  }
+}
+.wbslideshow .slider-buttons{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; 
+}
+.wbslideshow .slideshow__controls{
+    border: none;
+}
+.slideshow__autoplay:hover svg {
+  transform: scale(1.1);
+}
+.slideshow__autoplay--paused .icon-pause,
+.slideshow__autoplay:not(.slideshow__autoplay--paused) .icon-play {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(.8)
+}
+.wbslideshow .banner__heading {
+    font-weight: var(--font-body-weight-medium);
+    margin-bottom: 30px;
+}
+.wbslideshow .slideshow__text .banner__heading.small{
+    font-size: calc(var(--font-body-scale) * 40px);
+}
+.wbslideshow .slideshow__text .banner__heading.medium{
+    font-size: calc(var(--font-body-scale) * 44px);
+}
+.wbslideshow .slideshow__text .banner__heading.large{
+    font-size: calc(var(--font-heading-scale) * 54px);
+}
+.wbslideshow .slideshow__text p.banner__text{
+    font-size: calc(var(--font-body-scale) * 24px);
+    margin: 0;
+    text-transform: capitalize;
+    line-height: 24px;
+}
+.wbslideshow .slideshow__text .banner__buttons {
+  margin-top: 30px;
+}
+.wbslideshow .slideshow__text .banner__buttons a.link svg {
+  transition: unset;
+}
+.wbslideshow .slideshow__text .banner__buttons a.link.medium-btn {
+  font-size: calc(var(--font-body-scale) * 16px);
+}
+.wbslideshow .slideshow__text .banner__buttons a.link.small-btn {
+  font-size: calc(var(--font-body-scale) * 14px);
+}
+.wbslideshow .slideshow__text .banner__buttons a.link span {
+  padding-right: 3px;
+}
+.wbslideshow .slideshow__text .banner__buttons a.button.medium-btn {    
+  padding: 12px 30px;
+  font-size: calc(var(--font-body-scale) * 20px);
+  z-index: 0;
+}
+.slideshow__text .wbsaddtext{
+  max-width: 600px;
+  margin-top: 30px;
+}
+.banner_capt {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: var(--font-body-weight-medium);
+}
+/*.slideshow.banner--adapt_image .wbslidemobile.media>img{
+  object-fit: unset;
+}*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  .wbslideshow .slideshow__text .banner__heading.small{
+      font-size: calc(var(--font-body-scale) * 30px);
+  }
+  .wbslideshow .slideshow__text .banner__heading.medium{
+      font-size: calc(var(--font-body-scale) * 36px);
+  }
+  .wbslideshow .slideshow__text .banner__heading.large{
+      font-size: calc(var(--font-heading-scale) * 40px);
+  }
+}
+@media (min-width: 768px) and (max-width: 991px){
+  .wbslideshow .slideshow__text .banner__heading.small{
+    font-size: calc(var(--font-body-scale) * 30px)
+  }
+  .wbslideshow .slideshow__text .banner__heading.medium{
+    font-size: calc(var(--font-body-scale) * 32px)
+  }
+  .wbslideshow .slideshow__text .banner__heading.large{
+    font-size: calc(var(--font-body-scale) * 40px);
+  }
+}
+
+@media (max-width: 991px){
+  .wbslideshow .slideshow__text .banner__buttons a.button.medium-btn {
+    padding: 10px 15px;
+    font-size: calc(var(--font-body-scale) * 16px);
+  }
+}
+@media (max-width: 767px){
+    /* .wbslideshow .slider-buttons {
+      position: unset;
+    } */
+    .slideshow .banner__box{
+        padding: 15px;
+    }
+    .banner--mobile-bottom .slideshow__text.banner__box {
+      max-width: 100%;
+      width: 100%;
+    }
+    .wbslideshow .banner__heading{
+        margin-bottom: 10px;
+    }
+    .wbslideshow .slideshow__text .banner__heading.small{
+        font-size: calc(var(--font-body-scale) * 22px)
+    }
+    .wbslideshow .slideshow__text .banner__heading.medium{
+        font-size: calc(var(--font-body-scale) * 24px)
+    }
+    .wbslideshow .slideshow__text .banner__heading.large{
+        font-size: calc(var(--font-body-scale) * 26px)
+    }
+    .wbslideshow .slideshow__text p.banner__text{
+        font-size: calc(var(--font-body-scale) * 16px)
+    }
+    .wbslideshow .slideshow__text .banner__buttons {
+      margin-top: 12px;
+    }
+    .wbslideshow .slideshow__text .banner__buttons a.button.medium-btn {
+        font-size: calc(var(--font-body-scale) * 14px);
+        padding: 10px 10px;
+        min-width: 125px;
+        min-height: 44px;
+        font-weight: var(--font-body-weight-medium);
+    }
+    .slideshow__text .wbsaddtext{
+        margin-top: 15px;
+        font-size: 10px;
+    }
+    .mobile-text-below .slideshow__controls.slider-buttons {
+      position: unset;
+  }
+}
+@media (max-width: 425px){
+  .wbslideshow .slideshow__text .banner__heading.small{
+      font-size: calc(var(--font-body-scale) * 18px) 
+  }
+  .wbslideshow .slideshow__text .banner__heading.medium{
+      font-size: calc(var(--font-body-scale) * 20px)
+  }
+  .wbslideshow .slideshow__text .banner__heading.large{
+      font-size: calc(var(--font-body-scale) * 22px)
+  }
+}

@@ -1,0 +1,149 @@
+.article-template__comments-fields textarea.field__input {
+    padding: 26px 15px 0; 
+}
+.article-template__hero-container {
+    max-width: 130rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.article-template__link {
+    font-size: calc(var(--font-body-scale) * 18px);
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.article-template__link .icon-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+    transform: rotate(180deg);
+}
+.article-template__social-sharing + header,
+.article-template__social-sharing + .article-template__content {
+    margin-top: 1.5rem;
+}
+.article-template__comment-wrapper {
+    margin-top: 30px;
+}
+.article-template__comment-wrapper h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: calc(var(--font-body-scale) * 20px);
+    text-transform: capitalize;
+}
+.article-template__comment-wrapper #comment_form h2{
+    font-size: calc(var(--font-body-scale) * 22px);
+    margin-bottom: 15px;
+}
+.article-template__comments {
+    margin-bottom: 40px;
+}
+.article-template__comments-fields,.article-template__comment-fields > * {
+    margin-bottom: 30px;
+}
+.article-template__comments article {
+    border-top: 1px solid rgba(var(--color-foreground),0.08);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.article-template__comments-comment p{
+    margin: 0;
+}
+.artblogdate{
+    margin-top: 8px;
+}
+.article-template__hero-small {
+    height: 11rem;
+}
+.article-template__hero-medium {
+    height: 22rem;
+}
+.article-template__hero-large {
+    height: 33rem;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .article-template__hero-small {
+        height: 22rem;
+    }
+    .article-template__hero-medium {
+        height: 44rem;
+    }
+    .article-template__hero-large {
+        height: 66rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .article-template__hero-small {
+        height: 27.5rem;
+    }
+    .article-template__hero-medium {
+        height: 55rem;
+    }
+    .article-template__hero-large {
+        height: 82.5rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .article-template__comment-fields {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 30px;
+    }
+}
+.article-template__comment-warning {
+    margin: 2rem 0 2.5rem;
+}
+.wbsingleblog{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.wbsingleblog .article-template__title {
+    font-size: calc(var(--font-body-scale) * 22px);
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+.wbsingleblog .wbblogdate{
+    margin-bottom: 10px;
+    color: rgba(var(--color-foreground),.8);
+}
+.wbsingleblog .article-template__hero-container img{
+    margin-bottom: 15px;
+}
+.wbsingleblog .article-template__content{
+    color: rgba(var(--color-foreground),.8);
+    margin-bottom: 20px;
+}
+.wbsingleblog .tag-section,.wbsingleblog .article-template__social-sharing{
+    margin-bottom: 20px;
+}
+.wbsingleblog .tag-section a,.wbsingleblog .tag-section .meta-sep{
+    color: var(--color-wbmaincolors-text);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.wbsingleblog .tag-section label{
+    color: rgba(var(--color-foreground),.5);
+    margin: 0;
+}
+.wbformsuccess {
+    font-size: calc(var(--font-body-scale) * 14px);
+    background: #cce1c2;
+    border-radius: 0;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+}
+.wbformerror {
+    font-size: calc(var(--font-body-scale) * 14px);
+    background: #f4dddd;
+    border-radius: 0;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+}
+@media (max-width: 767px){
+    .wbsingleblog .article-template__title{
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+}

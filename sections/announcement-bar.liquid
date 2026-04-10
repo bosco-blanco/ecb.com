@@ -1,0 +1,388 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+  {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
+{%- endif -%} 
+<style>
+.announcement--bar .headannunce .slider {
+    flex-wrap: inherit;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    margin: 0;
+}
+.announcement--bar .headannunce .slider__slide {
+    max-width: 100%;
+    width: 100%;
+}
+.announcement--bar .headannunce {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.announcement--bar .announcement-bar {
+    padding: 7px 0 8px 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+}
+.announcement--bar .announcement-bar p {
+    margin: 0;
+    font-weight: var(--font-body-weight-medium);
+    font-size: calc(var(--font-body-scale) * 14px);
+    display: inline-block;
+    text-align: center
+}
+.localization-wrapper.announce_item {
+    text-align: end;
+}
+.announcement--bar localization-form {
+    display: inline-block;
+    vertical-align: middle;
+}
+.announcement--bar .disclosure__list-wrapper{
+    margin-top: 10px;
+}
+.announcement-bar > span {
+    font-weight: var(--font-body-weight-medium);
+    font-size: calc(var(--font-body-scale) * 14px);
+}
+.announcement-bar.upper_announce span, .announcement--bar .announcement-bar.upper_announce p {
+    text-transform: uppercase;
+    word-break: break-word;
+}
+.announcement--bar .announcement-bar a:hover {
+    color: rgb(var(--color-foreground),0.8);
+}
+@media (min-width:992px){
+    .announcement--bar .announce_item{
+        width: 33.33%;
+    }
+    .announcement--bar .announce_item:only-child {
+        width: 100%;
+    }
+    .announcement-bar > span {
+        padding: 0 10px;
+    } 
+    .announcement--bar .announce-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+@media (max-width: 991px){
+    .announcement--bar .slider-button{
+        min-width: calc(42px + var(--buttons-border-width) * 2);
+        height: calc(42px + var(--buttons-border-width) * 2);
+    }
+    .announcement--bar .list-social{
+        display: none;
+    }
+}
+@media (max-width: 767px){
+    .announcement--bar .announcement-bar p {
+        font-size: calc(var(--font-body-scale) * 11px);
+    }
+    .annoucehome.mobile_announce {
+        display: block;
+    }
+    .annoucehome {
+        display: none;
+    }
+}
+</style>
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+-%}
+
+{%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+  <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+{% liquid
+  assign show_home_only = true
+  if section.settings.show_home_only == true
+    if template == 'index'
+      assign show_home_only = true
+    else
+      assign show_home_only = false
+    endif
+  endif
+%}
+{% if show_home_only %}
+  <div class="announcement--bar color-{{ section.settings.color_scheme }} gradient annoucehome {% if section.settings.mobile_bar %}mobile_announce{% endif %} {% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %} {% if section.settings.show_line_separator %} b-border {% endif %}">
+    <div class="announce-wrapper page-width">
+        <div class="announce_item">
+          {%- if section.settings.show_social and social_icons -%}
+            {%- render 'social-icons' -%}
+          {%- endif -%}
+        </div>
+      <div class="announce_item">
+        <slideshow-component class="headannunce">
+            {%- if section.blocks.size > 1 -%}
+              <button type="button" class="focus-inset slider-button slider-button--prev" name="previous" aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+            {%- endif -%}
+          <div class="slider grid" id="Slider-{{ section.id }}" data-autoplay="{{ section.settings.auto_rotate }}" data-speed="{{ section.settings.change_slides_speed }}" aria-live="polite"
+            aria-atomic="true">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'announcement' -%}
+            <div class="slideshow__slide slider__slide" id="Slide-{{ section.id }}-{{ forloop.index }}">
+              <div class="announcement-bar {% if settings.upp_text_announce != blank %}upper_announce{% endif %}" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.text != blank -%}
+                      <span>
+                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="link">{% endif %}
+                          {{ block.settings.text }}
+                        {% if block.settings.link != blank %}</a>{% endif %}
+                      </span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endcase -%}
+        {%- endfor -%}
+        </div>
+        {%- if section.blocks.size > 1 -%}
+          <button type="button" class="focus-inset slider-button slider-button--next" name="next" aria-label="{{ 'sections.slideshow.next_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+          <div class="slideshow__controls slider-buttons">
+              {%- if section.settings.auto_rotate -%}
+                <button type="button" class="focus-inset slideshow__autoplay hidden" aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">{{ 'sections.slideshow.pause_slideshow' | t }}</button>
+              {%- endif -%}
+          </div>
+        {%- endif -%}
+      </slideshow-component>
+    </div>
+      <div class="localization-wrapper announce_item">
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <noscript class="small-hide medium-hide no-js-hidden">
+            {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
+              <div class="localization-form__select">
+                <h2 class="visually-hidden" id="FooterCountryLabelNoScript">{{ 'localization.country_label' | t }}</h2>
+                <select class="localization-selector link" name="country_code" aria-labelledby="FooterCountryLabelNoScript">
+                  {%- for country in localization.available_countries -%}
+                    <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                      {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                    </option>
+                  {%- endfor -%}
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+              <button class="button button-primary">{{ 'localization.update_country' | t }}</button>
+            {%- endform -%}
+          </noscript>
+          <localization-form class="small-hide medium-hide">
+            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+              <div class="no-js-hidden">
+                <div class="disclosure">
+                  <button type="button" class="focus-inset disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterCountryList" aria-describedby="FooterCountryLabel">
+                    <span>
+                      {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
+                    </span>
+                    {% render 'icon-caret' %}
+                  </button>
+                    <div class="disclosure__list-wrapper" hidden>
+                        <ul id="FooterCountryList" class="disclosure__list list-unstyled">
+                        {%- for country in localization.available_countries -%}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a class="link link--text disclosure__link caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                              {{ country.name }} <span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                        </ul>
+                    </div>
+                </div>
+                <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {%- endif -%}
+
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <noscript class="small-hide medium-hide">
+            {%- form 'localization', id: 'FooterLanguageFormNoScript', class: 'localization-form' -%}
+              <div class="localization-form__select">
+                <h2 class="visually-hidden" id="FooterLanguageLabelNoScript">{{ 'localization.language_label' | t }}</h2>
+                <select class="localization-selector link" name="locale_code" aria-labelledby="FooterLanguageLabelNoScript">
+                  {%- for language in localization.available_languages -%}
+                    <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+                      {{ language.endonym_name | capitalize }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+              <button class="button button-primary">{{ 'localization.update_language' | t }}</button>
+            {%- endform -%}
+          </noscript>
+          <localization-form class="small-hide medium-hide no-js-hidden">
+            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
+              <div class="no-js-hidden">
+                <div class="disclosure">
+                  <button type="button" class="focus-inset disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterLanguageList" aria-describedby="FooterLanguageLabel">
+                    <span>{{ localization.language.endonym_name | capitalize }}</span>
+                    {% render 'icon-caret' %}
+                  </button>
+                    <div class="disclosure__list-wrapper" hidden>
+                        <ul id="FooterLanguageList" class="disclosure__list list-unstyled">
+                        {%- for language in localization.available_languages -%}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                              {{ language.endonym_name | capitalize }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                        </ul>
+                    </div>
+                </div>
+                <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "t:sections.announcement-bar.name",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_home_only",
+        "default": false,
+        "label": "t:sections.announcement-bar.settings.show_home_only.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.announcement-bar.settings.header__1.content",
+        "info": "t:sections.announcement-bar.settings.header__1.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social",
+        "default": false,
+        "label": "t:sections.announcement-bar.settings.show_social.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.announcement-bar.settings.header__2.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "auto_rotate",
+        "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "change_slides_speed",
+        "min": 3,
+        "max": 9,
+        "step": 2,
+        "unit": "s",
+        "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+        "default": 3
+      },
+      {
+        "type": "header",
+        "content": "t:sections.announcement-bar.settings.header__3.content",
+        "info": "t:sections.announcement-bar.settings.header__3.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_country_selector",
+        "default": false,
+        "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.announcement-bar.settings.header__4.content",
+        "info": "t:sections.announcement-bar.settings.header__4.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_language_selector",
+        "default": false,
+        "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+      },
+      {
+        "type": "select", 
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__2.label"
+          },
+          {
+            "value": "accent-3",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__3.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__4.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__5.label"
+          }
+        ],
+        "default": "accent-1",
+        "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.slideshow.settings.mobile.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_bar",
+        "label": "t:sections.announcement-bar.settings.mobile_bar.label",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "t:sections.announcement-bar.blocks.announcement.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "default": "Welcome to our store",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  }
+{% endschema %}

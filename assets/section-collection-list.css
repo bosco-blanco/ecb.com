@@ -1,0 +1,135 @@
+.mainlcoll .card--card.card--text .card__inner {
+    display: none;
+}
+.mainlcoll .card--standard .card__content{
+    display: grid;
+    grid-template-rows: minmax(0,1fr) max-content minmax(0,1fr);
+    width: 100%;
+}
+.template-list-collections .collection-list__item .card__information {
+    padding-top: 12px;
+    padding-bottom: 0;
+}
+.template-list-collections .collection-list__item .card--card .card__information {
+    padding: 0;
+}
+.collection-list-wrapper .card-wrapper .card__content.dummyimg {
+    width: 100%;
+    background: rgba(var(--color-foreground),0.1);
+}
+.collection-list__item .card__heading, .collection-list__item  .only_single_heading .h3 {
+    margin-top: 12px;
+    font-size: calc(var(--font-body-scale) * 18px);
+    margin-bottom: 0;
+    text-transform: capitalize;
+    font-weight: var(--font-heading-weight);
+    margin: 0;
+}
+.collection-list .card--media .card__inner .card__content.dummyimg{
+    padding: 0 15px;
+}
+.collection-list .card__content.dummyimg{
+    display: grid;
+    grid-template-rows: minmax(0,1fr) max-content minmax(0,1fr);
+    padding: 1rem;
+    width: 100%;
+    flex-grow: 1;
+}
+.wp_itom_count{
+    margin-bottom: 0;
+    word-break: break-all;
+    color: rgba(var(--color-foreground),.5);
+    font-size: calc(var(--font-body-scale) * 14px);
+}
+.collection-list__item .card__caption{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.collection-list .card--standard>.card__content .card__caption,.collection-list .card--card>.card__content .card__caption{
+   display: block;
+}
+.collection-list {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.collection-list-title {
+    margin: 0;
+}
+.collection-list-view-all {
+    margin-top: 2rem;
+}
+.collection-list.grid--5-col-desktop .collection-list__item .only_single_heading {
+     display: block;
+}
+
+@media screen and (min-width: 1200px){
+   .collection-list__item .card__heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+   }
+   .collection-list__item .card__heading .full-unstyled-link ~ .wp_itom_count{
+        text-align: right;
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+    .collection-list .card__information .card__heading .full-unstyled-link{
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+    .collection-list.grid--5-col-desktop .collection-list__item .card__information .card__heading .full-unstyled-link,
+    .collection-list.grid--5-col-desktop .collection-list__item .card__heading .full-unstyled-link ~ .wp_itom_count{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .collection-list.grid--5-col-desktop .collection-list__item .card__heading .full-unstyled-link ~ .wp_itom_count{
+        text-align: left;
+    }
+}
+@media screen and (max-width: 767px) {
+    .collection-list:not(.slider) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .section-collection-list .page-width {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .section-collection-list .collection-list:not(.slider) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .slider.collection-list--1-items {
+        padding-bottom: 0;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .slider.collection-list--1-items,
+    .slider.collection-list--2-items,
+    .slider.collection-list--3-items,
+    .slider.collection-list--4-items {
+        padding-bottom: 0;
+    }
+}
+@media screen and (min-width: 768px) {
+    .collection-list__item a:hover {
+        box-shadow: none;
+    }
+}
+@media screen and (max-width: 991px) {
+    .collection-list.slider .collection-list__item {
+        max-width: 100%;
+    }
+    .collection-list__item .card__heading, .collection-list__item  .only_single_heading .h3 {
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+    .wp_itom_count{
+        font-size: calc(var(--font-body-scale) * 12px);
+        margin-top: 4px;
+    }
+    .collection-list__item .card__heading .icon-arrow{
+        width: 16px;
+        height: 16px;
+    }
+}

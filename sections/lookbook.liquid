@@ -1,0 +1,407 @@
+{{ 'lookbook.css' | asset_url | stylesheet_tag }}
+<look-book>
+<div class="wblbook wblbook-{{ section.id }} page-width section-{{ section.id }}-padding">
+    {% if section.settings.heading != blank %}
+        <h2 class="heading {{ section.settings.head_align }} inline-richtext {{ section.settings.heading_size }}"><span>{{ section.settings.heading }}</span></h2>
+    {% endif %}
+    <div class="row rless {{ section.settings.image_position }}">
+        <div class="col-lg-6 col-md-5 col-sm-6 col-12 cless">
+            {%- for i in (1..2) -%}
+                {%- liquid 
+                    assign wblookpd = 'product_' | append: i
+                    assign wblookpd = section.settings[wblookpd]
+                -%}
+                    {%- unless wblookpd == blank -%}
+                        {%- assign wblookpd = all_products[wblookpd] -%}
+                        <div class="wblookbleft {% if forloop.first %}active{% endif %}" id="wblook{{i}}-{{ section.id }}">
+                            {% if wblookpd.featured_media %}
+                                <div class="wblookimg row rless">
+                                    <div class="col-6 cless">
+                                        <a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}">
+                                            <div class="wblookimglazy card--{{ settings.card_style }} color-{{ settings.card_color_scheme }} gradient">
+                                                <div class="wblookimgin">
+                                                    <img loading="lazy"
+                                                    class="img-fluid mx-auto lazyload"
+                                                    srcset="{{ wblookpd.featured_media | image_url }} 285w"
+                                                    src="{{ wblookpd.featured_media | image_url: width: 285 }} 285w"
+                                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                                    loading="lazy"
+                                                    alt="{{ wblookpd.featured_media.alt | escape }}"
+                                                    width="{{ wblookpd.featured_media.width }}"
+                                                    height="{{ wblookpd.featured_media.height }}">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% if wblookpd.images[1] %}
+                                    <div class="col-6 cless">
+                                        <a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}">
+                                            <div class="wblookimglazy card--{{ settings.card_style }} color-{{ settings.card_color_scheme }} gradient">
+                                                <div class="wblookimgin">
+                                                   <img loading="lazy"
+                                                    class="img-fluid mx-auto lazyload"
+                                                    srcset="{{ wblookpd.images[1] | image_url }} 285w"
+                                                    src="{{ wblookpd.images[1] | image_url: width: 285 }} 285w"
+                                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                                    loading="lazy"
+                                                    alt="{{ wblookpd.images[1].alt | escape }}"
+                                                    width="{{ wblookpd.images[1].width }}"
+                                                    height="{{ wblookpd.images[1].height }}">
+
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            <div class="wblookdesc">
+                                <h2 class="{{ section.settings.proname_size }}">{{ wblookpd.title }}</h2>
+                                {% if wblookpd.description %}
+                                    <div class="img_subdesc"><p>{{ wblookpd.description | strip_html | truncatewords: 15 }}</p></div>
+                                {% endif %}
+                                <a href="{{ wblookpd.url }}" class="lookb_btn {{ section.settings.button_size }} {% if section.settings.button_style == 'link' %}link underlined-link{% elsif section.settings.button_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %}"><span>{{ section.settings.btntxt }}</span>{% render 'icon-arrow' %}</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="wblookbleft {% if forloop.first %}active{% endif %}" id="wblook{{i}}-{{ section.id }}">
+                            <div class="wblookimg row rless">
+                                <div class="col-6 cless">
+                                    <a href="#" title="product">
+                                        <div class="wblookimglazy card--{{ settings.card_style }} color-{{ settings.card_color_scheme }} gradient">
+                                            <div class="wblookimgin">
+                                                <div class="dummysvg">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-6 cless">
+                                    <a href="#" title="product">
+                                        <div class="wblookimglazy card--{{ settings.card_style }} color-{{ settings.card_color_scheme }} gradient">
+                                            <div class="wblookimgin">
+                                                <div class="dummysvg">{{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="wblookdesc">
+                                <h2 class="{{ section.settings.proname_size }}">{{ 'onboarding.product_title' | t }}</h2>
+                                <p>{{ 'onboarding.product_lck_desc' | t }}</p>
+                                <a href="#" class="lookb_btn {{ section.settings.button_size }} {% if section.settings.button_style == 'link' %}link underlined-link{% elsif section.settings.button_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %}"><span>{{ section.settings.btntxt }}</span>{% render 'icon-arrow' %}</a>
+                            </div>
+                        </div>
+                    {%- endunless -%}
+            {%- endfor -%}
+        </div>
+        <div class="col-lg-6 col-md-7 col-sm-6 col-12 cless">
+            <div class="wblbookmain global-media-settings" id="wblbookmain">
+                {%- if section.settings.image == blank -%} 
+                    <div class="dummysvg">{{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                {%- else -%}
+                    <img loading="lazy"
+                    srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+              {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+              {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+              {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+              {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+              {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+              {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+              {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+                    src="{{ section.settings.image | image_url: width: 1500 }}" alt="{{ section.settings.image.alt }}" class="img-fluid mx-auto lazyload" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}">
+                {%- endif -%}
+
+                {%- for i in (1..2) -%}
+                {%- liquid 
+                    assign wblooktop = 'wblooktop_' | append: i
+                    assign wblooktop = section.settings[wblooktop]
+                    assign wblookleft = 'wblookleft_' | append: i
+                    assign wblookleft = section.settings[wblookleft]
+                    assign wblookpd = 'product_' | append: i
+                    assign wblookpd = section.settings[wblookpd]
+                -%}
+                    
+                    {%- assign wblookpd = all_products[wblookpd] -%}
+                        <div class="wblookbook" style="top: calc({{ wblooktop }}% - 40px); left: calc({{ wblookleft }}% - 40px);">
+                          <button type="button" name="lookbookpoint-{{ i }}" class="wblookbtn focus-inset {% if forloop.first %}active{% endif %}" data-sectionid="{{ section.id }}" data-no="{{i}}"> + </button>
+                        </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>
+</look-book>
+{%- style -%}
+.wblbook-{{ section.id }} .wblookbleft.active{
+    display: block;
+}
+.wblbook-{{ section.id }} .wblbookmain .wblookbook .wblookbtn.active::after{
+    background: #ed2939;
+}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+<script>
+// Lookbook Active
+class LookBook extends HTMLElement {
+  constructor() {
+    super();
+    this.lookbookpoints = this.querySelectorAll('div.wblookbook button');
+    this.lookbookpoints.forEach((lookbookpoint) => {
+      lookbookpoint.addEventListener('click', this.onButtonClick.bind(this));
+    });
+  }
+  onButtonClick(event) {
+    var element = document.getElementById("wblook" + event.target.dataset.no + "-" + event.target.dataset.sectionid);
+    this.querySelectorAll('div.wblookbleft').forEach((lookbookproduct) => {
+      lookbookproduct.classList.remove('active');
+    });
+    this.lookbookpoints.forEach((lookbookpointbtn) => {
+      lookbookpointbtn.classList.remove('active');
+    });
+    element.classList.add('active');
+    event.target.classList.add('active');
+  }
+}
+customElements.define('look-book', LookBook);
+</script>
+{% schema %}
+    {
+        "name": "Lookbook",
+        "class": "spaced-section",
+        "disabled_on": {
+          "groups": ["header", "footer", "custom.overlay"]
+        },
+        "settings": [
+        {
+            "type": "inline_richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "LookBook"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            }
+          ],
+          "default": "h0",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "select",
+          "id": "head_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.featured-collection.settings.head_alignment.options1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.featured-collection.settings.head_alignment.options2.label"
+            }
+          ],
+          "default": "center",
+          "label": "t:sections.featured-collection.settings.head_alignment.label"
+        },
+        {
+            "type": "text",
+            "id": "btntxt",
+            "label": "Button label",
+            "default": "Button label"
+        },
+
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.label",
+          "options": [
+            {
+              "value": "link",
+              "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__1.label"
+            },
+            {
+              "value": "outline",
+              "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__2.label"
+            },
+            {
+              "value": "solid",
+              "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__3.label"
+            }
+          ],
+          "default": "outline"
+        },
+
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_size.label",
+          "options": [
+            {
+              "value": "small-btn",
+              "label": "t:sections.slideshow.blocks.slide.settings.button_size.options__1.label"
+            },
+            {
+              "value": "medium-btn",
+              "label": "t:sections.slideshow.blocks.slide.settings.button_size.options__2.label"
+            }
+          ],
+          "default": "medium-btn"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "options": [
+            {
+              "value": "imgpright",
+              "label": "Left"
+            },
+            {
+              "value": "imgpleft",
+              "label": "Right"
+            }
+          ],
+          "default": "imgpleft",
+          "label": "Desktop image position"
+        },
+
+        {
+        "type": "select",
+        "id": "proname_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          }
+        ],
+        "default": "h0",
+        "label": "Product name size"
+      },
+
+        {
+          "type": "header",
+          "content": "Product"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 23
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 51
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Select product"
+        },
+
+        {
+          "type": "header",
+          "content": "Product"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 79
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 46
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Select product"
+        },
+
+        {
+          "type": "header",
+          "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom",
+          "default": 0
+        }
+      ],
+      "presets": [
+        {
+          "name": "Lookbook"
+        }
+      ]
+    }
+{% endschema %}

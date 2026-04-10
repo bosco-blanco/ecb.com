@@ -1,0 +1,71 @@
+.contact img {
+    max-width: 100%;
+}
+.contact .form__message {
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: normal;
+}
+.contact .field {
+    margin-bottom: 1.5rem;
+}
+.grecaptcha-badge {
+    visibility: hidden;
+}
+#map iframe {
+    max-width: 100%;
+}
+.wbcontform{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.wbcontform .contact,.wbcontform .contgmap{
+    width: 50%;
+}
+.wbcontform li svg{
+    width: 40px;
+    height: 40px;
+    fill: var(--color-wbmaincolors-text);
+    margin-bottom: 15px;
+}
+.wbcontform li h4{
+    font-size: calc(var(--font-body-scale) * 18px);
+    margin-bottom: 10px;
+}
+.wbcontform li p{
+    margin-bottom: 0;
+}
+.wbcontforminner{
+    margin-bottom: 30px;
+}
+@media (max-width: 991px){
+    #ContactForm{
+        margin-bottom: 15px;
+    }
+    .wbcontform li svg {
+        width: 26px;
+        height: 26px;
+        margin-bottom: 6px;
+    }
+    .wbcontform li h4{
+        margin-bottom: 4px
+    }
+}
+@media (max-width: 767px){
+    .wbcontform {
+        display: block;
+    }
+    .wbcontform .contact,.wbcontform .contgmap{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 575px){
+    .wbcontforminner [class*='col-']{
+        margin-bottom: 15px;
+    }
+    .wbcontforminner{
+        margin-bottom: 0;
+    }
+}

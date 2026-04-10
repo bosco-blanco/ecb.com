@@ -1,0 +1,237 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_ybetiJ": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_dbKTPx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/golden-autumn-leaves.jpg",
+            "hcaption": "",
+            "heading": "Nuestras Bodegas",
+            "button_h_upp": false,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "",
+            "link": "shopify://collections/all",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_dbKTPx"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "small",
+        "slider_visual": "dots",
+        "pagicolor": "#ffffff",
+        "pagination_alignment": "center",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "ambient",
+        "show_text_below": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_3RjY3P": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_UgKNTt": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Estevez bodegas y viñedos",
+            "heading_size": "h0"
+          }
+        },
+        "caption_ec3WzG": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Pequeña introducción de la bodega</p>"
+          }
+        },
+        "button_QhcnTm": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a bodega",
+            "link": "",
+            "button_style": "outline",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UgKNTt",
+        "caption_ec3WzG",
+        "button_QhcnTm"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_Rijtpm": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_9PP8XR": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Domaine Antonin Guyon",
+            "heading_size": "h0"
+          }
+        },
+        "caption_gcDbKJ": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Pequeña descripción de la bodega</p>"
+          }
+        },
+        "button_jxELxJ": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a bodega",
+            "link": "",
+            "button_style": "outline",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9PP8XR",
+        "caption_gcDbKJ",
+        "button_jxELxJ"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "logo_bar_bx7UMB": {
+      "type": "logo-bar",
+      "blocks": {
+        "logo_image_74gzbi": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_t46VXk": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_df6rz6": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_8t3Laa": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_WHt6Bd": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_k9Uebw": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_3cgw3U": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_pMxt3T": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_74gzbi",
+        "logo_image_t46VXk",
+        "logo_image_df6rz6",
+        "logo_image_8t3Laa",
+        "logo_image_WHt6Bd",
+        "logo_image_k9Uebw",
+        "logo_image_3cgw3U",
+        "logo_image_pMxt3T"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "title": "Más de nuestras bodegas",
+        "heading_size": "h2",
+        "head_align": "center",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "columns_desktop": 6,
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_ybetiJ",
+    "image_with_text_3RjY3P",
+    "image_with_text_Rijtpm",
+    "logo_bar_bx7UMB"
+  ]
+}

@@ -1,0 +1,180 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+<div class="coll-page-bnr">
+  <div class="page-width">
+    <div class="{% if section.settings.hero_layout == 'overlay' %}chero-overlay {% else %}chero-column {% endif %}">
+      <h1 class="heading {{ section.settings.head_align }} {{ section.settings.heading_size }}"><span>{{- collection.title | escape -}}</span></h1>
+          <div class="collection-hero {% if section.settings.show_collection_image != true and section.settings.def_image == blank %} c-onlydesc {% endif %} {% if collection.image == blank and section.settings.def_image == blank %} c-onlydesc {% endif %}">
+            <div class="collection-hero__image-wrapper">
+              {% if section.settings.def_image != blank %}
+                <div class="collection-hero__image-container media gradient global-media-settings">
+                  <img class="img-fluid mx-auto" loading="eager"
+                    srcset="
+                      {%- if section.settings.def_image.width >= 165 -%}{{ section.settings.def_image | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 360 -%}{{ section.settings.def_image | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 535 -%}{{ section.settings.def_image | image_url: width: 535 }} 535w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 750 -%}{{ section.settings.def_image | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 1070 -%}{{ section.settings.def_image | image_url: width: 1070 }} 1070w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 1500 -%}{{ section.settings.def_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 1800 -%}{{ section.settings.def_image | image_url: width: 2000 }} 1500w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 2200 -%}{{ section.settings.def_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                      {%- if section.settings.def_image.width >= 3000 -%}{{ section.settings.def_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                      {{ section.settings.def_image | image_url }} {{ section.settings.def_image.width }}w"
+                    src="{{ section.settings.def_image | image_url: width: 2000 }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 10 }}px, (min-width: 768px) calc(70vw - 10px), calc(50vw - 10px)"
+                    alt=""
+                    width="{{ section.settings.def_image.width }}"
+                    height="{{ section.settings.def_image.height }}"
+                  >
+                </div>
+              {%- elsif section.settings.show_collection_image -%}
+              {% if collection.image != blank %}
+                    <div class="collection-hero__image-container media gradient global-media-settings">
+                      <img class="img-fluid mx-auto" loading="eager"
+                      srcset="{%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
+                      {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+                      {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {{ collection.image | image_url }} {{ collection.image.width }}w"
+                      src="{{ collection.image | image_url: width: 2000 }}"
+                      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 10 }}px, (min-width: 768px) calc(70vw - 10px), calc(50vw - 10px)"
+                      alt="{{ collection.title | escape }}"
+                      loading="lazy"
+                      width="{{ collection.image.width }}"
+                      height="{{ collection.image.height }}">
+                    </div>
+                    {% endif %}
+              {%- endif -%}
+              
+              </div>
+             
+              <div class="collection-hero__text-wrapper">
+                {%- if section.settings.show_collection_description -%}
+                  <div class="collection-hero__description rte">{{ collection.description }}</div>
+                {%- endif -%}
+              </div>
+          </div>
+    </div>
+  </div>
+</div>
+{%- style -%}
+.coll-page-bnr .chero-overlay .heading, .chero-overlay .collection-hero .collection-hero__description,
+.chero-overlay .collection-hero .collection-hero__description p,
+.chero-overlay .collection-hero__description a,.chero-overlay .collection-hero__description > *{
+  color: {{ section.settings.coll_color }};
+}
+.chero-overlay::before {
+  background: {{ section.settings.coll_bgcolor }};
+}
+.chero-overlay::before {
+  opacity: {{ section.settings.coll_overlay | divided_by: 100.0 }};
+}
+
+
+{%- endstyle -%}
+{% schema %}
+  {
+    "name": "t:sections.main-collection-banner.name",
+    "class": "spaced-section--full-width",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:sections.main-collection-banner.settings.paragraph.content"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          }
+        ],
+        "default": "h0",
+        "label": "t:sections.all.heading_size.label"
+      },
+      {
+        "type": "select",
+        "id": "head_align",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.featured-collection.settings.head_alignment.options1.label"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.featured-collection.settings.head_alignment.options2.label"
+          }
+        ],
+        "default": "center",
+        "label": "t:sections.featured-collection.settings.head_alignment.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "default": true,
+        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": false,
+        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+        "info": "This option only work when 'Default collection image' not selected."
+      },
+      {
+        "type": "image_picker",
+        "id": "def_image",
+        "label": "Default collection image"
+      },
+      {
+        "type": "select",
+        "id": "hero_layout",
+        "options": [
+          {
+            "value": "column",
+            "label": "Column"
+          },
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          }
+        ],
+        "default": "column",
+        "label": "Layout",
+        "info": "Bottom color and background option only work when layout is set to 'Overlay'"
+      },
+      {
+        "type": "color",
+        "id": "coll_bgcolor",
+        "label": "Banner background",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "coll_color",
+        "label": "Banner text",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "coll_overlay",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 50,
+        "unit": "%",
+        "label": "Background overlay"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,6 @@
+.newsletter-form__message {
+    justify-content: center;
+    margin-bottom: 0;
+    font-size: calc(var(--font-body-scale) * 14px);
+    font-weight: var(--font-body-weight);
+}

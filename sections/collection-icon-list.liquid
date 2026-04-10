@@ -1,0 +1,508 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .wbcolllist-{{ section.id }} .discbtn {
+      color: {{ section.settings.wboverlaycolor }};
+      background-color: {{ section.settings.wboverlaybg }};;
+  }
+  .wbcolllist-{{ section.id }} .discbtn:hover{
+      color: {{ section.settings.wboverlayhcolor }};
+      background-color: {{ section.settings.wboverlayhbg }};
+  }
+  .wbcolllist-{{ section.id }} .discbtn::after{
+      box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba({{ section.settings.wboverlayoutline.red }}, {{ section.settings.wboverlayoutline.green }}, {{ section.settings.wboverlayoutline.blue }},var(--border-opacity)),0 0 0 var(--buttons-border-width) rgba({{ section.settings.wboverlayoutline.red }}, {{ section.settings.wboverlayoutline.green }}, {{ section.settings.wboverlayoutline.blue }},var(--alpha-button-background))
+  }
+  .wbcolllist-{{ section.id }} .discbtn:not([disabled]):hover::after{
+      box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba({{ section.settings.wboverlayhoutline.red }}, {{ section.settings.wboverlayhoutline.green }}, {{ section.settings.wboverlayhoutline.blue }},var(--border-opacity)),0 0 0 var(--buttons-border-width) rgba({{ section.settings.wboverlayhoutline.red }}, {{ section.settings.wboverlayhoutline.green }}, {{ section.settings.wboverlayhoutline.blue }},var(--alpha-button-background))
+  }
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 991px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+
+      .mobile-grid {
+        display: none;
+      }
+  }
+  @media screen and (max-width: 991px) {
+      .desktop-grid {
+        display: none;
+      }
+  }
+{%- endstyle -%}
+{%- liquid
+  assign number_of_row = 1
+  assign collection_to_show = section.settings.columns_desktop | times: number_of_row
+-%}
+<div class="wbcolllist wbcolllist-{{ section.id }} section-{{ section.id }}-padding {{ section.settings.heading_position }} {% if section.settings.sec_full_width == true %}coll_full_width{% endif %}">
+  <div class="page-width slider-arrow--inline">
+    {%- liquid
+      assign content_visible = false
+      if section.settings.title != blank
+        assign content_visible = true
+      endif
+      if section.settings.subheading != blank
+        assign content_visible = true
+      endif
+      if section.settings.link != blank
+        assign content_visible = true
+      endif
+    -%}
+    {%- if content_visible -%}
+      <div class="clist_left">
+        <div>
+          {%- if section.settings.title != blank -%}
+            <h2 class="heading inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}
+            <p>{{ section.settings.subheading | escape }}</p>
+          {%- endif -%}
+        </div>
+        {% if section.settings.btntxt != blank %}
+          <a
+            {% if section.settings.link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.link }}"
+            {% endif %}
+            class="{% if section.settings.button_style == 'link' %}link underlined-link{% elsif section.settings.button_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %}"
+            ><span>{{ section.settings.btntxt }}</span>{% render 'icon-arrow' -%}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="clist_right">
+      <slider-component>
+        {% assign columns_mobile_hardcoded = 3 %}
+        <div
+          class="desktop-grid grid grid--{{ section.settings.columns_desktop }}-col-desktop  collection-list--{{ section.blocks.size }}-items slider"
+          id="Slider-{{ section.id }}"
+        >
+          {% assign num_row = 1 | times: 1 %}
+          {% assign temp = 0 %}
+          {%- for block in section.blocks -%}
+            {% if temp == 0 %}
+              <div
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                class="grid__item slider__slide{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+            {% endif %}
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+            <div {{ block.shopify_attributes }} class="clistinr">
+              {% render 'card-collection-icon',
+                card_collection: block.settings.collection,
+                media_aspect_ratio: section.settings.image_ratio,
+                coll_desc: block.settings.coll_desc,
+                overlay_btn: section.settings.overlay_btn,
+                ct_alignment: section.settings.ct_alignment,
+                coll_des: section.settings.coll_des,
+                coll_upper: section.settings.coll_upper,
+                placeholder_image: placeholder_image
+              %}
+            </div>
+
+            {% assign temp = temp | plus: 1 %}
+            {% if temp == num_row %}
+              </div>
+              {% assign temp = 0 -%}
+            {%- endif %}
+          {%- endfor -%}
+        </div>
+        <div
+          class="mobile-grid grid collection-list--{{ section.blocks.size }}-items slider grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+          id="Slider-{{ section.id }}"
+        >
+          {% assign num_row = section.settings.rows | times: 1 %}
+          {% assign temp = 0 %}
+          {%- for block in section.blocks -%}
+            {% if temp == 0 %}
+              <div
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                class="grid__item slider__slide{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+            {% endif %}
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+            <div {{ block.shopify_attributes }} class="clistinr">
+              {% render 'card-collection-icon',
+                card_collection: block.settings.collection,
+                media_aspect_ratio: section.settings.image_ratio,
+                media_padding: section.settings.icon_padding,
+                coll_desc: block.settings.coll_desc,
+                overlay_btn: section.settings.overlay_btn,
+                ct_alignment: section.settings.ct_alignment,
+                coll_des: section.settings.coll_des,
+                coll_upper: section.settings.coll_upper,
+                placeholder_image: placeholder_image
+              %}
+            </div>
+
+            {% assign temp = temp | plus: 1 %}
+            {% if temp == num_row %}
+              </div>
+              {% assign temp = 0 -%}
+            {%- endif %}
+          {%- endfor -%}
+        </div>
+
+        {% assign collection_to_show = section.settings.columns_mobile | times: section.settings.rows %}
+        <div class="wbhomesbtn no-js-hidden {% unless section.blocks.size > collection_to_show %} desktop-arrows-hide mobile-arrows-hide {% endunless %}">
+          <button
+            type="button"
+            class="button slider-button slider-button--prev focus-inset"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+            data-step="1"
+          >
+            {% render 'icon-caret' %}
+          </button>
+          <button
+            type="button"
+            class="button slider-button slider-button--next focus-inset"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+            data-step="1"
+          >
+            {% render 'icon-caret' %}
+          </button>
+        </div>
+      </slider-component>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Icon List",
+  "tag": "section",
+  "class": "section section-collection-list",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "sec_full_width",
+      "label": "Make section full width on right side",
+      "default": true,
+      "info": "Applicable on desktop"
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "options": [
+        {
+          "value": "coll_next",
+          "label": "Next to the collections"
+        },
+        {
+          "value": "coll_left",
+          "label": "Left"
+        },
+        {
+          "value": "coll_center",
+          "label": "Center"
+        }
+      ],
+      "default": "coll_next",
+      "label": "Heading position",
+      "info": "If ‘Next to the products’ is selected, it shows a max of 3 collections per columns on desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.collection-list.settings.columns_desktop.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:sections.collection-list.settings.title.label",
+      "default": "Collections"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Description",
+      "default": "Share information about your collection with customers. Describe a collection, make announcements related to your collection."
+    },
+
+    {
+      "type": "text",
+      "id": "btntxt",
+      "default": "See all",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.slideshow.blocks.slide.settings.button_style.label",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__1.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__3.label"
+        }
+      ],
+      "default": "outline"
+    },
+
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.collection-list.settings.image_ratio.label",
+      "info": "t:sections.collection-list.settings.image_ratio.info"
+    },
+    {
+      "type": "range",
+      "id": "icon_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Icon padding",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "ct_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:settings_schema.global.settings.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:settings_schema.global.settings.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:settings_schema.global.settings.text_alignment.options__3.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:settings_schema.global.settings.text_alignment.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "coll_upper",
+      "label": "Uppercase collection name",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "coll_des",
+      "label": "Show collection description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_btn",
+      "label": "Enable image overlay button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.colors.settings.header__4.content"
+    },
+    {
+      "type": "color",
+      "id": "wboverlaycolor",
+      "default": "#000000",
+      "label": "t:settings_schema.colors.settings.wboverlaycolor.label"
+    },
+    {
+      "type": "color",
+      "id": "wboverlaybg",
+      "default": "#ffffff",
+      "label": "t:settings_schema.colors.settings.wboverlaybg.label"
+    },
+    {
+      "type": "color",
+      "id": "wboverlayoutline",
+      "default": "#ffffff",
+      "label": "t:settings_schema.colors.settings.wboverlayoutline.label"
+    },
+
+    {
+      "type": "color",
+      "id": "wboverlayhcolor",
+      "default": "#ffffff",
+      "label": "t:settings_schema.colors.settings.wboverlayhcolor.label"
+    },
+    {
+      "type": "color",
+      "id": "wboverlayhbg",
+      "default": "#000000",
+      "label": "t:settings_schema.colors.settings.wboverlayhbg.label"
+    },
+    {
+      "type": "color",
+      "id": "wboverlayhoutline",
+      "default": "#000000",
+      "label": "t:settings_schema.colors.settings.wboverlayhoutline.label"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.collection-list.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.collection-list.settings.columns_mobile.label"
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "t:sections.collection-list.settings.rows_desktop.label",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "textarea",
+          "id": "coll_desc",
+          "label": "Description",
+          "default": "Share information about your collection with customers."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Icon list",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+.wblookbtn.focus-inset:focus-visible {
+    /*outline: -webkit-focus-ring-color solid .01rem;*/
+    box-shadow: 0 0 0 0.1rem rgb(var(--color-background)),0 0 0 0.2rem rgba(var(--color-foreground),.5),0 0 0.3rem 0.2rem rgba(var(--color-foreground),.3);
+}
+.wblookbleft h2,.wbvidewithtxt h2 {
+    font-size: calc(var(--font-body-scale) * 46px);
+    margin-bottom: 20px;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+}
+.wblookbleft h2.h0 {
+    font-size: calc(var(--font-body-scale) * 36px);
+}
+.wblookbleft h2.h1 {
+    font-size: calc(var(--font-body-scale) * 30px);
+}
+.wblookbleft h2.h2 {
+    font-size: calc(var(--font-body-scale) * 26px);
+}
+.wblookbleft p,.wbvidewithtxt p {
+    color: rgba(var(--color-foreground),.8);
+    margin: 0;
+    font-size: calc(var(--font-body-scale) * 16px);
+    line-height: normal;
+}
+.wblookbleft .wblookdesc a.medium-btn {
+    font-size: calc(var(--font-body-scale) * 20px);
+    min-width: 300px;
+    padding: 18px 15px;
+} 
+.wblookbleft .wblookdesc a.lookb_btn, .wbvidewithtxt a.vidtxtbtn {
+    margin-top: 50px;
+}
+.wblbook .row{
+    align-items: center;
+}
+.wblbookmain {
+    text-align: center;
+    position: relative;
+}
+.wblbookmain .wblookbook {
+    position: absolute;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+}
+.wblbookmain .wblookbook .wblookbtn{ 
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 0;
+    background: rgba(var(--color-background),0.8);
+    border-radius: 100%;
+    transition: padding 0.3s ease;
+}
+.wblbookmain .wblookbook .wblookbtn::after{ 
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgb(var(--color-foreground));
+    border-radius: 100%;
+    animation: pulse-border 1.5s ease-out infinite;
+}
+@keyframes pulse-border { 
+    0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+        opacity: 0;
+    }
+}
+.wblbookmain .wblookbook .wblookbtn::before {
+    content: "+";
+    font-size: 22px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    min-width: 36px;
+    min-height: 36px;
+    color: rgb(var(--color-foreground));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    z-index: 2;
+    background: rgb(var(--color-background));
+    border-radius: 100%;
+}
+.wblbookmain .wblookbook .wblookimg a{
+    display: block;
+}
+.wblbookmain .wblookbook .wblbookcnt{
+    display: none;
+    z-index: 3;
+    width: 150px;
+    position: relative;
+    background: rgb(var(--color-background));
+    box-shadow: 2px 2px 8px rgba(var(--color-foreground),0.05);
+    border-radius: 0px;
+    margin-top: 32px;
+    left: -60px;
+    padding: 10px 0
+}
+.wblookbleft{
+    display: none;
+}
+.wblookimg{
+    margin-bottom: 20px;
+}
+.wblookbleft {
+    max-width: 600px;
+}
+.wblookbleft .wblookimg a{
+    display: block;
+}
+.wblookdesc h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: calc(var(--font-body-scale) * 14px);
+    margin-bottom: 4px;
+    font-weight: var(--font-body-weight-medium);
+    text-transform: capitalize;
+}
+.wblookdesc {
+    padding: 10px 0 0;
+    padding-bottom: 0
+}
+.wblookprice span{
+    font-weight: var(--font-body-weight);
+    letter-spacing: 0;
+}
+.wblookprice span.old-price{
+    text-decoration: line-through;
+    font-weight: var(--font-body-weight);
+    font-size: 13px;
+    padding-left: 2px;
+    color: rgba(var(--color-foreground),.5);
+}
+.wblookdesc .wblkbtn{
+    margin-top: 8px
+}
+.wblookbleft .wblookdesc a.lookb_btn {
+    z-index: 0;
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .wblookbleft h2.h0, .wbimgtxt_right h2.h0 {
+        font-size: calc(var(--font-body-scale) * 30px);
+    }
+    .wblookbleft h2.h1, .wbimgtxt_right h2.h1 {
+        font-size: calc(var(--font-body-scale) * 24px);
+    }
+    .wblookbleft h2.h2, .wbimgtxt_right h2.h2 {
+        font-size: calc(var(--font-body-scale) * 20px);
+    }
+    .wblookbleft .wblookdesc a.medium-btn {
+        min-width: auto;
+        margin-top: 30px;
+        padding: 12px 15px;
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+    .wblookbleft .wblookdesc a.lookb_btn {
+        margin-top: 30px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .wblookbleft p{
+        font-size: calc(var(--font-body-scale) * 14px);
+    }
+    .wblookbleft .wblookdesc a.medium-btn {
+        font-size: calc(var(--font-body-scale) * 14px);
+        min-width: auto;
+        margin-top: 20px;
+        padding: 10px 15px;
+    }
+    .wblookbleft .wblookdesc a.lookb_btn {
+        margin-top: 20px;
+    }
+} 
+@media (max-width: 991px){
+    .wblookbleft h2 {
+        margin-bottom: 10px;
+    }
+    .wblookbleft h2.h0 {
+        font-size: calc(var(--font-body-scale) * 18px);
+    }
+    .wblookbleft h2.h1 {
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+    .wblookbleft h2.h2 {
+        font-size: calc(var(--font-body-scale) * 14px);
+    }
+}
+@media (max-width: 767px) {
+    .wblookimg {
+        margin-bottom: 4px;
+    }
+    .wblbookmain .wblookbook .wblbookcnt{
+        width: 140px;
+        left: -52px;
+    }
+     .wblookbleft .wblookdesc a.lookb_btn {
+        font-size: calc(var(--font-body-scale) * 14px);
+        min-width: auto;
+        padding: 10px 10px;
+        margin-top: 10px;
+        min-height: 40px;
+        min-width: 120px;
+    }
+    .wblookbleft p {
+        font-size: calc(var(--font-body-scale) * 14px);
+    }
+}
+@media (max-width: 575px){
+    .wblookbleft {
+        margin-bottom: 15px;
+    }
+    .wblookbleft h2{
+        margin-bottom: 5px;
+        letter-spacing: 0;
+    }
+    .wblookbleft h2.h0 {
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+    .wblookbleft h2.h1 {
+        font-size: calc(var(--font-body-scale) * 14px);
+    }
+    .wblookbleft h2.h2 {
+        font-size: calc(var(--font-body-scale) * 12px);
+    }
+    .wblookbleft p{
+        font-size: calc(var(--font-body-scale) * 12px);
+        line-height: 15px;
+    }
+}

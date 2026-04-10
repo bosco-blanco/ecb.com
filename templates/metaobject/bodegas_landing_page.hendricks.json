@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_rBFftE": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qbwp8k": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hendrick's Gin",
+            "heading_size": "large"
+          }
+        },
+        "text_WBJ3UG": {
+          "type": "text",
+          "settings": {
+            "text": "<em>La ginebra premium de Escocia</em>",
+            "text_style": "body"
+          }
+        },
+        "text_3xyfTW": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qbwp8k",
+        "text_WBJ3UG",
+        "text_3xyfTW"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "{{ metaobject.portada.value }}",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "padding_top": 60,
+        "padding_bottom": 12
+      }
+    },
+    "image_with_text_UdcBUj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_DmVgFz": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Hendrick's Gin",
+            "heading_size": "h0"
+          }
+        },
+        "caption_6F8EDW": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p><strong>Re-Descubre la Ginebra</strong></p><p>Desde el encantador pueblo de Givan en Escocia, llega Hendrick's Gin, un producto artesanal que redefine la experiencia de la ginebra premium. Con un aroma suave y un sabor cítrico complementado con notas de pimienta rosa, esta ginebra se destaca por su exquisitez y carácter único.</p><p><strong>Hendrick’s: La Pionera de las Ginebras Super Premium</strong></p><p>Lanzada en España en 2004, Hendrick’s no solo se ha hecho un nombre, sino que ha establecido el estándar en el segmento de ginebras Super Premium. Su éxito se debe a tres factores clave:</p><ul><li><strong>Elaboración Artesanal:</strong> Cada botella de Hendrick’s se produce con dedicación y cuidado, garantizando la máxima calidad en cada gota.<br/></li><li><strong>Icónica Botella:</strong> Su distintiva botella no solo es un símbolo de elegancia, sino también de la excelencia contenida en su interior.<br/></li><li><strong>Consumo con Pepino:</strong> El modo de consumo con una rodaja de pepino realza los sabores únicos de Hendrick’s, convirtiendo cada gin tonic en una experiencia inigualable.<br/></li></ul><p><strong>Una Infusión Única de Rosa y Pepino</strong></p><p>Experimenta el equilibrio perfecto con la infusión de rosa y pepino en Hendrick’s Gin. Estos sabores sutiles añaden un toque distintivo a cualquier gin tonic, elevando la bebida a nuevas alturas de sofisticación.</p><p>¿Por qué conformarte con lo ordinario cuando puedes disfrutar de algo deliciosamente inusual? Descubre la ginebra Hendrick’s y transforma tu próxima copa en una celebración del buen gusto.</p><p><strong>Compra ahora en Encopa de Balon y déjate seducir por la Ginebra Super Premium de Hendrick’s.</strong></p>"
+          }
+        },
+        "button_g9bqCG": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Web oficial",
+            "link": "{{ metaobject.website_oficial.value }}",
+            "button_style": "solid",
+            "button_size": "bs_medium"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DmVgFz",
+        "caption_6F8EDW",
+        "button_g9bqCG"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "{{ metaobject.foto_video_auxiliar.value }}",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "featured_collection_34p3fm": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Disfruta ahora de Hendrick's y sus Ediciones Limitadas",
+        "heading_size": "h1",
+        "head_align": "center",
+        "collection": "hendricks",
+        "products_to_show": 5,
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "arrow_position": "inline",
+        "image_ratio": "adapt",
+        "display_product_type": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quantity": true,
+        "button_style": "solid",
+        "show_quick_view": false,
+        "quick_v_pos": "bottom-left",
+        "quick_icon": "first-icon",
+        "space_quick": 0,
+        "show_variants": true,
+        "picker_type": "button",
+        "show_colorswatch": true,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "view_button_pos": "bottom",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "text_with_icons_KBM3Pg": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_xL46hL": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_3VR4DA": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_q34zzT": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_zGzTMi": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_xL46hL",
+        "image_3VR4DA",
+        "image_q34zzT",
+        "image_zGzTMi"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": true,
+        "hide_desktop": false,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-1",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "text_with_icons_q7mNUd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_QqdW4M": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 100€ y Madrid Capital"
+          }
+        },
+        "image_9LGGpy": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_z643WN": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_D7V63f": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_QqdW4M",
+        "image_9LGGpy",
+        "image_z643WN",
+        "image_D7V63f"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": false,
+        "hide_desktop": true,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "background-1",
+        "service_upper": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "image_banner_rBFftE",
+    "image_with_text_UdcBUj",
+    "featured_collection_34p3fm",
+    "text_with_icons_KBM3Pg",
+    "text_with_icons_q7mNUd"
+  ]
+}

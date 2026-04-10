@@ -1,0 +1,26 @@
+.list-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 767px) {
+  .list-social {
+    justify-content: center;
+  }
+}
+.list-social__item .icon {
+  height: 18px;
+  width: 18px;
+}
+.list-social__link {
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+  color: rgb(var(--color-foreground));
+}
+.list-social__link:hover {
+  color: rgb(var(--color-foreground),0.8);
+}
+.announce_item .list-social__link {
+  padding: 10px 13px;
+}

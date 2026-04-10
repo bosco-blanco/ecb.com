@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1659964878577bab6f": {
+      "type": "image-with-text",
+      "blocks": {
+        "1659964878b82d1250-0": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "¿Quienes somos?",
+            "heading_size": "h0"
+          }
+        },
+        "be634bdc-1051-4a45-b91e-6ae622456e9e": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p><em>En Copa de Balón</em> es un grupo con más de 30 años de experiencia en la <strong>distribución de vinos y licores en España</strong>, con una evolución natural hacia el <strong>retail y la hostelería</strong>. Hoy somos referencia en <strong>Madrid</strong>, donde combinamos tiendas especializadas, restaurantes y venta online para acercar la cultura del vino a todos los públicos.</p><h2>Historia y origen</h2><p>Nacimos en <strong>Madrid en 1991</strong> como empresa de <strong>distribución de vinos y bebidas espirituosas</strong> para el canal de hostelería. Desde el primer día hemos apostado por una <strong>selección rigurosa de referencias nacionales e internacionales</strong>, trabajando mano a mano con bodegas y proveedores para garantizar calidad, continuidad y servicio.</p><p>Con el tiempo, la experiencia adquirida en el canal profesional nos impulsó a abrirnos al cliente final (<strong>B2C</strong>), acercando el vino al consumidor de forma directa y transparente.</p><h2>¿Qué nos hace diferentes?</h2><ul><li><strong>Distribución profesional</strong> → seguimos siendo socio estratégico para restaurantes, hoteles y caterings en toda España, garantizando stock estable, precios competitivos y asesoría técnica.<br/></li><li><strong>Retail & online</strong> → nuestra tienda online y puntos de venta físicos en <strong>Madrid</strong> ofrecen un catálogo curado de vinos, licores y destilados con fichas claras y recomendaciones de maridaje.<br/></li><li><strong>Hostelería propia</strong> → gestionamos <strong>restaurantes y espacios gastronómicos</strong> en la ciudad, donde el vino se disfruta en contexto: buena mesa, servicio profesional y cultura enológica.<br/></li></ul><h2>Tiendas y restaurantes en Madrid</h2><p>Nuestra <strong>amplia presencia en la ciudad</strong> nos convierte en un referente local:</p><ul><li><strong>Tiendas especializadas</strong> → espacios en Madrid donde el cliente encuentra asesoramiento directo, catas y selección de vinos para cada ocasión.<br/></li><li><strong>Restaurantes</strong> → proyectos como <a href=\"https://margaritasmadrid.com\" target=\"_blank\" title=\"https://margaritasmadrid.com\">Las <em>Margaritas</em></a><em>, Quinta Aleño</em> o los propios restaurantes de <em>En Copa de Balón</em> transmiten nuestra visión: que el vino se disfrute, se entienda y se comparta.<br/></li></ul><h2>Por qué confiar en nosotros</h2><ul><li><strong>Más de 30 años cerca del vino</strong>, trabajando con bodegas y clientes en todos los canales.<br/></li><li><strong>Equipo profesional</strong> con amplia formación en <strong>sumillería, hostelería y logística</strong>.<br/></li><li><strong>Selección independiente y transparente</strong> → cada ficha informa de DO, uva, añada, bodega, temperatura de servicio y maridajes recomendados.<br/></li><li><strong>Experiencia omnicanal</strong> → distribución, retail, hostelería y ecommerce integrados bajo un mismo criterio de calidad.<br/></li><li><strong>Presencia en Madrid</strong> → locales propios y servicio directo al cliente, reforzando nuestra identidad como grupo especializado en vino.</li></ul>"
+          }
+        },
+        "caption_d7jjBF": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<h4><br/>Tienes alguna duda? <br/>Contacta con nosotros :) <br/></h4><p>Email:  <a href=\"mailto:atencionalcliente@encopadebalon.com\" target=\"_blank\" title=\"mailto:atencionalcliente@encopadebalon.com\">atencionalcliente@encopadebalon.com</a></p><p>Teléfono:  <a href=\"tel:+34 672 31 08 43\" target=\"_blank\" title=\"tel:+34 672 31 08 43\">+34 672 31 08 43</a></p><ul><li><a href=\"https://es.linkedin.com/company/en-copa-de-balon\" target=\"_blank\" title=\"https://es.linkedin.com/company/en-copa-de-balon\">LinkedIn</a></li><li><a href=\"https://www.facebook.com/encopadebalonlounge\" target=\"_blank\" title=\"https://www.facebook.com/encopadebalonlounge\">Facebook</a></li><li><a href=\"http://www.instagram.com/@encopadebalon\" target=\"_blank\" title=\"http://www.instagram.com/@encopadebalon\">Instagram</a></li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "1659964878b82d1250-0",
+        "be634bdc-1051-4a45-b91e-6ae622456e9e",
+        "caption_d7jjBF"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/DSC09396.jpg",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgaligntop",
+        "image_height": "adapt",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-aboutus",
+      "disabled": true,
+      "settings": {}
+    },
+    "featured_events_azy7jG": {
+      "type": "featured-events",
+      "disabled": true,
+      "settings": {
+        "sec_full_width": true,
+        "m_title": "Próximos eventos",
+        "heading_size": "h0",
+        "head_align": "center",
+        "enable_desktop_slider": true,
+        "arrow_position": "top",
+        "post_limit": 4,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "top",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "featured_blog_8yBWE4": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "sec_full_width": true,
+        "m_title": "",
+        "heading_size": "h2",
+        "head_align": "left",
+        "blog": "news",
+        "show_image": true,
+        "enable_desktop_slider": true,
+        "arrow_position": "inline",
+        "image_height": "square",
+        "blog_alignment": "left",
+        "post_limit": 6,
+        "columns_desktop": 3,
+        "show_date": false,
+        "show_author": false,
+        "show_desc": false,
+        "show_cmment": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "view_button_pos": "bottom",
+        "show_read_more_button": false,
+        "read_more_style": "link",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "1659964878577bab6f",
+    "main",
+    "featured_events_azy7jG",
+    "featured_blog_8yBWE4"
+  ]
+}

@@ -1,0 +1,300 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "16e47a34-b87a-40c6-97d6-ffff98ab07e2": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-0": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-1": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-2": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "b2445e8a-509b-4206-a475-07589869a234": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c0776d1b-1a08-417c-a808-8d787c872d72": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "34a9d83e-45b1-4233-b042-71cc1d7301b4": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "83b2d3bd-327c-45d2-8d2e-552d1815f3c9": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "5bac8f01-2a79-4bb0-8619-114beca3562a": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "81fabd75-b5d7-4336-918e-c541919e255c": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-0",
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-1",
+        "template--15816977842233__16e47a34-b87a-40c6-97d6-ffff98ab07e2-16764676002baf27a5-2",
+        "b2445e8a-509b-4206-a475-07589869a234",
+        "c0776d1b-1a08-417c-a808-8d787c872d72",
+        "34a9d83e-45b1-4233-b042-71cc1d7301b4",
+        "83b2d3bd-327c-45d2-8d2e-552d1815f3c9",
+        "5bac8f01-2a79-4bb0-8619-114beca3562a",
+        "81fabd75-b5d7-4336-918e-c541919e255c"
+      ],
+      "settings": {
+        "heading": "Features",
+        "heading_size": "h1",
+        "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "arrow_position": "inline",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "81936fa3-0fbc-418a-b3b9-86f54f61e0a7": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15309014204475__81936fa3-0fbc-418a-b3b9-86f54f61e0a7-16809550592fa7edaf-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15309014204475__81936fa3-0fbc-418a-b3b9-86f54f61e0a7-16809550592fa7edaf-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15309014204475__81936fa3-0fbc-418a-b3b9-86f54f61e0a7-16809550592fa7edaf-0",
+        "template--15309014204475__81936fa3-0fbc-418a-b3b9-86f54f61e0a7-16809550592fa7edaf-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "969ca945-0f14-425a-9c6b-3c862e80196e": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15309014204475__969ca945-0f14-425a-9c6b-3c862e80196e-16809550592fa7edaf-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15309014204475__969ca945-0f14-425a-9c6b-3c862e80196e-16809550592fa7edaf-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15309014204475__969ca945-0f14-425a-9c6b-3c862e80196e-16809550592fa7edaf-0",
+        "template--15309014204475__969ca945-0f14-425a-9c6b-3c862e80196e-16809550592fa7edaf-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "ea89a68b-1cac-4fca-9803-da436c7f5238": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15309014204475__ea89a68b-1cac-4fca-9803-da436c7f5238-16809550592fa7edaf-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15309014204475__ea89a68b-1cac-4fca-9803-da436c7f5238-16809550592fa7edaf-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15309014204475__ea89a68b-1cac-4fca-9803-da436c7f5238-16809550592fa7edaf-0",
+        "template--15309014204475__ea89a68b-1cac-4fca-9803-da436c7f5238-16809550592fa7edaf-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "df6ceb15-502b-4b2d-a475-7d5dcd934fda": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15309014204475__df6ceb15-502b-4b2d-a475-7d5dcd934fda-16809550592fa7edaf-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15309014204475__df6ceb15-502b-4b2d-a475-7d5dcd934fda-16809550592fa7edaf-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15309014204475__df6ceb15-502b-4b2d-a475-7d5dcd934fda-16809550592fa7edaf-0",
+        "template--15309014204475__df6ceb15-502b-4b2d-a475-7d5dcd934fda-16809550592fa7edaf-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15309014204475__9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c-16809550592fa7edaf-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15309014204475__9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c-16809550592fa7edaf-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15309014204475__9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c-16809550592fa7edaf-0",
+        "template--15309014204475__9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c-16809550592fa7edaf-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16e47a34-b87a-40c6-97d6-ffff98ab07e2",
+    "81936fa3-0fbc-418a-b3b9-86f54f61e0a7",
+    "969ca945-0f14-425a-9c6b-3c862e80196e",
+    "ea89a68b-1cac-4fca-9803-da436c7f5238",
+    "df6ceb15-502b-4b2d-a475-7d5dcd934fda",
+    "9f63d0a7-1ea4-472c-8834-7ecb04eb8f3c"
+  ]
+}

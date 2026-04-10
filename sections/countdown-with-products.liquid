@@ -1,0 +1,459 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'countdown-product.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+{%- style -%}
+  .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+  }
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .button-{{ section.id }}-show_mobile {
+      display: none;
+  }
+  @media screen and (max-width: 991px) {
+      .section-{{ section.id }}-margin {
+          margin-top: {{ section.settings.margin_top | times: 0.5 | round: 0 }}px;
+          margin-bottom: {{ section.settings.margin_bottom | times: 0.5 | round: 0 }}px;
+      }
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+          padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+      }
+      .button-{{ section.id }}-show_mobile {
+          display: block;
+      }
+      .button-{{ section.id }}-show_desktop {
+          display: none;
+      }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign products_to_display = section.settings.collection.products | where: 'available', true | size
+  if products_to_display > section.settings.products_to_show
+    assign products_to_display = section.settings.products_to_show
+  endif
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and products_to_display
+    assign show_mobile_slider = true
+  endif
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+    assign show_desktop_slider = true
+  endif
+-%}
+<div
+  class="section-{{ section.id }}-margin isolate count_pro"
+  {% if section.settings.imgtxt_bg != blank %}
+    style="background-image: url('{{ section.settings.imgtxt_bg | image_url: width: 2000 }}');"
+  {% else %}
+    style="background-color: {{ section.settings.wb_bgcolor }}"
+  {% endif %}
+>
+  <div class="collection section-{{ section.id }}-padding">
+    <div class="count_head page-width {{ section.settings.head_align }} color-{{ section.settings.head_scheme }} gradient">
+      {%- if section.settings.title != blank -%}
+        <h2 class="{{ section.settings.head_align }} heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="description {{ section.settings.description_style }} rte">
+          {{ section.settings.description -}}
+        </div>
+      {%- endif -%}
+
+      {% if section.settings.show_section_count %}
+        <div data-date="{{ section.settings.wb_enddate }}" class="count_timer countd_all">
+          <div class="time main_cdays">
+            <span class="count wb_cdays">00</span>
+            <span>{{ 'wbcustomlabel.wballtext.time_days' | t }}</span>
+          </div>
+          <div class="time main_chours">
+            <span class="count wb_chours">00</span>
+            <span>{{ 'wbcustomlabel.wballtext.time_hour' | t }}</span>
+          </div>
+          <div class="time main_cminutes">
+            <span class="count wb_cminutes">00</span>
+            <span>{{ 'wbcustomlabel.wballtext.time_min' | t }}</span>
+          </div>
+          <div class="time main_cseconds">
+            <span class="count wb_cseconds">00</span>
+            <span>{{ 'wbcustomlabel.wballtext.time_sec' | t }}</span>
+          </div>
+        </div>
+        <p class="countdownMessage" style="display: none;">{{ section.settings.expired_date }}</p>
+      {% endif %}
+
+      {% if section.settings.btntxt != blank %}
+        <a
+          {% if section.settings.link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.link }}"
+          {% endif %}
+          class="{% if section.settings.button_style == 'link' %}link underlined-link{% elsif section.settings.button_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %}"
+          ><span>{{ section.settings.btntxt }}</span>{% render 'icon-arrow' -%}
+        </a>
+      {% endif %}
+    </div>
+    <slider-component class="page-width slider-mobile-gutter{% if show_desktop_slider == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}">
+      <ul
+        id="Slider-{{ section.id }}"
+        class="grid product-grid contains-card{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--3-col-tablet {% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}"
+        role="list"
+        aria-label="{{ 'sections.featured_collection.slider' | t }}"
+      >
+        {% assign available_products = section.settings.collection.products | where: 'available' %}
+        {%- for product in available_products limit: section.settings.products_to_show -%}
+          <li
+            id="Slide-{{ section.id }}-{{ forloop.index }}"
+            class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}"
+          >
+            {% render 'card-product-special',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              section_id: section.id
+            %}
+          </li>
+        {%- else -%}
+          {%- for i in (1..4) -%}
+            <li class="grid__item">
+              {%- assign placeholder_image = 'product-apparel-' | append: forloop.index -%}
+              {% render 'product-card-placeholder', placeholder_image: placeholder_image %}
+            </li>
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+      <div class="wbhomesbtn no-js-hidden {% unless show_desktop_slider %} desktop-arrows-hide {% endunless %}{% unless show_mobile_slider %}mobile-arrows-hide {% endunless %}">
+        <button
+          type="button"
+          class="button slider-button slider-button--prev focus-inset"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          aria-controls="Slider-{{ section.id }}"
+          data-step="1"
+        >
+          {% render 'icon-caret' %}
+        </button>
+        <button
+          type="button"
+          class="button slider-button slider-button--next focus-inset"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          aria-controls="Slider-{{ section.id }}"
+          data-step="1"
+        >
+          {% render 'icon-caret' %}
+        </button>
+      </div>
+    </slider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown with products",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "imgtxt_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "wb_bgcolor",
+      "default": "#aaa",
+      "label": "Background color",
+      "info": "Display when 'Background img' not selected."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Heading",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "head_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.featured-collection.settings.head_alignment.options1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.featured-collection.settings.head_alignment.options2.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.featured-collection.settings.head_alignment.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.featured-collection.settings.description.label"
+    },
+    {
+      "type": "select",
+      "id": "description_style",
+      "label": "t:sections.featured-collection.settings.description_style.label",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:sections.featured-collection.settings.description_style.options__1.label"
+        },
+        {
+          "value": "subtitle",
+          "label": "t:sections.featured-collection.settings.description_style.options__2.label"
+        },
+        {
+          "value": "uppercase",
+          "label": "t:sections.featured-collection.settings.description_style.options__3.label"
+        }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_count",
+      "label": "Show countdown",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wb_enddate",
+      "label": "End date",
+      "info": "The end date must be set to a future date and include the following format: YYYY/MM/DD Example: 2024/10/05."
+    },
+    {
+      "type": "text",
+      "id": "expired_date",
+      "label": "Timer complete message",
+      "default": "The offer has been expired!"
+    },
+    {
+      "type": "text",
+      "id": "btntxt",
+      "default": "Button label",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.slideshow.blocks.slide.settings.button_style.label",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__1.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__3.label"
+        }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "select",
+      "id": "head_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.all.colors.accent_3.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "Heading section color"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.featured-collection.settings.products_to_show.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.featured-collection.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_slider",
+      "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_vendor.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header_mobile.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": true,
+      "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown with products"
+    }
+  ]
+}
+{% endschema %}

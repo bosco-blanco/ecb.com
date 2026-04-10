@@ -1,0 +1,136 @@
+.cdownright_inner a.countbtn {
+    z-index: 0;
+}
+.countdbar {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.wbcountimg{
+    width: 60%;
+}
+.cdownright_inner a.medium-btn {
+    font-size: calc(var(--font-body-scale) * 20px);
+    min-width: 300px;
+    padding: 18px 15px;
+} 
+.cdownright_inner a.countbtn {
+    margin-top: 50px;
+}
+.cdownright_inner{
+    border: 1px solid rgba(var(--color-foreground),.1);
+    padding: 30px 15px;
+    background: rgb(var(--color-background));
+    position: relative;
+    margin-left: -100px;
+    border-radius: var(--custom-radius);
+}
+.cdownright_inner .heading{
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.cdownright_inner .img_subdesc p{
+    font-size: calc(var(--font-body-scale) * 24px);
+    color: rgba(var(--color-foreground));
+    margin-bottom: 30px;
+    font-weight: var(--font-body-weight-medium);
+    text-transform: capitalize;
+}
+.wb_product_countdown .time {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid rgba(var(--color-foreground),.1);
+    min-width: 80px;
+    min-height: 80px;
+    padding: 10px 4px;
+    margin: 0 5px;
+    text-align: center;
+}
+.wb_product_countdown .time span{
+    display: block;
+}
+.wb_product_countdown .count {
+    font-size: calc(var(--font-body-scale) * 24px);
+    font-weight: var(--font-body-weight-medium);
+}
+.wb_product_countdown .time .label {
+    font-size: calc(var(--font-body-scale) * 12px);
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .cdownright_inner a.medium-btn {
+        min-width: auto;
+        margin-top: 30px;
+        padding: 12px 15px;
+        font-size: calc(var(--font-body-scale) * 16px);
+    }
+    .cdownright_inner a.countbtn {
+        margin-top: 30px;
+    }
+    .cdownright_inner .img_subdesc p {
+        font-size: calc(var(--font-body-scale) * 18px);
+        margin-bottom: 20px; 
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .cdownright_inner a.medium-btn {
+        font-size: calc(var(--font-body-scale) * 14px);
+        min-width: auto;
+        margin-top: 20px;
+        padding: 10px 15px;
+    }
+    .cdownright_inner a.countbtn {
+        margin-top: 20px;
+    }
+    .cdownright_inner{
+        padding: 15px;
+    }
+    .cdownright_inner .img_subdesc p {
+        font-size: calc(var(--font-body-scale) * 16px);
+        margin-bottom: 15px;
+    }
+    .wb_product_countdown .time {
+        min-width: 60px;
+        min-height: 65px;
+        padding: 8px 4px;
+    }
+    .wb_product_countdown .count {
+        font-size: calc(var(--font-body-scale) * 18px);
+    }
+}
+@media (max-width: 767px) { 
+    .cdownright_inner{
+        padding: 15px;
+    }
+    .cdownright_inner .img_subdesc p {
+        font-size: calc(var(--font-body-scale) * 14px);
+        margin-bottom: 15px;
+    }
+    .cdownright_inner a.countbtn {
+        font-size: calc(var(--font-body-scale) * 14px);
+        min-width: auto;
+        padding: 10px 10px;
+        margin-top: 10px;
+        min-height: 40px;
+        min-width: 120px;
+    }
+    .wb_product_countdown{ 
+        margin-bottom: 10px;
+    }
+    .wb_product_countdown .time {
+        min-width: 48px;
+        min-height: 50px;
+        padding: 5px 4px;
+        margin: 0 3px;
+    }
+    .wb_product_countdown .count {
+        font-size: calc(var(--font-body-scale) * 14px);
+    }
+}
+@media (max-width: 575px){
+    .countdbar{
+        display: block;
+    }
+    .cdownright_inner{
+        margin-left: 0;
+    }
+}

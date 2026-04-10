@@ -1,0 +1,255 @@
+<div class="section-{{ section.id }}-padding">
+  <div class="marquee color-{{ section.settings.color_scheme }} marquee_inner-{{ section.id }} gradient">
+    {%- for i in (1..20) -%}
+      <div class="marquee-child marquee_inner-{{ section.id }} {% if section.settings.marq_diection == 'left_right' %} left_right {% else %} right_left {% endif %}" >
+        <p>{{ section.settings.wb_marktext }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div> 
+{%- style -%}
+.marquee.marquee_inner-{{ section.id }} {
+  padding-top: {{ section.settings.text_padding_top }}px;
+  padding-bottom: {{ section.settings.text_padding_bottom }}px;
+}
+.marquee .marquee_inner-{{ section.id }}.marquee-child{
+  padding: 0 {{ section.settings.mark_space }}px;
+}
+.marquee_inner-{{ section.id }} p {
+    color: rgba(var(--color-foreground));
+    font-size: {{ section.settings.font_size }}px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee_inner-{{ section.id }}.left_right {
+    animation: translateLeft {{ section.settings.mark_speed }}s linear infinite;
+  }
+  .marquee_inner-{{ section.id }}.right_left {
+    animation: translateRight {{ section.settings.mark_speed }}s linear infinite;
+  }
+}
+
+@keyframes translateLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(calc(100% * 1));
+  }
+}
+@keyframes translateRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(calc(-100% * 1));
+  }
+}
+
+{% if section.settings.seprater == 'dots' %}
+  .marquee_inner-{{ section.id }} .marquee-child::after {
+    content: "\A";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(var(--color-foreground));
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    left: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+{% elsif section.settings.seprater == 'pipe' %}
+  .marquee_inner-{{ section.id }} .marquee-child::after {
+    content: "";
+    display: inline-block;
+    margin: 0;
+    width: auto;
+    height: 100%;
+    position: relative;
+    border-right: 1px solid rgba(var(--color-foreground));
+    position: absolute;
+    right: 0;
+  }
+{% endif %}
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+    .marquee_inner-{{ section.id }} p {
+      font-size: {{ section.settings.font_size | times: 0.87 | round: 0 }}px;
+    } 
+}
+{%- endstyle -%}
+{% schema %}
+{
+  "name": "Scrolling bar",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "wb_marktext",
+      "label": "Heading",
+      "default": "Add promotional text here",
+      "info": "t:sections.slideshow.blocks.slide.settings.heading.info"
+    },
+    {
+      "type": "range",
+      "id": "mark_space",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between items",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mark_speed",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "s",
+      "label": "Speed",
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "marq_diection",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "left_right",
+          "label": "Left to right"
+        },
+        {
+          "value": "right_left",
+          "label": "Right to left"
+        }
+      ],
+      "default": "right_left"
+    },
+    {
+      "type": "select",
+      "id": "seprater",
+      "label": "Seprater between text",
+      "options": [
+        {
+          "value": "dots",
+          "label": "Dot"
+        },
+        {
+          "value": "pipe",
+          "label": "Pipe"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "dots"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "select", 
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "accent-3",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "accent-1",
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "Section inner padding"
+    },
+    {
+      "type": "range",
+      "id": "text_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling bar"
+    }
+  ]
+}
+{% endschema %}

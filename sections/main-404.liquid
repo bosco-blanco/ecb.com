@@ -1,0 +1,34 @@
+{%- style -%} 
+@media (max-width: 575px){
+    .wp_grup_button .first_button{
+        margin-bottom: 10px;
+    }
+    .wp_grup_button .button--primary{
+      max-width: 200px;
+    }
+    .wp_grup_button{   
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+{%- endstyle -%}
+<div class="template-404 wb_notfound_main page-width page-margin center">
+  <span class="wp_text">
+    {{ 'templates.404.subtext' | t }}
+  </span>
+  <h1 class="title">
+    {{ 'templates.404.title' | t }}
+  </h1>
+  <p>
+    {{ 'templates.404.description' | t }}
+  </p>
+  <div class="wp_grup_button">
+    <a href="{{ routes.all_products_collection_url }}" class="first_button button button--primary">
+      {{ 'general.continue_shopping' | t }}
+    </a>
+    <a href="{{ routes.root_url }}" class="button button--primary">
+      {{ 'general.back_home' | t }}
+    </a>
+  </div>
+</div>

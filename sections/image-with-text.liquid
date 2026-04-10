@@ -1,0 +1,384 @@
+{{ 'image-with-text.css' | asset_url | stylesheet_tag }}
+<div class="wbimg_txt section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} {{ section.id }} gradient">
+    <div class="page-width">
+    <div class="wbimg_txt_flex {{ section.settings.image_position }} {{ section.settings.imgalign }}">
+        <div class="wbimgtxt_left">
+            <div class="wbimg_txtimg">
+                <div class="{% if section.settings.image == blank %} wbimgblank_adapt {% endif %} image-with-text__media media--{{ section.settings.image_height }} color-{{ section.settings.color_scheme }} gradient global-media-settings media" {% if section.settings.image_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"{% endif %}> 
+                    {% if section.settings.image != blank %}
+                      {%- capture sizes -%}
+                        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                        (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                      {%- endcapture -%}
+                      {{
+                        section.settings.image
+                        | image_url: width: 1500
+                        | image_tag: loading: 'lazy', sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+                      }}
+                    {% else %}
+                        <div class="dummysvg">{{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="wbimgtxt_right">
+            {% if section.blocks.size > 0 %}
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {%- when 'heading' -%}
+                        <h2 class="inline-richtext {{ block.settings.heading_size }}">{{ block.settings.storytitle }}</h2>
+
+                        {%- when 'caption' -%}
+                        <div class="img_subdesc">{{ block.settings.storysubtitle }}</div>
+
+                        {%- when 'button' -%}
+                        {% if block.settings.btntxt != blank %}
+                            <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}" {% endif %} class="wbimgtxtbtn {% if block.settings.button_style == 'link' %}link underlined-link{% elsif block.settings.button_style == 'solid' %}button button--primary{% else %}button button--secondary{% endif %} {{ block.settings.button_size }}"><span>{{ block.settings.btntxt }}</span>{% render 'icon-arrow' %}</a>
+                        {% endif %}
+
+                    {%- endcase -%}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+{%- style -%}
+.{{ section.id }}.wbimg_txt .wbimgtxt_left{
+    width: {{ section.settings.image_width }};
+}
+.{{ section.id }} .wbimgtxt_right{
+    text-align: {{ section.settings.Horizontal_alignment }};
+}
+@media (max-width: 575px){
+    .{{ section.id }} .wbimgtxt_right{
+        text-align: {{ section.settings.mobile_alignment }};
+    }   
+}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+{% schema %}
+    {
+    "name": "Image with text",
+    "class": "spaced-section",
+    "disabled_on": {
+      "groups": ["header", "footer", "custom.overlay"]
+    },
+        "settings": [
+            {
+                "type": "select",
+                "id": "color_scheme",
+                "options": [
+                  {
+                    "value": "accent-1",
+                    "label": "t:sections.image-with-text.settings.color_scheme.options__1.label"
+                  },
+                  {
+                    "value": "accent-2",
+                    "label": "t:sections.image-with-text.settings.color_scheme.options__2.label"
+                  },
+                  {
+                    "value": "accent-3",
+                    "label": "t:sections.image-with-text.settings.color_scheme.options__3.label"
+                  },
+                  {
+                    "value": "background-1",
+                    "label": "t:sections.image-with-text.settings.color_scheme.options__4.label"
+                  },
+                  {
+                    "value": "background-2",
+                    "label": "t:sections.image-with-text.settings.color_scheme.options__5.label"
+                  }
+                ],
+                "default": "background-1",
+                "label": "t:sections.image-with-text.settings.color_scheme.label"
+              },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "select",
+                "id": "image_width",
+                "options": [
+                  {
+                    "value": "25%",
+                    "label": "25%"
+                  },
+                  {
+                    "value": "50%",
+                    "label": "50%"
+                  },
+                  {
+                    "value": "65%",
+                    "label": "65%"
+                  },
+                  {
+                    "value": "100%",
+                    "label": "100%"
+                  }
+                ],
+                "default": "50%",
+                "label": "Desktop image width"
+            },
+            {
+                "type": "select",
+                "id": "image_position",
+                "options": [
+                  {
+                    "value": "imgpleft",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "imgpright",
+                    "label": "Right"
+                  }
+                ],
+                "default": "imgpleft",
+                "label": "Desktop image position"
+            },
+            {
+                "type": "select",
+                "id": "imgalign",
+                "options": [
+                  {
+                    "value": "imgaligntop",
+                    "label": "Top"
+                  },
+                  {
+                    "value": "imgalignmiddle",
+                    "label": "Middle"
+                  },
+                  {
+                    "value": "imgalignbtm",
+                    "label": "Bottom"
+                  }
+                ],
+                "default": "imgalignmiddle",
+                "label": "Vertical alignment on desktop"
+            },
+            {
+                "type": "select",
+                "id": "image_height",
+                "options": [
+                  {
+                    "value": "adapt",
+                    "label": "Adapt to image"
+                  },
+                  {
+                    "value": "small",
+                    "label": "Small"
+                  },
+                  {
+                    "value": "medium",
+                    "label": "Medium"
+                  },
+                  {
+                    "value": "large",
+                    "label": "Large"
+                  }
+                ],
+                "default": "adapt",
+                "label": "t:sections.featured-collection.settings.image_ratio.label"
+            },
+            {
+              "type": "select",
+              "id": "Horizontal_alignment",
+              "label": "Desktop alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            },
+            {
+              "type": "select",
+              "id": "mobile_alignment",
+              "label": "Mobile alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            },
+
+            {
+              "type": "header",
+              "content": "t:sections.all.padding.section_padding_heading"
+            },
+            {
+              "type": "range",
+              "id": "padding_top",
+              "min": 0,
+              "max": 100,
+              "step": 4,
+              "unit": "px",
+              "label": "t:sections.all.padding.padding_top",
+              "default": 60
+            },
+            {
+              "type": "range",
+              "id": "padding_bottom",
+              "min": 0,
+              "max": 100,
+              "step": 4,
+              "unit": "px",
+              "label": "t:sections.all.padding.padding_bottom",
+              "default": 0
+            }
+        ],
+        "blocks": [
+            {
+              "type": "heading",
+              "name": "t:sections.image-with-text.blocks.heading.name",
+              "limit": 1,
+              "settings": [
+                {
+                  "type": "inline_richtext",
+                  "id": "storytitle",
+                  "default": "Image with text",
+                  "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
+                },
+                {
+                    "type": "select",
+                    "id": "heading_size",
+                    "options": [
+                      {
+                        "value": "h2",
+                        "label": "t:sections.all.heading_size.options__1.label"
+                      },
+                      {
+                        "value": "h1",
+                        "label": "t:sections.all.heading_size.options__2.label"
+                      },
+                      {
+                        "value": "h0",
+                        "label": "t:sections.all.heading_size.options__3.label"
+                      }
+                    ],
+                    "default": "h0",
+                    "label": "t:sections.all.heading_size.label"
+                  }
+              ]
+            },
+            {
+              "type": "caption",
+              "name": "t:sections.image-with-text.blocks.caption.name",
+              "limit": 2,
+              "settings": [
+                {
+                  "type": "richtext",
+                  "id": "storysubtitle",
+                  "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+                  "label": "t:sections.image-with-text.blocks.caption.settings.text.label"
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "name": "t:sections.image-with-text.blocks.button.name",
+              "limit": 1,
+              "settings": [
+                {
+                  "type": "text",
+                  "id": "btntxt",
+                  "default": "Button label",
+                  "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+                  "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+                },
+                {
+                  "type": "url",
+                  "id": "link",
+                  "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+                },
+                {
+                  "type": "select",
+                  "id": "button_style",
+                  "label": "t:sections.slideshow.blocks.slide.settings.button_style.label",
+                  "options": [
+                    {
+                      "value": "link",
+                      "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__1.label"
+                    },
+                    {
+                      "value": "outline",
+                      "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__2.label"
+                    },
+                    {
+                      "value": "solid",
+                      "label": "t:sections.slideshow.blocks.slide.settings.button_style.options__3.label"
+                    }
+                  ],
+                  "default": "outline"
+                },
+                {
+                  "type": "select",
+                  "id": "button_size",
+                  "options": [
+                    {
+                      "value": "bs_default",
+                      "label": "Default"
+                    },
+                    {
+                      "value": "bs_medium",
+                      "label": "Medium"
+                    },
+                    {
+                      "value": "bs_large",
+                      "label": "Large"
+                    }
+                  ],
+                  "default": "bs_large",
+                  "label": "Desktop button size"
+                }
+              ]
+            }
+        ],
+        "presets": [
+            {
+              "name": "Image with text",
+              "blocks": [
+                {
+                  "type": "heading"
+                },
+                {
+                  "type": "caption"
+                },
+                {
+                  "type": "button"
+                }
+              ]
+            }
+        ]
+    }
+{% endschema %}
