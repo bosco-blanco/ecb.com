@@ -1,0 +1,60 @@
+{%- comment -%}
+  WebSite and Organization schema for the homepage.
+  Enables sitelinks search box in Google and improves brand visibility.
+{%- endcomment -%}
+
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "En Copa de Balón",
+  "alternateName": "ECDB",
+  "url": "https://www.encopadebalon.com",
+  "description": "Vinoteca online y tiendas en Madrid. Más de 1.500 vinos, destilados y productos gourmet seleccionados por sumilleres expertos.",
+  "inLanguage": "es",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.encopadebalon.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "En Copa de Balón",
+  "legalName": "En Copa de Balón S.L.",
+  "url": "https://www.encopadebalon.com",
+  "logo": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+  "description": "Vinoteca con más de 30 años de experiencia. Tiendas en Madrid: Salamanca, Aravaca, La Moraleja y Pozuelo. Más de 1.500 referencias seleccionadas por sumilleres.",
+  "foundingDate": "1994",
+  "areaServed": {
+    "@type": "Country",
+    "name": "España"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle de Lagasca, 62",
+    "addressLocality": "Madrid",
+    "addressRegion": "Comunidad de Madrid",
+    "postalCode": "28001",
+    "addressCountry": "ES"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+34 672 31 08 43",
+    "contactType": "customer service",
+    "availableLanguage": "Spanish"
+  },
+  "sameAs": [
+    "https://www.instagram.com/encopadebalon_/"
+  ]
+}
+</script>
+{%- endif -%}

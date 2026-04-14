@@ -1,28 +1,36 @@
 {%- comment -%}
   Trust badges para la pagina de producto.
-  Se muestra junto/debajo del boton Add to Cart.
+  Mejora la confianza del usuario y reduce el abandono de carrito.
 
   Uso:
   {% render 'trust-badges' %}
 {%- endcomment -%}
 
-<div class="trust-badges" style="margin:16px 0;padding:12px 0;border-top:1px solid #eee;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d5a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="m16 8 4 2v6a2 2 0 0 1-2 2H6"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      <span><strong>Envio seguro</strong><br>Embalaje reforzado</span>
+<div class="trust-badges" style="margin:16px 0;padding:16px;background:#f8f5f0;border-radius:10px;border:1px solid #e5dfd4;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#555;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#3d5a3c;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="m16 8 4 2v6a2 2 0 0 1-2 2H6"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <span><strong style="color:#333;">Envío gratis +130€</strong><br>Embalaje reforzado</span>
     </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d5a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span><strong>Pago 100% seguro</strong><br>SSL encriptado</span>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#555;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#3d5a3c;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span><strong style="color:#333;">Pago 100% seguro</strong><br>SSL encriptado</span>
     </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d5a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
-      <span><strong>Control de temperatura</strong><br>Cadena de frio</span>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#555;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#3d5a3c;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+      </div>
+      <span><strong style="color:#333;">Control temperatura</strong><br>Cadena de frío</span>
     </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3d5a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-      <span><strong>+30 anos de experiencia</strong><br>Sumilleres expertos</span>
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#555;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#3d5a3c;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <span><strong style="color:#333;">+30 años experiencia</strong><br>Sumilleres expertos</span>
     </div>
   </div>
 </div>

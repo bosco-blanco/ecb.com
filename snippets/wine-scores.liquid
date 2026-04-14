@@ -23,6 +23,14 @@
   assign penin = product.metafields.custom.puntos_penin
   assign suckling = product.metafields.custom.puntos_suckling
   assign spectator = product.metafields.custom.puntos_wine_spectator
+  assign parker2 = product.metafields.custom.puntos_robert_parker
+  assign penin2 = product.metafields.custom.puntos_guia_pe_in
+  if parker == blank and parker2 != blank
+    assign parker = parker2
+  endif
+  if penin == blank and penin2 != blank
+    assign penin = penin2
+  endif
   assign has_scores = false
   if parker != blank or penin != blank or suckling != blank or spectator != blank
     assign has_scores = true
@@ -30,42 +38,43 @@
 -%}
 
 {%- if has_scores -%}
-  <div class="wine-scores" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+  <div class="wine-scores" style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;padding:12px 0;border-top:1px solid #eee;">
+    <span style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.08em;width:100%;margin-bottom:2px;">Puntuaciones</span>
     {%- if parker != blank -%}
-      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
-        <span style="font-weight:700;color:#8a1538;font-size:16px;">{{ parker }}</span>
+      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#faf7f4,#f0ebe4);border:1px solid #d4c9b8;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <span style="font-weight:800;color:#8a1538;font-size:20px;line-height:1;">{{ parker }}</span>
         <span style="color:#666;line-height:1.2;">
-          <span style="font-weight:600;display:block;">Parker</span>
+          <span style="font-weight:700;display:block;color:#444;">R. Parker</span>
           <span style="font-size:10px;">puntos</span>
         </span>
       </div>
     {%- endif -%}
 
     {%- if penin != blank -%}
-      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
-        <span style="font-weight:700;color:#1a5276;font-size:16px;">{{ penin }}</span>
+      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#faf7f4,#f0ebe4);border:1px solid #d4c9b8;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <span style="font-weight:800;color:#1a5276;font-size:20px;line-height:1;">{{ penin }}</span>
         <span style="color:#666;line-height:1.2;">
-          <span style="font-weight:600;display:block;">Penin</span>
+          <span style="font-weight:700;display:block;color:#444;">G. Peñín</span>
           <span style="font-size:10px;">puntos</span>
         </span>
       </div>
     {%- endif -%}
 
     {%- if suckling != blank -%}
-      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
-        <span style="font-weight:700;color:#b7950b;font-size:16px;">{{ suckling }}</span>
+      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#faf7f4,#f0ebe4);border:1px solid #d4c9b8;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <span style="font-weight:800;color:#b7950b;font-size:20px;line-height:1;">{{ suckling }}</span>
         <span style="color:#666;line-height:1.2;">
-          <span style="font-weight:600;display:block;">Suckling</span>
+          <span style="font-weight:700;display:block;color:#444;">Suckling</span>
           <span style="font-size:10px;">puntos</span>
         </span>
       </div>
     {%- endif -%}
 
     {%- if spectator != blank -%}
-      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
-        <span style="font-weight:700;color:#2e4053;font-size:16px;">{{ spectator }}</span>
+      <div class="wine-score-badge" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#faf7f4,#f0ebe4);border:1px solid #d4c9b8;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <span style="font-weight:800;color:#2e4053;font-size:20px;line-height:1;">{{ spectator }}</span>
         <span style="color:#666;line-height:1.2;">
-          <span style="font-weight:600;display:block;">W. Spectator</span>
+          <span style="font-weight:700;display:block;color:#444;">W. Spectator</span>
           <span style="font-size:10px;">puntos</span>
         </span>
       </div>

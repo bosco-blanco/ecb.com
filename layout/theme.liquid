@@ -18,6 +18,9 @@
     {%- endif -%}
 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://monorail-edge.shopifysvc.com" crossorigin>
+    <link rel="dns-prefetch" href="https://monorail-edge.shopifysvc.com">
     <meta name="theme-color" content="{{ settings.colors_text }}">
 
     {%- if settings.favicon != blank -%}
@@ -43,6 +46,7 @@
 
     {% render 'meta-tags' %}
     {% render 'product-seo-meta' %}
+    {% render 'seo-geo-product', product: product %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -344,17 +348,9 @@
     {% if template == 'index' or template contains 'page' %}
         <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <script src="{{ 'jquery.js' | asset_url }}"></script>
-    <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" async></script>
-    <script src="{{ 'wbquickview.js' | asset_url }}" async></script>
-    
-    {% comment %}
-    <script>
-        window.lazySizesConfig = window.lazySizesConfig || {};
-        window.lazySizesConfig.expand = 10;
-    </script>
-    <script src="{{ 'lazysizes.js' | asset_url }}"></script>
-    {% endcomment %}
+    <script src="{{ 'jquery.js' | asset_url }}" defer></script>
+    <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" defer></script>
+    <script src="{{ 'wbquickview.js' | asset_url }}" defer></script>
   
  <!--begin-boost-pfs-js-->
    
@@ -362,6 +358,10 @@
 
 
 
+
+{% render 'mobile-ux-enhancements' %}
+{% render 'schema-stores' %}
+{% render 'schema-website' %}
 
 <!-- PF EDT START -->
 <script type='text/javascript'>

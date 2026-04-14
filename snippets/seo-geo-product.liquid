@@ -1,0 +1,194 @@
+{%- comment -%}
+  SEO GEO optimization for product pages.
+  Adds geographic structured data, local business availability,
+  and geo-targeted meta tags for better local search visibility.
+
+  Usage: {% render 'seo-geo-product', product: product %}
+{%- endcomment -%}
+
+{%- if request.page_type == 'product' -%}
+
+  {%- comment -%} GEO meta tags for local search {%- endcomment -%}
+  <meta name="geo.region" content="ES-MD">
+  <meta name="geo.placename" content="Madrid">
+  <meta name="geo.position" content="40.4290;-3.6810">
+  <meta name="ICBM" content="40.4290, -3.6810">
+
+  {%- comment -%} Enhanced product structured data with local availability {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": "{{ shop.url }}{{ product.url }}",
+    "description": {{ product.description | strip_html | truncate: 500 | json }},
+    {%- if product.featured_image -%}
+    "image": "https:{{ product.featured_image | image_url: width: 1200 }}",
+    {%- endif -%}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | json }}
+    },
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- if product.metafields.custom.tipo_de_vino -%}
+    "category": {{ product.metafields.custom.tipo_de_vino.value | json }},
+    {%- endif -%}
+    {%- if product.metafields.custom.denominaci_n_de_origen -%}
+    "countryOfOrigin": {
+      "@type": "Country",
+      "name": "España"
+    },
+    {%- endif -%}
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": {{ product.price_min | divided_by: 100.0 | json }},
+      "highPrice": {{ product.price_max | divided_by: 100.0 | json }},
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+      "seller": {
+        "@type": "Organization",
+        "name": "En Copa de Balón",
+        "url": "https://www.encopadebalon.com"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "ES"
+        },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "EUR"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "ES",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "availableAtOrFrom": [
+        {
+          "@type": "Place",
+          "name": "En Copa de Balón - Salamanca",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle de Lagasca, 62",
+            "addressLocality": "Madrid",
+            "addressRegion": "Comunidad de Madrid",
+            "postalCode": "28001",
+            "addressCountry": "ES"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "En Copa de Balón - Aravaca",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Madrid",
+            "addressRegion": "Comunidad de Madrid",
+            "postalCode": "28023",
+            "addressCountry": "ES"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "En Copa de Balón - La Moraleja",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Alcobendas",
+            "addressRegion": "Comunidad de Madrid",
+            "postalCode": "28109",
+            "addressCountry": "ES"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "En Copa de Balón - Pozuelo",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pozuelo de Alarcón",
+            "addressRegion": "Comunidad de Madrid",
+            "postalCode": "28223",
+            "addressCountry": "ES"
+          }
+        }
+      ]
+    }
+    {%- if product.metafields.custom.denominaci_n_de_origen -%}
+    ,"additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Denominación de Origen",
+        "value": {{ product.metafields.custom.denominaci_n_de_origen.value | json }}
+      }
+      {%- if product.metafields.custom.tipo_de_uva -%}
+      ,{
+        "@type": "PropertyValue",
+        "name": "Variedad de Uva",
+        "value": {{ product.metafields.custom.tipo_de_uva.value | json }}
+      }
+      {%- endif -%}
+      {%- if product.metafields.custom.envejecimiento -%}
+      ,{
+        "@type": "PropertyValue",
+        "name": "Crianza",
+        "value": {{ product.metafields.custom.envejecimiento.value | json }}
+      }
+      {%- endif -%}
+    ]
+    {%- endif -%}
+  }
+  </script>
+
+  {%- comment -%} Collection page geo schema {%- endcomment -%}
+{%- elsif request.page_type == 'collection' -%}
+  <meta name="geo.region" content="ES-MD">
+  <meta name="geo.placename" content="Madrid">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": {{ collection.title | json }},
+    "description": {{ collection.description | strip_html | default: collection.title | json }},
+    "url": "{{ shop.url }}{{ collection.url }}",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "En Copa de Balón",
+      "url": "https://www.encopadebalon.com"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": {{ collection.title | json }}
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "En Copa de Balón",
+      "url": "https://www.encopadebalon.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "España"
+      }
+    }
+  }
+  </script>
+{%- endif -%}

@@ -1,19 +1,19 @@
 {%- comment -%}
-  Auto-generates enriched meta descriptions for products using metafields.
-  Improves SEO and GEO visibility by providing structured, keyword-rich descriptions.
+  Auto-generates enriched, geo-targeted meta descriptions for all page types.
+  Improves SEO, GEO visibility, and conversion with keyword-rich descriptions.
 {%- endcomment -%}
 
 {%- if request.page_type == 'product' -%}
   {%- capture enhanced_description -%}
-    {{ product.title }}
+    Comprar {{ product.title }}
     {%- if product.metafields.custom.tipo_de_vino %} - {{ product.metafields.custom.tipo_de_vino.value }}{%- endif -%}
-    {%- if product.metafields.custom.denominaci_n_de_origen %} de {{ product.metafields.custom.denominaci_n_de_origen.value }}{%- endif -%}
-    {%- if product.vendor %} de {{ product.vendor }}{%- endif -%}
-    {%- if product.metafields.custom.tipo_de_uva %}. Uva: {{ product.metafields.custom.tipo_de_uva.value }}{%- endif -%}
-    {%- if product.metafields.custom.envejecimiento %}. {{ product.metafields.custom.envejecimiento.value }}{%- endif -%}
-    {%- if product.metafields.custom.puntos_guia_pe_in %}. Peñín: {{ product.metafields.custom.puntos_guia_pe_in.value }}{%- endif -%}
-    {%- if product.metafields.custom.puntos_robert_parker %}. Parker: {{ product.metafields.custom.puntos_robert_parker.value }}{%- endif -%}
-    . Desde {{ product.price | money }}. Envío gratis a partir de 130€.
+    {%- if product.metafields.custom.denominaci_n_de_origen %} D.O. {{ product.metafields.custom.denominaci_n_de_origen.value }}{%- endif -%}
+    {%- if product.vendor %} | {{ product.vendor }}{%- endif -%}
+    {%- if product.metafields.custom.tipo_de_uva %}. {{ product.metafields.custom.tipo_de_uva.value }}{%- endif -%}
+    {%- if product.metafields.custom.envejecimiento %}, {{ product.metafields.custom.envejecimiento.value }}{%- endif -%}
+    {%- if product.metafields.custom.puntos_guia_pe_in %}. Peñín {{ product.metafields.custom.puntos_guia_pe_in.value }}pts{%- endif -%}
+    {%- if product.metafields.custom.puntos_robert_parker %}. Parker {{ product.metafields.custom.puntos_robert_parker.value }}pts{%- endif -%}
+    . {{ product.price | money }}. Envío gratis +130€. Vinoteca en Madrid.
   {%- endcapture -%}
   {%- assign enhanced_description = enhanced_description | strip | truncate: 160 -%}
 
@@ -21,5 +21,21 @@
     <meta name="description" content="{{ enhanced_description | escape }}">
     <meta property="og:description" content="{{ enhanced_description | escape }}">
     <meta name="twitter:description" content="{{ enhanced_description | escape }}">
+  {%- endunless -%}
+
+{%- elsif request.page_type == 'collection' -%}
+  {%- capture collection_desc -%}
+    {{ collection.title }} - Selección de {{ collection.products_count }} vinos y productos gourmet. Compra online en En Copa de Balón, vinoteca en Madrid con +1.500 referencias. Envío gratis +130€.
+  {%- endcapture -%}
+  {%- assign collection_desc = collection_desc | strip | truncate: 160 -%}
+
+  {%- unless page_description and page_description != blank -%}
+    <meta name="description" content="{{ collection_desc | escape }}">
+    <meta property="og:description" content="{{ collection_desc | escape }}">
+  {%- endunless -%}
+
+{%- elsif request.page_type == 'index' -%}
+  {%- unless page_description and page_description != blank -%}
+    <meta name="description" content="En Copa de Balón - Vinoteca online y tiendas en Madrid. +1.500 vinos, destilados y productos gourmet seleccionados por sumilleres. Envío gratis a partir de 130€. Tiendas en Salamanca, Aravaca, La Moraleja y Pozuelo.">
   {%- endunless -%}
 {%- endif -%}

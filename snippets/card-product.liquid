@@ -262,8 +262,11 @@
         <a href="{{ card_product.url | default: '#' }}">{{ card_product.title | escape }}</a>
       </h3>
 
-      {% comment %} TODO: metafield {% endcomment %}
-      <span class="caption-large light">{{ block.settings.description | escape }}</span>
+      {%- if card_product.metafields.custom.denominaci_n_de_origen != blank -%}
+        <span class="caption-large light" style="font-size:11px;color:#888;display:block;margin-top:2px;">D.O. {{ card_product.metafields.custom.denominaci_n_de_origen.value }}</span>
+      {%- elsif card_product.vendor != blank and card_product.vendor != 'En Copa de Balón' -%}
+        <span class="caption-large light" style="font-size:11px;color:#888;display:block;margin-top:2px;">{{ card_product.vendor }}</span>
+      {%- endif -%}
 
       {%- if enable_listdesc and card_product.description != blank -%}
         <p class="wblistpdesc">
