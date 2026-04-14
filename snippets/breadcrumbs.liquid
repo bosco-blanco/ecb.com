@@ -11,7 +11,7 @@
 			{% if collection.url %}
 				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
 				{{ collection.title | link_to: collection.url }}
-			{% endif %} 
+			{% endif %}
 			<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
 			<span>{{ product.title }}</span>
 			{% elsif template contains 'collection' and collection.handle %}
@@ -45,5 +45,95 @@
 		</div>
 	</nav>
 </div>
+
+{%- liquid
+  assign breadcrumb_items = ''
+  assign position = 1
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": {{ 'wbcustomlabel.wballtext.home' | t | json }},
+      "item": "{{ shop.url }}"
+    }
+    {%- if template contains 'product' -%}
+      {%- if collection.url -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }},
+        "item": "{{ shop.url }}{{ collection.url }}"
+      }
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ product.title | json }}
+      }
+      {%- else -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ product.title | json }}
+      }
+      {%- endif -%}
+    {%- elsif template contains 'collection' and collection.handle -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }}
+        {%- if current_tags -%}
+          ,"item": "{{ shop.url }}/collections/{{ collection.handle }}"
+        {%- endif -%}
+      }
+      {%- if current_tags -%}
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ current_tags | join: " + " | json }}
+      }
+      {%- endif -%}
+    {%- elsif template == 'blog' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ blog.title | json }}
+        {%- if current_tags -%}
+          ,"item": "{{ shop.url }}{{ blog.url }}"
+        {%- endif -%}
+      }
+      {%- if current_tags -%}
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ current_tags | join: " + " | json }}
+      }
+      {%- endif -%}
+    {%- elsif template == 'article' -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ blog.title | json }},
+        "item": "{{ shop.url }}{{ blog.url }}"
+      }
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ article.title | json }}
+      }
+    {%- else -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ page_title | json }}
+      }
+    {%- endif -%}
+  ]
+}
+</script>
 {% endunless %}
 {% endunless %}
