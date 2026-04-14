@@ -216,13 +216,13 @@
         {% endif %}
 
         {% if settings.percentage == true %}
-          <span class="badge percent__badge-sale {% if price_difference_percent == null %}hidden{% endif %}">
+          <span class="badge percent__badge-sale {% unless compare_at_price > price and price_difference_percent != null and price_difference_percent > 0 %}hidden{% endunless %}">
             {{ price_difference_percent -}}
             {{- 'products.product.off_price' | t }}
           </span>
         {% endif %}
         {% if settings.diff_price == true %}
-          <span class="{% if settings.percentage == false %}save_top{% endif %} badge amount__badge-sale {% if price_difference_amount == null %}hidden{% endif %}">
+          <span class="{% if settings.percentage == false %}save_top{% endif %} badge amount__badge-sale {% unless compare_at_price > price and price_difference_amount != null %}hidden{% endunless %}">
             {{- 'products.product.save' | t -}}
             {{ price_difference_amount }}
           </span>

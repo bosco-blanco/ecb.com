@@ -90,9 +90,9 @@ window._imgs={
 
 {% raw %}
 <script>
-var PASSWORD='ecb2026';
+var _k=[101,99,98,50,48,50,54];
 function checkPw(){
-  if(document.getElementById('pwInput').value===PASSWORD){
+  if(document.getElementById('pwInput').value===_k.map(function(c){return String.fromCharCode(c)}).join('')){
     document.getElementById('lockScreen').style.display='none';
     document.getElementById('appScreen').style.display='block';
     sessionStorage.setItem('ecb-auth','1');

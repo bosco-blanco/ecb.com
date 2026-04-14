@@ -907,6 +907,9 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'wine-scores', product: product -%}
+                {%- render 'stock-urgency', product: product -%}
+                {%- render 'trust-badges' -%}
 
               {%- when 'complementary' -%}
                 {{ 'component-card.css' | asset_url | stylesheet_tag }}

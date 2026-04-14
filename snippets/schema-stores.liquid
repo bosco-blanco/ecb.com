@@ -1,0 +1,118 @@
+{%- comment -%}
+  Schema LocalBusiness para las tiendas fisicas de En Copa de Balon.
+  Complementa los 3 restaurantes ya definidos en header-group.json.
+
+  INSTRUCCIONES: Actualizar las direcciones, telefonos y coordenadas
+  con los datos reales de cada tienda. Estos son placeholders basados
+  en las ubicaciones conocidas del grupo ECDB en Madrid.
+{%- endcomment -%}
+
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balon - Tienda Salamanca",
+    "image": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+    "url": "https://www.encopadebalon.com/pages/tiendas",
+    "telephone": "+34 672 31 08 43",
+    "description": "Vinoteca con mas de 1.500 referencias seleccionadas por sumilleres. Vinos, destilados y alimentacion selecta en el barrio de Salamanca, Madrid.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Lagasca, 62",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28001",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.4290,
+      "longitude": -3.6810
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "10:00",
+        "closes": "14:30"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/encopadebalon_/"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balon - Tienda Aravaca",
+    "image": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+    "url": "https://www.encopadebalon.com/pages/tiendas",
+    "telephone": "+34 672 31 08 43",
+    "description": "Vinoteca en Aravaca con seleccion de vinos nacionales e internacionales, destilados premium y productos gourmet.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Aravaca, Madrid",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28023",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://www.instagram.com/encopadebalon_/"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balon - Tienda La Moraleja",
+    "image": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+    "url": "https://www.encopadebalon.com/pages/tiendas",
+    "telephone": "+34 672 31 08 43",
+    "description": "Vinoteca en La Moraleja. Vinos de autor, grandes reservas y alimentacion gourmet seleccionada por sumilleres.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "La Moraleja, Alcobendas",
+      "addressLocality": "Alcobendas",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28109",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://www.instagram.com/encopadebalon_/"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balon - Tienda Pozuelo",
+    "image": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+    "url": "https://www.encopadebalon.com/pages/tiendas",
+    "telephone": "+34 672 31 08 43",
+    "description": "Vinoteca en Pozuelo de Alarcon con mas de 1.500 referencias de vinos y destilados seleccionados.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Pozuelo de Alarcon",
+      "addressLocality": "Pozuelo de Alarcon",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28223",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://www.instagram.com/encopadebalon_/"
+    ]
+  }
+]
+</script>
+{%- endif -%}
