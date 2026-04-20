@@ -252,12 +252,12 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Article",
     "articleBody": {{ article.content | strip_html | json }},
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
+      "@id": {{ request.origin | append: article.url | json }}
     },
     "headline": {{ article.title | json }},
     {% if article.excerpt != blank %}
@@ -270,12 +270,19 @@
     {% endif %}
     "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
     "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "wordCount": {{ article.content | strip_html | split: ' ' | size | json }},
+    "articleSection": {{ blog.title | json }},
+    {% if article.tags.size > 0 %}
+      "keywords": {{ article.tags | join: ', ' | json }},
+    {% endif %}
     "author": {
       "@type": "Person",
       "name": {{ article.author | json }}
     },
     "publisher": {
       "@type": "Organization",
+      "url": {{ shop.url | json }},
       {% if settings.share_image %}
         "logo": {
           "@type": "ImageObject",

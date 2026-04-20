@@ -1,0 +1,25 @@
+{%- comment -%}
+  Auto-generates enriched meta descriptions for products using metafields.
+  Improves SEO and GEO visibility by providing structured, keyword-rich descriptions.
+{%- endcomment -%}
+
+{%- if request.page_type == 'product' -%}
+  {%- capture enhanced_description -%}
+    {{ product.title }}
+    {%- if product.metafields.custom.tipo_de_vino %} - {{ product.metafields.custom.tipo_de_vino.value }}{%- endif -%}
+    {%- if product.metafields.custom.denominaci_n_de_origen %} de {{ product.metafields.custom.denominaci_n_de_origen.value }}{%- endif -%}
+    {%- if product.vendor %} de {{ product.vendor }}{%- endif -%}
+    {%- if product.metafields.custom.tipo_de_uva %}. Uva: {{ product.metafields.custom.tipo_de_uva.value }}{%- endif -%}
+    {%- if product.metafields.custom.envejecimiento %}. {{ product.metafields.custom.envejecimiento.value }}{%- endif -%}
+    {%- if product.metafields.custom.puntos_guia_pe_in %}. Peñín: {{ product.metafields.custom.puntos_guia_pe_in.value }}{%- endif -%}
+    {%- if product.metafields.custom.puntos_robert_parker %}. Parker: {{ product.metafields.custom.puntos_robert_parker.value }}{%- endif -%}
+    . Desde {{ product.price | money }}. Envío gratis a partir de 130€.
+  {%- endcapture -%}
+  {%- assign enhanced_description = enhanced_description | strip | truncate: 160 -%}
+
+  {%- unless page_description and page_description != blank -%}
+    <meta name="description" content="{{ enhanced_description | escape }}">
+    <meta property="og:description" content="{{ enhanced_description | escape }}">
+    <meta name="twitter:description" content="{{ enhanced_description | escape }}">
+  {%- endunless -%}
+{%- endif -%}

@@ -62,7 +62,7 @@
     }
   }
 {%- endstyle -%}
-<div class="page-width section-{{ section.id }}-padding wbfaqpart">
+<div class="page-width section-{{ section.id }}-padding wbfaqpart" itemscope itemtype="https://schema.org/FAQPage">
     {%- if section.settings.title != blank -%}
       <h2 class="faqheading inline-richtext"><span>{{ section.settings.title }}</span></h2>
     {%- endif -%}
@@ -85,7 +85,7 @@
               <button type="button" class="collapsed toggle faqhead" aria-controls="FAQ-content-{{ block.id }}">
                 <span itemprop="name">{{ block.settings.title }}</span>
               </button>
-              <div id="FAQ-content-{{ block.id }}" class="collapse" itemscope itemprop="acceptAnswer" itemtype="https://schema.org/Answer">
+              <div id="FAQ-content-{{ block.id }}" class="collapse" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <div class="rte" itemprop="text">
                   {{ block.settings.text }}
                 </div>
