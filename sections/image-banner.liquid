@@ -1,3 +1,24 @@
+
+{%- comment -%} BEGIN ECB-HERO-OVERFLOW-FIX (Bloque 12) {%- endcomment -%}
+<style>
+  /* ECB-HERO-OVERFLOW-FIX */
+  #Banner-{{ section.id }} .banner__heading {
+    max-width: 90vw;
+    margin-inline: auto;
+    text-align: center;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  @media (min-width: 990px) {
+    #Banner-{{ section.id }} .banner__heading {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      line-height: 1.15;
+    }
+  }
+</style>
+{%- comment -%} END ECB-HERO-OVERFLOW-FIX {%- endcomment -%}
+
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
