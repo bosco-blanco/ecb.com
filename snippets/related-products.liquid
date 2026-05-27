@@ -19,9 +19,9 @@
 
 {%- liquid
   assign max_related = 6
-  assign bodega = product.metafields.custom.bodega.value | strip
-  assign do_val = product.metafields.custom.denominaci_n_de_origen.value | strip
-  assign uva = product.metafields.custom.tipo_de_uva.value | strip
+  assign bodega = product.metafields.custom.bodega.value | strip | downcase
+  assign do_val = product.metafields.custom.denominaci_n_de_origen.value | strip | downcase
+  assign uva = product.metafields.custom.tipo_de_uva.value | strip | downcase
   assign price_low = product.price | times: 0.75 | round
   assign price_high = product.price | times: 1.25 | round
 
@@ -31,13 +31,13 @@
   assign coll_broad = null
   for c in product.collections
     assign ct = c.title | strip | downcase
-    if bodega != blank and ct == bodega | downcase
+    if bodega != blank and ct == bodega
       assign coll_bodega = c
     endif
-    if do_val != blank and ct == do_val | downcase
+    if do_val != blank and ct == do_val
       assign coll_do = c
     endif
-    if uva != blank and ct == uva | downcase
+    if uva != blank and ct == uva
       assign coll_uva = c
     endif
     if c.handle == 'vinos' or c.handle == 'todos-los-productos'
@@ -97,7 +97,7 @@
   {%- endif -%}
 {%- endcapture -%}
 
-{%- if rendered > 0 -%}
+{%- if related_grid contains 'related-card' -%}
   <div class="related-products page-width">
     <h2 class="related-products__title">Si te gusta este vino, también te gustará...</h2>
     <div class="related-products__grid">
