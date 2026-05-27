@@ -1,0 +1,191 @@
+{%- comment -%}
+  Sticky Add-To-Cart bar for En Copa de Balón (mobile only).
+
+  Appears fixed at the bottom of the viewport on screens < 990px ONLY when the
+  main "Añadir a la cesta" button is scrolled out of view (IntersectionObserver).
+  Reuses the existing product-form AJAX add-to-cart by programmatically clicking
+  the main submit button, so cart behaviour stays identical.
+
+  Accepts:
+  - product: {Object} product object.
+  - section_id: {String} id of the main-product section (to target the right submit button).
+
+  Usage:
+  {% render 'sticky-atc', product: product, section_id: section.id %}
+{%- endcomment -%}
+
+{%- if product != blank -%}
+  {%- assign sticky_variant = product.selected_or_first_available_variant -%}
+  <div
+    class="ecb-sticky-atc"
+    id="EcbStickyAtc-{{ section_id }}"
+    data-section-id="{{ section_id }}"
+    aria-hidden="true"
+  >
+    <div class="ecb-sticky-atc__inner">
+      {%- if product.featured_image != blank -%}
+        <img
+          class="ecb-sticky-atc__img"
+          src="{{ product.featured_image | image_url: width: 96 }}"
+          alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+          width="48"
+          height="48"
+          loading="lazy"
+        >
+      {%- endif -%}
+      <div class="ecb-sticky-atc__meta">
+        <span class="ecb-sticky-atc__title">{{ product.title | escape }}</span>
+        <span class="ecb-sticky-atc__price" id="EcbStickyAtcPrice-{{ section_id }}">
+          {{ sticky_variant.price | money }}
+        </span>
+      </div>
+      <button
+        type="button"
+        class="ecb-sticky-atc__btn button button--primary"
+        id="EcbStickyAtcBtn-{{ section_id }}"
+        {% if sticky_variant.available == false %}disabled{% endif %}
+      >
+        {%- if sticky_variant.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </button>
+    </div>
+  </div>
+
+  {%- style -%}
+    .ecb-sticky-atc {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1001; /* above ecdb-mobile-nav (999) and chat widgets */
+      background: rgba(255, 255, 255, 0.98);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #e5dfd4;
+      box-shadow: 0 -2px 14px rgba(0, 0, 0, 0.1);
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+      transform: translateY(110%);
+      transition: transform 0.25s ease;
+    }
+    .ecb-sticky-atc.is-visible {
+      transform: translateY(0);
+    }
+    .ecb-sticky-atc__inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 100%;
+    }
+    .ecb-sticky-atc__img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex: 0 0 auto;
+    }
+    .ecb-sticky-atc__meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1 1 auto;
+      line-height: 1.2;
+    }
+    .ecb-sticky-atc__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #222;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ecb-sticky-atc__price {
+      font-size: 14px;
+      font-weight: 700;
+      color: #6b1d3a;
+    }
+    .ecb-sticky-atc__btn {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      padding: 10px 18px;
+      font-size: 14px;
+      margin: 0;
+    }
+    .ecb-sticky-atc__btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    /* Mobile only */
+    @media screen and (min-width: 990px) {
+      .ecb-sticky-atc { display: none !important; }
+    }
+    @media screen and (max-width: 989px) {
+      .ecb-sticky-atc { display: block; }
+    }
+  {%- endstyle -%}
+
+  <script>
+    (function () {
+      var sectionId = {{ section_id | json }};
+      var bar = document.getElementById('EcbStickyAtc-' + sectionId);
+      var stickyBtn = document.getElementById('EcbStickyAtcBtn-' + sectionId);
+      var stickyPrice = document.getElementById('EcbStickyAtcPrice-' + sectionId);
+      var mainBtn = document.getElementById('ProductSubmitButton-' + sectionId);
+      var mainPrice = document.getElementById('price-' + sectionId);
+      if (!bar || !stickyBtn || !mainBtn) return;
+
+      // Offset the bar above the mobile bottom nav if it is visible.
+      function applyOffset() {
+        var nav = document.querySelector('.ecdb-mobile-nav');
+        var offset = 0;
+        if (nav) {
+          var cs = window.getComputedStyle(nav);
+          if (cs.display !== 'none' && cs.visibility !== 'hidden') {
+            offset = nav.offsetHeight || 0;
+          }
+        }
+        bar.style.bottom = offset + 'px';
+      }
+      applyOffset();
+      window.addEventListener('resize', applyOffset);
+
+      // Show the sticky bar only when the main ATC button is out of viewport.
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              bar.classList.remove('is-visible');
+              bar.setAttribute('aria-hidden', 'true');
+            } else {
+              applyOffset();
+              bar.classList.add('is-visible');
+              bar.setAttribute('aria-hidden', 'false');
+            }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+        io.observe(mainBtn);
+      }
+
+      // The sticky button just triggers the real ATC button (same add-to-cart flow).
+      stickyBtn.addEventListener('click', function () {
+        mainBtn.click();
+      });
+
+      // Keep price + disabled state in sync with the main product form (variant changes).
+      function syncState() {
+        if (mainPrice && stickyPrice) {
+          stickyPrice.innerHTML = mainPrice.innerHTML;
+        }
+        stickyBtn.disabled = mainBtn.disabled;
+      }
+      var moTarget = mainBtn.closest('.product__info-container') || document;
+      if ('MutationObserver' in window) {
+        var mo = new MutationObserver(function () { syncState(); });
+        mo.observe(moTarget, { subtree: true, childList: true, attributes: true, attributeFilter: ['disabled', 'class'] });
+      }
+    })();
+  </script>
+{%- endif -%}
