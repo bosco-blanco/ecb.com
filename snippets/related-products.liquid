@@ -1,0 +1,174 @@
+{%- comment -%}
+  Contextual cross-sell for En Copa de Balón — "Si te gusta este vino, también te gustará…"
+
+  Selection priority (fills up to 6, falls through when fewer than 4 so far):
+    1. Same winery   (custom.bodega   -> collection whose title matches)
+    2. Same D.O.     (custom.denominaci_n_de_origen)
+    3. Same grape    (custom.tipo_de_uva)
+    4. Price ±25% of the current product (broad wine collection fallback)
+
+  Each ECB product belongs to a collection per bodega/D.O./uva, so we locate the
+  matching collection by title and pull its products — bounded and performant.
+
+  Accepts:
+  - product: {Object} current product object.
+
+  Usage:
+  {% render 'related-products', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign max_related = 6
+  assign bodega = product.metafields.custom.bodega.value | strip
+  assign do_val = product.metafields.custom.denominaci_n_de_origen.value | strip
+  assign uva = product.metafields.custom.tipo_de_uva.value | strip
+  assign price_low = product.price | times: 0.75 | round
+  assign price_high = product.price | times: 1.25 | round
+
+  assign coll_bodega = null
+  assign coll_do = null
+  assign coll_uva = null
+  assign coll_broad = null
+  for c in product.collections
+    assign ct = c.title | strip | downcase
+    if bodega != blank and ct == bodega | downcase
+      assign coll_bodega = c
+    endif
+    if do_val != blank and ct == do_val | downcase
+      assign coll_do = c
+    endif
+    if uva != blank and ct == uva | downcase
+      assign coll_uva = c
+    endif
+    if c.handle == 'vinos' or c.handle == 'todos-los-productos'
+      assign coll_broad = c
+    endif
+  endfor
+-%}
+
+{%- capture related_grid -%}
+  {%- assign seen = product.id | append: '|' -%}
+  {%- assign rendered = 0 -%}
+
+  {%- comment -%} Phase 1: same winery {%- endcomment -%}
+  {%- if coll_bodega -%}
+    {%- for p in coll_bodega.products limit: 12 -%}
+      {%- unless seen contains p.id or rendered >= max_related -%}
+        {%- render 'related-product-card', p: p -%}
+        {%- assign seen = seen | append: p.id | append: '|' -%}
+        {%- assign rendered = rendered | plus: 1 -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%} Phase 2: same D.O. {%- endcomment -%}
+  {%- if rendered < max_related and coll_do -%}
+    {%- for p in coll_do.products limit: 24 -%}
+      {%- unless seen contains p.id or rendered >= max_related -%}
+        {%- render 'related-product-card', p: p -%}
+        {%- assign seen = seen | append: p.id | append: '|' -%}
+        {%- assign rendered = rendered | plus: 1 -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%} Phase 3: same grape {%- endcomment -%}
+  {%- if rendered < max_related and coll_uva -%}
+    {%- for p in coll_uva.products limit: 24 -%}
+      {%- unless seen contains p.id or rendered >= max_related -%}
+        {%- render 'related-product-card', p: p -%}
+        {%- assign seen = seen | append: p.id | append: '|' -%}
+        {%- assign rendered = rendered | plus: 1 -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%} Phase 4: price ±25% from a broad wine collection {%- endcomment -%}
+  {%- if rendered < max_related and coll_broad -%}
+    {%- for p in coll_broad.products limit: 50 -%}
+      {%- unless seen contains p.id or rendered >= max_related -%}
+        {%- if p.price >= price_low and p.price <= price_high -%}
+          {%- render 'related-product-card', p: p -%}
+          {%- assign seen = seen | append: p.id | append: '|' -%}
+          {%- assign rendered = rendered | plus: 1 -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if rendered > 0 -%}
+  <div class="related-products page-width">
+    <h2 class="related-products__title">Si te gusta este vino, también te gustará...</h2>
+    <div class="related-products__grid">
+      {{ related_grid }}
+    </div>
+  </div>
+
+  {%- style -%}
+    .related-products {
+      margin: 40px auto;
+      padding-top: 24px;
+      border-top: 1px solid #e5dfd4;
+    }
+    .related-products__title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #3d5a3c;
+    }
+    .related-products__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media screen and (min-width: 990px) {
+      .related-products__grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .related-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .related-card__media {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #f0ede1;
+    }
+    .related-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .related-card:hover .related-card__img { transform: scale(1.04); }
+    .related-card__badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(61, 90, 60, 0.92);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .related-card__title {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .related-card__price {
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #6b1d3a;
+    }
+  {%- endstyle -%}
+{%- endif -%}
