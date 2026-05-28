@@ -53,7 +53,7 @@
     assign show_desktop_slider = true
   endif
 -%}
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- comment -%} product-form.js intentionally NOT re-loaded here: it is already loaded once by sections/main-product.liquid on the same page. A second load triggers a DOMException on customElements.define('product-form', ...) and breaks the entire product page. {%- endcomment -%}
 <div class="color-{{ section.settings.color_scheme }} isolate gradient wbcollfea slider-arrow--{{ section.settings.arrow_position }}">
   <div class="section-{{ section.id }}-padding">
     <product-recommendations
