@@ -24,8 +24,8 @@
         "slide_dbKTPx": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ginebra-Hendricks-1024x536.jpg",
-            "mobile_image": "shopify://shop_images/8827a0eec5ccbd1bad5e7444a18f47a3.jpg",
+            "image": "shopify:\/\/shop_images\/Ginebra-Hendricks-1024x536.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/8827a0eec5ccbd1bad5e7444a18f47a3.jpg",
             "hcaption": "",
             "heading": "La Ginebra Premium de Escocia",
             "button_h_upp": false,
@@ -33,7 +33,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "solid",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -76,7 +76,7 @@
         "caption_JAJWxy": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Desde el encantador pueblo de Givan en Escocia, llega Hendrick's, un producto artesanal que redefine la experiencia del gin. Con un aroma suave y un sabor cítrico complementado con notas de pimienta rosa, esta ginebra se destaca por su exquisitez y carácter único.</p><p><strong>Hendrick’s: La Pionera de las Ginebras Super Premium</strong></p><p>Lanzada en España en 2004, Hendrick’s no solo se ha hecho un nombre, sino que ha establecido el estándar en el segmento de ginebras Super Premium. Su éxito se debe a tres factores clave:</p><ul><li><strong>Elaboración Artesanal:</strong> Cada botella de Hendrick’s se produce con dedicación y cuidado, garantizando la máxima calidad en cada gota.</li><li><strong>Icónica Botella:</strong> Su distintiva botella no solo es un símbolo de elegancia, sino también de la excelencia contenida en su interior.</li><li><strong>Consumo con Pepino:</strong> El modo de consumo con una rodaja de pepino realza los sabores únicos de Hendrick’s, convirtiendo cada gin tonic en una experiencia inigualable.</li></ul><p><strong>Una Infusión Única de Rosa y Pepino</strong></p><p>Experimenta el equilibrio perfecto con la infusión de rosa y pepino en Hendrick’s Gin. Estos sabores sutiles añaden un toque distintivo a cualquier gin tonic, elevando la bebida a nuevas alturas de sofisticación.</p><p>¿Por qué conformarte con lo ordinario cuando puedes disfrutar de algo deliciosamente inusual? Descubre la ginebra Hendrick’s y transforma tu próxima copa en una celebración del buen gusto.</p><p><strong>Compra ahora en En Copa de Balón y déjate seducir.</strong></p>"
+            "storysubtitle": "<p>Desde el encantador pueblo de Givan en Escocia, llega Hendrick's, un producto artesanal que redefine la experiencia del gin. Con un aroma suave y un sabor cítrico complementado con notas de pimienta rosa, esta ginebra se destaca por su exquisitez y carácter único.<\/p><p><strong>Hendrick’s: La Pionera de las Ginebras Super Premium<\/strong><\/p><p>Lanzada en España en 2004, Hendrick’s no solo se ha hecho un nombre, sino que ha establecido el estándar en el segmento de ginebras Super Premium. Su éxito se debe a tres factores clave:<\/p><ul><li><strong>Elaboración Artesanal:<\/strong> Cada botella de Hendrick’s se produce con dedicación y cuidado, garantizando la máxima calidad en cada gota.<\/li><li><strong>Icónica Botella:<\/strong> Su distintiva botella no solo es un símbolo de elegancia, sino también de la excelencia contenida en su interior.<\/li><li><strong>Consumo con Pepino:<\/strong> El modo de consumo con una rodaja de pepino realza los sabores únicos de Hendrick’s, convirtiendo cada gin tonic en una experiencia inigualable.<\/li><\/ul><p><strong>Una Infusión Única de Rosa y Pepino<\/strong><\/p><p>Experimenta el equilibrio perfecto con la infusión de rosa y pepino en Hendrick’s Gin. Estos sabores sutiles añaden un toque distintivo a cualquier gin tonic, elevando la bebida a nuevas alturas de sofisticación.<\/p><p>¿Por qué conformarte con lo ordinario cuando puedes disfrutar de algo deliciosamente inusual? Descubre la ginebra Hendrick’s y transforma tu próxima copa en una celebración del buen gusto.<\/p><p><strong>Compra ahora en En Copa de Balón y déjate seducir.<\/strong><\/p>"
           }
         }
       },
@@ -86,7 +86,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/GinPalaceHendricks_alambiques.webp",
+        "image": "shopify:\/\/shop_images\/GinPalaceHendricks_alambiques.webp",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",

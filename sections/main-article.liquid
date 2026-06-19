@@ -1,3 +1,47 @@
+{%- comment -%} BEGIN ECB JSON-LD ARTICLE+VIDEO (Bloque 7+8) {%- endcomment -%}
+{%- if template contains 'article' and article -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ article.title | json }},
+  {%- if article.image %}
+  "image": ["{{ article.image | image_url: width: 1200 }}"],
+  {%- endif %}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "author": {
+    "@type": "Person",
+    "name": {%- if article.author != blank %}{{ article.author | json }}{%- else %}"Equipo En Copa de Balón"{%- endif %},
+    "url": "{{ shop.url }}/pages/quienes-somos"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "logo": {"@type": "ImageObject", "url": "{{ 'logo.png' | asset_url }}"}
+  },
+  "mainEntityOfPage": "{{ shop.url }}{{ article.url }}"
+}
+</script>
+{%- assign _yt_parts = article.content | split: 'youtube.com/embed/' -%}
+{%- if _yt_parts.size > 1 -%}
+  {%- assign _yt_id_raw = _yt_parts[1] | split: '"' | first -%}
+  {%- assign _yt_id = _yt_id_raw | split: '?' | first | split: '&' | first -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ article.title | json }},
+  "description": {{ article.excerpt_or_content | strip_html | truncate: 200 | json }},
+  "thumbnailUrl": "https://img.youtube.com/vi/{{ _yt_id }}/maxresdefault.jpg",
+  "uploadDate": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "embedUrl": "https://www.youtube.com/embed/{{ _yt_id }}"
+}
+</script>
+{%- endif -%}
+{%- endif -%}
+{%- comment -%} END ECB JSON-LD ARTICLE+VIDEO {%- endcomment -%}
+
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">

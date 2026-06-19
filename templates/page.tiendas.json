@@ -52,20 +52,20 @@
         "caption_4p7K7F": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>+34 91 545 21 81</p>"
+            "storysubtitle": "<p>+34 91 545 21 81<\/p>"
           }
         },
         "caption_whhV4X": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>C. de Claudio Coello, 121, Salamanca, 28006 Madrid</p>"
+            "storysubtitle": "<p>C. de Claudio Coello, 121, Salamanca, 28006 Madrid<\/p>"
           }
         },
         "button_BFNRfj": {
           "type": "button",
           "settings": {
             "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "outline",
             "button_size": "bs_large"
           }
@@ -79,7 +79,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/juan-bravo.png",
+        "image": "shopify:\/\/shop_images\/juan-bravo.png",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -103,20 +103,20 @@
         "caption_YRyEtH": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>+34 910 51 13 65</p>"
+            "storysubtitle": "<p>+34 910 51 13 65<\/p>"
           }
         },
         "caption_KxnWdU": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Calle de Núñez de Balboa 24, 28001 Madrid</p>"
+            "storysubtitle": "<p>Calle de Núñez de Balboa 24, 28001 Madrid<\/p>"
           }
         },
         "button_aGrwU7": {
           "type": "button",
           "settings": {
             "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "outline",
             "button_size": "bs_large"
           }
@@ -130,7 +130,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/juan-bravo.png",
+        "image": "shopify:\/\/shop_images\/juan-bravo.png",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -154,20 +154,20 @@
         "caption_N8QaXA": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>+34 915 35 85 57</p>"
+            "storysubtitle": "<p>+34 915 35 85 57<\/p>"
           }
         },
         "caption_LGh8NT": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Calle de Arturo Soria 126, 28043 Madrid</p>"
+            "storysubtitle": "<p>Calle de Arturo Soria 126, 28043 Madrid<\/p>"
           }
         },
         "button_FiVnYn": {
           "type": "button",
           "settings": {
             "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "outline",
             "button_size": "bs_large"
           }
@@ -181,7 +181,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/juan-bravo.png",
+        "image": "shopify:\/\/shop_images\/juan-bravo.png",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",

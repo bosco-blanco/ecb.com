@@ -1,0 +1,381 @@
+{%- comment -%}
+  Ficha de producto rica para vinos.
+  Usa metafields reales de la tienda ECDB.
+
+  Metafields disponibles:
+  - custom.a_ada (anada/vintage, number_integer)
+  - custom.denominaci_n_de_origen (D.O.)
+  - custom.bodega (bodega name)
+  - custom.bodega_link (metaobject reference)
+  - custom.tipo_de_uva (grape variety)
+  - custom.tipo_de_vino (Tinto, Blanco, Rosado)
+  - custom.pa_s_de_origen (country)
+  - custom.grado_alcoh_lico (decimal, 0.14 = 14%)
+  - custom.estilo (style description)
+  - custom.envejecimiento (aging)
+  - custom.puntos_robert_parker (Parker score)
+  - custom.puntos_guia_pe_in (Penin score)
+  - custom.formato (volume)
+
+  Uso:
+  {% render 'wine-product-info', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign anada = product.metafields.custom.a_ada
+  assign do = product.metafields.custom.denominaci_n_de_origen
+  assign bodega = product.metafields.custom.bodega
+  assign uva = product.metafields.custom.tipo_de_uva
+  assign tipo_vino = product.metafields.custom.tipo_de_vino
+  assign pais = product.metafields.custom.pa_s_de_origen
+  assign grado_raw = product.metafields.custom.grado_alcoh_lico
+  assign estilo = product.metafields.custom.estilo
+  assign envejecimiento = product.metafields.custom.envejecimiento
+  assign parker = product.metafields.custom.puntos_robert_parker
+  assign penin = product.metafields.custom.puntos_guia_pe_in
+
+  assign has_data = false
+  if bodega != blank or do != blank or uva != blank or anada != blank
+    assign has_data = true
+  endif
+  assign has_scores = false
+  if parker != blank or penin != blank
+    assign has_scores = true
+  endif
+-%}
+
+{%- if has_data or has_scores -%}
+{%- style -%}
+  .wpi {
+    margin: 16px 0;
+    font-size: 13px;
+    color: #2c2c2c;
+  }
+  .wpi__scores {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .wpi__score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #faf6ee 0%, #f0eadb 100%);
+    border: 1px solid #ddd5c3;
+    border-radius: 10px;
+    padding: 8px 14px;
+    flex: 1;
+    max-width: 180px;
+  }
+  .wpi__score-num {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .wpi__score-num--parker { color: #8a1538; }
+  .wpi__score-num--penin { color: #1a5276; }
+  .wpi__score-meta {
+    line-height: 1.15;
+  }
+  .wpi__score-source {
+    font-size: 11px;
+    font-weight: 700;
+    color: #444;
+    display: block;
+  }
+  .wpi__score-label {
+    font-size: 9px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .wpi__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .wpi__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    background: #f7f4ed;
+    border: 1px solid #e8e2d4;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #555;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  a.wpi__tag:hover {
+    background: #6b1d3a;
+    color: #fff;
+    border-color: #6b1d3a;
+  }
+  a.wpi__tag:hover svg {
+    stroke: #fff;
+  }
+  .wpi__tag svg {
+    width: 12px;
+    height: 12px;
+    stroke: #999;
+    flex-shrink: 0;
+  }
+  .wpi__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: #faf8f4;
+    border: 1px solid #e5dfd4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .wpi__cell {
+    padding: 10px 14px;
+    border-bottom: 1px solid #ece8dd;
+  }
+  .wpi__cell:nth-child(odd) {
+    border-right: 1px solid #ece8dd;
+  }
+  .wpi__cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .wpi__cell-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #aaa;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .wpi__cell-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c2c2c;
+  }
+  .wpi__cell-value a {
+    color: #2c2c2c;
+    text-decoration: none;
+    border-bottom: 1px dotted #ccc;
+  }
+  .wpi__cell-value a:hover {
+    color: #6b1d3a;
+    border-color: #6b1d3a;
+  }
+  .wpi__desc {
+    margin-top: 12px;
+    padding: 14px;
+    background: #faf8f4;
+    border: 1px solid #e5dfd4;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #555;
+  }
+  .wpi__desc strong {
+    color: #2c2c2c;
+    font-weight: 600;
+  }
+  .wpi__style {
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #8a7d5a;
+    font-style: italic;
+  }
+  @media screen and (max-width: 749px) {
+    .wpi__grid {
+      grid-template-columns: 1fr;
+    }
+    .wpi__cell:nth-child(odd) {
+      border-right: none;
+    }
+    .wpi__cell {
+      border-bottom: 1px solid #ece8dd;
+    }
+    .wpi__cell:last-child {
+      border-bottom: none;
+    }
+    .wpi__scores {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .wpi__score {
+      max-width: 100%;
+    }
+    .wpi__tags {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .wpi__tag {
+      flex-shrink: 0;
+    }
+  }
+  /* Score chips */
+  .wpi__tag--parker { color: #722F37; background: #faf6ee; border: 1px solid #ddd5c3; font-weight: 700; cursor: default; }
+  .wpi__tag--penin { color: #8B6D00; background: #faf6ee; border: 1px solid #ddd5c3; font-weight: 700; cursor: default; }
+  /* Stock chips */
+  .wpi__tag--low { background: #c62828; color: #FFFCF1; font-weight: 600; cursor: default; }
+  .wpi__tag--soldout { background: #fce4ec; color: #c62828; border: 1px solid #f8bbd0; cursor: default; }
+{%- endstyle -%}
+
+<div class="wpi">
+  {%- if has_scores -%}
+    <div class="wpi__scores">
+      {%- if parker != blank -%}
+        <div class="wpi__score">
+          <span class="wpi__score-num wpi__score-num--parker">{{ parker }}</span>
+          <span class="wpi__score-meta">
+            <span class="wpi__score-source">Robert Parker</span>
+            <span class="wpi__score-label">puntos</span>
+          </span>
+        </div>
+      {%- endif -%}
+      {%- if penin != blank -%}
+        <div class="wpi__score">
+          <span class="wpi__score-num wpi__score-num--penin">{{ penin }}</span>
+          <span class="wpi__score-meta">
+            <span class="wpi__score-source">Guía Peñín</span>
+            <span class="wpi__score-label">puntos</span>
+          </span>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="wpi__tags">
+    {%- if tipo_vino != blank -%}
+      {%- liquid
+        assign _tipo_lower = tipo_vino | downcase
+        case _tipo_lower
+          when 'espumoso' or 'espumosos'
+            assign _tipo_url = '/collections/espumosos-1'
+          when 'destilado'
+            assign _tipo_url = '/collections/destilados'
+          when 'cerveza'
+            assign _tipo_url = '/collections/cerveza'
+          when 'vermut'
+            assign _tipo_url = '/collections/aperitivos-y-vermuts'
+          when 'rosado'
+            assign _tipo_url = '/collections/vinos?filter.p.m.custom.tipo_de_vino=Rosado'
+          else
+            assign _tipo_url = '/collections/vino-' | append: _tipo_lower
+        endcase
+      -%}
+      <a href="{{ _tipo_url }}" class="wpi__tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M12 11v5M12 11l-3 3M12 11l3 3"/><rect x="3" y="6" width="18" height="15" rx="2"/></svg>
+        {{ tipo_vino }}
+      </a>
+    {%- endif -%}
+    {%- if do != blank -%}
+      <a href="/collections/vinos?filter.p.m.custom.denominaci_n_de_origen={{ do | url_encode }}" class="wpi__tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        D.O. {{ do }}
+      </a>
+    {%- endif -%}
+    {%- if uva != blank -%}
+      <a href="/collections/vinos?filter.p.m.custom.tipo_de_uva={{ uva | url_encode }}" class="wpi__tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><circle cx="8" cy="14" r="3"/><circle cx="16" cy="14" r="3"/><path d="M12 11v7"/></svg>
+        {{ uva }}
+      </a>
+    {%- endif -%}
+    {%- if anada != blank -%}
+      <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.a_ada={{ anada }}" class="wpi__tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Añada {{ anada }}
+      </a>
+    {%- endif -%}
+    {%- if estilo != blank -%}
+      <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.estilo={{ estilo | url_encode }}" class="wpi__tag wpi__tag--estilo">&#10024; {{ estilo }}</a>
+    {%- endif -%}
+    {%- if parker != blank -%}
+      <span class="wpi__tag wpi__tag--parker"><svg width="14" height="14" viewBox="0 0 24 24" fill="#722F37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Parker {{ parker }}</span>
+    {%- endif -%}
+    {%- if penin != blank -%}
+      <span class="wpi__tag wpi__tag--penin"><svg width="14" height="14" viewBox="0 0 24 24" fill="#8B6D00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Peñín {{ penin }}</span>
+    {%- endif -%}
+    {%- assign qty = product.selected_or_first_available_variant.inventory_quantity -%}
+    {%- if product.available and qty <= 12 and qty > 0 -%}
+      <span class="wpi__tag wpi__tag--low">Últimas unidades</span>
+    {%- elsif product.available == false -%}
+      <span class="wpi__tag wpi__tag--soldout">Agotado</span>
+    {%- endif -%}
+  </div>
+
+  <div class="wpi__grid">
+    {%- if bodega != blank -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Bodega</div>
+        <div class="wpi__cell-value">
+          <a href="/collections/all?q={{ bodega | url_encode }}">{{ bodega }}</a>
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if pais != blank -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Origen</div>
+        <div class="wpi__cell-value">
+          <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.pa_s_de_origen={{ pais | url_encode }}">{{ pais }}</a>
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if grado_raw != blank -%}
+      {%- assign grado_pct = grado_raw | times: 100 | round: 1 -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Grado</div>
+        <div class="wpi__cell-value">{{ grado_pct }}% vol.</div>
+      </div>
+    {%- endif -%}
+    {%- if envejecimiento != blank -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Crianza</div>
+        <div class="wpi__cell-value">{{ envejecimiento }}</div>
+      </div>
+    {%- endif -%}
+    {%- liquid
+      assign temp_servicio = ''
+      assign tipo_lower = tipo_vino | downcase
+      if tipo_lower == 'tinto'
+        assign temp_servicio = '16-18°C'
+      elsif tipo_lower == 'blanco'
+        assign temp_servicio = '8-10°C'
+      elsif tipo_lower == 'rosado'
+        assign temp_servicio = '8-10°C'
+      elsif tipo_lower == 'espumoso'
+        assign temp_servicio = '6-8°C'
+      elsif tipo_lower == 'dulce'
+        assign temp_servicio = '6-8°C'
+      elsif tipo_lower == 'generoso'
+        assign temp_servicio = '12-14°C'
+      endif
+    -%}
+    {%- if temp_servicio != '' -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Temperatura</div>
+        <div class="wpi__cell-value">{{ temp_servicio }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% comment %} Estilo moved to chips row above {% endcomment %}
+
+  {%- if product.description != blank -%}
+    {%- assign desc_text = product.description | strip_html | strip -%}
+    {%- if desc_text.size > 50 -%}
+      <div class="wpi__desc">
+        <strong>Nota de cata</strong><br>
+        {{ desc_text | truncatewords: 100 }}
+        
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+{%- endif -%}

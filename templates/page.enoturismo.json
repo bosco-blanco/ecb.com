@@ -30,7 +30,7 @@
         "text_t8hzKw": {
           "type": "text",
           "settings": {
-            "text": "<h2>Guía práctica para descubrir las mejores zonas vitivinícolas.</h2><p><br/>El enoturismo es mucho más que visitar bodegas: es descubrir la cultura del vino a través de sus paisajes, pueblos y gastronomía. En esta guía encontrarás información clara y sencilla sobre las principales zonas de España, las variedades de uva más conocidas y qué hacer en cada destino.</p><p></p>"
+            "text": "<h2>Guía práctica para descubrir las mejores zonas vitivinícolas.<\/h2><p><br\/>El enoturismo es mucho más que visitar bodegas: es descubrir la cultura del vino a través de sus paisajes, pueblos y gastronomía. En esta guía encontrarás información clara y sencilla sobre las principales zonas de España, las variedades de uva más conocidas y qué hacer en cada destino.<\/p><p><\/p>"
           }
         }
       },
@@ -61,7 +61,7 @@
         "caption_39jmNM": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>España es uno de los países más diversos del mundo en materia vitivinícola. Desde las llanuras de La Mancha hasta los viñedos de montaña del Priorat, cada región ofrece una personalidad propia que se refleja en sus vinos, su gastronomía y su forma de entender la cultura del vino.<br/><br/>En esta sección encontrarás las principales zonas de enoturismo en España, con sus variedades de uva más representativas, actividades recomendadas y bodegas destacadas de <a href=\"https://www.encopadebalon.com/\">En Copa de Balón</a> para que puedas profundizar y preparar tu visita.</p>"
+            "storysubtitle": "<p>España es uno de los países más diversos del mundo en materia vitivinícola. Desde las llanuras de La Mancha hasta los viñedos de montaña del Priorat, cada región ofrece una personalidad propia que se refleja en sus vinos, su gastronomía y su forma de entender la cultura del vino.<br\/><br\/>En esta sección encontrarás las principales zonas de enoturismo en España, con sus variedades de uva más representativas, actividades recomendadas y bodegas destacadas de <a href=\"https:\/\/www.encopadebalon.com\/\">En Copa de Balón<\/a> para que puedas profundizar y preparar tu visita.<\/p>"
           }
         },
         "button_D6C6Dc": {
@@ -81,7 +81,7 @@
       ],
       "settings": {
         "color_scheme": "accent-1",
-        "image": "shopify://shop_images/bodegas-matarromera-una-vivencia-1.jpg",
+        "image": "shopify:\/\/shop_images\/bodegas-matarromera-una-vivencia-1.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgaligntop",
@@ -96,7 +96,7 @@
       "type": "apps",
       "blocks": {
         "forms_inline_e6YHJV": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "type": "shopify:\/\/apps\/forms\/blocks\/inline\/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
             "form_id": "192704",
             "text_color": "#202020",

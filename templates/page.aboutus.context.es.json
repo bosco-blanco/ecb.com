@@ -27,22 +27,7 @@
       "block_order": [],
       "name": "t:sections.custom-liquid.presets.name"
     },
-    "1659964878577bab6f": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
     "main": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
-    "featured_events_azy7jG": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
-    "featured_blog_8yBWE4": {
       "disabled": false,
       "settings": {},
       "blocks": {}
@@ -50,9 +35,6 @@
   },
   "order": [
     "main",
-    "1659964878577bab6f",
-    "featured_events_azy7jG",
-    "featured_blog_8yBWE4",
     "custom_liquid_9zgEX"
   ]
 }

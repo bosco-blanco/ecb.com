@@ -13,7 +13,7 @@
       "type": "apps",
       "blocks": {
         "79534d0e-3747-4fef-b9f7-136dfe7193aa": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "type": "shopify:\/\/apps\/forms\/blocks\/inline\/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
             "form_id": "192704"
           }

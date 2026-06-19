@@ -24,7 +24,7 @@
         "slide_dbKTPx": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/golden-autumn-leaves.jpg",
+            "image": "shopify:\/\/shop_images\/golden-autumn-leaves.jpg",
             "hcaption": "",
             "heading": "Nuestras Bodegas",
             "button_h_upp": false,
@@ -32,7 +32,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "solid",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -75,14 +75,14 @@
         "caption_ec3WzG": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Mejores bodegas del mundo</p>"
+            "storysubtitle": "<p>Mejores bodegas del mundo<\/p>"
           }
         },
         "button_QhcnTm": {
           "type": "button",
           "settings": {
             "btntxt": "Ir a bodega",
-            "link": "shopify://metaobjects/bodegas_landing_page/estevez-bodegas-y-vinedos",
+            "link": "shopify:\/\/metaobjects\/bodegas_landing_page\/estevez-bodegas-y-vinedos",
             "button_style": "outline",
             "button_size": "bs_large"
           }
@@ -95,7 +95,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image": "shopify:\/\/shop_images\/premiopascualherrera.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -119,14 +119,14 @@
         "caption_gcDbKJ": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Pequeña descripción de la bodega</p>"
+            "storysubtitle": "<p>Pequeña descripción de la bodega<\/p>"
           }
         },
         "button_jxELxJ": {
           "type": "button",
           "settings": {
             "btntxt": "Ir a bodega",
-            "link": "shopify://metaobjects/bodegas_landing_page/casa-castilo",
+            "link": "shopify:\/\/metaobjects\/bodegas_landing_page\/casa-castilo",
             "button_style": "outline",
             "button_size": "bs_large"
           }
@@ -139,7 +139,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image": "shopify:\/\/shop_images\/premiopascualherrera.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
@@ -156,49 +156,49 @@
         "logo_image_74gzbi": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/estevez-bodegas-vinedos_2.jpg",
+            "image": "shopify:\/\/shop_images\/estevez-bodegas-vinedos_2.jpg",
             "link": ""
           }
         },
         "logo_image_t46VXk": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/casa-castillo-1_1.jpg",
+            "image": "shopify:\/\/shop_images\/casa-castillo-1_1.jpg",
             "link": ""
           }
         },
         "logo_image_df6rz6": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/3.svg",
+            "image": "shopify:\/\/shop_images\/3.svg",
             "link": ""
           }
         },
         "logo_image_8t3Laa": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/casa-castillo-1_1.jpg",
+            "image": "shopify:\/\/shop_images\/casa-castillo-1_1.jpg",
             "link": ""
           }
         },
         "logo_image_BMcJzT": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/casa-castillo-1_1.jpg",
+            "image": "shopify:\/\/shop_images\/casa-castillo-1_1.jpg",
             "link": ""
           }
         },
         "logo_image_WMEgab": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/estevez-bodegas-vinedos_2.jpg",
+            "image": "shopify:\/\/shop_images\/estevez-bodegas-vinedos_2.jpg",
             "link": ""
           }
         },
         "logo_image_U7Febj": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/3.svg",
+            "image": "shopify:\/\/shop_images\/3.svg",
             "link": ""
           }
         }

@@ -29,7 +29,7 @@
     "upp_text_announce": false,
     "upper_menu": true,
     "type_header_font": "cormorant_n4",
-    "heading_scale": 100,
+    "heading_scale": 115,
     "type_body_font": "sans-serif",
     "body_scale": 100,
     "page_width": 1600,
@@ -59,7 +59,7 @@
     "inputs_shadow_blur": 0,
     "card_style": "standard",
     "card_image_padding": 0,
-    "card_text_alignment": "center",
+    "card_text_alignment": "left",
     "card_color_scheme": "background-2",
     "card_border_thickness": 0,
     "card_border_opacity": 10,
@@ -138,27 +138,18 @@
     "checkout_accent_color": "#121212",
     "checkout_button_color": "#121212",
     "sections": {
-      "main-password-header": {
-        "type": "main-password-header",
-        "settings": {}
-      },
-      "main-password-footer": {
-        "type": "main-password-footer",
-        "settings": {}
-      },
       "age-verification": {
         "type": "age-verification",
-        "custom_css": [],
         "settings": {
           "enable_age_verification": false,
-          "blue_image": 60,
-          "heading": "Confirma tu edad",
-          "question": "<p>Eres mayor de edad?</p>",
-          "decline_button": "No lo soy",
-          "approve_button": "Sí, lo soy",
-          "declined_heading": "Exclusivo para +18 años",
-          "declined_text": "<p>Lo sentimos, este contenido es solo visible para usuarios mayores de 18 años</p>",
-          "return_button": "He entrado sin querer",
+          "blue_image": 40,
+          "heading": "Confirm your age",
+          "question": "<p>Are you 18 years old or older?</p>",
+          "decline_button": "No I'm not",
+          "approve_button": "Yes I am",
+          "declined_heading": "Come back when you're older",
+          "declined_text": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
+          "return_button": "Oops, I entered incorrectly",
           "color_scheme": "accent-1"
         }
       }
@@ -195,25 +186,6 @@
         "disabled": false,
         "settings": {}
       },
-      "6174324309569838175": {
-        "type": "shopify://apps/smile-io/blocks/smile-shopify-app/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-        "disabled": true,
-        "settings": {}
-      },
-      "16217268652954234967": {
-        "type": "shopify://apps/pleiful-encopadebalon/blocks/chat/01997fed-cba2-73a6-afe1-3558faa1c33b",
-        "disabled": false,
-        "settings": {
-          "show_chat_button": true,
-          "chat_container_radius": 0,
-          "color2": "#ffffff"
-        }
-      },
-      "6406956604159796213": {
-        "type": "shopify://apps/smart-seo/blocks/smartseo/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
-        "disabled": false,
-        "settings": {}
-      },
       "11068332061543699368": {
         "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
         "disabled": true,
@@ -223,6 +195,30 @@
         "type": "shopify://apps/smart-seo/blocks/brokenLinkDetection/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
         "disabled": false,
         "settings": {}
+      },
+      "6406956604159796213": {
+        "type": "shopify://apps/smart-seo/blocks/smartseo/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
+        "disabled": false,
+        "settings": {}
+      },
+      "6174324309569838175": {
+        "type": "shopify://apps/smile-io/blocks/smile-shopify-app/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
+        "disabled": false,
+        "settings": {}
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      },
+      "16217268652954234967": {
+        "type": "shopify://apps/pleiful-encopadebalon/blocks/chat/01997fed-cba2-73a6-afe1-3558faa1c33b",
+        "disabled": true,
+        "settings": {
+          "show_chat_button": true,
+          "chat_container_radius": 0,
+          "color2": "#ffffff"
+        }
       }
     }
   },
@@ -354,17 +350,7 @@
       "upsellpempty": true,
       "checkout_logo_image": "shopify://shop_images/logo.png",
       "checkout_accent_color": "#121212",
-      "checkout_button_color": "#121212",
-      "sections": {
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {}
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {}
-        }
-      }
+      "checkout_button_color": "#121212"
     },
     "Pure": {
       "colors_solid_button_labels": "#ffffff",
@@ -493,17 +479,7 @@
       "upsellpempty": true,
       "checkout_logo_image": "shopify://shop_images/logo.png",
       "checkout_accent_color": "#121212",
-      "checkout_button_color": "#121212",
-      "sections": {
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {}
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {}
-        }
-      }
+      "checkout_button_color": "#121212"
     }
   },
   "platform_customizations": {

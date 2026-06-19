@@ -1,0 +1,708 @@
+{% comment %}
+  Academia del Vino ECDB — Certificado / Diploma
+  Sección: Vista del certificado con descarga y compartir
+  Requiere: {% render 'academia-tokens' %}
+{% endcomment %}
+
+{% render 'academia-tokens' %}
+
+{% style %}
+  /* ========== ACADEMIA CERTIFICADO ========== */
+
+  /* Top bar */
+  .acad-topbar {
+    padding: 22px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--acad-line);
+    background: var(--acad-cream);
+  }
+  .acad-topbar .acad-back {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--acad-muted);
+    transition: color .2s;
+  }
+  .acad-topbar .acad-back:hover { color: var(--acad-bordeaux); }
+  .acad-topbar .acad-back .acad-back-arrow {
+    width: 24px; height: 1px; background: currentColor; position: relative;
+  }
+  .acad-topbar .acad-back .acad-back-arrow::before {
+    content:''; position:absolute; left:0; top: -3px;
+    width: 7px; height: 7px;
+    border-left: 1px solid currentColor; border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .acad-topbar .acad-topbar-brand {
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 20px; color: var(--acad-wine-brown);
+  }
+  .acad-topbar .acad-actions { display: flex; gap: 10px; }
+  .acad-topbar .acad-actions button {
+    padding: 10px 16px;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--acad-line);
+    background: var(--acad-cream);
+    transition: all .2s;
+    cursor: pointer;
+    font-family: var(--acad-sans);
+  }
+  .acad-topbar .acad-actions button:hover { border-color: var(--acad-wine-brown); }
+  .acad-topbar .acad-actions button.acad-primary {
+    background: var(--acad-wine-brown); color: var(--acad-cream);
+    border-color: var(--acad-wine-brown);
+  }
+  .acad-topbar .acad-actions button.acad-primary:hover { background: var(--acad-bordeaux); }
+
+  /* Stage */
+  .acad-stage {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 56px 32px 48px;
+    background: radial-gradient(ellipse at top, #F5EFD8 0%, var(--acad-cream) 60%);
+  }
+
+  /* Celebration */
+  .acad-celebration {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .acad-celebration .eyebrow {
+    color: var(--acad-bordeaux);
+    display: inline-flex; align-items: center; gap: 14px;
+    margin-bottom: 10px;
+  }
+  .acad-celebration .eyebrow::before, .acad-celebration .eyebrow::after {
+    content:''; width: 30px; height: 1px; background: var(--acad-gold);
+  }
+  .acad-celebration h2 {
+    font-family: var(--acad-serif);
+    font-size: clamp(32px, 4vw, 46px);
+    color: var(--acad-wine-brown);
+    font-weight: 400;
+  }
+  .acad-celebration h2 em { font-style: italic; color: var(--acad-bordeaux); }
+  .acad-celebration p {
+    margin-top: 6px;
+    color: var(--acad-muted); font-size: 14px;
+    max-width: 500px; margin-left:auto; margin-right:auto;
+  }
+
+  /* Viewer bar */
+  .acad-viewer-bar {
+    display: flex; gap: 12px;
+    margin-bottom: 28px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--acad-muted);
+  }
+  .acad-viewer-bar .acad-pill {
+    display:inline-flex; align-items:center; gap: 8px;
+    padding: 8px 14px;
+    background: var(--acad-cream); border: 1px solid var(--acad-line);
+  }
+  .acad-viewer-bar .acad-pill .acad-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--acad-gold); }
+  .acad-viewer-bar .acad-pill.acad-verified .acad-dot { background: #4a7c4a; }
+
+  /* Certificate */
+  .acad-certificate {
+    width: min(100%, 1080px);
+    aspect-ratio: 1.414 / 1;
+    background: linear-gradient(180deg, #FDFAEB 0%, #F8F2DB 100%);
+    position: relative;
+    box-shadow:
+      0 2px 0 rgba(44,24,16,0.04),
+      0 30px 80px -30px rgba(44,24,16,0.4),
+      0 10px 30px -10px rgba(44,24,16,0.2);
+    padding: 68px 80px 60px;
+    display: flex; flex-direction: column; align-items: center;
+    overflow: hidden;
+  }
+  .acad-certificate::before {
+    content:''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(122,31,61,0.03), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(212,185,116,0.06), transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Frames */
+  .acad-frame-outer {
+    position: absolute; inset: 26px;
+    border: 1px solid var(--acad-gold);
+    pointer-events: none;
+  }
+  .acad-frame-inner {
+    position: absolute; inset: 34px;
+    border: 1px solid var(--acad-gold);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* Corner ornaments */
+  .acad-corner {
+    position: absolute;
+    width: 80px; height: 80px;
+    color: var(--acad-gold-deep);
+    pointer-events: none;
+  }
+  .acad-corner.acad-tl { top: 20px; left: 20px; }
+  .acad-corner.acad-tr { top: 20px; right: 20px; transform: scaleX(-1); }
+  .acad-corner.acad-bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
+  .acad-corner.acad-br { bottom: 20px; right: 20px; transform: scale(-1,-1); }
+
+  /* Watermark */
+  .acad-watermark {
+    position: absolute;
+    left: 50%; top: 55%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    opacity: 0.05;
+    pointer-events: none;
+    color: var(--acad-bordeaux);
+  }
+
+  /* Content */
+  .acad-cert-content {
+    position: relative; z-index: 2;
+    width: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    flex: 1;
+    text-align: center;
+  }
+  .acad-cert-logo {
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 26px;
+  }
+  .acad-cert-logo .acad-mark {
+    width: 60px; height: 60px;
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .acad-cert-logo .acad-mark::before, .acad-cert-logo .acad-mark::after {
+    content:''; position: absolute;
+    background: var(--acad-gold-deep);
+  }
+  .acad-cert-logo .acad-mark::before { left: 0; right: 0; top: 50%; height: 1px; }
+  .acad-cert-logo .acad-mark::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .acad-cert-logo .acad-mark svg { position: relative; width: 40px; height: 40px; background: #FDFAEB; padding: 2px; }
+  .acad-cert-logo .acad-tag {
+    margin-top: 12px;
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 18px; color: var(--acad-wine-brown);
+  }
+  .acad-cert-logo .acad-sub {
+    font-size: 9px; letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--acad-muted); margin-top: 2px;
+  }
+
+  .acad-cert-title-eyebrow {
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--acad-gold-deep); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .acad-cert-title-eyebrow::before,
+  .acad-cert-title-eyebrow::after {
+    content:''; width: 30px; height: 1px; background: var(--acad-gold);
+  }
+
+  .acad-cert-title {
+    font-family: var(--acad-serif);
+    font-size: clamp(38px, 5.5vw, 64px);
+    line-height: 1;
+    color: var(--acad-wine-brown);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .acad-cert-title em { font-style: italic; color: var(--acad-bordeaux); }
+
+  .acad-cert-ornament {
+    margin: 24px auto 20px;
+    display: flex; align-items: center; gap: 14px;
+    color: var(--acad-gold-deep);
+  }
+  .acad-cert-ornament::before, .acad-cert-ornament::after {
+    content:''; width: 60px; height: 1px; background: var(--acad-gold);
+  }
+  .acad-cert-ornament svg { width: 22px; height: 22px; }
+
+  .acad-cert-certify {
+    font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--acad-muted);
+    margin-bottom: 14px;
+  }
+  .acad-cert-recipient {
+    font-family: var(--acad-serif);
+    font-size: clamp(42px, 5.5vw, 58px);
+    color: var(--acad-wine-brown);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .acad-cert-underline {
+    width: 340px; max-width: 60%;
+    height: 1px; background: var(--acad-gold);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .acad-cert-underline::before {
+    content:''; position:absolute;
+    left: 50%; top: 50%;
+    width: 8px; height: 8px;
+    background: var(--acad-cream);
+    border: 1px solid var(--acad-gold);
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+  .acad-cert-body {
+    font-size: 15px; line-height: 1.7;
+    color: var(--acad-ink-soft);
+    max-width: 640px;
+  }
+  .acad-cert-body b {
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 18px; color: var(--acad-bordeaux);
+    font-weight: 500;
+  }
+  .acad-cert-institution {
+    margin-top: 22px;
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 22px; color: var(--acad-wine-brown);
+    font-weight: 400;
+  }
+  .acad-cert-institution .acad-dash { color: var(--acad-gold-deep); margin: 0 10px; font-style: normal; }
+
+  /* Footer row */
+  .acad-cert-footer {
+    margin-top: auto;
+    width: 100%;
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: end;
+    position: relative;
+  }
+  .acad-cert-footer::before {
+    content:''; position:absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: var(--acad-gold); opacity: 0.3;
+  }
+
+  /* Signature */
+  .acad-sig { text-align: left; }
+  .acad-sig .acad-signature {
+    font-family: var(--acad-serif);
+    font-style: italic;
+    font-size: 34px;
+    color: var(--acad-wine-brown);
+    line-height: 1;
+    transform: rotate(-3deg);
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+  .acad-sig .acad-sig-line {
+    width: 100%; max-width: 200px;
+    height: 1px; background: var(--acad-ink); opacity: 0.6;
+    margin: 4px 0 6px;
+  }
+  .acad-sig .acad-sig-name {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--acad-wine-brown); font-weight: 600;
+  }
+  .acad-sig .acad-sig-role {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--acad-muted); margin-top: 2px;
+  }
+
+  /* Seal */
+  .acad-seal {
+    width: 110px; height: 110px;
+    position: relative;
+    display: grid; place-items: center;
+  }
+  .acad-seal-ring {
+    position: absolute; inset: 0;
+    border: 1.5px solid var(--acad-gold);
+    border-radius: 50%;
+  }
+  .acad-seal-ring-inner {
+    position: absolute; inset: 10px;
+    border: 0.5px solid var(--acad-gold-deep);
+    border-radius: 50%;
+  }
+  .acad-seal-core {
+    width: 68px; height: 68px;
+    background: linear-gradient(135deg, var(--acad-bordeaux), var(--acad-wine-brown));
+    color: var(--acad-gold);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 20px;
+    text-align: center;
+    line-height: 0.95;
+    box-shadow: inset 0 0 0 1.5px var(--acad-gold);
+  }
+  .acad-seal-core span { font-size: 9px; letter-spacing: 0.2em; font-style: normal; display: block; margin-top: 2px; color: rgba(212,185,116,0.7); }
+
+  /* QR */
+  .acad-qr-side { text-align: right; }
+  .acad-qr-box {
+    width: 82px; height: 82px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 1px;
+    padding: 6px;
+    background: var(--acad-cream);
+    border: 1px solid var(--acad-line);
+    margin-left: auto;
+  }
+  .acad-qr-box i { background: var(--acad-wine-brown); }
+  .acad-qr-box i.acad-e { background: transparent; }
+  .acad-cert-meta {
+    margin-top: 10px;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--acad-muted);
+    line-height: 1.6;
+  }
+  .acad-cert-meta b {
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 13px;
+    color: var(--acad-wine-brown);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    display: block;
+  }
+
+  /* Post actions */
+  .acad-post-actions {
+    margin-top: 40px;
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
+  .acad-post-actions button, .acad-post-actions a {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 24px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600;
+    transition: all .2s;
+    font-family: var(--acad-sans);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .acad-post-actions .acad-pdf {
+    background: var(--acad-wine-brown); color: var(--acad-cream);
+    border: 1px solid var(--acad-wine-brown);
+  }
+  .acad-post-actions .acad-pdf:hover { background: var(--acad-bordeaux); border-color: var(--acad-bordeaux); }
+  .acad-post-actions .acad-pdf .acad-gold-dot { width: 6px; height: 6px; background: var(--acad-gold); border-radius:50%; }
+  .acad-post-actions .acad-share {
+    background: transparent; color: var(--acad-wine-brown);
+    border: 1px solid var(--acad-wine-brown);
+  }
+  .acad-post-actions .acad-share:hover { background: var(--acad-wine-brown); color: var(--acad-cream); }
+  .acad-post-actions .acad-home {
+    color: var(--acad-muted);
+    padding-left: 0; padding-right: 0;
+    border: none; background: none;
+  }
+  .acad-post-actions .acad-home:hover { color: var(--acad-bordeaux); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .acad-certificate {
+      padding: 44px 36px 34px;
+      aspect-ratio: auto;
+      min-height: 680px;
+    }
+    .acad-cert-footer { grid-template-columns: 1fr; gap: 24px; justify-items: center; }
+    .acad-sig, .acad-qr-side { text-align: center; }
+    .acad-sig .acad-sig-line { margin-left: auto; margin-right: auto; }
+    .acad-qr-box { margin: 0 auto; }
+    .acad-frame-outer, .acad-frame-inner { inset: 16px; }
+    .acad-frame-inner { inset: 22px; }
+    .acad-corner { width: 50px; height: 50px; }
+  }
+  @media (max-width: 560px) {
+    .acad-stage { padding: 32px 16px; }
+    .acad-topbar { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+    .acad-cert-recipient { font-size: 36px; }
+    .acad-cert-title { font-size: 34px; }
+    .acad-post-actions { flex-direction: column; align-items: stretch; }
+    .acad-post-actions a, .acad-post-actions button { justify-content: center; }
+  }
+{% endstyle %}
+
+<div class="academia">
+
+  {%- comment -%} ===== TOP BAR ===== {%- endcomment -%}
+  <header class="acad-topbar">
+    <a class="acad-back" href="{{ section.settings.hub_url | default: '#' }}">
+      <span class="acad-back-arrow"></span>Volver a Mi Academia
+    </a>
+    <div class="acad-topbar-brand">En Copa de Balón</div>
+    <div class="acad-actions">
+      <button onclick="window.print()">Imprimir</button>
+      <button class="acad-primary">Verificar</button>
+    </div>
+  </header>
+
+  {%- comment -%} ===== STAGE ===== {%- endcomment -%}
+  <div class="acad-stage">
+
+    {%- comment -%} Celebration header {%- endcomment -%}
+    <div class="acad-celebration">
+      <div class="eyebrow" style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; font-weight:600;">{{ section.settings.celebration_eyebrow }}</div>
+      <h2>{{ section.settings.celebration_title }}</h2>
+      <p>{{ section.settings.celebration_text }}</p>
+    </div>
+
+    {%- comment -%} Verification bar {%- endcomment -%}
+    <div class="acad-viewer-bar">
+      <span class="acad-pill acad-verified"><span class="acad-dot"></span>Verificado</span>
+      <span class="acad-pill">N.º {{ section.settings.cert_number }}</span>
+      <span class="acad-pill">Emitido {{ section.settings.cert_date }}</span>
+    </div>
+
+    {%- comment -%} ===== THE DIPLOMA ===== {%- endcomment -%}
+    <article class="acad-certificate">
+
+      <div class="acad-frame-outer"></div>
+      <div class="acad-frame-inner"></div>
+
+      {%- comment -%} Corner ornaments {%- endcomment -%}
+      {% assign corner_svg = '<svg viewBox="0 0 80 80" fill="none"><path d="M4 4 L4 30 M4 4 L30 4" stroke="currentColor" stroke-width="0.8"/><path d="M14 14 Q22 10 30 14 Q34 18 30 26 Q22 30 14 26 Q10 22 14 14 Z" stroke="currentColor" stroke-width="0.6" fill="none"/><circle cx="18" cy="32" r="2.2" fill="currentColor" opacity="0.9"/><circle cx="24" cy="36" r="2.2" fill="currentColor" opacity="0.9"/><circle cx="30" cy="32" r="2.2" fill="currentColor" opacity="0.9"/><circle cx="21" cy="40" r="2.2" fill="currentColor" opacity="0.9"/><circle cx="27" cy="42" r="2.2" fill="currentColor" opacity="0.9"/><circle cx="24" cy="46" r="2.2" fill="currentColor" opacity="0.9"/></svg>' %}
+      <span class="acad-corner acad-tl">{{ corner_svg }}</span>
+      <span class="acad-corner acad-tr">{{ corner_svg }}</span>
+      <span class="acad-corner acad-bl">{{ corner_svg }}</span>
+      <span class="acad-corner acad-br">{{ corner_svg }}</span>
+
+      {%- comment -%} Watermark {%- endcomment -%}
+      <svg class="acad-watermark" viewBox="0 0 400 400" fill="currentColor">
+        <path d="M200 60 Q180 80 170 100 Q180 110 200 108 Q220 110 230 100 Q220 80 200 60 Z" opacity="0.6"/>
+        <circle cx="180" cy="130" r="14"/><circle cx="200" cy="130" r="14"/><circle cx="220" cy="130" r="14"/>
+        <circle cx="170" cy="154" r="14"/><circle cx="190" cy="154" r="14"/><circle cx="210" cy="154" r="14"/><circle cx="230" cy="154" r="14"/>
+        <circle cx="180" cy="178" r="14"/><circle cx="200" cy="178" r="14"/><circle cx="220" cy="178" r="14"/>
+        <circle cx="190" cy="202" r="14"/><circle cx="210" cy="202" r="14"/>
+        <circle cx="200" cy="226" r="14"/>
+      </svg>
+
+      <div class="acad-cert-content">
+
+        {%- comment -%} Logo {%- endcomment -%}
+        <div class="acad-cert-logo">
+          <div class="acad-mark">
+            <svg viewBox="0 0 40 40">
+              <path d="M10 6 Q10 14 14 18 Q14 30 20 34 Q26 30 26 18 Q30 14 30 6 Z" fill="none" stroke="#7A1F3D" stroke-width="1"/>
+              <circle cx="20" cy="22" r="2" fill="#D4B974"/>
+            </svg>
+          </div>
+          <div class="acad-tag">En Copa de Balón</div>
+          <div class="acad-sub">Academia del Vino · Desde 1991</div>
+        </div>
+
+        <div class="acad-cert-title-eyebrow">{{ section.settings.cert_type_label }}</div>
+        <h1 class="acad-cert-title">{{ section.settings.cert_title }}</h1>
+
+        <div class="acad-cert-ornament">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3 Q8 7 8 12 Q8 17 12 21 Q16 17 16 12 Q16 7 12 3 Z" stroke-width="0.8"/>
+            <path d="M12 8 L12 21" stroke-width="0.6"/>
+          </svg>
+        </div>
+
+        <div class="acad-cert-certify">Otorgado a</div>
+        {% if customer %}
+          <div class="acad-cert-recipient">{{ customer.first_name }} {{ customer.last_name }}</div>
+        {% else %}
+          <div class="acad-cert-recipient">{{ section.settings.default_recipient }}</div>
+        {% endif %}
+        <div class="acad-cert-underline"></div>
+
+        <div class="acad-cert-body">{{ section.settings.cert_body }}</div>
+
+        <div class="acad-cert-institution">
+          En Copa de Balón<span class="acad-dash">—</span>Desde 1991
+        </div>
+
+        {%- comment -%} Footer: signature + seal + QR {%- endcomment -%}
+        <div class="acad-cert-footer">
+          <div class="acad-sig">
+            <div class="acad-signature">{{ section.settings.signer_signature }}</div>
+            <div class="acad-sig-line"></div>
+            <div class="acad-sig-name">{{ section.settings.signer_name }}</div>
+            <div class="acad-sig-role">{{ section.settings.signer_role }}</div>
+          </div>
+
+          <div class="acad-seal">
+            <div class="acad-seal-ring"></div>
+            <div class="acad-seal-ring-inner"></div>
+            <div class="acad-seal-core">
+              ECDB
+              <span>1991</span>
+            </div>
+          </div>
+
+          <div class="acad-qr-side">
+            <div class="acad-qr-box" id="acad-qr-{{ section.id }}"></div>
+            <div class="acad-cert-meta">
+              <b>N.º {{ section.settings.cert_number }}</b>
+              Emitido · {{ section.settings.cert_date }}<br/>
+              Verifica en {{ section.settings.verify_url }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    {%- comment -%} Post actions {%- endcomment -%}
+    <div class="acad-post-actions">
+      <button class="acad-pdf">
+        <span class="acad-gold-dot"></span>
+        Descargar PDF
+      </button>
+      <button class="acad-share">
+        Compartir en redes
+      </button>
+      <a class="acad-home" href="{{ section.settings.hub_url | default: '#' }}">← Volver a Mi Academia</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Generate QR pattern
+  (function(){
+    var qr = document.getElementById('acad-qr-{{ section.id }}');
+    if (!qr) return;
+    var size = 9;
+    var pat = [];
+    var seed = 42;
+    function rnd(){ seed = (seed*9301+49297)%233280; return seed/233280; }
+    for (var i=0; i<size*size; i++) pat.push(rnd() > 0.5);
+    function setFinder(cx, cy){
+      for (var y=0;y<3;y++) for (var x=0;x<3;x++){
+        var idx = (cy+y)*size + (cx+x);
+        var onBorder = x===0||x===2||y===0||y===2;
+        var center = x===1 && y===1;
+        pat[idx] = onBorder || center;
+      }
+    }
+    setFinder(0,0); setFinder(size-3,0); setFinder(0,size-3);
+    pat.forEach(function(on){
+      var d = document.createElement('i');
+      if (!on) d.className = 'acad-e';
+      qr.appendChild(d);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Academia — Certificado",
+  "tag": "section",
+  "class": "academia-certificado",
+  "settings": [
+    {
+      "type": "url",
+      "id": "hub_url",
+      "label": "URL del Hub"
+    },
+    {
+      "type": "header",
+      "content": "Celebración"
+    },
+    {
+      "type": "text",
+      "id": "celebration_eyebrow",
+      "label": "Eyebrow",
+      "default": "Graduación · Abril 2028"
+    },
+    {
+      "type": "text",
+      "id": "celebration_title",
+      "label": "Título",
+      "default": "Has completado <em>los 24 meses</em>."
+    },
+    {
+      "type": "text",
+      "id": "celebration_text",
+      "label": "Texto",
+      "default": "Tu certificado está listo. Puedes descargarlo, compartirlo o solicitar una copia impresa."
+    },
+    {
+      "type": "header",
+      "content": "Certificado"
+    },
+    {
+      "type": "text",
+      "id": "cert_number",
+      "label": "Número certificado",
+      "default": "ECDB-2028-0447"
+    },
+    {
+      "type": "text",
+      "id": "cert_date",
+      "label": "Fecha emisión",
+      "default": "15 · 04 · 2028"
+    },
+    {
+      "type": "text",
+      "id": "cert_type_label",
+      "label": "Tipo (eyebrow)",
+      "default": "Certificado de"
+    },
+    {
+      "type": "text",
+      "id": "cert_title",
+      "label": "Título certificado",
+      "default": "Sommelier <em>Amateur</em>"
+    },
+    {
+      "type": "text",
+      "id": "default_recipient",
+      "label": "Nombre por defecto",
+      "default": "Elena Martín Vázquez"
+    },
+    {
+      "type": "textarea",
+      "id": "cert_body",
+      "label": "Texto del certificado",
+      "default": "Por completar con éxito los <b>24 módulos</b> del programa formativo de la Academia del Vino, superando las catas, lecciones y exámenes correspondientes a 24 denominaciones de origen españolas, con un aprovechamiento total de <b>92/100</b>."
+    },
+    {
+      "type": "header",
+      "content": "Firma"
+    },
+    {
+      "type": "text",
+      "id": "signer_signature",
+      "label": "Firma (texto cursivo)",
+      "default": "Arriaga P."
+    },
+    {
+      "type": "text",
+      "id": "signer_name",
+      "label": "Nombre firmante",
+      "default": "Pablo Arriaga"
+    },
+    {
+      "type": "text",
+      "id": "signer_role",
+      "label": "Cargo",
+      "default": "Director de la Academia"
+    },
+    {
+      "type": "text",
+      "id": "verify_url",
+      "label": "URL verificación",
+      "default": "ecdb.es/v"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Academia — Certificado"
+    }
+  ]
+}
+{% endschema %}

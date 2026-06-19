@@ -1,0 +1,34 @@
+{%- comment -%}
+  Lightweight card used by related-products.liquid (cross-sell grid).
+  Accepts:
+  - p: {Object} product object to render.
+{%- endcomment -%}
+{%- liquid
+  assign rp_badge = p.metafields.custom.denominaci_n_de_origen.value
+  if rp_badge == blank
+    assign rp_badge = p.metafields.custom.tipo_de_vino.value
+  endif
+-%}
+<a href="{{ p.url }}" class="related-card" aria-label="{{ p.title | escape }}">
+  <div class="related-card__media">
+    {%- if p.featured_image != blank -%}
+      <img
+        class="related-card__img"
+        src="{{ p.featured_image | image_url: width: 300 }}"
+        srcset="{{ p.featured_image | image_url: width: 300 }} 300w, {{ p.featured_image | image_url: width: 600 }} 600w"
+        sizes="(min-width: 990px) 22vw, 45vw"
+        alt="{{ p.featured_image.alt | escape | default: p.title | escape }}"
+        width="300"
+        height="300"
+        loading="lazy"
+      >
+    {%- endif -%}
+    {%- if rp_badge != blank -%}
+      <span class="related-card__badge">{{ rp_badge | escape }}</span>
+    {%- endif -%}
+  </div>
+  <div class="related-card__title">{{ p.title | escape }}</div>
+  <div class="related-card__price">
+    {%- if p.price_varies -%}{{ 'products.product.price.from_price_html' | t: price: p.price_min | money }}{%- else -%}{{ p.price | money }}{%- endif -%}
+  </div>
+</a>

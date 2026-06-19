@@ -1,0 +1,80 @@
+{%- comment -%}
+  Muestra info clave del vino y puntuaciones desde metafields reales.
+
+  Datos disponibles en la tienda:
+  - product.metafields.custom.pa_s_de_origen (pais)
+  - product.metafields.custom.grado_alcoh_lico (decimal, ej: 0.15 = 15%)
+  - product.metafields.custom.destiler_a (bodega/destileria)
+  - product.metafields.custom.formato (volume)
+  - product.metafields.reviews.rating (Judge.me rating)
+  - product.metafields.reviews.rating_count (Judge.me count)
+  - product.metafields.custom.puntos_parker (a crear - placeholder)
+  - product.metafields.custom.puntos_penin (a crear - placeholder)
+
+  Uso:
+  {% render 'wine-scores', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign pais = product.metafields.custom.pa_s_de_origen
+  assign grado = product.metafields.custom.grado_alcoh_lico
+  assign bodega = product.metafields.custom.destiler_a
+  assign parker = product.metafields.custom.puntos_parker
+  assign penin = product.metafields.custom.puntos_penin
+
+  assign has_wine_info = false
+  if pais != blank or bodega != blank or grado != blank
+    assign has_wine_info = true
+  endif
+
+  assign has_scores = false
+  if parker != blank or penin != blank
+    assign has_scores = true
+  endif
+-%}
+
+{%- if has_wine_info or has_scores -%}
+  <div class="wine-info" style="margin:12px 0;padding:10px 0;border-top:1px solid #eee;">
+    {%- if has_scores -%}
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        {%- if parker != blank -%}
+          <div style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
+            <span style="font-weight:700;color:#8a1538;font-size:16px;">{{ parker }}</span>
+            <span style="color:#666;line-height:1.2;">
+              <span style="font-weight:600;display:block;">Parker</span>
+              <span style="font-size:10px;">puntos</span>
+            </span>
+          </div>
+        {%- endif -%}
+        {%- if penin != blank -%}
+          <div style="display:inline-flex;align-items:center;gap:4px;background:#f8f5f0;border:1px solid #e5dfd4;border-radius:6px;padding:6px 10px;font-size:12px;">
+            <span style="font-weight:700;color:#1a5276;font-size:16px;">{{ penin }}</span>
+            <span style="color:#666;line-height:1.2;">
+              <span style="font-weight:600;display:block;">Penin</span>
+              <span style="font-size:10px;">puntos</span>
+            </span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#666;">
+      {%- if bodega != blank -%}
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+          <strong>{{ bodega }}</strong>
+        </span>
+      {%- endif -%}
+      {%- if pais != blank -%}
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          {{ pais }}
+        </span>
+      {%- endif -%}
+      {%- if grado != blank -%}
+        {%- assign grado_percent = grado | times: 100 | round -%}
+        <span>{{ grado_percent }}% vol.</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

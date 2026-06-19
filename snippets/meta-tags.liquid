@@ -29,6 +29,16 @@
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
   <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+  <meta property="product:availability" content="{% if product.available %}in stock{% else %}out of stock{% endif %}">
+  {%- if product.vendor != blank and product.vendor != 'En Copa de Balón' -%}
+    <meta property="product:brand" content="{{ product.vendor | escape }}">
+  {%- endif -%}
+  {%- if product.type != blank -%}
+    <meta property="product:category" content="{{ product.type | escape }}">
+  {%- endif -%}
+  {%- if product.metafields.custom.denominacion_origen != blank -%}
+    <meta property="product:region" content="{{ product.metafields.custom.denominacion_origen | escape }}">
+  {%- endif -%}
 {%- endif -%}
 
 {%- if settings.social_twitter_link != blank -%}

@@ -24,7 +24,7 @@
         "slide_dbKTPx": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/golden-autumn-leaves.jpg",
+            "image": "shopify:\/\/shop_images\/golden-autumn-leaves.jpg",
             "hcaption": "",
             "heading": "Nuestras Bodegas",
             "button_h_upp": false,
@@ -32,7 +32,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "solid",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -75,7 +75,7 @@
         "caption_ec3WzG": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Pequeña introducción de la bodega</p>"
+            "storysubtitle": "<p>Pequeña introducción de la bodega<\/p>"
           }
         },
         "button_QhcnTm": {
@@ -95,7 +95,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image": "shopify:\/\/shop_images\/premiopascualherrera.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -119,7 +119,7 @@
         "caption_gcDbKJ": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Pequeña descripción de la bodega</p>"
+            "storysubtitle": "<p>Pequeña descripción de la bodega<\/p>"
           }
         },
         "button_jxELxJ": {
@@ -139,7 +139,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/premiopascualherrera.jpg",
+        "image": "shopify:\/\/shop_images\/premiopascualherrera.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",

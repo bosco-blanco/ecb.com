@@ -1,0 +1,321 @@
+{%- comment -%}
+  Schema LocalBusiness/LiquorStore/Restaurant para todos los locales de ECDB.
+  Actualizado 20/04/2026 con datos reales.
+{%- endcomment -%}
+
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balón — Zoco Pozuelo",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 917 15 35 79",
+    "description": "Vinoteca con más de 2.000 referencias seleccionadas por sumilleres. Vinos, destilados y alimentación selecta en el C.C. Zoco de Pozuelo.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Barlovento 1, C.C. Zoco",
+      "addressLocality": "Pozuelo de Alarcón",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28223",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4359, "longitude": -3.8124 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:30", "closes": "20:30" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balón — El Almacén",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 910 51 13 65",
+    "description": "Vinoteca en el barrio de Salamanca, Madrid. Selección experta de vinos nacionales e internacionales, destilados premium y productos gourmet.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Núñez de Balboa 24",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28001",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4293, "longitude": -3.6844 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "20:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balón — Bodegas Ortega",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 91 433 98 81",
+    "description": "Bodega tradicional de vinos en Madrid. Amplia selección de vinos y destilados con atención personalizada.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Granada 44",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28007",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4073, "longitude": -3.6712 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "14:15" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balón — Arturo Soria Plaza",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 915 35 85 57",
+    "description": "Vinoteca en el C.C. Arturo Soria Plaza. Vinos seleccionados, destilados y regalos.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Arturo Soria 126, C.C. Arturo Soria Plaza",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28043",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4540, "longitude": -3.6377 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "22:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "En Copa de Balón — Centro Oeste Majadahonda",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 672 31 08 43",
+    "description": "Vinoteca en el C.C. Centro Oeste de Majadahonda. Selección de vinos, espumosos y destilados.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C.C. Centro Oeste",
+      "addressLocality": "Majadahonda",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28220",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4730, "longitude": -3.8720 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "22:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "LiquorStore"],
+    "name": "La Casita — En Copa de Balón",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 91 545 21 81",
+    "description": "Vinoteca-restaurante en el barrio de Salamanca, Madrid. Vinos por copa, tapas, cocina y tienda de vinos. Abierto desde primera hora hasta las 2:00.",
+    "priceRange": "$$",
+    "servesCuisine": "Española, Tapas, Maridaje",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Claudio Coello 121",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28006",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4335, "longitude": -3.6810 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "02:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:00", "closes": "18:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "En Copa de Balón — Aravaca",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 913 07 92 63",
+    "description": "Restaurante-vinoteca en Aravaca, Madrid. Cocina de mercado con selección de vinos por copa y carta de destilados.",
+    "priceRange": "$$",
+    "servesCuisine": "Española, Mediterránea",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenida de Valdemarín 165",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28023",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4610, "longitude": -3.7810 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "12:00", "closes": "01:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "17:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "En Copa de Balón — La Moraleja",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 918 05 30 71",
+    "description": "Restaurante-vinoteca en La Moraleja. Cocina de mercado, brunch los fines de semana y carta de vinos seleccionados.",
+    "priceRange": "$$",
+    "servesCuisine": "Española, Brunch, Maridaje",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de la Begonia 135, El Soto",
+      "addressLocality": "Alcobendas",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28109",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4950, "longitude": -3.6580 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "08:30", "closes": "02:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "08:30", "closes": "02:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:30", "closes": "02:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:30", "closes": "01:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Copa Club — En Copa de Balón",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 915 13 81 00",
+    "description": "Club gastronómico en La Finca, Pozuelo. Cocina de autor, cócteles y selección premium de vinos.",
+    "priceRange": "$$$",
+    "servesCuisine": "Española, Coctelería, Autor",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Barlovento 30, La Finca",
+      "addressLocality": "Pozuelo de Alarcón",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28223",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4370, "longitude": -3.8150 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "12:00", "closes": "02:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Ancestral — En Copa de Balón",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 608 57 76 58",
+    "description": "Restaurante con estrella Michelin en Pozuelo de Alarcón. Menús degustación 'Barro' y 'Humno'. Cocina de autor con producto de temporada y bodega excepcional.",
+    "priceRange": "$$$$",
+    "servesCuisine": "Gastronómica, Degustación, Autor",
+    "starRating": { "@type": "Rating", "ratingValue": "1", "bestRating": "3", "author": { "@type": "Organization", "name": "Guía Michelin" } },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Saliente 2, Urb. Montealina (planta superior Quinta Aleño)",
+      "addressLocality": "Pozuelo de Alarcón",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28223",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4480, "longitude": -3.8280 },
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Brassafina (Aleño Taberna) — En Copa de Balón",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 913 61 70 77",
+    "description": "Taberna gastronómica en Pozuelo. Cocina de producto con terraza. Planta baja de Quinta Aleño.",
+    "priceRange": "$$$",
+    "servesCuisine": "Española, Taberna gastronómica",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Saliente 2, Urb. Montealina (planta inferior + terraza)",
+      "addressLocality": "Pozuelo de Alarcón",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28223",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4480, "longitude": -3.8280 },
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Las Margaritas — En Copa de Balón",
+    "image": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+    "url": "https://www.encopadebalon.com",
+    "telephone": "+34 910 63 57 51",
+    "description": "Restaurante en El Plantío. Cocina de mercado y selección de vinos.",
+    "priceRange": "$$",
+    "servesCuisine": "Española, Mediterránea",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenida de la Victoria 29",
+      "addressLocality": "El Plantío",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28023",
+      "addressCountry": "ES"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.4540, "longitude": -3.8030 },
+    "sameAs": ["https://www.instagram.com/encopadebalon_/"]
+  }
+]
+</script>
+
+{%- comment -%} Organization schema {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "En Copa de Balón",
+  "url": "https://www.encopadebalon.com",
+  "logo": "https://www.encopadebalon.com/cdn/shop/files/logo-en-copa-de-balon.png",
+  "foundingDate": "1991",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" }
+  },
+  "description": "Grupo de vinotecas y restaurantes fundado en Madrid en 1991. Más de 2.000 referencias de vinos seleccionados por sumilleres. 5 tiendas, 4 restaurantes y un restaurante con estrella Michelin (Ancestral).",
+  "areaServed": { "@type": "Country", "name": "España" },
+  "knowsAbout": [
+    "Vinos españoles", "Denominación de Origen Rioja", "Denominación de Origen Ribera del Duero",
+    "Denominación de Origen Rueda", "Denominación de Origen Rías Baixas", "Jerez", "Cava",
+    "Champagne", "Destilados", "Maridaje", "Sumillería", "Gastronomía"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/encopadebalon_/",
+    "https://es.linkedin.com/company/en-copa-de-balon",
+    "https://www.youtube.com/@EnCopaDeBalón-d6g"
+  ]
+}
+</script>
+{%- endif -%}

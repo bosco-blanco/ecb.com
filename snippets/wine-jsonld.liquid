@@ -1,0 +1,148 @@
+{%- comment -%}
+  Enhanced JSON-LD structured data for wine products.
+  Adds wine-specific schema.org properties for better SEO.
+  Uses Product + additionalProperty pattern for wine attributes.
+
+  Uso:
+  {% render 'wine-jsonld', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign bodega = product.metafields.custom.bodega
+  assign do = product.metafields.custom.denominaci_n_de_origen
+  assign tipo_vino = product.metafields.custom.tipo_de_vino
+  assign uva = product.metafields.custom.tipo_de_uva
+  assign anada = product.metafields.custom.a_ada
+  assign pais = product.metafields.custom.pa_s_de_origen
+  assign grado_raw = product.metafields.custom.grado_alcoh_lico
+  assign envejecimiento = product.metafields.custom.envejecimiento
+  assign parker = product.metafields.custom.puntos_robert_parker
+  assign penin = product.metafields.custom.puntos_guia_pe_in
+  assign rating = product.metafields.reviews.rating
+  assign rating_count = product.metafields.reviews.rating_count
+
+  assign has_wine_data = false
+  if bodega != blank or do != blank or tipo_vino != blank or uva != blank
+    assign has_wine_data = true
+  endif
+-%}
+
+{%- if has_wine_data -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  "description": {{ product.description | strip_html | truncatewords: 50 | json }},
+  {%- if product.featured_media %}
+  "image": {{ product.featured_media | image_url: width: 1200 | prepend: "https:" | json }},
+  {%- endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": {% if bodega != blank %}{{ bodega | json }}{% else %}{{ product.vendor | json }}{% endif %}
+  },
+  "category": "Food & Beverages > Beverages > Alcoholic Beverages > Wine",
+  {%- if pais != blank %}
+  "countryOfOrigin": {
+    "@type": "Country",
+    "name": {{ pais | json }}
+  },
+  {%- endif %}
+  "additionalProperty": [
+    {%- assign prop_comma = false -%}
+    {%- if tipo_vino != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Tipo de vino", "value": {{ tipo_vino | json }}}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if do != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Denominación de Origen", "value": {{ do | json }}}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if uva != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Variedad de uva", "value": {{ uva | json }}}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if anada != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Añada", "value": "{{ anada }}"}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if grado_raw != blank -%}
+      {%- assign grado_pct = grado_raw | times: 100 | round: 1 -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Grado alcohólico", "value": "{{ grado_pct }}%", "unitCode": "P1"}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if envejecimiento != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Envejecimiento", "value": {{ envejecimiento | json }}}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if bodega != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Bodega", "value": {{ bodega | json }}}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if parker != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Puntuación Robert Parker", "value": "{{ parker }}", "maxValue": "100"}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+    {%- if penin != blank -%}
+      {% if prop_comma %},{% endif %}{"@type": "PropertyValue", "name": "Puntuación Guía Peñín", "value": "{{ penin }}", "maxValue": "100"}
+      {%- assign prop_comma = true -%}
+    {%- endif -%}
+  ],
+  {%- if rating != blank and rating_count != blank and rating_count > 0 %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rating.value | json }},
+    "reviewCount": {{ rating_count | json }},
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  {%- endif %}
+  "offers": {
+    "@type": "Offer",
+    "url": {{ request.origin | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": "{{ current_variant.price | divided_by: 100.00 }}",
+    "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "En Copa de Balón"
+    }
+    {%- if current_variant.compare_at_price > current_variant.price %},
+    "priceValidUntil": "{{ 'now' | date: '%Y' | plus: 1 }}-12-31"
+    {%- endif %}
+  }
+  {%- if parker != blank or penin != blank -%}
+  ,"review": [
+    {%- if parker != blank -%}
+    {"@type":"Review","author":{"@type":"Organization","name":"Robert Parker Wine Advocate"},"reviewRating":{"@type":"Rating","ratingValue":"{{ parker }}","bestRating":"100"}}
+    {%- if penin != blank -%},{%- endif -%}
+    {%- endif -%}
+    {%- if penin != blank -%}
+    {"@type":"Review","author":{"@type":"Organization","name":"Guía Peñín"},"reviewRating":{"@type":"Rating","ratingValue":"{{ penin }}","bestRating":"100"}}
+    {%- endif -%}
+  ]
+  {%- endif -%}
+}
+</script>
+
+{% comment %} BreadcrumbList JSON-LD {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ shop.url }}"},
+    {"@type":"ListItem","position":2,"name":"Vinos","item":"{{ shop.url }}/collections/vinos"}
+    {%- if tipo_vino != blank -%}
+    ,{"@type":"ListItem","position":3,"name":"Vino {{ tipo_vino }}","item":"{{ shop.url }}/collections/vino-{{ tipo_vino | downcase | handleize }}"}
+    {%- endif -%}
+    {%- if do != blank -%}
+    ,{"@type":"ListItem","position":{% if tipo_vino != blank %}4{% else %}3{% endif %},"name":"D.O. {{ do }}","item":"{{ shop.url }}/collections/{{ do | handleize }}"}
+    {%- endif -%}
+    ,{"@type":"ListItem","position":{% if do != blank and tipo_vino != blank %}5{% elsif tipo_vino != blank or do != blank %}4{% else %}3{% endif %},"name":{{ product.title | json }}}
+  ]
+}
+</script>
+{%- endif -%}

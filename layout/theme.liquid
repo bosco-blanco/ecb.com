@@ -1,13 +1,32 @@
 <!doctype html>
+{%- comment -%} cache-bust 2026-05-28T09:58 {%- endcomment -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NPCDS6X');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta name="google-site-verification" content="lhG1Q_Dz0HaQESroM-FgaqZxWKgFbpiJnjh2vhTMRRc" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+
+
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <!-- ECB performance: preconnect hints for third-party app CDNs -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//static.klaviyo.com">
+    <link rel="dns-prefetch" href="//cdn.smile.io">
+    <link rel="dns-prefetch" href="//cdn.judge.me">
+    <link rel="dns-prefetch" href="//chat.pleiful.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
     <meta name="theme-color" content="{{ settings.colors_text }}">
 
     {%- if settings.favicon != blank -%}
@@ -22,11 +41,43 @@
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- assign page_title_downcase = page_title | downcase -%}
+      {%- assign shop_name_downcase = shop.name | downcase -%}
+      {%- unless page_title_downcase contains shop_name_downcase %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
+    {% elsif template contains 'product' and product %}
+      {%- liquid
+        assign _tipo = product.metafields.custom.tipo_de_vino
+        assign _do = product.metafields.custom.denominaci_n_de_origen
+        assign _bodega = product.metafields.custom.bodega | default: product.vendor
+        assign _anada = product.metafields.custom.a_ada
+        assign _parker = product.metafields.custom.puntos_robert_parker
+        assign _penin = product.metafields.custom.puntos_guia_pe_in
+        assign _price = product.price | money
+        assign _meta = 'Comprar ' | append: product.title
+        if _anada != blank
+          assign _meta = _meta | append: ' ' | append: _anada
+        endif
+        if _tipo != blank
+          assign _meta = _meta | append: ' · ' | append: _tipo
+        endif
+        if _do != blank
+          assign _meta = _meta | append: ' D.O. ' | append: _do
+        endif
+        assign _meta = _meta | append: ' · ' | append: _bodega
+        if _parker != blank
+          assign _meta = _meta | append: ' · Parker ' | append: _parker
+        endif
+        if _penin != blank
+          assign _meta = _meta | append: ' · Peñín ' | append: _penin
+        endif
+        assign _meta = _meta | append: ' · ' | append: _price | append: ' · Envío 24-48h · En Copa de Balón'
+        assign _meta = _meta | truncate: 160
+      -%}
+      <meta name="description" content="{{ _meta | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
@@ -228,6 +279,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {%- render 'visual-polish' -%}
     {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'magnific-popup.css' | asset_url }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ 'wbquickview.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -260,6 +312,10 @@
 </head>
 
   <body class="gradient {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPCDS6X"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -271,7 +327,11 @@
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
+    {%- render 'recently-viewed' -%}
     {% sections 'footer-group' %}
+    {% render 'schema-stores' %}
+    {% render 'faq-schema' %}
+    {%- render 'mobile-ux-enhancements' -%}
     {% section 'age-verification' %}
     {%- if settings.cart_type == 'drawer' and template != 'cart' -%}
       {%- render 'cart-drawer' -%}
@@ -330,7 +390,6 @@
     {% if template == 'index' or template contains 'page' %}
         <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <script src="{{ 'jquery.js' | asset_url }}"></script>
     <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" async></script>
     <script src="{{ 'wbquickview.js' | asset_url }}" async></script>
     

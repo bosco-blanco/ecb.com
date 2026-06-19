@@ -159,6 +159,32 @@
                         <div class="predictive-search__item-vendor">{{ product.vendor }}</div>
                       {%- endif -%}
                       <h3 class="predictive-search__item-heading h5">{{ product.title }}</h3>
+                      {%- liquid
+                        assign ps_tipo = product.metafields.custom.tipo_de_vino.value
+                        assign ps_do = product.metafields.custom.denominaci_n_de_origen.value
+                        assign ps_anada = product.metafields.custom.a_ada.value
+                        assign ps_parker = product.metafields.custom.puntos_robert_parker.value
+                        assign ps_penin = product.metafields.custom.puntos_guia_pe_in.value
+                      -%}
+                      {%- if ps_tipo != blank or ps_do != blank -%}
+                        <div class="predictive-search__wine-meta" style="display:flex;gap:6px;align-items:center;margin-top:2px;flex-wrap:wrap;">
+                          {%- if ps_tipo != blank -%}
+                            {%- assign ps_tipo_lower = ps_tipo | downcase -%}
+                            <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#fff;background:{% if ps_tipo_lower == 'tinto' %}#6b1d3a{% elsif ps_tipo_lower == 'blanco' %}#d4b974{% elsif ps_tipo_lower == 'rosado' %}#e8a0b4{% else %}#9fa185{% endif %};padding:1px 6px;border-radius:3px;line-height:1.6;">{{ ps_tipo }}</span>
+                          {%- endif -%}
+                          {%- if ps_do != blank -%}
+                            <span style="font-size:11px;color:#888;">{{ ps_do }}</span>
+                          {%- endif -%}
+                          {%- if ps_anada != blank -%}
+                            <span style="font-size:11px;color:#888;font-weight:600;">{{ ps_anada }}</span>
+                          {%- endif -%}
+                          {%- if ps_parker != blank -%}
+                            <span style="font-size:10px;font-weight:700;color:#6b1d3a;">{{ ps_parker }} Parker</span>
+                          {%- elsif ps_penin != blank -%}
+                            <span style="font-size:10px;font-weight:700;color:#1a5276;">{{ ps_penin }} Penin</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
                       {%- if settings.predictive_search_show_price -%}
                         {% render 'price', product: product, use_variant: true, show_badges: false %}
                       {%- endif -%}

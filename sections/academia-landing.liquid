@@ -1,0 +1,993 @@
+{% comment %}
+  Academia del Vino ECDB — Landing Page
+  Página de entrada pública con hero, video, beneficios, tiers y login
+{% endcomment %}
+
+{% render 'academia-tokens' %}
+
+{% style %}
+  /* ========== HERO ========== */
+  .acad-hero {
+    background: var(--acad-wine-brown);
+    color: var(--acad-cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .acad-hero::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 20% 40%, rgba(212,185,116,0.12), transparent 50%),
+      radial-gradient(ellipse at 80% 60%, rgba(122,31,61,0.35), transparent 50%);
+    z-index: 1;
+  }
+  .acad-hero-inner {
+    max-width: 1360px; margin: 0 auto;
+    padding: 80px 32px 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+    position: relative; z-index: 2;
+    min-height: 600px;
+  }
+  .acad-hero-text .acad-eyebrow-gold {
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--acad-gold);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .acad-hero-text .acad-eyebrow-gold::before {
+    content:''; width: 28px; height: 1px; background: var(--acad-gold);
+  }
+  .acad-hero-text h1 {
+    font-family: var(--acad-serif);
+    font-size: clamp(42px, 5.5vw, 68px);
+    font-weight: 400; line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--acad-cream);
+  }
+  .acad-hero-text h1 em { font-style: italic; color: var(--acad-gold); }
+  .acad-hero-text .acad-lede {
+    margin-top: 20px; max-width: 500px;
+    color: rgba(255,252,241,0.75);
+    font-size: 17px; line-height: 1.6;
+  }
+  .acad-hero-text .acad-lede b { color: var(--acad-gold); }
+  .acad-hero-cta-row {
+    margin-top: 36px;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .acad-btn-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 28px;
+    background: var(--acad-gold); color: var(--acad-wine-brown);
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700; transition: all .2s;
+  }
+  .acad-btn-gold:hover { background: var(--acad-cream); }
+  .acad-btn-outline {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 28px;
+    background: transparent; color: var(--acad-cream);
+    border: 1px solid rgba(255,252,241,0.3);
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; transition: all .2s;
+  }
+  .acad-btn-outline:hover { border-color: var(--acad-gold); color: var(--acad-gold); }
+
+  /* Video */
+  .acad-hero-video {
+    position: relative; aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #2C1810, #7A1F3D);
+    overflow: hidden; box-shadow: var(--acad-shadow-2);
+    margin-bottom: -60px;
+  }
+  .acad-hero-video::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 50% 50%, rgba(212,185,116,0.12), transparent 60%);
+  }
+  .acad-play-btn {
+    position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 88px; height: 88px; border-radius: 50%;
+    background: var(--acad-gold);
+    display: grid; place-items: center;
+    cursor: pointer; transition: all .25s;
+    z-index: 2;
+  }
+  .acad-play-btn:hover {
+    transform: translate(-50%,-50%) scale(1.08);
+    box-shadow: 0 0 0 18px rgba(212,185,116,0.15);
+  }
+  .acad-play-btn::before {
+    content:''; width:0; height:0;
+    border-left: 22px solid var(--acad-wine-brown);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 5px;
+  }
+  .acad-vid-label {
+    position: absolute; bottom: 20px; left: 24px;
+    font-family: var(--acad-serif); font-style: italic;
+    font-size: 18px; color: rgba(255,252,241,0.85); z-index: 2;
+  }
+  .acad-vid-dur {
+    position: absolute; bottom: 20px; right: 24px;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,252,241,0.6);
+    padding: 6px 10px; border: 1px solid rgba(255,252,241,0.2); z-index: 2;
+  }
+
+  /* Stats bar */
+  .acad-stats-bar {
+    background: var(--acad-cream-2);
+    border-bottom: 1px solid var(--acad-line);
+    padding: 80px 32px 36px;
+  }
+  .acad-stats-bar-inner {
+    max-width: 1360px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 32px; text-align: center;
+  }
+  .acad-stat-item .acad-n {
+    font-family: var(--acad-serif);
+    font-size: 48px; color: var(--acad-wine-brown);
+    font-weight: 500; line-height: 1;
+  }
+  .acad-stat-item .acad-l {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--acad-muted); margin-top: 8px;
+  }
+
+  /* Section heads */
+  .acad-section-head {
+    text-align: center; margin-bottom: 56px;
+  }
+  .acad-section-head .eyebrow { margin-bottom: 12px; }
+  .acad-section-head h2 {
+    font-family: var(--acad-serif);
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--acad-wine-brown); font-weight: 400;
+  }
+  .acad-section-head h2 em { font-style: italic; color: var(--acad-bordeaux); }
+  .acad-section-head p {
+    margin-top: 12px; color: var(--acad-ink-soft);
+    font-size: 16px; max-width: 580px;
+    margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
+
+  /* How it works */
+  .acad-how-section {
+    max-width: 1360px; margin: 0 auto; padding: 80px 32px;
+  }
+  .acad-steps-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 28px;
+  }
+  .acad-step-card {
+    text-align: center; padding: 32px 24px;
+    border: 1px solid var(--acad-line);
+    background: var(--acad-cream); transition: all .25s;
+  }
+  .acad-step-card:hover {
+    border-color: var(--acad-gold-deep);
+    transform: translateY(-3px); box-shadow: var(--acad-shadow-1);
+  }
+  .acad-step-num {
+    font-family: var(--acad-serif);
+    font-size: 56px; color: var(--acad-line);
+    font-weight: 500; line-height: 1;
+    margin-bottom: 16px; font-style: italic;
+  }
+  .acad-step-card:hover .acad-step-num { color: var(--acad-gold); }
+  .acad-step-icon {
+    width: 52px; height: 52px; margin: 0 auto 18px;
+    display: grid; place-items: center;
+    background: var(--acad-cream-2); border-radius: 50%;
+    color: var(--acad-bordeaux);
+  }
+  .acad-step-card h3 {
+    font-family: var(--acad-serif);
+    font-size: 22px; color: var(--acad-wine-brown);
+    font-weight: 500; margin-bottom: 8px;
+  }
+  .acad-step-card h3 em { font-style: italic; }
+  .acad-step-card p { font-size: 14px; color: var(--acad-ink-soft); line-height: 1.55; }
+
+  /* Benefits */
+  .acad-benefits-section {
+    background: var(--acad-wine-brown); color: var(--acad-cream);
+    padding: 80px 32px; position: relative; overflow: hidden;
+  }
+  .acad-benefits-section::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 10% 80%, rgba(122,31,61,0.4), transparent 50%),
+      radial-gradient(ellipse at 90% 20%, rgba(212,185,116,0.1), transparent 50%);
+  }
+  .acad-benefits-inner {
+    max-width: 1360px; margin: 0 auto; position: relative; z-index: 2;
+  }
+  .acad-benefits-inner .acad-section-head h2 { color: var(--acad-cream); }
+  .acad-benefits-inner .acad-section-head p { color: rgba(255,252,241,0.7); }
+  .acad-benefits-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 24px; margin-top: 48px;
+  }
+  .acad-benefit-card {
+    background: rgba(255,252,241,0.06);
+    border: 1px solid rgba(212,185,116,0.2);
+    padding: 32px 28px; transition: all .3s;
+    position: relative; overflow: hidden;
+  }
+  .acad-benefit-card:hover {
+    border-color: var(--acad-gold);
+    background: rgba(255,252,241,0.1);
+  }
+  .acad-benefit-card.acad-highlight {
+    background: rgba(212,185,116,0.12);
+    border-color: var(--acad-gold);
+  }
+  .acad-benefit-card .acad-icon-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
+  }
+  .acad-benefit-card .acad-b-icon {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border: 1px solid var(--acad-gold); border-radius: 50%;
+    font-size: 20px; color: var(--acad-gold); flex-shrink: 0;
+  }
+  .acad-benefit-card .acad-b-tag {
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--acad-gold); font-weight: 600;
+  }
+  .acad-benefit-card h3 {
+    font-family: var(--acad-serif);
+    font-size: 24px; color: var(--acad-cream);
+    font-weight: 400; margin-bottom: 10px; line-height: 1.15;
+  }
+  .acad-benefit-card h3 em { font-style: italic; color: var(--acad-gold); }
+  .acad-benefit-card p { font-size: 14px; color: rgba(255,252,241,0.65); line-height: 1.6; }
+
+  /* Tiers */
+  .acad-tiers-section {
+    max-width: 1360px; margin: 0 auto; padding: 80px 32px;
+  }
+  .acad-tiers-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 20px; margin-top: 48px;
+  }
+  .acad-tier-card {
+    border: 1px solid var(--acad-line);
+    background: var(--acad-cream);
+    padding: 32px 24px; display: flex; flex-direction: column;
+    transition: all .25s; position: relative;
+  }
+  .acad-tier-card:hover {
+    border-color: var(--acad-gold-deep);
+    transform: translateY(-3px); box-shadow: var(--acad-shadow-1);
+  }
+  .acad-tier-card.acad-popular {
+    border-color: var(--acad-wine-brown);
+    background: var(--acad-cream-2);
+  }
+  .acad-tier-card.acad-popular .acad-pop-tag {
+    position: absolute; top: -1px; left: -1px; right: -1px;
+    background: var(--acad-wine-brown); color: var(--acad-gold);
+    text-align: center; padding: 6px;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .acad-tier-level {
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--acad-bordeaux); font-weight: 600; margin-bottom: 8px;
+  }
+  .acad-tier-card h3 {
+    font-family: var(--acad-serif);
+    font-size: 28px; color: var(--acad-wine-brown); font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .acad-tier-card h3 em { font-style: italic; }
+  .acad-tier-price {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 14px 0; padding-bottom: 18px;
+    border-bottom: 1px dashed var(--acad-line);
+  }
+  .acad-tier-price .acad-amount {
+    font-family: var(--acad-serif);
+    font-size: 42px; color: var(--acad-wine-brown);
+    font-weight: 500; line-height: 1;
+  }
+  .acad-tier-price .acad-period {
+    font-size: 13px; color: var(--acad-muted);
+  }
+  .acad-tier-features {
+    list-style: none; padding: 0; margin: 0; flex: 1;
+  }
+  .acad-tier-features li {
+    padding: 8px 0; font-size: 14px; color: var(--acad-ink-soft);
+    display: flex; align-items: flex-start; gap: 10px; line-height: 1.4;
+  }
+  .acad-tier-features li::before {
+    content:''; width: 6px; height: 6px;
+    background: var(--acad-gold); border-radius: 50%;
+    flex-shrink: 0; margin-top: 6px;
+  }
+  .acad-tier-cta {
+    margin-top: 24px; display: block; width: 100%;
+    padding: 16px; text-align: center;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid var(--acad-wine-brown);
+    color: var(--acad-wine-brown);
+    background: transparent; transition: all .2s;
+  }
+  .acad-tier-cta:hover { background: var(--acad-wine-brown); color: var(--acad-cream); }
+  .acad-tier-card.acad-popular .acad-tier-cta {
+    background: var(--acad-wine-brown); color: var(--acad-gold);
+    border-color: var(--acad-wine-brown);
+  }
+  .acad-tier-card.acad-popular .acad-tier-cta:hover { background: var(--acad-bordeaux); }
+
+  /* Testimonial */
+  .acad-testimonial {
+    background: var(--acad-cream-2);
+    border-top: 1px solid var(--acad-line);
+    border-bottom: 1px solid var(--acad-line);
+    padding: 80px 32px;
+  }
+  .acad-testimonial-inner {
+    max-width: 860px; margin: 0 auto; text-align: center;
+  }
+  .acad-testimonial-inner .acad-quote {
+    font-family: var(--acad-serif);
+    font-size: clamp(24px, 3vw, 36px);
+    font-style: italic; color: var(--acad-wine-brown);
+    line-height: 1.35; font-weight: 400;
+  }
+  .acad-testimonial-inner .acad-quote em { color: var(--acad-bordeaux); }
+  .acad-testimonial-inner .acad-attribution {
+    margin-top: 24px; font-size: 13px; color: var(--acad-muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .acad-testimonial-inner .acad-attribution b { color: var(--acad-wine-brown); font-weight: 600; }
+
+  /* Login */
+  .acad-login-section {
+    max-width: 1360px; margin: 0 auto; padding: 80px 32px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .acad-login-info .eyebrow { margin-bottom: 12px; }
+  .acad-login-info h2 {
+    font-family: var(--acad-serif);
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--acad-wine-brown); font-weight: 400; line-height: 1.05;
+  }
+  .acad-login-info h2 em { font-style: italic; color: var(--acad-bordeaux); }
+  .acad-login-info p {
+    margin-top: 16px; color: var(--acad-ink-soft);
+    font-size: 16px; line-height: 1.6; max-width: 500px;
+  }
+  .acad-login-perks {
+    margin-top: 28px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .acad-login-perks .acad-perk {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 14px; color: var(--acad-ink-soft);
+  }
+  .acad-login-perks .acad-perk-dot {
+    width: 8px; height: 8px; background: var(--acad-gold);
+    border-radius: 50%; flex-shrink: 0;
+  }
+  .acad-login-form-wrap {
+    background: var(--acad-cream);
+    border: 1px solid var(--acad-line);
+    padding: 40px 36px; box-shadow: var(--acad-shadow-2);
+    position: relative;
+  }
+  .acad-login-form-wrap::before {
+    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background: var(--acad-gold);
+  }
+  .acad-login-form-wrap h3 {
+    font-family: var(--acad-serif);
+    font-size: 28px; color: var(--acad-wine-brown); font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .acad-login-form-wrap h3 em { font-style: italic; color: var(--acad-bordeaux); }
+  .acad-login-form-wrap .acad-sub {
+    font-size: 14px; color: var(--acad-muted); margin-bottom: 28px;
+  }
+  .acad-form-group { margin-bottom: 18px; }
+  .acad-form-group label {
+    display: block; font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--acad-muted);
+    font-weight: 600; margin-bottom: 8px;
+  }
+  .acad-form-group input {
+    width: 100%; padding: 14px 16px;
+    border: 1px solid var(--acad-line);
+    background: var(--acad-cream-2);
+    font-family: var(--acad-sans); font-size: 15px;
+    color: var(--acad-ink); transition: border-color .2s;
+  }
+  .acad-form-group input:focus { outline: none; border-color: var(--acad-gold); }
+  .acad-login-btn {
+    width: 100%; padding: 18px;
+    background: var(--acad-wine-brown); color: var(--acad-gold);
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 700; border: none; cursor: pointer;
+    transition: background .2s; margin-top: 8px;
+  }
+  .acad-login-btn:hover { background: var(--acad-bordeaux); }
+  .acad-form-alt {
+    text-align: center; margin-top: 18px;
+    font-size: 13px; color: var(--acad-muted);
+  }
+  .acad-form-alt a { color: var(--acad-bordeaux); text-decoration: underline; font-weight: 500; }
+
+  /* Footer */
+  .acad-footer {
+    border-top: 1px solid var(--acad-line);
+    padding: 28px 32px; text-align: center;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--acad-muted);
+  }
+  .acad-footer em {
+    color: var(--acad-gold-deep); font-style: italic;
+    font-family: var(--acad-serif); letter-spacing: 0.04em;
+    text-transform: none; font-size: 14px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1080px) {
+    .acad-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .acad-hero-video { margin-bottom: 0; }
+    .acad-stats-bar { padding-top: 40px; }
+    .acad-stats-bar-inner { grid-template-columns: repeat(2,1fr); }
+    .acad-steps-grid { grid-template-columns: repeat(2,1fr); }
+    .acad-benefits-grid { grid-template-columns: 1fr 1fr; }
+    .acad-tiers-grid { grid-template-columns: repeat(2,1fr); }
+    .acad-login-section { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .acad-hero-inner { padding: 48px 20px 40px; }
+    .acad-hero-text h1 { font-size: 36px; }
+    .acad-stats-bar-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .acad-steps-grid { grid-template-columns: 1fr; }
+    .acad-benefits-grid { grid-template-columns: 1fr; }
+    .acad-tiers-grid { grid-template-columns: 1fr; }
+    .acad-how-section, .acad-tiers-section, .acad-login-section { padding: 56px 20px; }
+    .acad-benefits-section { padding: 56px 20px; }
+  }
+{% endstyle %}
+
+<div class="academia">
+  {%- comment -%} ========== HERO ========== {%- endcomment -%}
+  <section class="acad-hero">
+    <div class="acad-hero-inner">
+      <div class="acad-hero-text">
+        <div class="acad-eyebrow-gold">{{ section.settings.hero_eyebrow }}</div>
+        <h1>{{ section.settings.hero_title }}</h1>
+        <p class="acad-lede">{{ section.settings.hero_subtitle }}</p>
+        <div class="acad-hero-cta-row">
+          <a href="#acad-planes" class="acad-btn-gold">{{ section.settings.cta_primary }}</a>
+          <a href="#acad-video" class="acad-btn-outline">{{ section.settings.cta_secondary }}</a>
+        </div>
+      </div>
+      <div class="acad-hero-video" id="acad-video">
+        {% if section.settings.video_url != blank %}
+          <iframe
+            src="{{ section.settings.video_url }}"
+            style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:2;"
+            allow="autoplay; fullscreen" allowfullscreen>
+          </iframe>
+        {% else %}
+          <div class="acad-play-btn" title="Reproducir"></div>
+          <div class="acad-vid-label">"{{ section.settings.video_quote }}"</div>
+          <div class="acad-vid-dur">{{ section.settings.video_duration }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== STATS ========== {%- endcomment -%}
+  <div class="acad-stats-bar">
+    <div class="acad-stats-bar-inner">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div class="acad-stat-item" {{ block.shopify_attributes }}>
+            <div class="acad-n">{{ block.settings.number }}</div>
+            <div class="acad-l">{{ block.settings.label }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {%- comment -%} ========== CÓMO FUNCIONA ========== {%- endcomment -%}
+  <section class="acad-how-section">
+    <div class="acad-section-head">
+      <div class="eyebrow">{{ section.settings.how_eyebrow }}</div>
+      <h2>{{ section.settings.how_title }}</h2>
+      <p>{{ section.settings.how_subtitle }}</p>
+    </div>
+    <div class="acad-steps-grid">
+      {% assign step_num = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          {% assign step_num = step_num | plus: 1 %}
+          <div class="acad-step-card" {{ block.shopify_attributes }}>
+            <div class="acad-step-num">{{ step_num | prepend: '0' | slice: -2, 2 }}</div>
+            <div class="acad-step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                {% case block.settings.icon %}
+                  {% when 'subscribe' %}
+                    <path d="M20 21V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16l4-2 4 2 4-2 4 2z"/>
+                  {% when 'pack' %}
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  {% when 'video' %}
+                    <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  {% when 'quiz' %}
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                {% endcase %}
+              </svg>
+            </div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ========== BENEFICIOS ========== {%- endcomment -%}
+  <section class="acad-benefits-section">
+    <div class="acad-benefits-inner">
+      <div class="acad-section-head">
+        <div class="eyebrow" style="color:var(--acad-gold);">{{ section.settings.benefits_eyebrow }}</div>
+        <h2>{{ section.settings.benefits_title }}</h2>
+        <p>{{ section.settings.benefits_subtitle }}</p>
+      </div>
+      <div class="acad-benefits-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'benefit' %}
+            <div class="acad-benefit-card{% if block.settings.highlight %} acad-highlight{% endif %}" {{ block.shopify_attributes }}>
+              <div class="acad-icon-row">
+                <div class="acad-b-icon">{{ block.settings.icon }}</div>
+                <div class="acad-b-tag">{{ block.settings.tag }}</div>
+              </div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== PLANES ========== {%- endcomment -%}
+  <section class="acad-tiers-section" id="acad-planes">
+    <div class="acad-section-head">
+      <div class="eyebrow">{{ section.settings.tiers_eyebrow }}</div>
+      <h2>{{ section.settings.tiers_title }}</h2>
+      <p>{{ section.settings.tiers_subtitle }}</p>
+    </div>
+    <div class="acad-tiers-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'tier' %}
+          <div class="acad-tier-card{% if block.settings.popular %} acad-popular{% endif %}" {{ block.shopify_attributes }}>
+            {% if block.settings.popular %}
+              <div class="acad-pop-tag">{{ block.settings.popular_label | default: 'Más popular' }}</div>
+            {% endif %}
+            <div class="acad-tier-level">{{ block.settings.level }}</div>
+            <h3><em>{{ block.settings.name }}</em></h3>
+            <div class="acad-tier-price">
+              <span class="acad-amount">{{ block.settings.price }}</span>
+              <span class="acad-period">€ / mes</span>
+            </div>
+            <ul class="acad-tier-features">
+              {% assign features = block.settings.features | split: '|' %}
+              {% for feature in features %}
+                <li>{{ feature | strip }}</li>
+              {% endfor %}
+            </ul>
+            {% if block.settings.product != blank %}
+              <a href="{{ block.settings.product.url }}" class="acad-tier-cta">Empezar ahora</a>
+            {% else %}
+              <a href="#acad-login" class="acad-tier-cta">Empezar ahora</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ========== TESTIMONIAL ========== {%- endcomment -%}
+  <section class="acad-testimonial">
+    <div class="acad-testimonial-inner">
+      <div class="eyebrow" style="margin-bottom:20px;display:flex;align-items:center;gap:14px;justify-content:center;">
+        <span style="width:30px;height:1px;background:var(--acad-gold);display:inline-block;"></span>
+        {{ section.settings.testimonial_label | default: 'Lo que dicen nuestros alumnos' }}
+        <span style="width:30px;height:1px;background:var(--acad-gold);display:inline-block;"></span>
+      </div>
+      <div class="acad-quote">"{{ section.settings.testimonial_quote }}"</div>
+      <div class="acad-attribution"><b>{{ section.settings.testimonial_author }}</b> — {{ section.settings.testimonial_role }}</div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== LOGIN ========== {%- endcomment -%}
+  <section class="acad-login-section" id="acad-login">
+    <div class="acad-login-info">
+      <div class="eyebrow">{{ section.settings.login_eyebrow }}</div>
+      <h2>{{ section.settings.login_title }}</h2>
+      <p>{{ section.settings.login_subtitle }}</p>
+      <div class="acad-login-perks">
+        <div class="acad-perk"><span class="acad-perk-dot"></span>Acceso ilimitado a todas tus lecciones</div>
+        <div class="acad-perk"><span class="acad-perk-dot"></span>Progreso guardado automáticamente</div>
+        <div class="acad-perk"><span class="acad-perk-dot"></span>Certificados descargables en PDF</div>
+        <div class="acad-perk"><span class="acad-perk-dot"></span>Participación en sorteos activos</div>
+      </div>
+    </div>
+    <div class="acad-login-form-wrap">
+      <h3>Iniciar <em>sesión</em></h3>
+      <div class="acad-sub">Accede con tu cuenta de En Copa de Balón</div>
+      <form action="{{ routes.account_login_url }}" method="post">
+        <div class="acad-form-group">
+          <label for="acad-email">Email</label>
+          <input type="email" id="acad-email" name="customer[email]" placeholder="tu@email.com" autocomplete="email" />
+        </div>
+        <div class="acad-form-group">
+          <label for="acad-pass">Contraseña</label>
+          <input type="password" id="acad-pass" name="customer[password]" placeholder="Tu contraseña" />
+        </div>
+        <button type="submit" class="acad-login-btn">Acceder a Mi Academia</button>
+      </form>
+      <div class="acad-form-alt">¿Aún no tienes cuenta? <a href="{{ routes.account_register_url }}">Regístrate aquí</a></div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== FOOTER ========== {%- endcomment -%}
+  <div class="acad-footer">
+    En Copa de Balón <em>· desde 1991 ·</em> Madrid
+    <div style="margin-top:8px;font-size:10px;opacity:0.7;letter-spacing:0.12em;">Disfruta del vino con responsabilidad — FEBE</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Academia — Landing",
+  "tag": "section",
+  "class": "academia-landing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow",
+      "default": "Nueva temporada 2026/27"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_title",
+      "label": "Título hero",
+      "default": "<p>Aprende a disfrutar<br/>del vino como un<br/><em>sommelier.</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_subtitle",
+      "label": "Subtítulo",
+      "default": "<p>24 meses de formación, <b>catas guiadas</b>, vinos premium en tu puerta y acceso a <b>sorteos exclusivos</b> de viajes y experiencias enoturísticas.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary",
+      "label": "CTA principal",
+      "default": "Ver planes desde 29,90€/mes"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary",
+      "label": "CTA secundario",
+      "default": "Ver el vídeo"
+    },
+    {
+      "type": "header",
+      "content": "Vídeo"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "URL del vídeo (embed)",
+      "info": "URL de YouTube/Vimeo embed. Dejar vacío para mostrar placeholder."
+    },
+    {
+      "type": "text",
+      "id": "video_quote",
+      "label": "Frase sobre el vídeo",
+      "default": "El vino no se bebe, se entiende."
+    },
+    {
+      "type": "text",
+      "id": "video_duration",
+      "label": "Duración",
+      "default": "2:40"
+    },
+    {
+      "type": "header",
+      "content": "Cómo funciona"
+    },
+    {
+      "type": "text",
+      "id": "how_eyebrow",
+      "label": "Eyebrow",
+      "default": "Cómo funciona"
+    },
+    {
+      "type": "richtext",
+      "id": "how_title",
+      "label": "Título",
+      "default": "<p>Tu camino al <em>conocimiento</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "how_subtitle",
+      "label": "Subtítulo",
+      "default": "Cada mes recibes un pack de vinos seleccionados, accedes a lecciones en vídeo y superas un quiz para avanzar."
+    },
+    {
+      "type": "header",
+      "content": "Beneficios"
+    },
+    {
+      "type": "text",
+      "id": "benefits_eyebrow",
+      "label": "Eyebrow",
+      "default": "Ventajas exclusivas"
+    },
+    {
+      "type": "richtext",
+      "id": "benefits_title",
+      "label": "Título",
+      "default": "<p>Qué consigues siendo de <em>la Academia</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "benefits_subtitle",
+      "label": "Subtítulo",
+      "default": "Mucho más que formación. Ser alumno de la Academia te abre las puertas a experiencias únicas."
+    },
+    {
+      "type": "header",
+      "content": "Planes"
+    },
+    {
+      "type": "text",
+      "id": "tiers_eyebrow",
+      "label": "Eyebrow",
+      "default": "Elige tu nivel"
+    },
+    {
+      "type": "richtext",
+      "id": "tiers_title",
+      "label": "Título",
+      "default": "<p>Cuatro niveles, un <em>mismo viaje</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "tiers_subtitle",
+      "label": "Subtítulo",
+      "default": "Sin permanencia. Puedes cambiar de nivel o cancelar en cualquier momento."
+    },
+    {
+      "type": "header",
+      "content": "Testimonial"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_label",
+      "label": "Etiqueta",
+      "default": "Lo que dicen nuestros alumnos"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_quote",
+      "label": "Cita",
+      "default": "Antes pedía el tinto de la casa. Ahora pido un Ribera del Duero crianza 2019 y explico por qué. La Academia me cambió la forma de disfrutar una cena."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Nombre",
+      "default": "Carlos Méndez"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_role",
+      "label": "Rol",
+      "default": "Alumno Mes 8 · Nivel Explorador"
+    },
+    {
+      "type": "header",
+      "content": "Login"
+    },
+    {
+      "type": "text",
+      "id": "login_eyebrow",
+      "label": "Eyebrow",
+      "default": "¿Ya eres alumno?"
+    },
+    {
+      "type": "richtext",
+      "id": "login_title",
+      "label": "Título",
+      "default": "<p>Accede a <em>tu academia</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "login_subtitle",
+      "label": "Subtítulo",
+      "default": "Retoma tus lecciones, consulta tus certificados y descubre los vinos de este mes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Estadística",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Número",
+          "default": "24"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Meses de formación"
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "<em>Suscríbete</em>"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción",
+          "default": "Elige tu nivel: desde 2 hasta 5 botellas al mes."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icono",
+          "options": [
+            { "value": "subscribe", "label": "Suscribir" },
+            { "value": "pack", "label": "Pack/Caja" },
+            { "value": "video", "label": "Vídeo" },
+            { "value": "quiz", "label": "Quiz/Check" }
+          ],
+          "default": "subscribe"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji/Icono",
+          "default": "🍷"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Etiqueta",
+          "default": "Cada mes"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Título",
+          "default": "<p>Pack de vinos <em>premium</em></p>"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción",
+          "default": "De 2 a 5 botellas seleccionadas por nuestro equipo de sommeliers."
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Destacar este beneficio",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "tier",
+      "name": "Plan/Tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "level",
+          "label": "Nivel",
+          "default": "Nivel 1"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre",
+          "default": "Catador"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Precio",
+          "default": "29,90"
+        },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Características (separar con |)",
+          "default": "2 vinos seleccionados al mes|Acceso completo a lecciones|Quiz mensual y progreso|Participación en sorteos"
+        },
+        {
+          "type": "checkbox",
+          "id": "popular",
+          "label": "Marcar como más popular",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "popular_label",
+          "label": "Etiqueta popular",
+          "default": "Más popular"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Producto de suscripción (opcional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Academia — Landing",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "24", "label": "Meses de formación" } },
+        { "type": "stat", "settings": { "number": "96", "label": "Vinos premium" } },
+        { "type": "stat", "settings": { "number": "24", "label": "Regiones españolas" } },
+        { "type": "stat", "settings": { "number": "3", "label": "Certificados oficiales" } },
+        { "type": "step", "settings": { "title": "<em>Suscríbete</em>", "description": "Elige tu nivel: desde 2 hasta 5 botellas al mes. Sin permanencia.", "icon": "subscribe" } },
+        { "type": "step", "settings": { "title": "Recibe tu <em>pack</em>", "description": "Vinos seleccionados de la D.O. del mes, entregados en tu puerta.", "icon": "pack" } },
+        { "type": "step", "settings": { "title": "Aprende con <em>vídeo</em>", "description": "Lecciones grabadas por sommeliers profesionales.", "icon": "video" } },
+        { "type": "step", "settings": { "title": "Supera el <em>quiz</em>", "description": "Demuestra lo aprendido y obtén certificados.", "icon": "quiz" } },
+        { "type": "benefit", "settings": { "icon": "🍷", "tag": "Cada mes", "title": "<p>Pack de vinos <em>premium</em></p>", "description": "De 2 a 5 botellas seleccionadas por nuestro equipo de sommeliers, de la D.O. del mes.", "highlight": false } },
+        { "type": "benefit", "settings": { "icon": "🎓", "tag": "Formación", "title": "<p>Lecciones en <em>vídeo</em></p>", "description": "Teoría del vino, catas guiadas, maridaje y técnicas de servicio.", "highlight": false } },
+        { "type": "benefit", "settings": { "icon": "🏆", "tag": "Sorteo mensual", "title": "<p>Sorteo de <em>vinos</em> exclusivos</p>", "description": "Cada mes sorteamos botellas de alta gama entre los alumnos activos.", "highlight": true } },
+        { "type": "benefit", "settings": { "icon": "✈️", "tag": "Sorteo trimestral", "title": "<p>Viajes de <em>enoturismo</em></p>", "description": "Escapadas a bodegas, rutas del vino y experiencias gastronómicas.", "highlight": true } },
+        { "type": "benefit", "settings": { "icon": "📜", "tag": "Certificación", "title": "<p>3 certificados <em>oficiales</em></p>", "description": "Iniciación, Sumiller Amateur y Graduación Final. Descargables y verificables.", "highlight": false } },
+        { "type": "benefit", "settings": { "icon": "🎉", "tag": "Comunidad", "title": "<p>Eventos y catas <em>presenciales</em></p>", "description": "Acceso prioritario a catas, maridajes y eventos exclusivos.", "highlight": false } },
+        { "type": "tier", "settings": { "level": "Nivel 1", "name": "Catador", "price": "29,90", "features": "2 vinos seleccionados al mes|Acceso completo a lecciones en vídeo|Quiz mensual y progreso|Participación en sorteos mensuales|Ficha de cata descargable", "popular": false } },
+        { "type": "tier", "settings": { "level": "Nivel 2", "name": "Explorador", "price": "49,90", "features": "3 vinos seleccionados al mes|Todo lo del nivel Catador|Acceso a catas en directo (online)|Descuento 10% en la tienda|Participación doble en sorteos", "popular": true, "popular_label": "Más popular" } },
+        { "type": "tier", "settings": { "level": "Nivel 3", "name": "Sommelier", "price": "79,90", "features": "4 vinos premium al mes|Todo lo del nivel Explorador|Maridaje con carta La Casita|Acceso prioritario a eventos|Envío gratis siempre", "popular": false } },
+        { "type": "tier", "settings": { "level": "Nivel 4", "name": "Maestro", "price": "99,90", "features": "5 vinos gran reserva al mes|Todo lo del nivel Sommelier|Sesión mensual 1:1 con sommelier|Invitación a viajes enoturísticos|Pack regalo de bienvenida exclusivo", "popular": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

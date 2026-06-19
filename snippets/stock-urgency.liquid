@@ -1,0 +1,36 @@
+{%- comment -%}
+  Indicador de urgencia/escasez de stock.
+  Muestra "Ultimas X unidades" cuando el stock es bajo.
+
+  Acepta:
+  - product: {Object} Product Liquid object
+
+  Configuracion:
+  - threshold: numero de unidades por debajo del cual se muestra el aviso
+  - Se usa inventory_quantity del variante seleccionado
+
+  Uso:
+  {% render 'stock-urgency', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign urgency_threshold = 10
+  assign variant = product.selected_or_first_available_variant
+  assign qty = variant.inventory_quantity
+  assign tracking = variant.inventory_management
+-%}
+
+{%- if tracking == 'shopify' and qty > 0 and qty <= urgency_threshold and variant.available -%}
+  <div class="stock-urgency" style="margin:8px 0;padding:8px 12px;background:#fef3e2;border:1px solid #f5d89a;border-radius:6px;font-size:13px;color:#92400e;display:flex;align-items:center;gap:6px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>
+      {%- if qty <= 3 -%}
+        <strong>Últimas {{ qty }} unidades</strong> — No dejes escapar esta botella
+      {%- elsif qty <= 6 -%}
+        <strong>Quedan solo {{ qty }} unidades</strong> — Stock limitado
+      {%- else -%}
+        <strong>Solo {{ qty }} unidades disponibles</strong>
+      {%- endif -%}
+    </span>
+  </div>
+{%- endif -%}

@@ -1,0 +1,62 @@
+{%- comment -%}
+  FAQPage Schema JSON-LD para GEO.
+  Renderizar en páginas que tengan contenido FAQ.
+  Uso: {% render 'faq-schema' %}
+{%- endcomment -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda el envío de vinos de En Copa de Balón?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El envío estándar tarda 24-48 horas laborables en península. Los pedidos realizados antes de las 14:00h se envían el mismo día."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede recoger el pedido en tienda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, ofrecemos recogida gratuita en nuestras tiendas físicas de Madrid. Puedes seleccionar la opción de recogida en tienda durante el proceso de compra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dan asesoramiento para elegir vinos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, nuestros sumilleres ofrecen asesoramiento personalizado por WhatsApp y en las tiendas físicas. Más de 30 años de experiencia seleccionando vinos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Desde cuándo existe En Copa de Balón?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En Copa de Balón fue fundada en Madrid en 1991. Llevamos más de 30 años seleccionando los mejores vinos de las principales denominaciones de origen españolas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas referencias de vinos tiene En Copa de Balón?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestro catálogo incluye más de 2.000 referencias entre vinos tintos, blancos, rosados, espumosos, generosos, destilados y alimentación selecta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué denominaciones de origen tienen disponibles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos con las principales D.O. españolas: Rioja, Ribera del Duero, Rueda, Rías Baixas, Priorat, Jerez, Cava, Somontano, Bierzo, Toro, Jumilla y más de 100 denominaciones nacionales e internacionales."
+      }
+    }
+  ]
+}
+</script>

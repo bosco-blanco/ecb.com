@@ -1,0 +1,173 @@
+{%- comment -%}
+  Recently Viewed Products - stored in localStorage.
+  Shows a carousel of products the user has previously viewed.
+  On product pages, also records the current product.
+
+  Render in theme.liquid or product template:
+  {% render 'recently-viewed' %}
+{%- endcomment -%}
+
+{%- style -%}
+  .rv {
+    padding: 32px 0 48px;
+    overflow: hidden;
+  }
+  .rv__heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c2c2c;
+  }
+  .rv__scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px 12px;
+    scrollbar-width: none;
+  }
+  .rv__scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .rv__card {
+    scroll-snap-align: start;
+    flex: 0 0 160px;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .rv__card:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .rv__img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #fff;
+    padding: 8px;
+  }
+  .rv__info {
+    padding: 8px 10px 12px;
+  }
+  .rv__title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #2c2c2c;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .rv__price {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-variant-numeric: tabular-nums;
+  }
+  .rv__meta {
+    font-size: 10px;
+    color: #888;
+    margin-top: 2px;
+  }
+  @media screen and (max-width: 749px) {
+    .rv {
+      padding: 24px 0 32px;
+    }
+    .rv__card {
+      flex: 0 0 140px;
+    }
+    .rv__scroll {
+      gap: 10px;
+      padding: 0 16px 8px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="rv" id="recentlyViewed" style="display:none;">
+  <div class="container">
+    <h2 class="rv__heading">Vistos recientemente</h2>
+    <div class="rv__scroll" id="rvScroll"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var RV_KEY = 'ecdb_recently_viewed';
+  var RV_MAX = 12;
+
+  function getRV() {
+    try {
+      return JSON.parse(localStorage.getItem(RV_KEY)) || [];
+    } catch(e) { return []; }
+  }
+  function saveRV(items) {
+    try {
+      localStorage.setItem(RV_KEY, JSON.stringify(items.slice(0, RV_MAX)));
+    } catch(e) {}
+  }
+
+  // Record current product if on product page
+  {% if template contains 'product' and product %}
+  (function() {
+    var items = getRV();
+    var current = {
+      id: {{ product.id | json }},
+      title: {{ product.title | json }},
+      url: {{ product.url | json }},
+      price: {{ product.price | money | json }},
+      image: {% if product.featured_media %}{{ product.featured_media | image_url: width: 320 | json }}{% else %}""{% endif %},
+      tipo: {{ product.metafields.custom.tipo_de_vino.value | default: '' | json }},
+      do_name: {{ product.metafields.custom.denominaci_n_de_origen.value | default: '' | json }}
+    };
+    // Remove existing entry for this product
+    items = items.filter(function(i) { return i.id !== current.id; });
+    // Add to front
+    items.unshift(current);
+    saveRV(items);
+  })();
+  {% endif %}
+
+  // Render recently viewed products (exclude current product)
+  var items = getRV();
+  {% if template contains 'product' and product %}
+  items = items.filter(function(i) { return i.id !== {{ product.id }}; });
+  {% endif %}
+
+  if (items.length < 2) return;
+
+  var container = document.getElementById('rvScroll');
+  var wrapper = document.getElementById('recentlyViewed');
+  if (!container || !wrapper) return;
+
+  var html = '';
+  items.forEach(function(item) {
+    html += '<a href="' + item.url + '" class="rv__card">';
+    if (item.image) {
+      html += '<img class="rv__img" src="' + item.image + '" alt="" loading="lazy" width="160" height="160">';
+    }
+    html += '<div class="rv__info">';
+    html += '<div class="rv__title">' + item.title + '</div>';
+    html += '<div class="rv__price">' + item.price + '</div>';
+    if (item.tipo || item.do_name) {
+      html += '<div class="rv__meta">';
+      if (item.tipo) html += item.tipo;
+      if (item.tipo && item.do_name) html += ' · ';
+      if (item.do_name) html += item.do_name;
+      html += '</div>';
+    }
+    html += '</div></a>';
+  });
+
+  container.innerHTML = html;
+  wrapper.style.display = '';
+})();
+</script>

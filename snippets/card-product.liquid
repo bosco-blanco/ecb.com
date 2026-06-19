@@ -47,7 +47,7 @@
           {%- assign media = card_product.selected_or_first_available_variant.featured_media -%}
           <div class="product__media-item" data-media-id="{{ section.id }}-{{ card_product.id }}-{{ media.id }}">
             <a
-              href="{{ card_product.url | append: '?variant=' | append: card_product.selected_or_first_available_variant.id | default: '#' }}"
+              href="{{ card_product.url }}{%- if card_product.url contains '?' -%}&amp;{%- else -%}?{%- endif -%}variant={{ card_product.selected_or_first_available_variant.id }}"
               title="{{ card_product.title | escape }}"
               class="media media--transparent media--{{ media_size }} media--hover-effect"
               {% if media_size == 'adapt' and card_product.featured_media %}
@@ -122,7 +122,7 @@
                 data-media-id="{{ section.id }}-{{ card_product.id }}-{{ media.id }}"
               >
                 <a
-                  href="{{ card_product.url | append: '?variant=' | append: card_product.selected_or_first_available_variant.id | default: '#' }}"
+                  href="{{ card_product.url }}{%- if card_product.url contains '?' -%}&amp;{%- else -%}?{%- endif -%}variant={{ card_product.selected_or_first_available_variant.id }}"
                   title="{{ card_product.title | escape }}"
                   class="media media--transparent media--{{ media_size }} media--hover-effect"
                   {% if media_size == 'adapt' and card_product.featured_media %}
@@ -216,13 +216,13 @@
         {% endif %}
 
         {% if settings.percentage == true %}
-          <span class="badge percent__badge-sale {% if price_difference_percent == null %}hidden{% endif %}">
+          <span class="badge percent__badge-sale {% unless compare_at_price > price and price_difference_percent != null and price_difference_percent > 0 %}hidden{% endunless %}">
             {{ price_difference_percent -}}
             {{- 'products.product.off_price' | t }}
           </span>
         {% endif %}
         {% if settings.diff_price == true %}
-          <span class="{% if settings.percentage == false %}save_top{% endif %} badge amount__badge-sale {% if price_difference_amount == null %}hidden{% endif %}">
+          <span class="{% if settings.percentage == false %}save_top{% endif %} badge amount__badge-sale {% unless compare_at_price > price and price_difference_amount != null %}hidden{% endunless %}">
             {{- 'products.product.save' | t -}}
             {{ price_difference_amount }}
           </span>
@@ -262,8 +262,45 @@
         <a href="{{ card_product.url | default: '#' }}">{{ card_product.title | escape }}</a>
       </h3>
 
-      {% comment %} TODO: metafield {% endcomment %}
-      <span class="caption-large light">{{ block.settings.description | escape }}</span>
+      {%- liquid
+        assign wt_type = card_product.metafields.custom.tipo_de_vino.value
+        assign wt_do = card_product.metafields.custom.denominaci_n_de_origen.value
+        assign wt_vintage = card_product.metafields.custom.a_ada.value
+        assign wt_parker = card_product.metafields.custom.puntos_robert_parker.value
+        assign wt_penin = card_product.metafields.custom.puntos_guia_pe_in.value
+        assign wt_estilo = card_product.metafields.custom.estilo.value
+      -%}
+      {%- if wt_type != blank or wt_do != blank or wt_vintage != blank -%}
+      <div class="wine-card-info">
+        {%- if wt_vintage != blank -%}<span class="wine-tag wine-tag--vintage">{{ wt_vintage }}</span>{%- endif -%}
+        {%- if wt_do != blank -%}<a href="/collections/vinos?filter.p.m.custom.denominaci_n_de_origen={{ wt_do | url_encode }}" class="wine-tag wine-tag--do" title="Ver vinos de {{ wt_do }}">{{ wt_do }}</a>{%- endif -%}
+        {%- if wt_type != blank -%}
+          {%- assign type_lower = wt_type | downcase -%}
+          {%- assign type_class = 'wine-tag--' | append: type_lower -%}
+          {%- case type_lower -%}
+            {%- when 'espumoso' or 'espumosos' -%}{%- assign type_handle = 'espumosos-1' -%}
+            {%- when 'vermut' -%}{%- assign type_handle = 'aperitivos-y-vermuts' -%}
+            {%- when 'destilado' -%}{%- assign type_handle = 'destilados' -%}
+            {%- when 'cerveza' -%}{%- assign type_handle = 'cerveza' -%}
+            {%- when 'accesorio' -%}{%- assign type_handle = 'accesorios' -%}
+            {%- when 'alimentación' or 'alimentacion' -%}{%- assign type_handle = 'alimentacion-selecta' -%}
+            {%- when 'refresco' -%}{%- assign type_handle = 'refrescos' -%}
+            {%- when 'sidra' -%}{%- assign type_handle = 'sidra' -%}
+            {%- when 'generoso' -%}{%- assign type_handle = 'vino-generoso' -%}
+            {%- when 'dulce' -%}{%- assign type_handle = 'vino-dulce' -%}
+            {%- else -%}{%- assign type_handle = 'vino-' | append: type_lower -%}
+          {%- endcase -%}
+          <a href="/collections/{{ type_handle }}" class="wine-tag {{ type_class }}" title="Ver {{ wt_type | downcase }}">{{ wt_type }}</a>
+        {%- endif -%}
+        {%- if wt_estilo != blank -%}{%- assign estilo_lower = wt_estilo | downcase -%}{%- unless estilo_lower == type_lower or estilo_lower == 'espumosos' and type_lower == 'espumoso' or estilo_lower == 'espumoso' and type_lower == 'espumosos' -%}<a href="/collections/vinos?filter.p.m.custom.estilo={{ wt_estilo | url_encode }}" class="wine-tag wine-tag--estilo" title="{{ wt_estilo }}">{{ wt_estilo }}</a>{%- endunless -%}{%- endif -%}
+      </div>
+      {%- if wt_parker != blank or wt_penin != blank -%}
+      <div class="wine-card-scores">
+        {%- if wt_parker != blank -%}<span class="wine-score--parker" title="Robert Parker {{ wt_parker }}"><svg width="11" height="11" viewBox="0 0 24 24" fill="#722F37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Parker {{ wt_parker }}</span>{%- endif -%}
+        {%- if wt_penin != blank -%}<span class="wine-score--penin" title="Guía Peñín {{ wt_penin }}"><svg width="11" height="11" viewBox="0 0 24 24" fill="#8B6D00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Peñín {{ wt_penin }}</span>{%- endif -%}
+      </div>
+      {%- endif -%}
+      {%- endif -%}
 
       {%- if enable_listdesc and card_product.description != blank -%}
         <p class="wblistpdesc">

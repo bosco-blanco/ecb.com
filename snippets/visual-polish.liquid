@@ -1,0 +1,160 @@
+{% comment %}
+  ECDB Visual Polish v3 — Card alignment + Wine tags + Fix borders
+  REGLA: SOLO CSS para cards y wine tags. PROHIBIDO: hero, slideshow, banner, body, h1-h6, page-width, header
+{% endcomment %}
+
+<style>
+/* Card Grid: misma altura, precio+botón siempre abajo */
+li.grid__item { display: flex; flex-direction: column; }
+li.grid__item .card-wrapper { display: flex; flex-direction: column; height: 100%; }
+.card.card--standard { display: flex; flex-direction: column; height: 100%; }
+.card__content.wbproductdes { display: flex; flex-direction: column; flex-grow: 1; }
+.card__content.wbproductdes [id^="ProductInfo"] { margin-top: auto; }
+
+/* Quitar bordes blancos redondeados de cards */
+.card--card .card__inner, .card--standard .card__inner { border-radius: 0; border: none; box-shadow: none; background: transparent; }
+.card--card, .card--standard { border-radius: 0; border: none; overflow: hidden; }
+.card__media, .card .media { border-radius: 0; overflow: hidden; }
+.card--shape .card__inner { border-radius: 0; border: none; }
+.card-wrapper { border-radius: 0; }
+.card--card::after, .card--standard::after { display: none; }
+
+/* Wine Tags */
+.wine-card-info { min-height: 28px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.wine-card-scores { min-height: 18px; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+.wine-tag { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 3px; font-size: 10.5px; font-family: var(--font-body-family); white-space: nowrap; text-decoration: none; transition: opacity 0.15s ease, transform 0.15s ease; line-height: 1.4; letter-spacing: 0.02em; cursor: pointer; border: none; }
+.wine-tag:hover { opacity: 0.8; text-decoration: none; transform: translateY(-1px); }
+
+/* Tipo de vino */
+.wine-tag--tinto { background: #722F37; color: #FFFCF1; }
+.wine-tag--blanco { background: #C8A84E; color: #FFFCF1; }
+.wine-tag--rosado { background: #B5556E; color: #FFFCF1; }
+.wine-tag--espumoso { background: #6B6234; color: #FFFCF1; }
+.wine-tag--vermut { background: #8B4513; color: #FFFCF1; }
+.wine-tag--generoso, .wine-tag--dulce, .wine-tag--otro { background: #8B6D47; color: #FFFCF1; }
+
+/* D.O. */
+.wine-tag--do { background: #E8E2D0; color: #3D3825; border: 1px solid #D4CDB8; }
+/* Añada */
+.wine-tag--vintage { background: #3D3825; color: #FFFCF1; font-weight: 600; font-variant-numeric: tabular-nums; }
+/* Estilo */
+.wine-tag--estilo { background: transparent; color: #6B5E4A; border: 1px solid #D4CDB8; font-style: italic; font-size: 10px; }
+
+/* Puntuaciones */
+.wine-card-scores span { display: inline-flex; align-items: center; gap: 3px; font-weight: 700; font-size: 10.5px; font-family: var(--font-body-family); }
+.wine-score--parker { color: #722F37; }
+.wine-score--penin { color: #8B6D00; }
+
+/* Botón ATC: pill redondeado, sin línea/halo blanco */
+.product-form .cartb,
+.product-form .cartmobile,
+.wbproduct-container .product-form .cartb {
+  border-radius: 35px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.product-form .cartb::before,
+.product-form .cartb::after,
+.product-form .cartmobile::before,
+.product-form .cartmobile::after {
+  display: none !important;
+}
+
+/* Botón ATC: Verde Barbour */
+.product-form .cartb,
+.product-form .cartmobile,
+.product-form__submit,
+.wbproduct-container .product-form .cartb {
+  background-color: #1B4D3E;
+  color: #FFFCF1;
+}
+.product-form .cartb:hover,
+.product-form .cartmobile:hover,
+.product-form__submit:hover {
+  background-color: #163F33;
+  color: #FFFCF1;
+}
+.product-form .cartb:active,
+.product-form__submit:active {
+  background-color: #0F2E25;
+}
+.product-form__submit[disabled],
+.product-form__submit[aria-disabled="true"],
+.product-form .cartb[disabled] {
+  background-color: #8BA89E;
+  color: #FFFCF1;
+}
+
+/* PDP: chips interactivos */
+a.wpi__tag:hover { background: #D4B974; color: #1E1E1E; border-color: #D4B974; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(30,30,30,0.1); }
+.wpi__tag--estilo { background: #FFFCF1; border: 1px solid #D4B974; font-style: italic; }
+.wpi__tag--estilo:hover { background: #D4B974; color: #1E1E1E; }
+
+/* PDP: tabla links */
+.wpi__cell-value a { color: #1E1E1E; text-decoration: underline; text-decoration-color: #D4B974; text-underline-offset: 2px; }
+.wpi__cell-value a:hover { color: #D4B974; }
+
+/* ═══ Descripción estructurada (ecdb-estilo, ecdb-cata, ecdb-maridaje) ═══ */
+.ecdb-estilo {
+  margin: 12px 0;
+  padding: 14px 16px;
+  background: #FFFCF1;
+  border: 1px solid #D4B974;
+  border-radius: 10px;
+}
+.ecdb-estilo__label {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.ecdb-estilo__value {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E1E1E;
+  font-family: var(--font-heading-family);
+  margin-bottom: 6px;
+}
+.ecdb-estilo__sommelier {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  font-style: italic;
+}
+.ecdb-cata, .ecdb-maridaje {
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+.ecdb-cata strong, .ecdb-maridaje strong {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.ecdb-cata p, .ecdb-maridaje p {
+  margin: 0;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 749px) {
+  .wine-tag { font-size: 9.5px; padding: 2px 6px; }
+  .wine-card-info { gap: 3px; }
+  .wine-card-scores span { font-size: 9.5px; }
+  .ecdb-estilo { padding: 10px 12px; }
+  .ecdb-estilo__value { font-size: 14px; }
+  .ecdb-estilo__sommelier { font-size: 12px; }
+}
+</style>

@@ -81,8 +81,8 @@
         "address2_label": "એપાર્ટમેન્ટ, સ્યુટ, વગેરે.",
         "optional_address2_label": "એપાર્ટમેન્ટ, સ્યુટ, વગેરે (વૈકલ્પિક)",
         "city_label": "શહેર",
-        "country_label": "દેશ/પ્રદેશ",
-        "country_code": "દેશ/પ્રદેશ કોડ",
+        "country_label": "દેશ\/પ્રદેશ",
+        "country_code": "દેશ\/પ્રદેશ કોડ",
         "province_label": "પ્રાંત",
         "province_placeholder": "પ્રાંત",
         "county_label": "કાઉન્ટી",
@@ -98,8 +98,8 @@
         "governorate_placeholder": "ગવર્નરેટ",
         "emirate_label": "અમીરાત",
         "emirate_placeholder": "અમીરાત",
-        "state_and_territory_label": "રાજ્ય/પ્રદેશ",
-        "state_and_territory_placeholder": "રાજ્ય/પ્રદેશ",
+        "state_and_territory_label": "રાજ્ય\/પ્રદેશ",
+        "state_and_territory_placeholder": "રાજ્ય\/પ્રદેશ",
         "phone_label": "ફોન",
         "optional_phone_label": "ફોન (વૈકલ્પિક)",
         "phone_placeholder": "ફોન",
@@ -140,7 +140,7 @@
         "recurring_total_label": "રિકરિંગ કુલ",
         "recurring_total_tooltip": "શિપિંગ, કર, ફરજો અથવા કોઈપણ લાગુ ડિસ્કાઉન્ટનો સમાવેશ થતો નથી.",
         "confirmation_number_label": "પુષ્ટિકરણ #%{confirmation_number}",
-        "higher_value_discount_applied": "તમારા હાલના ડિસ્કાઉન્ટ સાથે <strong style=\"text-transform:uppercase\">%{code} નો</strong> ઉપયોગ કરી શકાયો નથી. તમારી પાસે પહેલેથી જ વધુ સારું સંયોજન છે.",
+        "higher_value_discount_applied": "તમારા હાલના ડિસ્કાઉન્ટ સાથે <strong style=\"text-transform:uppercase\">%{code} નો<\/strong> ઉપયોગ કરી શકાયો નથી. તમારી પાસે પહેલેથી જ વધુ સારું સંયોજન છે.",
         "percent_off_shipping": "શિપિંગ પર %{percent}% છૂટ",
         "amount_off_shipping": "શિપિંગ પર %{amount}ની છૂટ",
         "deferred_payment_info": {
@@ -157,8 +157,8 @@
           "due_later_checkout_to_draft": "પાછળથી કુલ બાકી",
           "due_on_receipt": "રસીદ પર કુલ બાકી"
         },
-        "maximum_discount_code_limit_reached": "તમે ડિસ્કાઉન્ટ કોડ્સની મહત્તમ સંખ્યા પર પહોંચી ગયા છો. <strong style=\"text-transform:uppercase\">%{code} નો</strong> ઉપયોગ કરવા માટે હાલના કોડને દૂર કરો.",
-        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> અત્યારે કામ કરતું નથી. મદદ માટે અમારો સંપર્ક કરો.",
+        "maximum_discount_code_limit_reached": "તમે ડિસ્કાઉન્ટ કોડ્સની મહત્તમ સંખ્યા પર પહોંચી ગયા છો. <strong style=\"text-transform:uppercase\">%{code} નો<\/strong> ઉપયોગ કરવા માટે હાલના કોડને દૂર કરો.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> અત્યારે કામ કરતું નથી. મદદ માટે અમારો સંપર્ક કરો.",
         "discount_savings_notice": "ડિસ્કાઉન્ટમાં %{discount_amount} પછી",
         "title": "ઓર્ડર સારાંશ",
         "order_name_label": "ઓર્ડર %{name}",
@@ -184,11 +184,11 @@
         "gift_card_has_been_removed": "ભેટ કાર્ડ કાઢી નાખવામાં આવ્યું છે",
         "gift_card_subscriptions_notice": "ભેટ કાર્ડ ફક્ત તમારી પ્રથમ ચુકવણી પર જ લાગુ થશે",
         "discount_already_applied": "આ ઓર્ડર પર ડિસ્કાઉન્ટ લાગુ કરવામાં આવ્યું છે. તમે અન્ય ડિસ્કાઉન્ટ ઉમેરી શકતા નથી.",
-        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong> ડિસ્કાઉન્ટ કોડ તમારા કાર્ટમાંની વસ્તુઓ માટે માન્ય નથી",
-        "discount_requires_customer_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong> ડિસ્કાઉન્ટ કોડ લાગુ કરવા માટે તમારી શિપિંગ માહિતી દાખલ કરો",
-        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong> ડિસ્કાઉન્ટ કોડ અત્યારે તમારા માટે ઉપલબ્ધ નથી",
-        "shipping_information_does_not_meet_discount_requirements_notice": "તમારા શિપિંગ સરનામા માટે <strong style=\"text-transform:uppercase\">%{code}</strong> ડિસ્કાઉન્ટ કોડ ઉપલબ્ધ નથી",
-        "customer_already_used_once_per_customer_discount_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong> ડિસ્કાઉન્ટ કોડ પહેલેથી જ ઉપયોગમાં લેવાયો છે",
+        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ડિસ્કાઉન્ટ કોડ તમારા કાર્ટમાંની વસ્તુઓ માટે માન્ય નથી",
+        "discount_requires_customer_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ડિસ્કાઉન્ટ કોડ લાગુ કરવા માટે તમારી શિપિંગ માહિતી દાખલ કરો",
+        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ડિસ્કાઉન્ટ કોડ અત્યારે તમારા માટે ઉપલબ્ધ નથી",
+        "shipping_information_does_not_meet_discount_requirements_notice": "તમારા શિપિંગ સરનામા માટે <strong style=\"text-transform:uppercase\">%{code}<\/strong> ડિસ્કાઉન્ટ કોડ ઉપલબ્ધ નથી",
+        "customer_already_used_once_per_customer_discount_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ડિસ્કાઉન્ટ કોડ પહેલેથી જ ઉપયોગમાં લેવાયો છે",
         "subtotal_label": "પેટાટોટલ",
         "shipping_label": "વહાણ પરિવહન",
         "pickup_label": "પિકઅપ",
@@ -334,8 +334,8 @@
         "name_on_card_label": "કાર્ડ પરનું નામ",
         "name_on_card_placeholder": "કાર્ડ પરનું નામ",
         "card_expired": "સમાપ્ત",
-        "card_expiry_label": "સમાપ્તિ તારીખ (MM / YY)",
-        "card_expiry_placeholder": "સમાપ્તિ તારીખ (MM / YY)",
+        "card_expiry_label": "સમાપ્તિ તારીખ (MM \/ YY)",
+        "card_expiry_placeholder": "સમાપ્તિ તારીખ (MM \/ YY)",
         "credit_card_start_month": "મહિનો શરૂ કરો",
         "credit_card_start_year": "પ્રારંભ વર્ષ",
         "delete_customer_mandate_modal_title": "આ પેમેન્ટ કાર્ડ કાઢી નાખીએ?",
@@ -351,8 +351,8 @@
         "card_verification_value_explanation": "3-અંકનો સુરક્ષા કોડ સામાન્ય રીતે તમારા કાર્ડની પાછળ જોવા મળે છે. અમેરિકન એક્સપ્રેસ કાર્ડ્સમાં આગળના ભાગમાં 4-અંકનો કોડ હોય છે.",
         "card_verification_value_explanation_amex": "તમારા કાર્ડના આગળના ભાગમાં 4-અંકનો સુરક્ષા કોડ",
         "card_verification_value_explanation_other": "તમારા કાર્ડની પાછળનો 3-અંકનો સુરક્ષા કોડ",
-        "card_start_label": "ઇશ્યૂ તારીખ (MM/YY)",
-        "card_start_placeholder": "ઇશ્યૂ તારીખ (MM/YY)",
+        "card_start_label": "ઇશ્યૂ તારીખ (MM\/YY)",
+        "card_start_placeholder": "ઇશ્યૂ તારીખ (MM\/YY)",
         "card_issue_number_label": "મુદ્દા નંબર",
         "card_issue_number_placeholder": "મુદ્દા નંબર",
         "card_change_label": "બદલો",
@@ -360,8 +360,8 @@
         "ends_with_label": "%{last_digits} થી અંત",
         "payment_method_saved": "ચુકવણી પદ્ધતિ સાચવી",
         "card_vaulted_company_location": "આ સ્થાન માટે કાર્ડ સાચવ્યું",
-        "expiry_long": "(%{મહિનો}/%{વર્ષ} સમાપ્ત થાય છે)",
-        "expiry_short": "(સમાપ્ત %{મહિનો}/%{વર્ષ})",
+        "expiry_long": "(%{મહિનો}\/%{વર્ષ} સમાપ્ત થાય છે)",
+        "expiry_short": "(સમાપ્ત %{મહિનો}\/%{વર્ષ})",
         "saved_by_payment_method": "%{payment_method} દ્વારા સાચવેલ",
         "pay_with_payment_method": "%{payment_method} વડે ચુકવણી કરો",
         "different_credit_card_label": "અલગ ક્રેડિટ કાર્ડનો ઉપયોગ કરો",
@@ -369,7 +369,7 @@
         "different_billing_address_label": "અલગ બિલિંગ સરનામું વાપરો",
         "billing_address_associated_with_mandate": "ચુકવણી પદ્ધતિ સાથે સંકળાયેલ સરનામાંનો ઉપયોગ કરો",
         "billing_address_associated_with_mandate_info": "જો તમે તમારું બિલિંગ સરનામું બદલવા માંગતા હો, તો કૃપા કરીને તમારી ક્રેડિટ કાર્ડ વિગતો દૂર કરો અને ફરીથી દાખલ કરો",
-        "free_order_notice_html": "તમારો ઓર્ડર <strong>મફત</strong> છે. કોઈ ચુકવણી જરૂરી નથી.",
+        "free_order_notice_html": "તમારો ઓર્ડર <strong>મફત<\/strong> છે. કોઈ ચુકવણી જરૂરી નથી.",
         "express_checkout_free_order": "તમારી પાસેથી ફ્રી ઓર્ડર માટે શુલ્ક લેવામાં આવશે નહીં",
         "order_covered_by_gift_cards_notice": {
           "one": "તમારો ઓર્ડર તમારા ભેટ કાર્ડ દ્વારા આવરી લેવામાં આવે છે.",
@@ -384,8 +384,8 @@
         "no_js_credit_card_fields_redirect_hint": "તમને તમારી ચુકવણી માહિતી ઉમેરવા માટે રીડાયરેક્ટ કરવામાં આવશે.",
         "card_fields_container_prefix": "આ માટે ફીલ્ડ કન્ટેનર:",
         "card_fields_unavailable_html": {
-          "one": "ક્રેડિટ અને ડેબિટ કાર્ડની ચૂકવણી અત્યારે ઉપલબ્ધ નથી.<br> <a href=\"%%7Bcurrent_url%7D\">આ પૃષ્ઠ તાજું કરો</a> અથવા પછીથી ફરી પ્રયાસ કરો.",
-          "other": "ક્રેડિટ અને ડેબિટ કાર્ડની ચૂકવણી અત્યારે ઉપલબ્ધ નથી.<br> <a href=\"%%7Bcurrent_url%7D\">આ પેજ રિફ્રેશ કરો</a> અથવા અલગ ચુકવણી પદ્ધતિ અજમાવો."
+          "one": "ક્રેડિટ અને ડેબિટ કાર્ડની ચૂકવણી અત્યારે ઉપલબ્ધ નથી.<br> <a href=\"%%7Bcurrent_url%7D\">આ પૃષ્ઠ તાજું કરો<\/a> અથવા પછીથી ફરી પ્રયાસ કરો.",
+          "other": "ક્રેડિટ અને ડેબિટ કાર્ડની ચૂકવણી અત્યારે ઉપલબ્ધ નથી.<br> <a href=\"%%7Bcurrent_url%7D\">આ પેજ રિફ્રેશ કરો<\/a> અથવા અલગ ચુકવણી પદ્ધતિ અજમાવો."
         },
         "card_fields_processing_error": "ચુકવણીની પ્રક્રિયા કરવામાં સમસ્યા હતી. આ પૃષ્ઠને તાજું કરવાનો પ્રયાસ કરો અથવા તમારું ઇન્ટરનેટ કનેક્શન તપાસો.",
         "technical_error": "ટેક્નિકલ સમસ્યાને કારણે અત્યારે ચુકવણીઓ પર પ્રક્રિયા કરી શકાતી નથી. થોડીવારમાં ફરી પ્રયાસ કરો.",
@@ -409,13 +409,13 @@
         "klarna_slice_it_label": "Klarna સાથે નાણાં",
         "ideal_label": "આદર્શ",
         "bank_picker_label": "બેંક",
-        "purchase_options_card_update_agreement_label_html": "તમારી ચુકવણી પદ્ધતિને અપડેટ કરીને, તમે આ સ્ટોરની <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%%7Bpolicy_href%7D\">રદ કરવાની નીતિ</a> અનુસાર કોઈપણ પુનરાવર્તિત અથવા વિલંબિત ખરીદી માટે ચૂકવણીને અધિકૃત કરો છો.",
+        "purchase_options_card_update_agreement_label_html": "તમારી ચુકવણી પદ્ધતિને અપડેટ કરીને, તમે આ સ્ટોરની <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%%7Bpolicy_href%7D\">રદ કરવાની નીતિ<\/a> અનુસાર કોઈપણ પુનરાવર્તિત અથવા વિલંબિત ખરીદી માટે ચૂકવણીને અધિકૃત કરો છો.",
         "subscription_card_update_agreement_label": "ચુકવણી પદ્ધતિ બદલવાથી તમારું સબ્સ્ક્રિપ્શન અને ભાવિ રિકરિંગ પેમેન્ટ અપડેટ થશે.",
         "subscription_agreement_label": "હું સમજું છું કે હું સબ્સ્ક્રિપ્શન માટે સંમત છું. જ્યાં સુધી તે સમાપ્ત ન થાય અથવા %{રદ} ન થાય ત્યાં સુધી તે સૂચિબદ્ધ કિંમત અને આવર્તન પર નવીકરણ કરશે.",
         "subscription_agreement_cancelled": "રદ કરેલ",
-        "subscription_agreement_label_html": "હું સમજું છું કે હું સબ્સ્ક્રિપ્શન માટે સંમત છું. તે સમાપ્ત થાય અથવા છે ત્યાં સુધી તે સૂચિબદ્ધ કિંમત અને આવર્તન પર નવીકરણ કરશે\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%%7Bpolicy_href%7D\">રદ કરેલ</a> .\n",
+        "subscription_agreement_label_html": "હું સમજું છું કે હું સબ્સ્ક્રિપ્શન માટે સંમત છું. તે સમાપ્ત થાય અથવા છે ત્યાં સુધી તે સૂચિબદ્ધ કિંમત અને આવર્તન પર નવીકરણ કરશે\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%%7Bpolicy_href%7D\">રદ કરેલ<\/a> .\n",
         "purchase_options_agreement_label": "હું સમજું છું કે મારા કાર્ટમાંની એક અથવા વધુ આઇટમ વિલંબિત અથવા પુનરાવર્તિત ખરીદી છે. ચાલુ રાખીને, હું %{cancellation_policy_label} સાથે સંમત થાઉં છું અને જ્યાં સુધી મારો ઓર્ડર પૂરો ન થાય અથવા જો પરવાનગી હોય તો હું રદ કરું ત્યાં સુધી આ પેજ પર સૂચિબદ્ધ કિંમતો, આવર્તન અને તારીખો પર મારી ચુકવણી પદ્ધતિથી શુલ્ક લેવા માટે તમને અધિકૃત કરું છું.",
-        "purchase_options_agreement_label_html": "હું સમજું છું કે મારા કાર્ટમાંની એક અથવા વધુ આઇટમ વિલંબિત અથવા પુનરાવર્તિત ખરીદી છે. ચાલુ રાખીને, હું સંમત છું\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%%7Bpolicy_href%7D\">રદીકરણ નીતિ</a>\nઅને આ પેજ પર સૂચિબદ્ધ કિંમતો, આવર્તન અને તારીખો પર મારી ચુકવણી પદ્ધતિથી શુલ્ક લેવા માટે તમને અધિકૃત કરું છું\nઓર્ડર પૂરો થાય અથવા જો પરવાનગી હોય તો હું રદ કરું છું.\n",
+        "purchase_options_agreement_label_html": "હું સમજું છું કે મારા કાર્ટમાંની એક અથવા વધુ આઇટમ વિલંબિત અથવા પુનરાવર્તિત ખરીદી છે. ચાલુ રાખીને, હું સંમત છું\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%%7Bpolicy_href%7D\">રદીકરણ નીતિ<\/a>\nઅને આ પેજ પર સૂચિબદ્ધ કિંમતો, આવર્તન અને તારીખો પર મારી ચુકવણી પદ્ધતિથી શુલ્ક લેવા માટે તમને અધિકૃત કરું છું\nઓર્ડર પૂરો થાય અથવા જો પરવાનગી હોય તો હું રદ કરું છું.\n",
         "change_currency_section_description": "ચલણ વિકલ્પ પસંદ કરો",
         "no_real_orders_dev_store": "આ સ્ટોર વાસ્તવિક ઓર્ડર અથવા વાસ્તવિક ચૂકવણી સ્વીકારી શકતું નથી.",
         "waiting_on_payment_methods": "ઉપલબ્ધ ચુકવણી પદ્ધતિઓ મેળવી રહ્યાં છીએ...",
@@ -434,7 +434,7 @@
           "error_authorizing": "ચુકવણી અધિકૃત કરવામાં ભૂલ"
         },
         "account_connected": "એકાઉન્ટ કનેક્ટ કર્યું.",
-        "mor_disclaimer_html": "નીચે ક્લિક કરીને અને તમારો ઓર્ડર પૂર્ણ કરીને, તમે રેકોર્ડના વેપારી તરીકે ગ્લોબલ-ઇ પાસેથી તમારી આઇટમ(ઓ) ખરીદવા માટે સંમત થાઓ છો\nઆ વ્યવહાર માટે, ગ્લોબલ-ઇના <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%%7Bterms_href%7D\">નિયમો અને શરતો</a> પર\nઅને <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%%7Bpolicy_href%7D\">ગોપનીયતા નીતિ</a> . ગ્લોબલ-ઇ એક આંતરરાષ્ટ્રીય છે\n%{shop_name} ને પરિપૂર્ણતા સેવા પ્રદાતા\n",
+        "mor_disclaimer_html": "નીચે ક્લિક કરીને અને તમારો ઓર્ડર પૂર્ણ કરીને, તમે રેકોર્ડના વેપારી તરીકે ગ્લોબલ-ઇ પાસેથી તમારી આઇટમ(ઓ) ખરીદવા માટે સંમત થાઓ છો\nઆ વ્યવહાર માટે, ગ્લોબલ-ઇના <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%%7Bterms_href%7D\">નિયમો અને શરતો<\/a> પર\nઅને <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%%7Bpolicy_href%7D\">ગોપનીયતા નીતિ<\/a> . ગ્લોબલ-ઇ એક આંતરરાષ્ટ્રીય છે\n%{shop_name} ને પરિપૂર્ણતા સેવા પ્રદાતા\n",
         "pending_payment": {
           "due_notice": "તમારી %{amount_due} ની ચુકવણી %{due_date} ના રોજ બાકી છે.",
           "multibanco": {
@@ -497,7 +497,7 @@
         "cart_updated_based_on_country": "તમારા શિપિંગ દેશના આધારે તમારું કાર્ટ અપડેટ કરવામાં આવ્યું છે."
       },
       "change_cart_localization": {
-        "verify_shipping_address": "તમારો દેશ/પ્રદેશ અપડેટ કરવામાં આવ્યો છે. ચેકઆઉટ ચાલુ રાખવા માટે તમારું શિપિંગ સરનામું દાખલ કરો."
+        "verify_shipping_address": "તમારો દેશ\/પ્રદેશ અપડેટ કરવામાં આવ્યો છે. ચેકઆઉટ ચાલુ રાખવા માટે તમારું શિપિંગ સરનામું દાખલ કરો."
       },
       "tips": {
         "title": "ટીપ ઉમેરો",
@@ -600,20 +600,20 @@
         "address_city_too_long": "શહેર ખૂબ લાંબુ છે (મહત્તમ 255 અક્ષરો છે)",
         "address_city_contains_emojis": "શહેરમાં ઇમોજીસ શામેલ હોઈ શકતા નથી",
         "address_city_contains_html_tags": "શહેરમાં HTML ટૅગ્સ હોઈ શકતા નથી.",
-        "address_country_blank": "દેશ/પ્રદેશ પસંદ કરો",
+        "address_country_blank": "દેશ\/પ્રદેશ પસંદ કરો",
         "address_country_not_supported": "અમે આ દેશ અથવા પ્રદેશમાં મોકલતા નથી. નવું શિપિંગ સરનામું દાખલ કરો અને ફરી પ્રયાસ કરો.",
-        "address_province_blank": "રાજ્ય/પ્રાંત પસંદ કરો",
+        "address_province_blank": "રાજ્ય\/પ્રાંત પસંદ કરો",
         "address_company_blank": "કંપનીનું નામ દાખલ કરો",
         "address_company_too_long": "કંપનીનું નામ ખૂબ લાંબુ છે (મહત્તમ 255 અક્ષરો છે)",
         "address_company_contains_emojis": "કંપની ઇમોજીસ સમાવી શકતી નથી",
         "address_company_contains_html_tags": "કંપનીમાં HTML ટૅગ્સ હોઈ શકતા નથી.",
         "address_phone_blank": "માન્ય ફોન નંબર દાખલ કરો",
         "address_phone_contains_emojis": "ફોન નંબરમાં ઇમોજીસ શામેલ હોઈ શકતા નથી",
-        "address_zip_blank": "પિન / પોસ્ટલ કોડ દાખલ કરો",
+        "address_zip_blank": "પિન \/ પોસ્ટલ કોડ દાખલ કરો",
         "address_zip_not_supported": "આ સ્થાન સમર્થિત નથી.",
-        "address_zip_invalid_for_country": "%{country} માટે માન્ય ઝીપ/પોસ્ટલ કોડ દાખલ કરો",
-        "address_zip_invalid_for_country_and_province": "%{પ્રાંત}, %{દેશ} માટે માન્ય ઝીપ/પોસ્ટલ કોડ દાખલ કરો",
-        "address_zip_contains_emojis": "ઝીપ / પોસ્ટલ કોડમાં ઇમોજીસ શામેલ હોઈ શકતા નથી",
+        "address_zip_invalid_for_country": "%{country} માટે માન્ય ઝીપ\/પોસ્ટલ કોડ દાખલ કરો",
+        "address_zip_invalid_for_country_and_province": "%{પ્રાંત}, %{દેશ} માટે માન્ય ઝીપ\/પોસ્ટલ કોડ દાખલ કરો",
+        "address_zip_contains_emojis": "ઝીપ \/ પોસ્ટલ કોડમાં ઇમોજીસ શામેલ હોઈ શકતા નથી",
         "credit_card_name_blank": "તમારા કાર્ડ પર જે રીતે લખેલું છે તે રીતે તમારું નામ બરાબર દાખલ કરો",
         "credit_card_name_invalid": "તમારા કાર્ડ પર જે રીતે લખેલું છે તે રીતે તમારું નામ બરાબર દાખલ કરો",
         "credit_card_number_invalid": "માન્ય કાર્ડ નંબર દાખલ કરો",
@@ -951,7 +951,7 @@
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "વર્તમાન બેલેન્સ %{amount}",
-        "credit_card_expires_on_notice": "%{મહિના}/%{વર્ષ} ના રોજ સમાપ્ત થાય છે",
+        "credit_card_expires_on_notice": "%{મહિના}\/%{વર્ષ} ના રોજ સમાપ્ત થાય છે",
         "express_payment_gateway_label": "એક્સપ્રેસ",
         "manual_payment_gateway_label": "મેન્યુઅલ",
         "billing_address_title": "બિલિંગ સરનામું",
@@ -1055,12 +1055,12 @@
           "other": "ઉત્પાદનો અનુપલબ્ધ"
         },
         "products_not_available": {
-          "one": "આ ઉત્પાદન તમારા કાર્ટમાંથી દૂર કરવામાં આવશે કારણ કે તે તમારા દેશ/પ્રદેશમાં ઉપલબ્ધ નથી.",
-          "other": "આ ઉત્પાદનો તમારા કાર્ટમાંથી દૂર કરવામાં આવશે કારણ કે તે તમારા દેશ/પ્રદેશમાં ઉપલબ્ધ નથી."
+          "one": "આ ઉત્પાદન તમારા કાર્ટમાંથી દૂર કરવામાં આવશે કારણ કે તે તમારા દેશ\/પ્રદેશમાં ઉપલબ્ધ નથી.",
+          "other": "આ ઉત્પાદનો તમારા કાર્ટમાંથી દૂર કરવામાં આવશે કારણ કે તે તમારા દેશ\/પ્રદેશમાં ઉપલબ્ધ નથી."
         },
         "all_products_in_cart_unavailable": {
-          "one": "આ ઉત્પાદન તમારા દેશ/પ્રદેશમાં ઉપલબ્ધ નથી.",
-          "other": "આ ઉત્પાદનો તમારા દેશ/પ્રદેશમાં ઉપલબ્ધ નથી."
+          "one": "આ ઉત્પાદન તમારા દેશ\/પ્રદેશમાં ઉપલબ્ધ નથી.",
+          "other": "આ ઉત્પાદનો તમારા દેશ\/પ્રદેશમાં ઉપલબ્ધ નથી."
         },
         "unavailable_label": "અનુપલબ્ધ"
       }
@@ -1096,7 +1096,7 @@
       "expired": "સમયસીમા સમાપ્ત થઈ ગઈ છે",
       "invalid_start_date_or_issue_number_for_debit": "માન્ય પ્રારંભ તારીખ અથવા ઇશ્યૂ નંબર આવશ્યક છે",
       "invalid_expiry_year": "માન્ય સમાપ્તિ વર્ષ નથી",
-      "reset_password_html": "આ ઈમેલ સરનામું પહેલાથી જ એકાઉન્ટ સાથે સંકળાયેલું છે. જો આ એકાઉન્ટ તમારું છે, તો તમે <a href=\"/account/login#recover\">તમારો પાસવર્ડ રીસેટ કરી</a> શકો છો",
+      "reset_password_html": "આ ઈમેલ સરનામું પહેલાથી જ એકાઉન્ટ સાથે સંકળાયેલું છે. જો આ એકાઉન્ટ તમારું છે, તો તમે <a href=\"\/account\/login#recover\">તમારો પાસવર્ડ રીસેટ કરી<\/a> શકો છો",
       "verify_email": "અમે %{customer_email} પર ઈમેલ મોકલ્યો છે, કૃપા કરીને તમારું ઈમેલ એડ્રેસ ચકાસવા માટે સમાવેલ લિંક પર ક્લિક કરો.",
       "product_not_available": "ઉત્પાદન આ ગ્રાહક માટે પ્રકાશિત થયેલ નથી.",
       "blank": "ખાલી ન હોઈ શકે",
@@ -1154,7 +1154,7 @@
           "declined": "ચુકવણી રદ થઇ",
           "inventory": "આઇટમ્સ અનુપલબ્ધ છે",
           "fraud": "કપટપૂર્ણ હુકમ",
-          "customer": "ગ્રાહકે ઓર્ડર બદલ્યો/રદ કર્યો",
+          "customer": "ગ્રાહકે ઓર્ડર બદલ્યો\/રદ કર્યો",
           "other": "અન્ય"
         },
         "cash_on_delivery": "ડિલિવરી પર રોકડ (COD)"
@@ -1173,7 +1173,7 @@
         "too_many_line_items_error": "તમારા કાર્ટમાં %{max} થી વધુ વસ્તુઓ ન હોઈ શકે.",
         "link_expired": "લિંકની સમયસીમા સમાપ્ત",
         "link_no_longer_exists": "લિંક હવે અસ્તિત્વમાં નથી.",
-        "stock_problems_html": "એક અથવા વધુ આઇટમ્સ હવે ઉપલબ્ધ નથી. અમે <a href=\"%%7Blink%7D\">અપડેટેડ કાર્ટ</a> પ્રદાન કર્યું છે.",
+        "stock_problems_html": "એક અથવા વધુ આઇટમ્સ હવે ઉપલબ્ધ નથી. અમે <a href=\"%%7Blink%7D\">અપડેટેડ કાર્ટ<\/a> પ્રદાન કર્યું છે.",
         "changed": "કાર્ટ બદલાઈ",
         "items_changed": "એક અથવા વધુ વસ્તુઓ બદલાઈ ગઈ છે.",
         "product_sold_out": "ઉત્પાદન '%{name}' પહેલેથી જ વેચાઈ ગયું છે.",
@@ -1208,29 +1208,29 @@
       },
       "open_tracking": {
         "opt_in": {
-          "opted_in_html": "<b>તમે ઇમેઇલ ઓપન ટ્રેકિંગ પસંદ કર્યું છે.</b>",
+          "opted_in_html": "<b>તમે ઇમેઇલ ઓપન ટ્રેકિંગ પસંદ કર્યું છે.<\/b>",
           "visibility": "ઈમેલ ઓપન રેટની જાણ અનામી રૂપે કરવામાં આવશે. અમે માત્ર એ જોઈશું કે તમે એકીકૃત ઈમેલ ઓપન રેટના ભાગ રૂપે ઈમેલ ખોલ્યો છે કે નહીં.",
-          "opt_out_html": "જો તમે આ માહિતી શેર કરવા માંગતા ન હોવ તો તમે ઈમેલ ઓપન ટ્રેકિંગને <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">નાપસંદ</a> કરી શકો છો.",
+          "opt_out_html": "જો તમે આ માહિતી શેર કરવા માંગતા ન હોવ તો તમે ઈમેલ ઓપન ટ્રેકિંગને <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">નાપસંદ<\/a> કરી શકો છો.",
           "preview_bar": "તમે પૂર્વાવલોકન કરી રહ્યાં છો કે ગ્રાહકો જ્યારે ઈમેલ ઓપન ટ્રેકિંગ પસંદ કરશે ત્યારે તેઓ શું જોશે."
         },
         "opt_out": {
-          "opted_out_html": "<b>તમે ઇમેઇલ ઓપન ટ્રેકિંગને નાપસંદ કર્યું છે.</b>",
+          "opted_out_html": "<b>તમે ઇમેઇલ ઓપન ટ્રેકિંગને નાપસંદ કર્યું છે.<\/b>",
           "visibility": "તમે અમારા ઇમેઇલ્સ ખોલ્યા છે કે કેમ તે અમે જોઈશું નહીં.",
-          "opt_in_html": "ઇમેઇલ ઓપન ટ્રેકિંગ માટે <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">પસંદ કરો</a> .",
+          "opt_in_html": "ઇમેઇલ ઓપન ટ્રેકિંગ માટે <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">પસંદ કરો<\/a> .",
           "preview_bar": "જ્યારે ગ્રાહકો ઈમેલ ઓપન ટ્રેકિંગને નાપસંદ કરે ત્યારે તેઓ શું જોશે તેનું તમે પૂર્વાવલોકન કરી રહ્યાં છો."
         },
         "no_longer_track": {
-          "status_html": "<b>અમે હવે કોઈ પણ ઈમેલ ઓપનને ટ્રૅક કરતા નથી.</b>",
+          "status_html": "<b>અમે હવે કોઈ પણ ઈમેલ ઓપનને ટ્રૅક કરતા નથી.<\/b>",
           "privacy_policy": "આ ઇમેઇલ મોકલવામાં આવ્યા પછી, અમે અમારી ગોપનીયતા નીતિ અપડેટ કરી છે અને અમે હવે ઓપનને ટ્રૅક કરીશું નહીં."
         },
         "track": {
-          "status_html": "<b>ઈમેલ ઓપન ટ્રેકિંગની જાણ કરવામાં આવી છે.</b>",
+          "status_html": "<b>ઈમેલ ઓપન ટ્રેકિંગની જાણ કરવામાં આવી છે.<\/b>",
           "visibility": "અમે માત્ર જોઈશું કે તમે ઈમેલ ખોલ્યો છે કે કેમ, કુલ ઈમેલ ઓપન રેટના ભાગ રૂપે."
         },
         "updated_policy": {
-          "status_html": "<b>ઈમેલ ઓપન ટ્રેકિંગની જાણ કરવામાં આવી છે.</b>",
+          "status_html": "<b>ઈમેલ ઓપન ટ્રેકિંગની જાણ કરવામાં આવી છે.<\/b>",
           "visibility": "અમે અમારી નીતિ અપડેટ કરી છે, અને હવે ટ્રૅક ઇમેઇલ્સ ખુલે છે. ઈમેલ ઓપન રેટની જાણ અનામી રૂપે કરવામાં આવશે. અમે માત્ર જોઈશું કે તમે કુલ ઈમેલ ઓપન રેટના ભાગ રૂપે ઈમેલ ખોલ્યો છે કે નહીં.",
-          "opt_out_html": "જો તમે આ માહિતી શેર કરવા માંગતા નથી, તો તમે <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">અનસબ્સ્ક્રાઇબ કરી શકો છો.</a>"
+          "opt_out_html": "જો તમે આ માહિતી શેર કરવા માંગતા નથી, તો તમે <a style=\"text-decoration:underline;\" href=\"%%7Blink%7D\">અનસબ્સ્ક્રાઇબ કરી શકો છો.<\/a>"
         }
       }
     },
@@ -1263,7 +1263,7 @@
       "prefecture": "પ્રીફેક્ચર",
       "province": "પ્રાંત",
       "state": "રાજ્ય",
-      "state_and_territory": "રાજ્ય/પ્રદેશ",
+      "state_and_territory": "રાજ્ય\/પ્રદેશ",
       "county": "કાઉન્ટી",
       "emirate": "અમીરાત",
       "governorate": "ગવર્નરેટ",
@@ -1363,7 +1363,7 @@
     "quick_order_list": {
       "product_total": "ઉત્પાદન પેટાટોટલ",
       "view_cart": "કાર્ટ જુઓ",
-      "each": "{{ પૈસા }}/ea",
+      "each": "{{ પૈસા }}\/ea",
       "product": "ઉત્પાદન",
       "variant": "વેરિઅન્ટ",
       "variant_total": "કુલ પ્રકાર",
@@ -1400,9 +1400,9 @@
       "empty": "તમારું ટોપલું ખાલી છે",
       "cart_error": "તમારા કાર્ટને અપડેટ કરતી વખતે એક ભૂલ આવી હતી. મહેરબાની કરીને ફરીથી પ્રયતન કરો.",
       "cart_quantity_error_html": "તમે તમારા કાર્ટમાં આ આઇટમનો માત્ર {{ quantity }} ઉમેરી શકો છો.",
-      "taxes_and_shipping_policy_at_checkout_html": "ચેકઆઉટ વખતે ટેક્સ અને <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;/span&gt;\">શિપિંગની</a> ગણતરી કરવામાં આવે છે",
+      "taxes_and_shipping_policy_at_checkout_html": "ચેકઆઉટ વખતે ટેક્સ અને <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;\/span&gt;\">શિપિંગની<\/a> ગણતરી કરવામાં આવે છે",
       "taxes_included_but_shipping_at_checkout": "ટેક્સનો સમાવેશ થાય છે અને ચેકઆઉટ વખતે શિપિંગની ગણતરી કરવામાં આવે છે",
-      "taxes_included_and_shipping_policy_html": "ટેક્સનો સમાવેશ થાય છે. ચેકઆઉટ વખતે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;/span&gt;\">શિપિંગની</a> ગણતરી કરવામાં આવે છે.",
+      "taxes_included_and_shipping_policy_html": "ટેક્સનો સમાવેશ થાય છે. ચેકઆઉટ વખતે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;\/span&gt;\">શિપિંગની<\/a> ગણતરી કરવામાં આવે છે.",
       "taxes_and_shipping_at_checkout": "ચેકઆઉટ વખતે ટેક્સ અને શિપિંગની ગણતરી કરવામાં આવે છે",
       "headings": {
         "image": "છબી",
@@ -1414,7 +1414,7 @@
       "update": "અપડેટ કરો",
       "login": {
         "title": "શું તમારું એકાઉન્ટ છે?",
-        "paragraph_html": "ઝડપથી ચેક આઉટ કરવા માટે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;/span&gt;\" class=\"link underlined-link\">લૉગ ઇન કરો</a> ."
+        "paragraph_html": "ઝડપથી ચેક આઉટ કરવા માટે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;\/span&gt;\" class=\"link underlined-link\">લૉગ ઇન કરો<\/a> ."
       }
     },
     "footer": {
@@ -1436,7 +1436,7 @@
     "collection_template": {
       "empty": "કોઈ ઉત્પાદનો મળ્યાં નથી",
       "title": "સંગ્રહ",
-      "use_fewer_filters_html": "ઓછા ફિલ્ટર્સનો ઉપયોગ કરો અથવા <a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;/span&gt;\">બધા સાફ કરો</a>"
+      "use_fewer_filters_html": "ઓછા ફિલ્ટર્સનો ઉપયોગ કરો અથવા <a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;\/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;\/span&gt;\">બધા સાફ કરો<\/a>"
     },
     "video": {
       "load_video": "વિડિઓ લોડ કરો: {{ description }}"
@@ -1450,7 +1450,7 @@
       "login_form_password_placeholder": "તમારો ખાનગી શબ્દ",
       "login_form_error": "ખોટો પાસવર્ડ!",
       "login_form_submit": "દાખલ કરો",
-      "admin_link_html": "શું તમે સ્ટોરના માલિક છો? <a href=\"/admin\" class=\"link underlined-link\">અહીં લોગ ઇન કરો</a>",
+      "admin_link_html": "શું તમે સ્ટોરના માલિક છો? <a href=\"\/admin\" class=\"link underlined-link\">અહીં લોગ ઇન કરો<\/a>",
       "powered_by_shopify_html": "આ દુકાન {{ shopify }} દ્વારા સંચાલિત થશે"
     },
     "social": {
@@ -1586,8 +1586,8 @@
         "view_store_info": "સ્ટોર માહિતી જુઓ",
         "check_other_stores": "અન્ય સ્ટોર્સ પર ઉપલબ્ધતા તપાસો",
         "pick_up_available": "પિકઅપ ઉપલબ્ધ છે",
-        "pick_up_available_at_html": "પિકઅપ <span class=\"color-foreground\">{{ location_name }}</span> પર ઉપલબ્ધ છે",
-        "pick_up_unavailable_at_html": "પિકઅપ હાલમાં <span class=\"color-foreground\">{{ location_name }}</span> પર ઉપલબ્ધ નથી",
+        "pick_up_available_at_html": "પિકઅપ <span class=\"color-foreground\">{{ location_name }}<\/span> પર ઉપલબ્ધ છે",
+        "pick_up_unavailable_at_html": "પિકઅપ હાલમાં <span class=\"color-foreground\">{{ location_name }}<\/span> પર ઉપલબ્ધ નથી",
         "unavailable": "પિકઅપની ઉપલબ્ધતા લોડ કરી શકાઈ નથી",
         "refresh": "તાજું કરો"
       },
@@ -1606,7 +1606,7 @@
       "xr_button": "તમારી જગ્યામાં જુઓ",
       "xr_button_label": "તમારી સ્પેસમાં જુઓ, ઑગમેન્ટેડ રિયાલિટી વિંડોમાં આઇટમ લોડ કરો",
       "include_taxes": "ટેક્સનો સમાવેશ થાય છે.",
-      "shipping_policy_html": "ચેકઆઉટ વખતે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;/span&gt;\">શિપિંગની</a> ગણતરી કરવામાં આવે છે."
+      "shipping_policy_html": "ચેકઆઉટ વખતે <a href=\"&lt;span%20class='notranslate'&gt;%7B%7B%20link%20%7D%7D&lt;\/span&gt;\">શિપિંગની<\/a> ગણતરી કરવામાં આવે છે."
     },
     "modal": {
       "label": "મીડિયા ગેલેરી"
@@ -1693,10 +1693,10 @@
     }
   },
   "localization": {
-    "country_label": "દેશ/પ્રદેશ",
+    "country_label": "દેશ\/પ્રદેશ",
     "language_label": "ભાષા",
     "update_language": "ભાષા અપડેટ કરો",
-    "update_country": "દેશ/પ્રદેશ અપડેટ કરો"
+    "update_country": "દેશ\/પ્રદેશ અપડેટ કરો"
   },
   "customer": {
     "account": {
@@ -1725,9 +1725,9 @@
       "address1": "સરનામું 1",
       "address2": "સરનામું 2",
       "city": "શહેર",
-      "country": "દેશ/પ્રદેશ",
+      "country": "દેશ\/પ્રદેશ",
       "province": "પ્રાંત",
-      "zip": "પોસ્ટલ/ઝિપ કોડ",
+      "zip": "પોસ્ટલ\/ઝિપ કોડ",
       "phone": "ફોન",
       "set_default": "ડિફૉલ્ટ સરનામાં તરીકે સેટ કરો",
       "add": "સરનામું ઉમેરો",

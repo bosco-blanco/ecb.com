@@ -24,7 +24,7 @@
         "slide_dbKTPx": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/home_image_2.png",
+            "image": "shopify:\/\/shop_images\/home_image_2.png",
             "hcaption": "",
             "heading": "Tradición de los vinos y el buen comer",
             "button_h_upp": false,
@@ -32,7 +32,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "Ver todo",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style": "solid",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -47,12 +47,12 @@
         "slide_qi6zhY": {
           "type": "slide",
           "settings": {
-            "hcaption": "<p> Tell your brand's story through images </p><p></p>",
+            "hcaption": "<p> Tell your brand's story through images <\/p><p><\/p>",
             "heading": "Image slide",
             "button_h_upp": true,
             "heading_size": "large",
             "subheading": "Tell your brand's story through images",
-            "subheadingtext": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "subheadingtext": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "button_label": "Button label",
             "link": "",
             "button_style": "outline",
@@ -310,7 +310,7 @@
       "settings": {
         "title": "Sponsored collection",
         "collection": "whiskies",
-        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image": "shopify:\/\/shop_images\/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
         "sponsored_image_height": 400,
         "image_align": "left",
         "call_to_action": "Regala ya!",
@@ -357,7 +357,7 @@
       "settings": {
         "title": "Sponsored collection",
         "collection": "whiskies",
-        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image": "shopify:\/\/shop_images\/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
         "sponsored_image_height": 400,
         "image_align": "right",
         "call_to_action": "Regala ya!",
@@ -404,7 +404,7 @@
       "settings": {
         "title": "Sponsored collection",
         "collection": "whiskies",
-        "sponsored_image": "shopify://shop_images/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
+        "sponsored_image": "shopify:\/\/shop_images\/MK-BALLANTINES-LIGHT-KV-WEB-1536x864-1-aspect-ratio-16-9-2.jpg",
         "sponsored_image_height": 400,
         "image_align": "left",
         "call_to_action": "Regala ya!",
@@ -486,7 +486,7 @@
         "image_nXqgg8": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/juan-bravo.png",
+            "image": "shopify:\/\/shop_images\/juan-bravo.png",
             "storytitle": "Heading",
             "heading_position": "bottom",
             "showtext": "Button label",
@@ -496,7 +496,7 @@
         "image_brKYqm": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/aravaca.png",
+            "image": "shopify:\/\/shop_images\/aravaca.png",
             "storytitle": "Heading",
             "heading_position": "bottom",
             "showtext": "Button label",
@@ -506,7 +506,7 @@
         "image_PPCWrK": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/arturo-soria.png",
+            "image": "shopify:\/\/shop_images\/arturo-soria.png",
             "storytitle": "Heading",
             "heading_position": "bottom",
             "showtext": "Button label",
@@ -516,7 +516,7 @@
         "image_H8RtaM": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/nunez-balboa.png",
+            "image": "shopify:\/\/shop_images\/nunez-balboa.png",
             "storytitle": "Heading",
             "heading_position": "bottom",
             "showtext": "Button label",

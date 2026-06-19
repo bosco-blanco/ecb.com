@@ -361,6 +361,10 @@
                         <div class="footer__copyright">
                             <span class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</span>
                             <span class="copyright__content">{{ powered_by_link }}</span>
+                            <span class="copyright__content" style="display:block;margin-top:4px;font-size:10px;color:#999;">
+                              Disfruta con responsabilidad &middot; No se vende alcohol a menores de 18 a&ntilde;os &middot;
+                              <a href="https://www.febe.es" target="_blank" rel="noopener" style="color:#D4B974;text-decoration:none;">febe.es</a>
+                            </span>
                         </div>
                     {% endif %}
                     {%- if section.settings.payment_enable -%}

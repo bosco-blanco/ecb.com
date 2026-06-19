@@ -4,8 +4,8 @@
     "theme_name": "Viola",
     "theme_version": "1.0.8",
     "theme_author": "Webibazaar",
-    "theme_documentation_url": "https://webibazaar.gitbook.io/viola-documentation",
-    "theme_support_url": "https://support.webibazaar.com/shopify"
+    "theme_documentation_url": "https:\/\/webibazaar.gitbook.io\/viola-documentation",
+    "theme_support_url": "https:\/\/support.webibazaar.com\/shopify"
   },
   {
     "name": "t:settings_schema.colors.name",
@@ -1332,7 +1332,7 @@
         "id": "wbenable_ship",
         "label": "Show free shipping minimum amount",
         "default": false,
-        "info": "Make sure that you have properly configured your [shipping rates](/admin/settings/shipping)."
+        "info": "Make sure that you have properly configured your [shipping rates](\/admin\/settings\/shipping)."
       },
       {
         "type": "text",
