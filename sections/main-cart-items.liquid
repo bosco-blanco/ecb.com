@@ -22,6 +22,11 @@
         padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
     }
 }
+.ecb-fsb-box{margin:4px 0 20px;font-family:var(--font-body-family);font-size:13px;color:#1E1E1E;}
+.ecb-fsb-msg{margin:0 0 6px;font-size:13px;}
+.ecb-fsb-ok{color:#2e5339;font-weight:600;}
+.ecb-fsb-track{background:#F0EDE1;border-radius:99px;height:8px;overflow:hidden;}
+.ecb-fsb-bar{background:#D4B974;height:100%;border-radius:99px;transition:width .3s ease;}
 {%- endstyle -%}
 <cart-items class="container{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="carthead">
@@ -49,6 +54,15 @@
     <div id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
         {%- if cart != empty -%}
+          {%- assign ecb_fsb_goal = 13000 -%}
+          <div class="ecb-fsb-box" aria-live="polite">
+            {%- if cart.total_price >= ecb_fsb_goal -%}
+              <p class="ecb-fsb-msg ecb-fsb-ok">✓ Envío gratis conseguido</p>
+            {%- else -%}
+              <p class="ecb-fsb-msg">Te faltan <strong>{{ ecb_fsb_goal | minus: cart.total_price | money }}</strong> para el envío gratis</p>
+            {%- endif -%}
+            <div class="ecb-fsb-track"><div class="ecb-fsb-bar" style="width: {{ cart.total_price | times: 100 | divided_by: ecb_fsb_goal | at_most: 100 }}%"></div></div>
+          </div>
           <table class="cart-items">
             <caption class="visually-hidden">{{ 'sections.cart.title' | t }}</caption>
             <tbody>

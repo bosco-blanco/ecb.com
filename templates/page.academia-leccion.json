@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "academia-leccion": {
+      "type": "academia-leccion",
+      "settings": {
+        "hub_url": "",
+        "breadcrumb_month": "Mes 03 · Ribera del Duero",
+        "breadcrumb_lesson": "Lección 02",
+        "lesson_kicker": "Lección 02 · Cata comparativa",
+        "lesson_title": "Cata a ciegas: Tempranillo vs Garnacha.",
+        "author_initial": "P",
+        "author_name": "Pablo Arriaga · Sommelier",
+        "duration": "18 minutos",
+        "sections_label": "3 secciones + quiz",
+        "updated_label": "Actualizada · Mar 2026",
+        "video_url": "",
+        "video_label_left": "Mes 03 · Lección 02",
+        "video_label_right": "Video lección",
+        "video_quote": "\"Si sólo pruebas uno, que sea el que te cambie el paladar.\"",
+        "intro_eyebrow": "Introducción",
+        "intro_title": "Dos uvas, un terruño.",
+        "intro_body": "<p>La diferencia entre un Tempranillo de Ribera y una Garnacha del Priorat no se explica sólo con palabras: se bebe.<\/p>",
+        "theory_eyebrow": "Contenido teórico",
+        "theory_title": "Lo que vas a aprender",
+        "wines_eyebrow": "Tres botellas",
+        "wines_title": "Los vinos de este mes",
+        "quiz_kicker": "Al terminar la lección",
+        "quiz_title": "Demuestra lo que sabes:haz el quiz de este mes.",
+        "quiz_description": "10 preguntas · 5 minutos · Necesitas 7 aciertos para desbloquear el Mes 04.",
+        "quiz_btn_text": "Hacer el quiz",
+        "quiz_url": "",
+        "sidebar_month_label": "Mes 03",
+        "sidebar_region_title": "Ribera del Duero",
+        "sidebar_region_sub": "Castilla y León · DO 1982",
+        "sidebar_progress_text": "Lección 2\/4",
+        "sidebar_progress_pct": 60
+      }
+    }
+  },
+  "order": [
+    "academia-leccion"
+  ]
+}

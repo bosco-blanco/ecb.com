@@ -45,7 +45,9 @@ var AgeVerificationPopup = class extends HTMLElement {
         if (this.exitButton) {
             this.exitButton.addEventListener("click", (e) => {
                 e.preventDefault();
-                Cookies.set(this.cookieName, "entered", 30);
+                var expiry = new Date();
+                expiry.setDate(expiry.getDate() + 30);
+                Cookies.set(this.cookieName, "entered", expiry, "/");
                 if (this.backgroundImage) {
                     this.backgroundImage.style.display = "none";
                 }
@@ -78,12 +80,12 @@ class Cookies {
   
       const startIndex = cookie.indexOf(cookieName);
       if (startIndex > -1) {
-        const endIndex = cookie.indexOf(';', startIndex);
+        let endIndex = cookie.indexOf(';', startIndex);
         if (endIndex == -1) {
           endIndex = cookie.length;
         }
         value = decodeURIComponent(
-          cookie.substring(startIndex + name.length, endIndex)
+          cookie.substring(startIndex + cookieName.length, endIndex)
         );
       }
       return value;

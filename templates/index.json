@@ -32,7 +32,7 @@
         "slide_fMpxBC": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banners_home_horizontal_12.jpg",
+            "image": "shopify://shop_images/Banner_ECBBEBIDA.png",
             "mobile_image": "shopify://shop_images/Banner_svg.svg",
             "hcaption": "",
             "heading": "",
@@ -41,7 +41,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "",
-            "link": "https://www.encopadebalon.com/collections/ofertas?page=5",
+            "link": "/collections/vinos",
             "button_style": "outline",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -103,6 +103,29 @@
             "text_alignment_mobile": "center"
           }
         },
+        "slide_beeaaC": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "hcaption": "<p> Tell your brand's story through images </p><p></p>",
+            "heading": "Image slide",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "Tell your brand's story through images",
+            "subheadingtext": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "link": "",
+            "button_style": "outline",
+            "button_size": "medium-btn",
+            "button_txt_upp": true,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
         "slide_rPERkW": {
           "type": "slide",
           "disabled": true,
@@ -133,6 +156,7 @@
         "slide_fMpxBC",
         "slide_7tNxYk",
         "slide_zxXyN6",
+        "slide_beeaaC",
         "slide_rPERkW"
       ],
       "settings": {
@@ -147,6 +171,62 @@
         "show_text_below": false,
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "text_with_icons_bXeHc3": {
+      "type": "text-with-icons",
+      "blocks": {
+        "image_JUmAGC": {
+          "type": "image",
+          "settings": {
+            "icon1": "envio-gratuito",
+            "title": "Envío gratuito",
+            "demotext": "Pedidos superiores a 130€ y Madrid Capital"
+          }
+        },
+        "image_7kLdWN": {
+          "type": "image",
+          "settings": {
+            "icon1": "pago-seguro",
+            "title": "Pago seguro",
+            "demotext": "Garantizamos la seguridad de tus compras"
+          }
+        },
+        "image_wa6eVm": {
+          "type": "image",
+          "settings": {
+            "icon1": "recogida-tienda",
+            "title": "Recogida en tienda",
+            "demotext": "Compra online y recógelo en tu tienda más cercana"
+          }
+        },
+        "image_QAEJ9x": {
+          "type": "image",
+          "settings": {
+            "icon1": "asesoramiento-online",
+            "title": "Asesoramiento online",
+            "demotext": "Atendemos tus dudas via WhatsApp"
+          }
+        }
+      },
+      "block_order": [
+        "image_JUmAGC",
+        "image_7kLdWN",
+        "image_wa6eVm",
+        "image_QAEJ9x"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "head_align": "center",
+        "hide_mobile": true,
+        "hide_desktop": false,
+        "iconwidth": 44,
+        "txticon_bg": false,
+        "color_scheme": "accent-2",
+        "service_upper": false,
+        "padding_top": 40,
+        "padding_bottom": 32
       }
     },
     "collection_icon_list_DKBqTm": {
@@ -227,6 +307,7 @@
         "featured_collection_JXzRcz",
         "featured_collection_3VNcJn"
       ],
+      "disabled": true,
       "settings": {
         "sec_full_width": false,
         "heading_position": "coll_left",
@@ -251,71 +332,15 @@
         "wboverlayhoutline": "#f0ede1",
         "columns_mobile": "3",
         "rows": 3,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "text_with_icons_bXeHc3": {
-      "type": "text-with-icons",
-      "blocks": {
-        "image_JUmAGC": {
-          "type": "image",
-          "settings": {
-            "icon1": "envio-gratuito",
-            "title": "Envío gratuito",
-            "demotext": "Pedidos superiores a 130€ y Madrid Capital"
-          }
-        },
-        "image_7kLdWN": {
-          "type": "image",
-          "settings": {
-            "icon1": "pago-seguro",
-            "title": "Pago seguro",
-            "demotext": "Garantizamos la seguridad de tus compras"
-          }
-        },
-        "image_wa6eVm": {
-          "type": "image",
-          "settings": {
-            "icon1": "recogida-tienda",
-            "title": "Recogida en tienda",
-            "demotext": "Compra online y recógelo en tu tienda más cercana"
-          }
-        },
-        "image_QAEJ9x": {
-          "type": "image",
-          "settings": {
-            "icon1": "asesoramiento-online",
-            "title": "Asesoramiento online",
-            "demotext": "Atendemos tus dudas via WhatsApp"
-          }
-        }
-      },
-      "block_order": [
-        "image_JUmAGC",
-        "image_7kLdWN",
-        "image_wa6eVm",
-        "image_QAEJ9x"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "head_align": "center",
-        "hide_mobile": true,
-        "hide_desktop": false,
-        "iconwidth": 44,
-        "txticon_bg": false,
-        "color_scheme": "accent-2",
-        "service_upper": false,
-        "padding_top": 40,
-        "padding_bottom": 32
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "featured_collection_n8H3FF": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Las ofertas de marzo",
+        "title": "Ofertas",
         "heading_size": "h1",
         "head_align": "center",
         "collection": "ofertas",
@@ -1022,13 +1047,23 @@
         "padding_top": 16,
         "padding_bottom": 0
       }
+    },
+    "custom_liquid_ecbclaim": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"ecb-home-claim\"><h1>Comprar vino online —             Vinoteca en Madrid desde 1991</h1><p>5 vinotecas · +1.600 referencias seleccionadas por nuestros sumilleres · Envío 24-48h península</p></div>\n<style>.ecb-home-claim{text-align:center;padding:28px 16px 8px;background:#FFFCF1}.ecb-home-claim h1{font-family:var(--font-heading-family);font-size:calc(var(--font-heading-scale)*2.6rem);color:#1E1E1E;margin:0 0 6px}.ecb-home-claim p{color:#8a7d5a;font-size:1.4rem;margin:0}@media(max-width:749px){.ecb-home-claim h1{font-size:calc(var(--font-heading-scale)*1.9rem)}}</style>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "video_FDCiDi",
     "1644650669e1107d39",
-    "collection_icon_list_DKBqTm",
     "text_with_icons_bXeHc3",
+    "collection_icon_list_DKBqTm",
     "featured_collection_n8H3FF",
     "featured_collection_wbeGLF",
     "countdown_with_products_VrWahY",
@@ -1045,6 +1080,7 @@
     "1644902876a8ba65d3",
     "image_gallery_jHamJz",
     "16449031867ba3e5f6",
-    "text_with_icons_QwidMi"
+    "text_with_icons_QwidMi",
+    "custom_liquid_ecbclaim"
   ]
 }

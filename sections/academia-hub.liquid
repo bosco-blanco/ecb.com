@@ -1,0 +1,823 @@
+{% comment %}
+  Academia del Vino ECDB — Hub / Dashboard
+  Sección: Mi Academia (panel del alumno)
+  Requiere: {% render 'academia-tokens' %}
+{% endcomment %}
+
+{% render 'academia-tokens' %}
+
+{% style %}
+  /* ========== ACADEMIA HUB ========== */
+
+  /* Banner welcome */
+  .acad-hub-banner {
+    background: var(--acad-wine-brown);
+    color: var(--acad-cream);
+    padding: 44px 32px 54px;
+    position: relative;
+    overflow: hidden;
+  }
+  .acad-hub-banner::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(212,185,116,0.18), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(122,31,61,0.35), transparent 45%);
+  }
+  .acad-hub-banner-inner {
+    max-width: 1360px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px;
+    align-items: end;
+    position: relative;
+  }
+  .acad-hub-welcome .acad-eyebrow-gold {
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--acad-gold); display:inline-flex; align-items:center; gap:10px;
+    margin-bottom: 18px;
+  }
+  .acad-hub-welcome .acad-eyebrow-gold::before {
+    content:''; width: 28px; height: 1px; background: var(--acad-gold);
+  }
+  .acad-hub-welcome h1 {
+    font-family: var(--acad-serif);
+    font-size: clamp(40px, 5vw, 62px);
+    color: var(--acad-cream);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+  .acad-hub-welcome h1 em {
+    font-style: italic; color: var(--acad-gold);
+    font-weight: 400;
+  }
+  .acad-hub-welcome .acad-lede {
+    margin-top: 14px;
+    max-width: 520px;
+    color: rgba(255,252,241,0.75);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* Progress card */
+  .acad-progress-card {
+    background: var(--acad-cream);
+    color: var(--acad-ink);
+    padding: 26px 28px;
+    border-radius: 2px;
+    box-shadow: var(--acad-shadow-2);
+    position: relative;
+  }
+  .acad-progress-card::before {
+    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background: var(--acad-gold);
+  }
+  .acad-progress-card .acad-row {
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .acad-progress-card .acad-month-num {
+    font-family: var(--acad-serif); font-size: 54px; line-height: 1;
+    color: var(--acad-wine-brown); font-weight: 500;
+  }
+  .acad-progress-card .acad-month-num sup {
+    font-size: 18px; color: var(--acad-muted); font-weight: 400;
+    margin-left: 4px; vertical-align: super;
+  }
+  .acad-level-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    background: var(--acad-cream-2); border: 1px solid var(--acad-line);
+    border-radius: 2px;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--acad-wine-brown); font-weight: 600;
+  }
+  .acad-level-tag .acad-dot {
+    width: 6px; height: 6px; background: var(--acad-gold); border-radius:50%;
+  }
+  .acad-progress-label {
+    margin-top: 18px;
+    display:flex; justify-content: space-between;
+    font-size: 12px; color: var(--acad-muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .acad-progress-track {
+    margin-top: 10px;
+    height: 6px; background: var(--acad-line-soft);
+    position: relative; overflow: hidden; border-radius: 2px;
+  }
+  .acad-progress-fill {
+    position: absolute; left:0; top:0; bottom:0;
+    background: linear-gradient(90deg, var(--acad-gold), var(--acad-gold-deep));
+  }
+  .acad-progress-ticks {
+    margin-top: 8px;
+    display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px;
+  }
+  .acad-progress-ticks span {
+    height: 3px; background: var(--acad-line); border-radius: 1px;
+  }
+  .acad-progress-ticks span.acad-done { background: var(--acad-gold); }
+  .acad-progress-ticks span.acad-current { background: var(--acad-wine-brown); }
+
+  /* Main grid */
+  .acad-hub-main {
+    max-width: 1360px; margin: 0 auto;
+    padding: 56px 32px 80px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+  }
+  .acad-section-head {
+    display: flex; justify-content: space-between; align-items: end;
+    margin-bottom: 26px;
+  }
+  .acad-section-head h2 {
+    font-family: var(--acad-serif);
+    font-size: 34px; color: var(--acad-wine-brown);
+  }
+  .acad-section-head h2 em { font-style: italic; color: var(--acad-bordeaux); }
+  .acad-section-head .acad-filters {
+    display: flex; gap: 6px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .acad-filters .acad-chip {
+    padding: 8px 14px; border: 1px solid var(--acad-line); border-radius: 2px;
+    color: var(--acad-muted); cursor: pointer; transition: all .2s;
+  }
+  .acad-filters .acad-chip.acad-active {
+    background: var(--acad-wine-brown); color: var(--acad-cream); border-color: var(--acad-wine-brown);
+  }
+  .acad-filters .acad-chip:hover:not(.acad-active) { border-color: var(--acad-wine-brown); color: var(--acad-wine-brown); }
+
+  /* Module grid */
+  .acad-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .acad-module-card {
+    background: var(--acad-cream);
+    border: 1px solid var(--acad-line);
+    padding: 22px 22px 20px;
+    position: relative;
+    transition: all .25s ease;
+    display: flex; flex-direction: column;
+    min-height: 280px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .acad-module-card:hover {
+    border-color: var(--acad-gold-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--acad-shadow-1);
+  }
+  .acad-module-card.acad-current {
+    background: var(--acad-cream-2);
+    border-color: var(--acad-wine-brown);
+  }
+  .acad-module-card.acad-locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .acad-module-card.acad-locked:hover { transform: none; border-color: var(--acad-line); box-shadow: none; }
+  .acad-module-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .acad-module-num {
+    font-family: var(--acad-serif);
+    font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--acad-muted);
+  }
+  .acad-module-num b {
+    color: var(--acad-wine-brown);
+    font-family: var(--acad-serif);
+    font-weight: 500; font-size: 18px; font-style: italic;
+  }
+  .acad-status-ico {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 11px; flex-shrink: 0;
+  }
+  .acad-status-done { background: var(--acad-gold); color: var(--acad-wine-brown); }
+  .acad-status-curr { background: var(--acad-wine-brown); color: var(--acad-gold); }
+  .acad-status-lock { background: var(--acad-cream-2); color: var(--acad-muted); border: 1px solid var(--acad-line); }
+  .acad-module-title {
+    font-family: var(--acad-serif);
+    font-size: 24px; line-height: 1.15;
+    color: var(--acad-wine-brown);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .acad-module-title em { font-style: italic; }
+  .acad-module-region {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--acad-bordeaux); font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .acad-bottles {
+    margin-top: auto;
+    display: flex; align-items: end; gap: 6px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--acad-line);
+  }
+  .acad-bottle { flex: 1; height: 52px; display: flex; flex-direction: column; align-items: center; }
+  .acad-bottle-svg { width: 18px; height: 52px; }
+  .acad-bottles .acad-count {
+    margin-left: auto;
+    font-size: 11px; color: var(--acad-muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .acad-corner-tag {
+    position: absolute; top: -1px; left: -1px;
+    background: var(--acad-wine-brown); color: var(--acad-gold);
+    padding: 5px 10px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .acad-module-meta-tag {
+    position: absolute; top: 22px; right: 56px;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--acad-muted);
+  }
+
+  /* Sidebar */
+  .acad-hub-aside {
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .acad-side-card {
+    background: var(--acad-cream);
+    border: 1px solid var(--acad-line);
+    padding: 24px;
+  }
+  .acad-side-card.acad-featured {
+    background: var(--acad-wine-brown); color: var(--acad-cream); border: none;
+    position: relative; overflow: hidden;
+  }
+  .acad-side-card.acad-featured::after {
+    content:''; position:absolute; right:-20px; bottom:-20px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(212,185,116,0.25), transparent 70%);
+  }
+  .acad-side-card h3 {
+    font-family: var(--acad-serif);
+    font-size: 22px; margin-bottom: 4px;
+    color: var(--acad-wine-brown);
+  }
+  .acad-side-card.acad-featured h3 { color: var(--acad-cream); }
+  .acad-side-card .acad-kicker {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--acad-gold);
+    margin-bottom: 10px; display:flex; align-items:center; gap: 8px;
+  }
+  .acad-side-card .acad-kicker::before {
+    content:''; width: 20px; height: 1px; background: var(--acad-gold);
+  }
+  .acad-lesson-meta {
+    display: flex; gap: 16px; margin-top: 14px;
+    font-size: 12px; color: rgba(255,252,241,0.7);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .acad-lesson-meta span { display:flex; align-items:center; gap:6px; }
+  .acad-lesson-meta .acad-sep { width: 3px; height: 3px; background: var(--acad-gold); border-radius:50%; }
+  .acad-side-card.acad-featured a.acad-cta {
+    display:inline-flex; align-items:center; gap: 10px;
+    margin-top: 22px;
+    padding: 12px 18px;
+    background: var(--acad-gold); color: var(--acad-wine-brown);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600;
+    transition: background .2s;
+  }
+  .acad-side-card.acad-featured a.acad-cta:hover { background: var(--acad-cream); }
+
+  /* Certificates sidebar */
+  .acad-cert-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .acad-cert-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px; border: 1px solid var(--acad-line);
+    background: var(--acad-cream-2);
+    transition: all .2s;
+  }
+  .acad-cert-row:hover { border-color: var(--acad-gold-deep); }
+  .acad-cert-row.acad-locked { opacity: .5; }
+  .acad-cert-badge {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--acad-gold) 60%, var(--acad-gold-deep) 60.5%);
+    display:grid; place-items:center;
+    color: var(--acad-wine-brown);
+    font-family: var(--acad-serif); font-size: 18px;
+    box-shadow: inset 0 0 0 3px var(--acad-cream);
+  }
+  .acad-cert-badge.acad-locked { background: var(--acad-line); color: var(--acad-muted); }
+  .acad-cert-row .acad-title { font-family: var(--acad-serif); font-size: 17px; color: var(--acad-wine-brown); line-height:1.1; }
+  .acad-cert-row .acad-title em { font-style: italic; }
+  .acad-cert-row .acad-date { font-size: 11px; color: var(--acad-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+  .acad-cert-row .acad-view { margin-left: auto; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acad-bordeaux); }
+
+  /* Stats grid */
+  .acad-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 16px; }
+  .acad-stat {
+    border: 1px solid var(--acad-line); padding: 14px;
+    background: var(--acad-cream);
+  }
+  .acad-stat .acad-n {
+    font-family: var(--acad-serif); font-size: 32px; color: var(--acad-wine-brown);
+    line-height: 1; font-weight: 500;
+  }
+  .acad-stat .acad-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acad-muted); margin-top: 6px; }
+
+  /* Responsive */
+  @media (max-width: 1080px) {
+    .acad-hub-main { grid-template-columns: 1fr; }
+    .acad-modules-grid { grid-template-columns: repeat(2,1fr); }
+    .acad-hub-banner-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 680px) {
+    .acad-hub-banner { padding: 32px 20px 40px; }
+    .acad-hub-welcome h1 { font-size: 36px; }
+    .acad-hub-main { padding: 36px 20px 60px; }
+    .acad-modules-grid { grid-template-columns: 1fr; }
+  }
+{% endstyle %}
+
+<div class="academia">
+
+  {%- comment -%} ===== WELCOME BANNER ===== {%- endcomment -%}
+  <section class="acad-hub-banner">
+    <div class="acad-hub-banner-inner">
+      <div class="acad-hub-welcome">
+        <div class="acad-eyebrow-gold">{{ section.settings.banner_eyebrow }}</div>
+        {% if customer %}
+          <h1>{{ section.settings.greeting }}<br/><em>{{ customer.first_name }} {{ customer.last_name }}.</em></h1>
+        {% else %}
+          <h1>{{ section.settings.greeting }}<br/><em>{{ section.settings.default_name }}.</em></h1>
+        {% endif %}
+        <p class="acad-lede">{{ section.settings.banner_lede }}</p>
+      </div>
+
+      <div class="acad-progress-card">
+        <div class="acad-row">
+          <div>
+            <div class="eyebrow">{{ section.settings.progress_label }}</div>
+            <div class="acad-month-num">{{ section.settings.current_month }}<sup>/{{ section.settings.total_months }}</sup></div>
+          </div>
+          <div class="acad-level-tag"><span class="acad-dot"></span>{{ section.settings.level_name }}</div>
+        </div>
+        <div class="acad-progress-label">
+          <span>{{ section.settings.progress_pct }}% completado</span>
+          <span>{{ section.settings.total_months | minus: section.settings.current_month }} meses restantes</span>
+        </div>
+        <div class="acad-progress-track">
+          <div class="acad-progress-fill" style="width: {{ section.settings.progress_pct }}%;"></div>
+        </div>
+        <div class="acad-progress-ticks" id="acad-ticks-{{ section.id }}"></div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ===== MAIN GRID ===== {%- endcomment -%}
+  <div class="acad-hub-main">
+    <section>
+      <div class="acad-section-head">
+        <div>
+          <div class="eyebrow" style="margin-bottom:10px;">{{ section.settings.itinerary_eyebrow }}</div>
+          <h2>{{ section.settings.itinerary_title }}</h2>
+        </div>
+        <div class="acad-filters">
+          <span class="acad-chip acad-active">Año 1</span>
+          <span class="acad-chip">Año 2</span>
+          <span class="acad-chip">Todos</span>
+        </div>
+      </div>
+
+      <div class="acad-modules-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'module' -%}
+            {%- assign mod_status = block.settings.status -%}
+            {%- assign card_class = 'acad-module-card' -%}
+            {%- if mod_status == 'current' -%}
+              {%- assign card_class = card_class | append: ' acad-current' -%}
+            {%- elsif mod_status == 'locked' -%}
+              {%- assign card_class = card_class | append: ' acad-locked' -%}
+            {%- endif -%}
+
+            {% if mod_status == 'locked' %}
+              <div class="{{ card_class }}" {{ block.shopify_attributes }}>
+            {% else %}
+              <a href="{{ block.settings.lesson_url | default: '#' }}" class="{{ card_class }}" {{ block.shopify_attributes }}>
+            {% endif %}
+
+              {% if mod_status == 'current' %}
+                <div class="acad-corner-tag">En curso</div>
+              {% endif %}
+              {% if block.settings.is_exam %}
+                <div class="acad-module-meta-tag">Examen</div>
+              {% endif %}
+
+              <div class="acad-module-head">
+                <div class="acad-module-num">Mes <b>{{ block.settings.month_number | prepend: '00' | slice: -2, 2 }}</b></div>
+                {% if mod_status == 'done' %}
+                  <div class="acad-status-ico acad-status-done">✓</div>
+                {% elsif mod_status == 'current' %}
+                  <div class="acad-status-ico acad-status-curr">●</div>
+                {% else %}
+                  <div class="acad-status-ico acad-status-lock">◆</div>
+                {% endif %}
+              </div>
+
+              <div class="acad-module-title">{{ block.settings.title }}</div>
+              <div class="acad-module-region">{{ block.settings.region }}</div>
+
+              <div class="acad-bottles">
+                <div class="acad-bottle">
+                  <svg class="acad-bottle-svg" viewBox="0 0 20 56" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="0" width="4" height="12" fill="#7A1F3D" opacity="0.9"/>
+                    <path d="M6 14 Q6 16 4 20 L4 52 Q4 56 10 56 Q16 56 16 52 L16 20 Q14 16 14 14 Z" fill="#7A1F3D"/>
+                    <rect x="5" y="28" width="10" height="12" fill="#FFFCF1" opacity="0.85"/>
+                  </svg>
+                </div>
+                <div class="acad-bottle">
+                  <svg class="acad-bottle-svg" viewBox="0 0 20 56" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="0" width="4" height="12" fill="#2C1810" opacity="0.9"/>
+                    <path d="M6 14 Q6 16 4 20 L4 52 Q4 56 10 56 Q16 56 16 52 L16 20 Q14 16 14 14 Z" fill="#2C1810"/>
+                    <rect x="5" y="28" width="10" height="12" fill="#FFFCF1" opacity="0.85"/>
+                  </svg>
+                </div>
+                <div class="acad-bottle">
+                  <svg class="acad-bottle-svg" viewBox="0 0 20 56" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="0" width="4" height="12" fill="#D4B974" opacity="0.9"/>
+                    <path d="M6 14 Q6 16 4 20 L4 52 Q4 56 10 56 Q16 56 16 52 L16 20 Q14 16 14 14 Z" fill="#D4B974"/>
+                    <rect x="5" y="28" width="10" height="12" fill="#FFFCF1" opacity="0.85"/>
+                  </svg>
+                </div>
+                <span class="acad-count">{{ block.settings.wine_count }} vinos</span>
+              </div>
+
+            {% if mod_status == 'locked' %}
+              </div>
+            {% else %}
+              </a>
+            {% endif %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+
+    {%- comment -%} ===== SIDEBAR ===== {%- endcomment -%}
+    <aside class="acad-hub-aside">
+
+      {%- comment -%} Next lesson card {%- endcomment -%}
+      <div class="acad-side-card acad-featured">
+        <div class="acad-kicker">{{ section.settings.next_lesson_kicker }}</div>
+        <h3>{{ section.settings.next_lesson_title }}</h3>
+        <div class="acad-lesson-meta">
+          <span>{{ section.settings.next_lesson_meta }}</span>
+          <span class="acad-sep"></span>
+          <span>{{ section.settings.next_lesson_duration }}</span>
+          <span class="acad-sep"></span>
+          <span>{{ section.settings.next_lesson_type }}</span>
+        </div>
+        <a href="{{ section.settings.next_lesson_url | default: '#' }}" class="acad-cta">Continuar lección →</a>
+      </div>
+
+      {%- comment -%} Certificates {%- endcomment -%}
+      <div class="acad-side-card">
+        <div class="acad-kicker">Certificados</div>
+        <h3>Tus <em style="font-style:italic">diplomas</em></h3>
+        <div class="acad-cert-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'certificate' -%}
+              <div class="acad-cert-row{% if block.settings.locked %} acad-locked{% endif %}" {{ block.shopify_attributes }}>
+                <div class="acad-cert-badge{% if block.settings.locked %} acad-locked{% endif %}">{{ block.settings.badge_label }}</div>
+                <div>
+                  <div class="acad-title">{{ block.settings.cert_title }}</div>
+                  <div class="acad-date">{{ block.settings.cert_date }}</div>
+                </div>
+                {% unless block.settings.locked %}
+                  <a class="acad-view" href="{{ block.settings.cert_url | default: '#' }}">Ver</a>
+                {% endunless %}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Stats {%- endcomment -%}
+      <div class="acad-side-card">
+        <div class="acad-kicker">Tu cata</div>
+        <h3>En <em style="font-style:italic">números</em></h3>
+        <div class="acad-stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'hub_stat' -%}
+              <div class="acad-stat" {{ block.shopify_attributes }}>
+                <div class="acad-n">{{ block.settings.number }}</div>
+                <div class="acad-l">{{ block.settings.label }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+</div>
+
+<script>
+  // Progress ticks
+  (function(){
+    const ticks = document.getElementById('acad-ticks-{{ section.id }}');
+    if (!ticks) return;
+    const current = {{ section.settings.current_month | default: 3 }};
+    const total = {{ section.settings.total_months | default: 24 }};
+    for (let i=1; i<=total; i++) {
+      const s = document.createElement('span');
+      if (i < current) s.className = 'acad-done';
+      else if (i === current) s.className = 'acad-current';
+      ticks.appendChild(s);
+    }
+  })();
+
+  // Filter chips toggle
+  document.querySelectorAll('.acad-filters .acad-chip').forEach(chip => {
+    chip.addEventListener('click', function() {
+      this.parentNode.querySelectorAll('.acad-chip').forEach(c => c.classList.remove('acad-active'));
+      this.classList.add('acad-active');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Academia — Hub",
+  "tag": "section",
+  "class": "academia-hub",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner de bienvenida"
+    },
+    {
+      "type": "text",
+      "id": "banner_eyebrow",
+      "label": "Eyebrow",
+      "default": "Mi Academia — Curso 2025/26"
+    },
+    {
+      "type": "text",
+      "id": "greeting",
+      "label": "Saludo",
+      "default": "Buenos días,"
+    },
+    {
+      "type": "text",
+      "id": "default_name",
+      "label": "Nombre por defecto (sin login)",
+      "default": "Estudiante"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_lede",
+      "label": "Texto descriptivo",
+      "default": "Este mes descubres el alma de Ribera del Duero. Tu lección programada para hoy: Cata a ciegas — Tempranillo vs Garnacha."
+    },
+    {
+      "type": "header",
+      "content": "Progreso"
+    },
+    {
+      "type": "text",
+      "id": "progress_label",
+      "label": "Etiqueta progreso",
+      "default": "Progreso de la academia"
+    },
+    {
+      "type": "range",
+      "id": "current_month",
+      "label": "Mes actual",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "total_months",
+      "label": "Total meses",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "progress_pct",
+      "label": "% completado",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "level_name",
+      "label": "Nombre de nivel",
+      "default": "Nivel Explorador"
+    },
+    {
+      "type": "header",
+      "content": "Itinerario"
+    },
+    {
+      "type": "text",
+      "id": "itinerary_eyebrow",
+      "label": "Eyebrow itinerario",
+      "default": "24 meses · 24 regiones · 72 vinos"
+    },
+    {
+      "type": "text",
+      "id": "itinerary_title",
+      "label": "Título",
+      "default": "Tu <em>itinerario</em> mensual"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar — Próxima lección"
+    },
+    {
+      "type": "text",
+      "id": "next_lesson_kicker",
+      "label": "Kicker",
+      "default": "Tu próxima lección"
+    },
+    {
+      "type": "text",
+      "id": "next_lesson_title",
+      "label": "Título lección",
+      "default": "Cata a ciegas: <em>Tempranillo</em> vs Garnacha"
+    },
+    {
+      "type": "text",
+      "id": "next_lesson_meta",
+      "label": "Meta info",
+      "default": "Mes 3 · Lección 2"
+    },
+    {
+      "type": "text",
+      "id": "next_lesson_duration",
+      "label": "Duración",
+      "default": "18 min"
+    },
+    {
+      "type": "text",
+      "id": "next_lesson_type",
+      "label": "Tipo",
+      "default": "Video + quiz"
+    },
+    {
+      "type": "url",
+      "id": "next_lesson_url",
+      "label": "URL de la lección"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "module",
+      "name": "Módulo mensual",
+      "settings": [
+        {
+          "type": "range",
+          "id": "month_number",
+          "label": "Número de mes",
+          "min": 1,
+          "max": 24,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Los fundamentos"
+        },
+        {
+          "type": "text",
+          "id": "region",
+          "label": "Región / D.O.",
+          "default": "Introducción"
+        },
+        {
+          "type": "select",
+          "id": "status",
+          "label": "Estado",
+          "options": [
+            { "value": "done", "label": "Completado" },
+            { "value": "current", "label": "En curso" },
+            { "value": "locked", "label": "Bloqueado" }
+          ],
+          "default": "locked"
+        },
+        {
+          "type": "url",
+          "id": "lesson_url",
+          "label": "URL de la lección"
+        },
+        {
+          "type": "range",
+          "id": "wine_count",
+          "label": "Nº vinos",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "checkbox",
+          "id": "is_exam",
+          "label": "¿Es examen?",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "certificate",
+      "name": "Certificado",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "Etiqueta badge",
+          "default": "I"
+        },
+        {
+          "type": "text",
+          "id": "cert_title",
+          "label": "Título certificado",
+          "default": "Iniciación al <em>vino</em>"
+        },
+        {
+          "type": "text",
+          "id": "cert_date",
+          "label": "Fecha / Estado",
+          "default": "Obtenido · Ene 2026"
+        },
+        {
+          "type": "checkbox",
+          "id": "locked",
+          "label": "Bloqueado",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "cert_url",
+          "label": "URL certificado"
+        }
+      ]
+    },
+    {
+      "type": "hub_stat",
+      "name": "Estadística",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Número",
+          "default": "9"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Vinos catados"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Academia — Hub",
+      "blocks": [
+        { "type": "module", "settings": { "month_number": 1, "title": "Los fundamentos", "region": "Introducción", "status": "done" } },
+        { "type": "module", "settings": { "month_number": 2, "title": "Rioja: la tradición", "region": "Rioja · DOCa", "status": "done" } },
+        { "type": "module", "settings": { "month_number": 3, "title": "Ribera del Duero", "region": "Castilla y León", "status": "current" } },
+        { "type": "module", "settings": { "month_number": 4, "title": "Priorat & Montsant", "region": "Cataluña", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 5, "title": "Rías Baixas y el Albariño", "region": "Galicia · Atlántico", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 6, "title": "Jerez y los finos", "region": "Andalucía · Marco", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 7, "title": "El arte del Cava", "region": "Penedès", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 8, "title": "Valdeorras · Godello", "region": "Galicia interior", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 9, "title": "Toro y el monovarietal", "region": "Zamora", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 10, "title": "La Mancha revisitada", "region": "Castilla-La Mancha", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 11, "title": "Bierzo · Mencía", "region": "León", "status": "locked" } },
+        { "type": "module", "settings": { "month_number": 12, "title": "Examen: final de año", "region": "Certificado I", "status": "locked", "is_exam": true } },
+        { "type": "certificate", "settings": { "badge_label": "I", "cert_title": "Iniciación al <em>vino</em>", "cert_date": "Obtenido · Ene 2026", "locked": false } },
+        { "type": "certificate", "settings": { "badge_label": "II", "cert_title": "Sumiller <em>amateur</em>", "cert_date": "Al completar Mes 12", "locked": true } },
+        { "type": "certificate", "settings": { "badge_label": "III", "cert_title": "Graduación <em>final</em>", "cert_date": "Al completar Mes 24", "locked": true } },
+        { "type": "hub_stat", "settings": { "number": "9", "label": "Vinos catados" } },
+        { "type": "hub_stat", "settings": { "number": "2", "label": "Regiones" } },
+        { "type": "hub_stat", "settings": { "number": "6", "label": "Lecciones" } },
+        { "type": "hub_stat", "settings": { "number": "87", "label": "Puntos quiz" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

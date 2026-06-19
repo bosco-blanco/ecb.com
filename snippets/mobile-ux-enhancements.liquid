@@ -103,7 +103,7 @@
     /* Larger add to cart button on mobile */
     .card__content .button,
     .card__content .wbaddcartbtn,
-    .product-form__submit {
+    .card__content .product-form__submit {
       min-height: 48px;
       font-size: 14px;
       font-weight: 600;
@@ -135,14 +135,7 @@
       background: #f8f5f0;
     }
 
-    /* Mobile product page improvements */
-    .product__info-container {
-      padding: 0 16px;
-    }
-    .product__title h1 {
-      font-size: 1.4rem;
-      line-height: 1.2;
-    }
+    /* Mobile product page — scoped to cards only */
 
     /* Wine scores horizontal scroll on mobile */
     .wine-scores {
@@ -161,11 +154,7 @@
       gap: 12px !important;
     }
 
-    /* Better mobile announcement bar */
-    .announcement-bar {
-      font-size: 12px;
-      padding: 8px 16px;
-    }
+    /* announcement-bar removed — use theme defaults */
 
     /* Improve mobile menu drawer */
     .menu-drawer__menu-item {
@@ -238,27 +227,7 @@
     }
   }
 
-  /* ============================================
-     BETTER CTA BUTTONS ACROSS THE SITE
-     ============================================ */
-  .product-form__submit {
-    background: #3d5a3c !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.02em;
-    transition: background 0.2s ease, transform 0.1s ease !important;
-  }
-  .product-form__submit:hover {
-    background: #2d4a2c !important;
-  }
-  .product-form__submit:active {
-    transform: scale(0.98) !important;
-  }
-  .shopify-payment-button__button {
-    border-radius: 8px !important;
-  }
+  /* CTA buttons removed — visual-polish.liquid handles this */
 
   /* ============================================
      COLLECTION GRID MOBILE IMPROVEMENTS

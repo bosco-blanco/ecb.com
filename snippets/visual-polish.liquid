@@ -1,457 +1,160 @@
-{%- comment -%}
-  Visual polish and contrast fixes for En Copa de Balon.
-  Addresses: contrast WCAG AA, typography hierarchy, product cards,
-  product page layout, announcement bar, buttons, and overall visual quality.
-{%- endcomment -%}
+{% comment %}
+  ECDB Visual Polish v3 — Card alignment + Wine tags + Fix borders
+  REGLA: SOLO CSS para cards y wine tags. PROHIBIDO: hero, slideshow, banner, body, h1-h6, page-width, header
+{% endcomment %}
 
-{%- style -%}
-  /* ============================================
-     1. CONTRAST & COLOR FIXES (WCAG AA)
-     ============================================ */
-  :root {
-    --ecdb-wine: #6b1d3a;
-    --ecdb-wine-light: #8a2850;
-    --ecdb-gold: #b8983a;
-    --ecdb-gold-light: #d4b974;
-    --ecdb-cream: #f7f4ed;
-    --ecdb-dark: #1a1a1a;
-    --ecdb-text: #2c2c2c;
-    --ecdb-text-muted: #5a5a5a;
-    --ecdb-border: #e0dbd0;
-    --ecdb-green: #3d5a3c;
-    --ecdb-green-dark: #2d4a2c;
-    --ecdb-bg-warm: #faf8f4;
-    --ecdb-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --ecdb-shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --ecdb-shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
-    --ecdb-transition: 0.25s cubic-bezier(0.4,0,0.2,1);
-  }
+<style>
+/* Card Grid: misma altura, precio+botón siempre abajo */
+li.grid__item { display: flex; flex-direction: column; }
+li.grid__item .card-wrapper { display: flex; flex-direction: column; height: 100%; }
+.card.card--standard { display: flex; flex-direction: column; height: 100%; }
+.card__content.wbproductdes { display: flex; flex-direction: column; flex-grow: 1; }
+.card__content.wbproductdes [id^="ProductInfo"] { margin-top: auto; }
 
-  /* Fix olive green background contrast */
-  .color-background-2 {
-    color: #fff !important;
-  }
-  .color-background-2 a,
-  .color-background-2 .price-item,
-  .color-background-2 .card__heading a {
-    color: #fff !important;
-  }
-  .color-background-2 .wbhomevendor {
-    color: rgba(255,255,255,0.75) !important;
-  }
+/* Quitar bordes blancos redondeados de cards */
+.card--card .card__inner, .card--standard .card__inner { border-radius: 0; border: none; box-shadow: none; background: transparent; }
+.card--card, .card--standard { border-radius: 0; border: none; overflow: hidden; }
+.card__media, .card .media { border-radius: 0; overflow: hidden; }
+.card--shape .card__inner { border-radius: 0; border: none; }
+.card-wrapper { border-radius: 0; }
+.card--card::after, .card--standard::after { display: none; }
 
-  /* ============================================
-     2. TYPOGRAPHY IMPROVEMENTS
-     ============================================ */
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
+/* Wine Tags */
+.wine-card-info { min-height: 28px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.wine-card-scores { min-height: 18px; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 
-  h1, h2, h3, h4, h5, h6,
-  .h0, .h1, .h2, .h3, .h4, .h5 {
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-  }
+.wine-tag { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 3px; font-size: 10.5px; font-family: var(--font-body-family); white-space: nowrap; text-decoration: none; transition: opacity 0.15s ease, transform 0.15s ease; line-height: 1.4; letter-spacing: 0.02em; cursor: pointer; border: none; }
+.wine-tag:hover { opacity: 0.8; text-decoration: none; transform: translateY(-1px); }
 
-  /* Better price typography */
-  .price-item--regular {
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-  }
-  .price-item--sale {
-    font-weight: 700;
-    color: var(--ecdb-wine) !important;
-    font-variant-numeric: tabular-nums;
-  }
-  .price-item--regular s {
-    color: var(--ecdb-text-muted);
-    font-weight: 400;
-  }
+/* Tipo de vino */
+.wine-tag--tinto { background: #722F37; color: #FFFCF1; }
+.wine-tag--blanco { background: #C8A84E; color: #FFFCF1; }
+.wine-tag--rosado { background: #B5556E; color: #FFFCF1; }
+.wine-tag--espumoso { background: #6B6234; color: #FFFCF1; }
+.wine-tag--vermut { background: #8B4513; color: #FFFCF1; }
+.wine-tag--generoso, .wine-tag--dulce, .wine-tag--otro { background: #8B6D47; color: #FFFCF1; }
 
-  /* ============================================
-     3. ANNOUNCEMENT BAR POLISH
-     ============================================ */
-  .announcement-bar {
-    font-weight: 500;
-    letter-spacing: 0.03em;
-  }
-  .announcement-bar a {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
+/* D.O. */
+.wine-tag--do { background: #E8E2D0; color: #3D3825; border: 1px solid #D4CDB8; }
+/* Añada */
+.wine-tag--vintage { background: #3D3825; color: #FFFCF1; font-weight: 600; font-variant-numeric: tabular-nums; }
+/* Estilo */
+.wine-tag--estilo { background: transparent; color: #6B5E4A; border: 1px solid #D4CDB8; font-style: italic; font-size: 10px; }
 
-  /* ============================================
-     4. HEADER REFINEMENTS
-     ============================================ */
-  .header {
-    border-bottom: 1px solid var(--ecdb-border);
-  }
-  .header__heading-logo-wrapper img {
-    transition: opacity var(--ecdb-transition);
-  }
+/* Puntuaciones */
+.wine-card-scores span { display: inline-flex; align-items: center; gap: 3px; font-weight: 700; font-size: 10.5px; font-family: var(--font-body-family); }
+.wine-score--parker { color: #722F37; }
+.wine-score--penin { color: #8B6D00; }
 
-  /* ============================================
-     5. PRODUCT CARD VISUAL UPGRADE
-     ============================================ */
-  .card-wrapper.wbproduct-container {
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform var(--ecdb-transition), box-shadow var(--ecdb-transition);
-    background: #fff;
-    border: 1px solid transparent;
-  }
-  .card-wrapper.wbproduct-container:hover {
-    border-color: var(--ecdb-border);
-    box-shadow: var(--ecdb-shadow-md);
-  }
+/* Botón ATC: pill redondeado, sin línea/halo blanco */
+.product-form .cartb,
+.product-form .cartmobile,
+.wbproduct-container .product-form .cartb {
+  border-radius: 35px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.product-form .cartb::before,
+.product-form .cartb::after,
+.product-form .cartmobile::before,
+.product-form .cartmobile::after {
+  display: none !important;
+}
 
-  /* Product card image area */
-  .card__media {
-    background: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .card__media img {
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-  }
-  .card-wrapper:hover .card__media img {
-    transform: scale(1.04);
-  }
+/* Botón ATC: Verde Barbour */
+.product-form .cartb,
+.product-form .cartmobile,
+.product-form__submit,
+.wbproduct-container .product-form .cartb {
+  background-color: #1B4D3E;
+  color: #FFFCF1;
+}
+.product-form .cartb:hover,
+.product-form .cartmobile:hover,
+.product-form__submit:hover {
+  background-color: #163F33;
+  color: #FFFCF1;
+}
+.product-form .cartb:active,
+.product-form__submit:active {
+  background-color: #0F2E25;
+}
+.product-form__submit[disabled],
+.product-form__submit[aria-disabled="true"],
+.product-form .cartb[disabled] {
+  background-color: #8BA89E;
+  color: #FFFCF1;
+}
 
-  /* Card content area */
-  .wbproductdes.card__content {
-    padding: 12px 14px 16px;
-  }
-  .wbproductdes .product-title {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.35;
-    margin-bottom: 4px;
-  }
-  .wbproductdes .product-title a {
-    color: var(--ecdb-text);
-    text-decoration: none;
-    transition: color var(--ecdb-transition);
-  }
-  .wbproductdes .product-title a:hover {
-    color: var(--ecdb-wine);
-  }
+/* PDP: chips interactivos */
+a.wpi__tag:hover { background: #D4B974; color: #1E1E1E; border-color: #D4B974; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(30,30,30,0.1); }
+.wpi__tag--estilo { background: #FFFCF1; border: 1px solid #D4B974; font-style: italic; }
+.wpi__tag--estilo:hover { background: #D4B974; color: #1E1E1E; }
 
-  /* Vendor name styling */
-  .wbhomevendor {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ecdb-text-muted);
-    font-weight: 500;
-    margin-bottom: 2px;
-  }
+/* PDP: tabla links */
+.wpi__cell-value a { color: #1E1E1E; text-decoration: underline; text-decoration-color: #D4B974; text-underline-offset: 2px; }
+.wpi__cell-value a:hover { color: #D4B974; }
 
-  /* Card badges */
-  .wb_badge_pos .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
-  .percent__badge-sale,
-  .amount__badge-sale {
-    background: var(--ecdb-wine) !important;
-    color: #fff !important;
-  }
-  .soldout_product_badge {
-    background: var(--ecdb-text-muted) !important;
-    color: #fff !important;
-  }
-  .new_product_badge {
-    background: var(--ecdb-gold) !important;
-    color: #fff !important;
-  }
+/* ═══ Descripción estructurada (ecdb-estilo, ecdb-cata, ecdb-maridaje) ═══ */
+.ecdb-estilo {
+  margin: 12px 0;
+  padding: 14px 16px;
+  background: #FFFCF1;
+  border: 1px solid #D4B974;
+  border-radius: 10px;
+}
+.ecdb-estilo__label {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.ecdb-estilo__value {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E1E1E;
+  font-family: var(--font-heading-family);
+  margin-bottom: 6px;
+}
+.ecdb-estilo__sommelier {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  font-style: italic;
+}
+.ecdb-cata, .ecdb-maridaje {
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+.ecdb-cata strong, .ecdb-maridaje strong {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.ecdb-cata p, .ecdb-maridaje p {
+  margin: 0;
+  color: #444;
+}
 
-  /* Add to cart button on cards */
-  .wbproductdes .cartb,
-  .wbproductdes .product-form__submit {
-    background: var(--ecdb-green) !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.02em;
-    padding: 10px 16px !important;
-    min-height: 40px;
-    transition: background var(--ecdb-transition), transform 0.1s ease !important;
-  }
-  .wbproductdes .cartb:hover,
-  .wbproductdes .product-form__submit:hover {
-    background: var(--ecdb-green-dark) !important;
-  }
-  .wbproductdes .cartb:active,
-  .wbproductdes .product-form__submit:active {
-    transform: scale(0.97) !important;
-  }
-
-  /* ============================================
-     6. PRODUCT PAGE (PDP) IMPROVEMENTS
-     ============================================ */
-  /* Better price display on PDP */
-  .product .price-item--regular {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ecdb-text);
-  }
-  .product .price--on-sale .price-item--sale {
-    font-size: 1.6rem;
-    color: var(--ecdb-wine);
-  }
-  .product .price--on-sale .price-item--regular s {
-    font-size: 1.1rem;
-    color: var(--ecdb-text-muted);
-    font-weight: 400;
-  }
-
-  /* PDP Add to Cart button */
-  .product-form__submit {
-    background: var(--ecdb-green) !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 10px !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    padding: 16px 32px !important;
-    min-height: 52px;
-    letter-spacing: 0.02em;
-    transition: all var(--ecdb-transition) !important;
-    box-shadow: 0 2px 8px rgba(61,90,60,0.2);
-  }
-  .product-form__submit:hover {
-    background: var(--ecdb-green-dark) !important;
-    box-shadow: 0 4px 14px rgba(61,90,60,0.3);
-    transform: translateY(-1px);
-  }
-
-  /* Product media gallery */
-  .product__media-list {
-    gap: 8px;
-  }
-  .product__media-item {
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid var(--ecdb-border);
-  }
-
-  /* Product accordion tabs */
-  .product__accordion .accordion__title {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: none;
-  }
-  .product__accordion summary {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--ecdb-border);
-  }
-
-  /* ============================================
-     7. COLLECTION PAGE IMPROVEMENTS
-     ============================================ */
-  /* Better filter bar */
-  .facets-container {
-    padding: 12px 0;
-    margin-bottom: 20px;
-  }
-  .facets__summary {
-    background: var(--ecdb-bg-warm);
-    border: 1px solid var(--ecdb-border);
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-weight: 500;
-    transition: border-color var(--ecdb-transition);
-  }
-  .facets__summary:hover {
-    border-color: var(--ecdb-gold-light);
-  }
-
-  /* Active filter chips */
-  .active-facets__button {
-    background: var(--ecdb-wine);
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  /* Collection title */
-  .collection-hero__title {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-
-  /* ============================================
-     8. BREADCRUMBS
-     ============================================ */
-  .breadcrumb {
-    font-size: 12px;
-    color: var(--ecdb-text-muted);
-    padding: 12px 0;
-  }
-  .breadcrumb a {
-    color: var(--ecdb-text-muted);
-    text-decoration: none;
-    transition: color var(--ecdb-transition);
-  }
-  .breadcrumb a:hover {
-    color: var(--ecdb-wine);
-  }
-
-  /* ============================================
-     9. FOOTER CLEANUP
-     ============================================ */
-  .footer {
-    border-top: 2px solid var(--ecdb-border);
-  }
-  .footer a {
-    transition: color var(--ecdb-transition);
-  }
-  .footer a:hover {
-    color: var(--ecdb-gold) !important;
-  }
-
-  /* ============================================
-     10. GLOBAL INTERACTION POLISH
-     ============================================ */
-  /* Smoother page transitions */
-  @view-transition {
-    navigation: auto;
-  }
-
-  /* Focus styles for accessibility */
-  :focus-visible {
-    outline: 2px solid var(--ecdb-gold);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  /* Better link underlines */
-  .rte a {
-    color: var(--ecdb-wine);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    transition: color var(--ecdb-transition);
-  }
-  .rte a:hover {
-    color: var(--ecdb-wine-light);
-  }
-
-  /* Loading states */
-  .loading-overlay {
-    backdrop-filter: blur(2px);
-  }
-
-  /* Cart drawer improvements */
-  .cart-drawer {
-    border-left: 1px solid var(--ecdb-border);
-    box-shadow: var(--ecdb-shadow-lg);
-  }
-
-  /* ============================================
-     11. MOBILE-SPECIFIC VISUAL FIXES
-     ============================================ */
-  @media screen and (max-width: 749px) {
-    /* Better mobile card grid */
-    .product-grid .grid__item {
-      padding: 0 4px;
-    }
-
-    /* Mobile product title */
-    .product__title h1 {
-      font-size: 1.3rem;
-      line-height: 1.25;
-      font-weight: 700;
-    }
-
-    /* Mobile price prominence */
-    .product .price-item--regular {
-      font-size: 1.4rem;
-    }
-
-    /* Mobile Add to Cart */
-    .product-form__submit {
-      font-size: 15px !important;
-      padding: 14px 24px !important;
-      min-height: 50px;
-      width: 100%;
-    }
-
-    /* Mobile section spacing */
-    .section-padding {
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-
-    /* Fix horizontal overflow */
-    body {
-      overflow-x: hidden;
-    }
-
-    /* Mobile image banner text readability */
-    .banner__content {
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(2px);
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    /* Mobile announcement bar */
-    .announcement-bar {
-      font-size: 11px;
-      padding: 8px 12px;
-    }
-
-    /* Mobile header cleanup */
-    .header {
-      padding: 10px 16px;
-    }
-
-    /* Fix mobile card content bleeding */
-    .wbproductdes.card__content {
-      padding: 10px 10px 14px;
-    }
-    .wbproductdes .product-title {
-      font-size: 12px;
-      -webkit-line-clamp: 2;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  }
-
-  /* ============================================
-     12. QUICK VIEW MODAL POLISH
-     ============================================ */
-  .wbquickview .mfp-content {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--ecdb-shadow-lg);
-  }
-  .wbquickview .mfp-close {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: var(--ecdb-shadow-sm);
-    font-size: 20px;
-    top: 8px;
-    right: 8px;
-  }
-{%- endstyle -%}
+/* Responsive */
+@media (max-width: 749px) {
+  .wine-tag { font-size: 9.5px; padding: 2px 6px; }
+  .wine-card-info { gap: 3px; }
+  .wine-card-scores span { font-size: 9.5px; }
+  .ecdb-estilo { padding: 10px 12px; }
+  .ecdb-estilo__value { font-size: 14px; }
+  .ecdb-estilo__sommelier { font-size: 12px; }
+}
+</style>

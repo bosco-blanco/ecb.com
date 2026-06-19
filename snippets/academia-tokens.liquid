@@ -1,0 +1,45 @@
+{% comment %}
+  Academia del Vino ECDB — Design Tokens
+  Incluir una sola vez en cada sección de la academia:
+  {% render 'academia-tokens' %}
+{% endcomment %}
+
+{% style %}
+  :root {
+    --acad-cream: #FFFCF1;
+    --acad-cream-2: #F0EDE1;
+    --acad-gold: #D4B974;
+    --acad-gold-deep: #B89B5A;
+    --acad-ink: #1E1E1E;
+    --acad-ink-soft: #3A3A3A;
+    --acad-wine-brown: #2C1810;
+    --acad-bordeaux: #7A1F3D;
+    --acad-muted: #8A8270;
+    --acad-line: #DDD8C8;
+    --acad-line-soft: #EAE6D8;
+    --acad-serif: 'Cormorant Garamond', Georgia, serif;
+    --acad-sans: 'Instrument Sans', -apple-system, sans-serif;
+    --acad-shadow-1: 0 2px 12px rgba(44,24,16,0.08);
+    --acad-shadow-2: 0 8px 32px rgba(44,24,16,0.12);
+  }
+
+  /* Reset scoped to academia */
+  .academia *, .academia *::before, .academia *::after { box-sizing: border-box; }
+  .academia {
+    font-family: var(--acad-sans);
+    color: var(--acad-ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .academia a { text-decoration: none; color: inherit; }
+  .academia button { background: none; border: none; cursor: pointer; font-family: inherit; }
+  .academia img { max-width: 100%; display: block; }
+  .academia .eyebrow {
+    font-family: var(--acad-sans);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--acad-gold-deep);
+    font-weight: 600;
+  }
+{% endstyle %}

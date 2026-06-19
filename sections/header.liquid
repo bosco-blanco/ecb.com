@@ -406,7 +406,7 @@
     {%- endif -%}
     <div class="headlogo">
         {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading">
+          <div class="header__heading">
         {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading header__heading-link link link--text focus-inset">
             <span class="h2 logo-desktop-text {% if section.settings.logo %}hidden{% endif %} ">{{ shop.name }}</span>
@@ -454,7 +454,7 @@
             {% comment %}Mobile view logo end{% endcomment %}
           </a>
         {%- if request.page_type == 'index' -%}
-          </h1>
+          </div>
         {%- endif -%}
     </div>
 

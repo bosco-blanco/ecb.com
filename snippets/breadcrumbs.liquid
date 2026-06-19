@@ -1,49 +1,117 @@
 {% unless template == 'index' %}
-{% unless template contains 'page' %}
+{% unless template contains 'page' and template contains 'password' %}
 <div class="container">
-	<nav class="breadcrumb row" role="navigation" aria-label="breadcrumbs">
-		<div class="col-12">
-			<a href="{{ routes.root_url }}" title="{{ 'wbcustomlabel.wballtext.home' | t }}">{{ 'wbcustomlabel.wballtext.home' | t }}</a>
-			{% if template contains 'page' %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				<span>{{ page.title }}</span>
-			{% elsif template contains 'product' %}
-			{% if collection.url %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				{{ collection.title | link_to: collection.url }}
-			{% endif %} 
-			<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-			<span>{{ product.title }}</span>
-			{% elsif template contains 'collection' and collection.handle %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-			{% if current_tags %}
-			{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-				{{ collection.title | link_to: url }}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				<span>{{ current_tags | join: " + " }}</span>
-			{% else %}
-				<span>{{ collection.title }}</span>
-			{% endif %}
-			{% elsif template == 'blog' %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-			{% if current_tags %}
-				{{ blog.title | link_to: blog.url }}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				<span>{{ current_tags | join: " + " }}</span>
-			{% else %}
-				<span>{{ blog.title }}</span>
-			{% endif %}
-			{% elsif template == 'article' %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				{{ blog.title | link_to: blog.url }}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				<span>{{ article.title }}</span>
-			{% else %}
-				<span aria-hidden="true">{% render 'icon-arrow-right' %}</span>
-				<span>{{ page_title }}</span>
-			{% endif %}
-		</div>
-	</nav>
+  <nav class="breadcrumb row" role="navigation" aria-label="Migas de pan" style="font-size:12px;color:#888;padding:10px 0 6px;">
+    <div class="col-12" itemscope itemtype="https://schema.org/BreadcrumbList" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;">
+      <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ routes.root_url }}" itemprop="item" style="color:#888;text-decoration:none;">
+          <span itemprop="name">Inicio</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </span>
+
+      {% if template contains 'product' %}
+        {% if collection.url %}
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ collection.url }}" itemprop="item" style="color:#888;text-decoration:none;">
+              <span itemprop="name">{{ collection.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </span>
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+            <span itemprop="name">{{ product.title | truncatewords: 6 }}</span>
+            <meta itemprop="item" content="{{ request.origin }}{{ product.url }}">
+            <meta itemprop="position" content="3">
+          </span>
+        {% else %}
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ routes.collections_url }}" itemprop="item" style="color:#888;text-decoration:none;">
+              <span itemprop="name">Vinos</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </span>
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+            <span itemprop="name">{{ product.title | truncatewords: 6 }}</span>
+            <meta itemprop="item" content="{{ request.origin }}{{ product.url }}">
+            <meta itemprop="position" content="3">
+          </span>
+        {% endif %}
+
+      {% elsif template contains 'collection' and collection.handle %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        {% if current_tags %}
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            {% capture col_url %}/collections/{{ collection.handle }}{% endcapture %}
+            <a href="{{ col_url }}" itemprop="item" style="color:#888;text-decoration:none;">
+              <span itemprop="name">{{ collection.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </span>
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+            <span itemprop="name">{{ current_tags | join: " + " }}</span>
+            <meta itemprop="position" content="3">
+          </span>
+        {% else %}
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+            <span itemprop="name">{{ collection.title }}</span>
+            <meta itemprop="item" content="{{ request.origin }}{{ collection.url }}">
+            <meta itemprop="position" content="2">
+          </span>
+        {% endif %}
+
+      {% elsif template == 'blog' %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        {% if current_tags %}
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ blog.url }}" itemprop="item" style="color:#888;text-decoration:none;">
+              <span itemprop="name">{{ blog.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </span>
+          <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+          <span style="color:#555;font-weight:500;">{{ current_tags | join: " + " }}</span>
+        {% else %}
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+            <span itemprop="name">{{ blog.title }}</span>
+            <meta itemprop="item" content="{{ request.origin }}{{ blog.url }}">
+            <meta itemprop="position" content="2">
+          </span>
+        {% endif %}
+
+      {% elsif template == 'article' %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ blog.url }}" itemprop="item" style="color:#888;text-decoration:none;">
+            <span itemprop="name">{{ blog.title }}</span>
+          </a>
+          <meta itemprop="position" content="2">
+        </span>
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="color:#555;font-weight:500;">
+          <span itemprop="name">{{ article.title | truncatewords: 6 }}</span>
+          <meta itemprop="item" content="{{ request.origin }}{{ article.url }}">
+          <meta itemprop="position" content="3">
+        </span>
+
+      {% elsif template contains 'search' %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        <span style="color:#555;font-weight:500;">Buscar</span>
+
+      {% elsif template contains 'cart' %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        <span style="color:#555;font-weight:500;">Carrito</span>
+
+      {% else %}
+        <span aria-hidden="true" style="color:#ccc;font-size:10px;">&#8250;</span>
+        <span style="color:#555;font-weight:500;">{{ page_title }}</span>
+      {% endif %}
+    </div>
+  </nav>
 </div>
 {% endunless %}
 {% endunless %}

@@ -26,7 +26,7 @@
       "type": "apps",
       "blocks": {
         "forms_inline_cCBJEm": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "type": "shopify:\/\/apps\/forms\/blocks\/inline\/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
             "form_id": "192704",
             "text_color": "#202020",

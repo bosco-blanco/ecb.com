@@ -930,7 +930,6 @@
                 {%- render 'wine-product-info', product: product -%}
                 {%- render 'stock-urgency', product: product -%}
                 {%- render 'trust-badges' -%}
-                {%- render 'sticky-atc', product: product, section_id: section.id -%}
 
               {%- when 'complementary' -%}
                 {{ 'component-card.css' | asset_url | stylesheet_tag }}

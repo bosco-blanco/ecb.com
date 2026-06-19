@@ -1,0 +1,212 @@
+{%- comment -%}
+  Sticky Add to Cart bar for product pages.
+  Appears when user scrolls past the main buy button.
+
+  Uso:
+  {% render 'sticky-add-to-cart', product: product %}
+{%- endcomment -%}
+
+{%- if product.available -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- style -%}
+  .sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid #e5dfd4;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    padding: 10px 0;
+  }
+  .sticky-atc.is-visible {
+    transform: translateY(0);
+  }
+  .sticky-atc__inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .sticky-atc__img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+  }
+  .sticky-atc__info {
+    flex: 1;
+    min-width: 0;
+  }
+  .sticky-atc__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c2c2c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+  }
+  .sticky-atc__price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-variant-numeric: tabular-nums;
+  }
+  .sticky-atc__price--sale {
+    color: #6b1d3a;
+  }
+  .sticky-atc__price s {
+    font-size: 12px;
+    color: #999;
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .sticky-atc__btn {
+    background: #3d5a3c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .sticky-atc__btn:hover {
+    background: #2d4a2c;
+  }
+  .sticky-atc__btn:active {
+    transform: scale(0.97);
+  }
+  @media screen and (max-width: 749px) {
+    .sticky-atc {
+      padding: 8px 0;
+      bottom: 0;
+    }
+    .sticky-atc__inner {
+      padding: 0 12px;
+      gap: 8px;
+    }
+    .sticky-atc__img {
+      width: 36px;
+      height: 36px;
+    }
+    .sticky-atc__title {
+      font-size: 12px;
+    }
+    .sticky-atc__price {
+      font-size: 13px;
+    }
+    .sticky-atc__btn {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+    /* Push mobile bottom nav up when sticky bar visible */
+    .sticky-atc.is-visible ~ .ecdb-mobile-nav,
+    body.sticky-atc-visible .ecdb-mobile-nav {
+      display: none !important;
+    }
+  }
+{%- endstyle -%}
+
+<div class="sticky-atc" id="stickyAtc" aria-hidden="true">
+  <div class="sticky-atc__inner">
+    {%- if product.featured_media -%}
+      <img
+        class="sticky-atc__img"
+        src="{{ product.featured_media | image_url: width: 88 }}"
+        alt="{{ product.title | escape }}"
+        width="44"
+        height="44"
+        loading="lazy"
+      >
+    {%- endif -%}
+    <div class="sticky-atc__info">
+      <div class="sticky-atc__title">{{ product.title }}</div>
+      <div class="sticky-atc__price{% if current_variant.compare_at_price > current_variant.price %} sticky-atc__price--sale{% endif %}">
+        {{ current_variant.price | money }}
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+          <s>{{ current_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </div>
+    </div>
+    <button
+      type="button"
+      class="sticky-atc__btn"
+      id="stickyAtcBtn"
+      {% unless current_variant.available %}disabled{% endunless %}
+    >
+      {%- if current_variant.available -%}
+        Añadir al carrito
+      {%- else -%}
+        Agotado
+      {%- endif -%}
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var sticky = document.getElementById('stickyAtc');
+  if (!sticky) return;
+
+  // Find the main product form's submit button
+  var mainBtn = document.querySelector('.product-form__submit');
+  if (!mainBtn) return;
+
+  // IntersectionObserver: show sticky when main button leaves viewport
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        sticky.classList.remove('is-visible');
+        sticky.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('sticky-atc-visible');
+      } else {
+        sticky.classList.add('is-visible');
+        sticky.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('sticky-atc-visible');
+      }
+    });
+  }, { threshold: 0 });
+
+  observer.observe(mainBtn);
+
+  // Click handler: submit the main product form
+  var stickyBtn = document.getElementById('stickyAtcBtn');
+  stickyBtn.addEventListener('click', function() {
+    var mainForm = document.querySelector('form[action="/cart/add"]');
+    if (mainForm) {
+      var submitBtn = mainForm.querySelector('[type="submit"], .product-form__submit');
+      if (submitBtn) {
+        submitBtn.click();
+        return;
+      }
+    }
+    // Fallback: direct cart add via fetch
+    var variantId = '{{ current_variant.id }}';
+    fetch(window.routes.cart_add_url + '.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+    }).then(function() {
+      window.location.href = window.routes.cart_url;
+    });
+  });
+})();
+</script>
+{%- endif -%}

@@ -30,7 +30,7 @@
         "text_qAxdQq": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ metaobject.address.value }}</p>"
+            "text": "<p>{{ metaobject.address.value }}<\/p>"
           }
         },
         "text_EqM8bc": {

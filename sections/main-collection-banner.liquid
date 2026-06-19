@@ -51,7 +51,11 @@
              
               <div class="collection-hero__text-wrapper">
                 {%- if section.settings.show_collection_description -%}
-                  <div class="collection-hero__description rte">{{ collection.description }}</div>
+                  {%- assign chero_desc_words = collection.description | strip_html | split: ' ' -%}
+                  <div class="collection-hero__description rte{% if chero_desc_words.size > 40 %} chero-desc--clamp{% endif %}" id="CollDesc">{{ collection.description }}</div>
+                  {%- if chero_desc_words.size > 40 -%}
+                    <button type="button" class="chero-desc__toggle" aria-expanded="false" aria-controls="CollDesc" onclick="var d=document.getElementById('CollDesc');var c=d.classList.toggle('chero-desc--clamp');this.setAttribute('aria-expanded',c?'false':'true');this.textContent=c?'Leer más':'Leer menos';">Leer más</button>
+                  {%- endif -%}
                 {%- endif -%}
               </div>
           </div>
@@ -72,6 +76,10 @@
 }
 
 
+.chero-desc--clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media screen and (max-width:749px){.chero-desc--clamp{-webkit-line-clamp:2;}}
+.chero-desc__toggle{background:none;border:none;color:#1E1E1E;text-decoration:underline;cursor:pointer;font-size:1.3rem;padding:4px 0;margin:2px auto 0;display:block;font-family:inherit;}
+.chero-desc__toggle:hover{color:#D4B974;}
 {%- endstyle -%}
 {% schema %}
   {

@@ -219,6 +219,12 @@
       flex-shrink: 0;
     }
   }
+  /* Score chips */
+  .wpi__tag--parker { color: #722F37; background: #faf6ee; border: 1px solid #ddd5c3; font-weight: 700; cursor: default; }
+  .wpi__tag--penin { color: #8B6D00; background: #faf6ee; border: 1px solid #ddd5c3; font-weight: 700; cursor: default; }
+  /* Stock chips */
+  .wpi__tag--low { background: #c62828; color: #FFFCF1; font-weight: 600; cursor: default; }
+  .wpi__tag--soldout { background: #fce4ec; color: #c62828; border: 1px solid #f8bbd0; cursor: default; }
 {%- endstyle -%}
 
 <div class="wpi">
@@ -237,7 +243,7 @@
         <div class="wpi__score">
           <span class="wpi__score-num wpi__score-num--penin">{{ penin }}</span>
           <span class="wpi__score-meta">
-            <span class="wpi__score-source">Guia Penin</span>
+            <span class="wpi__score-source">Guía Peñín</span>
             <span class="wpi__score-label">puntos</span>
           </span>
         </div>
@@ -247,28 +253,60 @@
 
   <div class="wpi__tags">
     {%- if tipo_vino != blank -%}
-      <a href="{{ routes.collections_url }}/vino-{{ tipo_vino | handleize }}" class="wpi__tag">
+      {%- liquid
+        assign _tipo_lower = tipo_vino | downcase
+        case _tipo_lower
+          when 'espumoso' or 'espumosos'
+            assign _tipo_url = '/collections/espumosos-1'
+          when 'destilado'
+            assign _tipo_url = '/collections/destilados'
+          when 'cerveza'
+            assign _tipo_url = '/collections/cerveza'
+          when 'vermut'
+            assign _tipo_url = '/collections/aperitivos-y-vermuts'
+          when 'rosado'
+            assign _tipo_url = '/collections/vinos?filter.p.m.custom.tipo_de_vino=Rosado'
+          else
+            assign _tipo_url = '/collections/vino-' | append: _tipo_lower
+        endcase
+      -%}
+      <a href="{{ _tipo_url }}" class="wpi__tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M12 11v5M12 11l-3 3M12 11l3 3"/><rect x="3" y="6" width="18" height="15" rx="2"/></svg>
-        Vino {{ tipo_vino }}
+        {{ tipo_vino }}
       </a>
     {%- endif -%}
     {%- if do != blank -%}
-      <a href="{{ routes.collections_url }}/{{ do | handleize }}" class="wpi__tag">
+      <a href="/collections/vinos?filter.p.m.custom.denominaci_n_de_origen={{ do | url_encode }}" class="wpi__tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         D.O. {{ do }}
       </a>
     {%- endif -%}
     {%- if uva != blank -%}
-      <a href="{{ routes.collections_url }}/{{ uva | split: ',' | first | strip | handleize }}" class="wpi__tag">
+      <a href="/collections/vinos?filter.p.m.custom.tipo_de_uva={{ uva | url_encode }}" class="wpi__tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><circle cx="8" cy="14" r="3"/><circle cx="16" cy="14" r="3"/><path d="M12 11v7"/></svg>
         {{ uva }}
       </a>
     {%- endif -%}
     {%- if anada != blank -%}
-      <span class="wpi__tag">
+      <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.a_ada={{ anada }}" class="wpi__tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Anada {{ anada }}
-      </span>
+        Añada {{ anada }}
+      </a>
+    {%- endif -%}
+    {%- if estilo != blank -%}
+      <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.estilo={{ estilo | url_encode }}" class="wpi__tag wpi__tag--estilo">&#10024; {{ estilo }}</a>
+    {%- endif -%}
+    {%- if parker != blank -%}
+      <span class="wpi__tag wpi__tag--parker"><svg width="14" height="14" viewBox="0 0 24 24" fill="#722F37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Parker {{ parker }}</span>
+    {%- endif -%}
+    {%- if penin != blank -%}
+      <span class="wpi__tag wpi__tag--penin"><svg width="14" height="14" viewBox="0 0 24 24" fill="#8B6D00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Peñín {{ penin }}</span>
+    {%- endif -%}
+    {%- assign qty = product.selected_or_first_available_variant.inventory_quantity -%}
+    {%- if product.available and qty <= 12 and qty > 0 -%}
+      <span class="wpi__tag wpi__tag--low">Últimas unidades</span>
+    {%- elsif product.available == false -%}
+      <span class="wpi__tag wpi__tag--soldout">Agotado</span>
     {%- endif -%}
   </div>
 
@@ -277,14 +315,16 @@
       <div class="wpi__cell">
         <div class="wpi__cell-label">Bodega</div>
         <div class="wpi__cell-value">
-          <a href="{{ routes.collections_url }}/{{ bodega | handleize }}">{{ bodega }}</a>
+          <a href="/collections/all?q={{ bodega | url_encode }}">{{ bodega }}</a>
         </div>
       </div>
     {%- endif -%}
     {%- if pais != blank -%}
       <div class="wpi__cell">
         <div class="wpi__cell-label">Origen</div>
-        <div class="wpi__cell-value">{{ pais }}</div>
+        <div class="wpi__cell-value">
+          <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.pa_s_de_origen={{ pais | url_encode }}">{{ pais }}</a>
+        </div>
       </div>
     {%- endif -%}
     {%- if grado_raw != blank -%}
@@ -300,21 +340,40 @@
         <div class="wpi__cell-value">{{ envejecimiento }}</div>
       </div>
     {%- endif -%}
+    {%- liquid
+      assign temp_servicio = ''
+      assign tipo_lower = tipo_vino | downcase
+      if tipo_lower == 'tinto'
+        assign temp_servicio = '16-18°C'
+      elsif tipo_lower == 'blanco'
+        assign temp_servicio = '8-10°C'
+      elsif tipo_lower == 'rosado'
+        assign temp_servicio = '8-10°C'
+      elsif tipo_lower == 'espumoso'
+        assign temp_servicio = '6-8°C'
+      elsif tipo_lower == 'dulce'
+        assign temp_servicio = '6-8°C'
+      elsif tipo_lower == 'generoso'
+        assign temp_servicio = '12-14°C'
+      endif
+    -%}
+    {%- if temp_servicio != '' -%}
+      <div class="wpi__cell">
+        <div class="wpi__cell-label">Temperatura</div>
+        <div class="wpi__cell-value">{{ temp_servicio }}</div>
+      </div>
+    {%- endif -%}
   </div>
 
-  {%- if estilo != blank -%}
-    <div class="wpi__style">&#10024; {{ estilo }}</div>
-  {%- endif -%}
+  {% comment %} Estilo moved to chips row above {% endcomment %}
 
   {%- if product.description != blank -%}
     {%- assign desc_text = product.description | strip_html | strip -%}
     {%- if desc_text.size > 50 -%}
       <div class="wpi__desc">
         <strong>Nota de cata</strong><br>
-        {{ desc_text | truncatewords: 40 }}
-        {%- if desc_text.size > 200 -%}
-          <a href="#product-description" style="color:#6b1d3a;font-weight:600;text-decoration:none;"> Leer mas &rarr;</a>
-        {%- endif -%}
+        {{ desc_text | truncatewords: 100 }}
+        
       </div>
     {%- endif -%}
   {%- endif -%}

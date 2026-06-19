@@ -16,11 +16,6 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {%- comment -%} Hreflang tags for multilingual SEO {%- endcomment -%}
-    {%- for locale in shop.published_locales -%}
-      <link rel="alternate" hreflang="{{ locale.iso_code }}" href="{{ canonical_url | replace: request.locale.root_url, locale.root_url }}">
-    {%- endfor -%}
-    <link rel="alternate" hreflang="x-default" href="{{ canonical_url | replace: request.locale.root_url, '/es' }}">
 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <!-- ECB performance: preconnect hints for third-party app CDNs -->

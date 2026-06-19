@@ -22,14 +22,14 @@
         "text_WBJ3UG": {
           "type": "text",
           "settings": {
-            "text": "<em>País: </em><em>{{ metaobject.pais.value }}</em>",
+            "text": "<em>País: <\/em><em>{{ metaobject.pais.value }}<\/em>",
             "text_style": "subtitle"
           }
         },
         "text_3xyfTW": {
           "type": "text",
           "settings": {
-            "text": "<em>Región: </em><em>{{ metaobject.region.value }}</em>",
+            "text": "<em>Región: <\/em><em>{{ metaobject.region.value }}<\/em>",
             "text_style": "subtitle"
           }
         }
@@ -41,7 +41,7 @@
       ],
       "settings": {
         "full_width": true,
-        "image": "shopify://shop_images/grapevines-for-days.jpg",
+        "image": "shopify:\/\/shop_images\/grapevines-for-days.jpg",
         "image_overlay_opacity": 50,
         "image_height": "small",
         "adapt_height_first_image": false,
@@ -104,7 +104,7 @@
         "caption_6F8EDW": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>{{ metaobject.historia_descripcion.value }}</p>"
+            "storysubtitle": "<p>{{ metaobject.historia_descripcion.value }}<\/p>"
           }
         },
         "button_g9bqCG": {
@@ -124,7 +124,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/IMG-20230830-WA0023.jpg",
+        "image": "shopify:\/\/shop_images\/IMG-20230830-WA0023.jpg",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
