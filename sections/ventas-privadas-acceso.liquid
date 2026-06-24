@@ -1,0 +1,142 @@
+{%- comment -%}
+  Ventas Privadas — Landing de acceso (En Copa de Balón)
+
+  Una sola página, tres estados:
+   1. Cliente aprobado (tag 'preventa')  -> botón para ENTRAR a la colección.
+   2. Cliente logueado SIN aprobar         -> aviso + formulario de solicitud.
+   3. Visitante anónimo                    -> "solo por invitación" + login + formulario.
+
+  El formulario usa el contact form nativo de Shopify: llega al email de la
+  tienda. Tú revisas la solicitud y, si procede, etiquetas al cliente 'preventa'.
+{%- endcomment -%}
+
+{%- liquid
+  assign is_member = false
+  if customer and customer.tags contains 'preventa'
+    assign is_member = true
+  endif
+-%}
+
+<style>
+  .vp-access {
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    font-family: 'Instrument Sans', sans-serif;
+    padding: 4rem 1.5rem;
+  }
+  .vp-access__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .vp-access__eyebrow {
+    text-transform: uppercase; letter-spacing: .2em; font-size: .8rem;
+    color: {{ section.settings.accent_color }}; margin: 0 0 .8rem;
+  }
+  .vp-access__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; margin: 0 0 1.2rem;
+  }
+  .vp-access__lead { font-size: 1.12rem; line-height: 1.6; opacity: .9; margin: 0 auto 2rem; max-width: 560px; }
+  .vp-btn {
+    display: inline-block; background: {{ section.settings.accent_color }}; color: #1E1E1E;
+    font-weight: 600; text-decoration: none; padding: .95rem 2.2rem; border-radius: 999px;
+    letter-spacing: .02em; transition: opacity .2s;
+  }
+  .vp-btn:hover { opacity: .88; }
+  .vp-btn--ghost { background: transparent; border: 1px solid {{ section.settings.accent_color }}; color: {{ section.settings.text_color }}; }
+  .vp-divider { width: 56px; height: 2px; background: {{ section.settings.accent_color }}; margin: 2.4rem auto; border: 0; }
+  .vp-form { max-width: 460px; margin: 0 auto; text-align: left; }
+  .vp-form label { display: block; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; margin: 1rem 0 .35rem; opacity: .8; }
+  .vp-form input, .vp-form textarea {
+    width: 100%; padding: .8rem .9rem; border: 1px solid rgba(212,185,116,.5);
+    background: rgba(255,255,255,.04); color: {{ section.settings.text_color }};
+    border-radius: 8px; font-size: 1rem; font-family: inherit;
+  }
+  .vp-form textarea { min-height: 96px; resize: vertical; }
+  .vp-form .vp-btn { width: 100%; text-align: center; margin-top: 1.6rem; border: 0; cursor: pointer; }
+  .vp-note { font-size: .9rem; opacity: .7; margin-top: 1.4rem; }
+  .vp-note a { color: {{ section.settings.accent_color }}; }
+  .vp-success {
+    background: rgba(212,185,116,.12); border: 1px solid {{ section.settings.accent_color }};
+    border-radius: 10px; padding: 1.4rem; margin: 1.2rem auto 0; max-width: 460px;
+  }
+</style>
+
+<div class="vp-access">
+  <div class="vp-access__inner">
+
+    {%- if is_member -%}
+      {%- comment -%} Estado 1: aprobado {%- endcomment -%}
+      <p class="vp-access__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="vp-access__title">{{ section.settings.member_title }}</h1>
+      <p class="vp-access__lead">{{ section.settings.member_text }}</p>
+      <a class="vp-btn" href="{{ section.settings.collection_url }}">{{ section.settings.member_button }}</a>
+
+    {%- else -%}
+      {%- comment -%} Estados 2 y 3: solicitar acceso {%- endcomment -%}
+      <p class="vp-access__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="vp-access__title">{{ section.settings.title }}</h1>
+      <p class="vp-access__lead">{{ section.settings.lead }}</p>
+
+      <hr class="vp-divider">
+
+      {%- form 'contact', id: 'vp-request' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="vp-success">
+            <strong>{{ section.settings.success_title }}</strong>
+            <p style="margin:.4rem 0 0;">{{ section.settings.success_text }}</p>
+          </div>
+        {%- else -%}
+          <div class="vp-form">
+            <input type="hidden" name="contact[Solicitud]" value="Acceso Ventas Privadas">
+            <label for="vp-name">Nombre y apellidos</label>
+            <input type="text" id="vp-name" name="contact[Nombre]" value="{% if customer %}{{ customer.name }}{% endif %}" required>
+
+            <label for="vp-email">Email</label>
+            <input type="email" id="vp-email" name="contact[email]" value="{% if customer %}{{ customer.email }}{% endif %}" required>
+
+            <label for="vp-phone">Teléfono</label>
+            <input type="tel" id="vp-phone" name="contact[Teléfono]">
+
+            <label for="vp-body">¿Por qué quieres acceder? (opcional)</label>
+            <textarea id="vp-body" name="contact[body]"></textarea>
+
+            <button type="submit" class="vp-btn">{{ section.settings.submit_label }}</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- unless customer -%}
+        <p class="vp-note">¿Ya tienes acceso? <a href="/account/login">Inicia sesión</a> para entrar.</p>
+      {%- endunless -%}
+
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ventas Privadas · Acceso",
+  "tag": "section",
+  "class": "section-vp-access",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "En Copa de Balón · Círculo privado" },
+    { "type": "header", "content": "Estado: visitante / sin aprobar" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Acceso por invitación" },
+    { "type": "richtext", "id": "lead", "label": "Texto", "default": "<p>El acceso a nuestras Ventas Privadas es solo por invitación. Cajas seleccionadas, cupos cortos y precios reservados a un círculo reducido de clientes. Si quieres solicitar acceso, déjanos tus datos abajo o escríbenos a vp@encopadebalon.com.</p>" },
+    { "type": "text", "id": "submit_label", "label": "Botón del formulario", "default": "Solicitar acceso" },
+    { "type": "text", "id": "success_title", "label": "Éxito · título", "default": "Solicitud recibida" },
+    { "type": "text", "id": "success_text", "label": "Éxito · texto", "default": "Gracias. Revisaremos tu solicitud y te escribiremos si hay hueco en el círculo." },
+    { "type": "header", "content": "Estado: cliente aprobado" },
+    { "type": "text", "id": "member_title", "label": "Título", "default": "Bienvenido al círculo" },
+    { "type": "richtext", "id": "member_text", "label": "Texto", "default": "<p>Tienes acceso a las Ventas Privadas. Entra para ver la selección abierta.</p>" },
+    { "type": "text", "id": "member_button", "label": "Botón", "default": "Entrar a las Ventas Privadas" },
+    { "type": "url", "id": "collection_url", "label": "URL de la colección", "default": "/collections/ventas-privadas" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#1E1E1E" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFCF1" },
+    { "type": "color", "id": "accent_color", "label": "Acento", "default": "#D4B974" }
+  ],
+  "presets": [
+    { "name": "Ventas Privadas · Acceso" }
+  ]
+}
+{% endschema %}
