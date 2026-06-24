@@ -191,14 +191,14 @@
         "heading_catering": {
           "type": "heading",
           "settings": {
-            "storytitle": "Catering",
+            "storytitle": "Nuestro Catering:<em> El Cielo By</em>",
             "heading_size": "h1"
           }
         },
         "caption_catering": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Llevamos En Copa de Balón a tu evento: selección de vinos y propuesta a medida para que solo tengas que disfrutar.</p>"
+            "storysubtitle": "<p>Nació mirando hacia arriba, un día tumbados sobre un prado lleno de Margaritas. <br/><br/>De esa imagen tomamos el nombre y la idea. <strong>El Cielo By</strong> es el catering de En Copa de Balón: una propuesta construida sobre la estética y el detalle, pensada para adaptarse a cualquiera de nuestras cocinas y llevar su carácter allí donde haga falta.</p><p>Lo dirige <strong>Amber Grimbergen, </strong>quién busca de manera constante un equilibro en términos de sensibilidad —ritmo, composición, cuidado por la forma— es la que pone al frente de <strong>El Cielo By</strong>, donde cada mesa se concibe como algo que se mira antes de probarse.</p><p></p>"
           }
         }
       },
@@ -208,7 +208,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/Evento_Quinta_Aleno_2.jpg",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-06-09_at_20.07.47.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
