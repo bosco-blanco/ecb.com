@@ -1,23 +1,38 @@
 {%- comment -%}
-  Ventas Privadas — Estilo del item de menu "Acceso Ventas Privadas".
-  Lo deja en negro + negrita y lo empuja al extremo derecho del menu
-  (bajo el carrito) para que llame la atencion.
+  Ventas Privadas — Estilo del ítem de menú "Acceso Ventas Privadas".
+  Lo deja en negro + negrita y lo empuja al extremo derecho del menú
+  (bajo el carrito) para que llame la atención.
   Aislado del resto del CSS del header. Se apoya en el href del enlace.
 {%- endcomment -%}
 
 <style>
+  /* La barra de menú debe ocupar todo el ancho para poder empujar el
+     ítem al extremo derecho. Si se queda en inline-flex, se encoge al
+     contenido y margin-left:auto no tiene contra qué empujar. */
+  .header__inline-menu .list-menu--inline {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Empujar el ítem "Acceso Ventas Privadas" al extremo derecho
+     (queda justo bajo el carrito). */
+  .header__inline-menu .list-menu--inline > li.vp-menu-cta-li {
+    margin-left: auto;
+  }
+  /* Fallback por si :has está disponible en el navegador */
+  .header__inline-menu .list-menu--inline > li:has(a[href*="acceso-ventas-privadas"]) {
+    margin-left: auto;
+  }
+
+  /* Color + peso: negro y negrita */
   .header__inline-menu a[href*="acceso-ventas-privadas"],
   .header__inline-menu a[href*="acceso-ventas-privadas"] .header__menu-item,
   .header__inline-menu a[href*="acceso-ventas-privadas"] span {
     color: #1E1E1E !important;
     font-weight: 800 !important;
     letter-spacing: .02em;
-  }
-  .header__inline-menu .list-menu--inline > li.vp-menu-cta-li {
-    margin-left: auto;
-  }
-  .header__inline-menu .list-menu--inline > li:has(a[href*="acceso-ventas-privadas"]) {
-    margin-left: auto;
   }
 </style>
 
