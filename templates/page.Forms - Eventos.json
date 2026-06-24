@@ -260,7 +260,7 @@
         "text_cierre": {
           "type": "text",
           "settings": {
-            "text": "<p>Llámanos al +34 672 31 08 43 o escríbenos a atencionalcliente@encopadebalon.com. Llevamos desde 1991 viviendo del vino.</p>"
+            "text": "<p>Llámanos al +34 672 31 08 43 o escríbenos a atencionalcliente@encopadebalon.com. <br/>Llevamos desde 1991 hablando del vino.</p>"
           }
         }
       },
