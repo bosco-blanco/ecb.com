@@ -47,7 +47,7 @@
         "image_height": "adapt",
         "Horizontal_alignment": "center",
         "mobile_alignment": "center",
-        "padding_top": 52,
+        "padding_top": 12,
         "padding_bottom": 28
       }
     },
@@ -64,7 +64,7 @@
         "text_locales": {
           "type": "text",
           "settings": {
-            "text": "<p>Espacios propios en Madrid para tu evento.</p>"
+            "text": ""
           }
         }
       },
@@ -78,7 +78,7 @@
         "content_alignment": "center",
         "color_scheme": "background-2",
         "full_width": true,
-        "padding_top": 48,
+        "padding_top": 12,
         "padding_bottom": 0
       }
     },
