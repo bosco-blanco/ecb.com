@@ -151,40 +151,6 @@
         "padding_bottom": 48
       }
     },
-    "catas": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_catas": {
-          "type": "heading",
-          "settings": {
-            "storytitle": "Catas a medida",
-            "heading_size": "h1"
-          }
-        },
-        "caption_catas": {
-          "type": "caption",
-          "settings": {
-            "storysubtitle": "<p>Catas guiadas por nuestro equipo, en cualquiera de nuestros locales o a domicilio. Elegimos los vinos contigo según la ocasión.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_catas",
-        "caption_catas"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "image": "shopify://shop_images/Evento_Las_Margaritas.png",
-        "image_width": "50%",
-        "image_position": "imgpright",
-        "imgalign": "imgalignmiddle",
-        "image_height": "adapt",
-        "Horizontal_alignment": "center",
-        "mobile_alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 20
-      }
-    },
     "catering": {
       "type": "image-with-text",
       "blocks": {
@@ -217,6 +183,40 @@
         "mobile_alignment": "center",
         "padding_top": 20,
         "padding_bottom": 40
+      }
+    },
+    "catas": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_catas": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Catas a medida",
+            "heading_size": "h1"
+          }
+        },
+        "caption_catas": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Una cata no va de beber: va de entender por qué un vino te gusta. Nuestro equipo te guía por la copa con criterio y sin solemnidad, en cualquiera de nuestras tiendas de Madrid o donde tú quieras —en tu casa, en tu oficina, en tu celebración—. La cata va a ti.</p><p>No hay dos iguales. Elegimos los vinos <strong>contigo</strong>, según la ocasión, las personas y lo que te apetezca descubrir: una vertical de una bodega, un viaje por denominaciones, un maridaje a medida o sencillamente abrir botellas que no abrirías solo. Ponemos las referencias, el orden y el relato; tú pones la mesa.</p><p>Treinta y cinco años eligiendo vino nos han enseñado una cosa: lo mejor de una botella es la conversación que provoca.</p><p><em>Catas guiadas en nuestros locales o a domicilio. Cuéntanos la ocasión y la diseñamos contigo.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_catas",
+        "caption_catas"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Captura_de_pantalla_2026-06-24_a_las_17.29.46.png",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 20
       }
     },
     "forms": {
@@ -284,8 +284,8 @@
     "hero_eventos",
     "locales_heading",
     "locales_grid",
-    "catas",
     "catering",
+    "catas",
     "forms",
     "cierre_contacto"
   ]
