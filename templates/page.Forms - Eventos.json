@@ -9,143 +9,6 @@
  */
 {
   "sections": {
-    "22b31bd0-3858-4935-b604-8f67a8a3c141": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {}
-    },
-    "hero_eventos": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_hero": {
-          "type": "heading",
-          "settings": {
-            "heading": "Eventos en En Copa de Balón",
-            "heading_size": "hxl"
-          }
-        },
-        "text_hero": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Celebraciones privadas, encuentros de empresa y catas a medida, con una bodega de más de 1.600 referencias y 35 años de oficio detrás de cada copa. Cuéntanos qué tienes en mente y te preparamos una propuesta.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_hero",
-        "text_hero"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 60,
-        "padding_bottom": 20
-      }
-    },
-    "tipos_heading": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_tipos": {
-          "type": "heading",
-          "settings": {
-            "heading": "Qué organizamos",
-            "heading_size": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_tipos"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-2",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 0
-      }
-    },
-    "tipos_eventos": {
-      "type": "multicolumn",
-      "blocks": {
-        "col_privados": {
-          "type": "column",
-          "settings": {
-            "title": "Eventos privados",
-            "text": "<p>Comidas, cenas y celebraciones en un entorno cuidado, con una carta de vinos seleccionada por nosotros.</p>"
-          }
-        },
-        "col_corporativos": {
-          "type": "column",
-          "settings": {
-            "title": "Eventos corporativos",
-            "text": "<p>Comidas de empresa, presentaciones y encuentros profesionales con asesoramiento enológico.</p>"
-          }
-        },
-        "col_catas": {
-          "type": "column",
-          "settings": {
-            "title": "Catas y maridajes",
-            "text": "<p>Catas guiadas y maridajes a medida con vinos seleccionados de nuestro catálogo.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "col_privados",
-        "col_corporativos",
-        "col_catas"
-      ],
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "head_align": "center",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "button_label": "",
-        "button_link": "",
-        "background_style": "none",
-        "color_scheme": "background-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 48
-      }
-    },
-    "intro_form": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_form": {
-          "type": "heading",
-          "settings": {
-            "heading": "Cuéntanos tu evento",
-            "heading_size": "h1"
-          }
-        },
-        "text_form": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Rellena el formulario con la fecha, el horario y el local que prefieras, y cuéntanos un poco más sobre tu evento. Te respondemos con una propuesta a medida.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_form",
-        "text_form"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 8
-      }
-    },
     "forms": {
       "type": "apps",
       "blocks": {
@@ -161,45 +24,13 @@
       ],
       "settings": {}
     },
-    "cierre_contacto": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_cierre": {
-          "type": "heading",
-          "settings": {
-            "heading": "¿Prefieres hablarlo?",
-            "heading_size": "h2"
-          }
-        },
-        "text_cierre": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Llámanos al +34 672 31 08 43 o escríbenos a atencionalcliente@encopadebalon.com. Llevamos desde 1991 viviendo del vino.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_cierre",
-        "text_cierre"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "accent-1",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
+    "22b31bd0-3858-4935-b604-8f67a8a3c141": {
+      "type": "main-page",
+      "settings": {}
     }
   },
   "order": [
     "22b31bd0-3858-4935-b604-8f67a8a3c141",
-    "hero_eventos",
-    "tipos_heading",
-    "tipos_eventos",
-    "intro_form",
-    "forms",
-    "cierre_contacto"
+    "forms"
   ]
 }
