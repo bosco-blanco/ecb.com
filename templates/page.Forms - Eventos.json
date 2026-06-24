@@ -30,7 +30,7 @@
         "caption_hero": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Organizamos <strong>celebraciones privadas, comidas de empresa, catas guiadas y catering</strong> en Madrid: en nuestros propios espacios o en el lugar que elijas. Detrás de cada copa, una <strong>bodega de más de 1.600 referencias</strong> y <strong>35 años de oficio</strong> seleccionando vino. Elegimos las botellas contigo según la ocasión, las personas y el presupuesto, y nos ocupamos del resto. Eventos a medida en Madrid, con criterio sumiller y sin complicaciones.</p>"
+            "storysubtitle": "<p>Organizamos <strong>celebraciones privadas, comidas de empresa, catas guiadas y catering</strong> en Madrid: en nuestros propios espacios o en el lugar que elijas. Detrás de cada copa, una <strong>bodega de más de 1.600 referencias</strong> y <strong>35 años de oficio</strong> seleccionando vino. <br/><br/>Elegimos las botellas contigo según la ocasión, las personas y el presupuesto, y nos ocupamos del resto. Eventos a medida en Madrid, con criterio sumiller y sin complicaciones.</p>"
           }
         }
       },
@@ -57,7 +57,7 @@
         "heading_locales": {
           "type": "heading",
           "settings": {
-            "heading": "Nuestros locales",
+            "heading": "Nuestros locales para Eventos",
             "heading_size": "h1"
           }
         },
