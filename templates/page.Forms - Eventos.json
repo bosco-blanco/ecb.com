@@ -90,7 +90,7 @@
           "settings": {
             "image": "shopify://shop_images/Evento_Las_Margaritas.png",
             "title": "Las Margaritas",
-            "text": "<p>Restaurante en Aravaca con solete Repsol y más de 600m2 de terraza ajardinada</p>",
+            "text": "<p>Restaurante en Aravaca con solete Repsol y más de 600m2 de terraza ajardinada.</p>",
             "link_label": "",
             "link": "https://www.margaritasmadrid.com"
           }
@@ -99,8 +99,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evento_Pozuelo.png",
-            "title": "Pozuelo",
-            "text": "<p>Copa Club, en Pozuelo.</p>",
+            "title": "ECB Pozuelo",
+            "text": "<p>Nuestro local más polivalente en el C.C. Zoco de Pozuelo.</p>",
             "link_label": "",
             "link": ""
           }
@@ -109,10 +109,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evento_Moraleja.png",
-            "title": "La Moraleja",
-            "text": "<p>Enolounge, en La Moraleja.</p>",
+            "title": "ECB Moraleja",
+            "text": "<p>Situado en pleno Soto de la Moraleja, dispone de un espacio exclusivo para eventos.</p>",
             "link_label": "",
-            "link": ""
+            "link": "https://www.encopadebalonmoraleja.com/"
           }
         },
         "column_4qGafj": {
