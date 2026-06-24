@@ -72,7 +72,7 @@
         "enable_newsletter": true,
         "color_scheme": "background-1",
         "newsheading": "",
-        "newssub": "<p>Suscríbete a nuestra Newsletter<\\/p>",
+        "newssub": "<p>Suscríbete a nuestra Newsletter</p>",
         "enable_country_selector": false,
         "enable_language_selector": true,
         "langcur_style": "outline",
