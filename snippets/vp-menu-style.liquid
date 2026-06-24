@@ -1,0 +1,36 @@
+{%- comment -%}
+  Ventas Privadas — Estilo del item de menu "Acceso Ventas Privadas".
+  Lo deja en negro + negrita y lo empuja al extremo derecho del menu
+  (bajo el carrito) para que llame la atencion.
+  Aislado del resto del CSS del header. Se apoya en el href del enlace.
+{%- endcomment -%}
+
+<style>
+  .header__inline-menu a[href*="acceso-ventas-privadas"],
+  .header__inline-menu a[href*="acceso-ventas-privadas"] .header__menu-item,
+  .header__inline-menu a[href*="acceso-ventas-privadas"] span {
+    color: #1E1E1E !important;
+    font-weight: 800 !important;
+    letter-spacing: .02em;
+  }
+  .header__inline-menu .list-menu--inline > li.vp-menu-cta-li {
+    margin-left: auto;
+  }
+  .header__inline-menu .list-menu--inline > li:has(a[href*="acceso-ventas-privadas"]) {
+    margin-left: auto;
+  }
+</style>
+
+<script>
+  (function () {
+    function place() {
+      var links = document.querySelectorAll('.header__inline-menu a[href*="acceso-ventas-privadas"]');
+      links.forEach(function (a) {
+        var li = a.closest('li');
+        if (li) li.classList.add('vp-menu-cta-li');
+      });
+    }
+    if (document.readyState !== 'loading') place();
+    else document.addEventListener('DOMContentLoaded', place);
+  })();
+</script>
