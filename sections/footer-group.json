@@ -46,10 +46,10 @@
           "type": "textarea",
           "settings": {
             "heading": "Contacto",
-            "contsubtext": "<p>Contacta con nosotros<\\/p>",
+            "contsubtext": "",
             "footer_address": "",
             "footer_contact_no": "+34 672 31 08 43",
-            "footer_contact_id": ""
+            "footer_contact_id": "atencionalcliente@encopadebalon.com"
           }
         }
       },
