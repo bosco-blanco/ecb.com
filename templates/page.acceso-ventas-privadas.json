@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "vp_access": {
+      "type": "ventas-privadas-acceso",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "vp_access"
+  ]
+}
