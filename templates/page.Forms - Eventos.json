@@ -88,11 +88,11 @@
         "col_aravaca": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evento_Aravaca.png",
-            "title": "Aravaca",
-            "text": "<p>Restaurante en Aravaca.</p>",
+            "image": "shopify://shop_images/Evento_Las_Margaritas.png",
+            "title": "Las Margaritas",
+            "text": "<p>Restaurante en Aravaca con solete Repsol y más de 600m2 de terraza ajardinada</p>",
             "link_label": "",
-            "link": ""
+            "link": "https://www.margaritasmadrid.com"
           }
         },
         "col_pozuelo": {
@@ -114,12 +114,23 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "column_4qGafj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evento_Quinta_Aleno_2.jpg",
+            "title": "Quinta Aleño",
+            "text": "<p>Casa de los proyectos Brassafina y Ancestral, recomendado Michelin y estrella respectivamente. </p>",
+            "link_label": "",
+            "link": "https://guide.michelin.com/es/es/comunidad-de-madrid/pozuelo-de-alarcon/restaurante/ancestral-1241234"
+          }
         }
       },
       "block_order": [
         "col_aravaca",
         "col_pozuelo",
-        "col_moraleja"
+        "col_moraleja",
+        "column_4qGafj"
       ],
       "settings": {
         "heading": "",
@@ -127,7 +138,7 @@
         "head_align": "center",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "none",
         "button_label": "",
