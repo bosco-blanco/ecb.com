@@ -12,7 +12,10 @@
     "22b31bd0-3858-4935-b604-8f67a8a3c141": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "hero_eventos": {
       "type": "image-with-text",
@@ -37,7 +40,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify:\/\/shop_images\/Evento_Quinta_Aleno.jpg",
+        "image": "shopify://shop_images/Evento_Quinta_Aleno.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -85,25 +88,31 @@
         "col_aravaca": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Evento_Aravaca.png",
+            "image": "shopify://shop_images/Evento_Aravaca.png",
             "title": "Aravaca",
-            "text": "<p>Restaurante en Aravaca.</p>"
+            "text": "<p>Restaurante en Aravaca.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
         "col_pozuelo": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Evento_Pozuelo.png",
+            "image": "shopify://shop_images/Evento_Pozuelo.png",
             "title": "Pozuelo",
-            "text": "<p>Copa Club, en Pozuelo.</p>"
+            "text": "<p>Copa Club, en Pozuelo.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
         "col_moraleja": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Evento_Moraleja.png",
+            "image": "shopify://shop_images/Evento_Moraleja.png",
             "title": "La Moraleja",
-            "text": "<p>Enolounge, en La Moraleja.</p>"
+            "text": "<p>Enolounge, en La Moraleja.</p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
@@ -120,12 +129,13 @@
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "center",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "background_style": "none",
         "color_scheme": "background-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
+        "arrow_position": "inline",
         "padding_top": 16,
         "padding_bottom": 48
       }
@@ -153,7 +163,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify:\/\/shop_images\/Evento_Las_Margaritas.png",
+        "image": "shopify://shop_images/Evento_Las_Margaritas.png",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
@@ -187,7 +197,7 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify:\/\/shop_images\/Evento_Quinta_Aleno_2.jpg",
+        "image": "shopify://shop_images/Evento_Quinta_Aleno_2.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -202,16 +212,29 @@
       "type": "apps",
       "blocks": {
         "79534d0e-3747-4fef-b9f7-136dfe7193aa": {
-          "type": "shopify:\/\/apps\/forms\/blocks\/inline\/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
-            "form_id": "192704"
+            "form_id": "192704",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
           }
         }
       },
       "block_order": [
         "79534d0e-3747-4fef-b9f7-136dfe7193aa"
       ],
-      "settings": {}
+      "settings": {
+        "include_margins": true
+      }
     },
     "cierre_contacto": {
       "type": "rich-text",
