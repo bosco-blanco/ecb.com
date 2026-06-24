@@ -15,49 +15,59 @@
       "settings": {}
     },
     "hero_eventos": {
-      "type": "rich-text",
+      "type": "image-with-text",
       "blocks": {
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Eventos en En Copa de Balón",
-            "heading_size": "hxl"
+            "storytitle": "Eventos en En Copa de Balón",
+            "heading_size": "h0"
           }
         },
-        "text_hero": {
-          "type": "text",
+        "caption_hero": {
+          "type": "caption",
           "settings": {
-            "text": "<p>Celebraciones privadas, encuentros de empresa y catas a medida, con una bodega de más de 1.600 referencias y 35 años de oficio detrás de cada copa. Cuéntanos qué tienes en mente y te preparamos una propuesta.</p>"
+            "storysubtitle": "<p>Celebraciones privadas, comidas de empresa, catas y catering. En nuestros propios espacios de Madrid o donde tú elijas, con una bodega de más de 1.600 referencias y 35 años de oficio detrás de cada copa.</p>"
           }
         }
       },
       "block_order": [
         "heading_hero",
-        "text_hero"
+        "caption_hero"
       ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
         "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 60,
-        "padding_bottom": 20
+        "image": "shopify:\/\/shop_images\/Evento_Quinta_Aleno.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 52,
+        "padding_bottom": 28
       }
     },
-    "tipos_heading": {
+    "locales_heading": {
       "type": "rich-text",
       "blocks": {
-        "heading_tipos": {
+        "heading_locales": {
           "type": "heading",
           "settings": {
-            "heading": "Qué organizamos",
+            "heading": "Nuestros locales",
             "heading_size": "h1"
+          }
+        },
+        "text_locales": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Espacios propios en Madrid para tu evento.</p>"
           }
         }
       },
       "block_order": [
-        "heading_tipos"
+        "heading_locales",
+        "text_locales"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -69,40 +79,45 @@
         "padding_bottom": 0
       }
     },
-    "tipos_eventos": {
+    "locales_grid": {
       "type": "multicolumn",
       "blocks": {
-        "col_privados": {
+        "col_aravaca": {
           "type": "column",
           "settings": {
-            "title": "Eventos privados",
-            "text": "<p>Comidas, cenas y celebraciones en un entorno cuidado, con una carta de vinos seleccionada por nosotros.</p>"
+            "image": "shopify:\/\/shop_images\/Evento_Aravaca.png",
+            "title": "Aravaca",
+            "text": "<p>Restaurante en Aravaca.</p>"
           }
         },
-        "col_corporativos": {
+        "col_pozuelo": {
           "type": "column",
           "settings": {
-            "title": "Eventos corporativos",
-            "text": "<p>Comidas de empresa, presentaciones y encuentros profesionales con asesoramiento enológico.</p>"
+            "image": "shopify:\/\/shop_images\/Evento_Pozuelo.png",
+            "title": "Pozuelo",
+            "text": "<p>Copa Club, en Pozuelo.</p>"
           }
         },
-        "col_catas": {
+        "col_moraleja": {
           "type": "column",
           "settings": {
-            "title": "Catas y maridajes",
-            "text": "<p>Catas guiadas y maridajes a medida con vinos seleccionados de nuestro catálogo.</p>"
+            "image": "shopify:\/\/shop_images\/Evento_Moraleja.png",
+            "title": "La Moraleja",
+            "text": "<p>Enolounge, en La Moraleja.</p>"
           }
         }
       },
       "block_order": [
-        "col_privados",
-        "col_corporativos",
-        "col_catas"
+        "col_aravaca",
+        "col_pozuelo",
+        "col_moraleja"
       ],
       "settings": {
         "heading": "",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "center",
         "button_label": "",
@@ -111,39 +126,76 @@
         "color_scheme": "background-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 12,
+        "padding_top": 16,
         "padding_bottom": 48
       }
     },
-    "intro_form": {
-      "type": "rich-text",
+    "catas": {
+      "type": "image-with-text",
       "blocks": {
-        "heading_form": {
+        "heading_catas": {
           "type": "heading",
           "settings": {
-            "heading": "Cuéntanos tu evento",
+            "storytitle": "Catas a medida",
             "heading_size": "h1"
           }
         },
-        "text_form": {
-          "type": "text",
+        "caption_catas": {
+          "type": "caption",
           "settings": {
-            "text": "<p>Rellena el formulario con la fecha, el horario y el local que prefieras, y cuéntanos un poco más sobre tu evento. Te respondemos con una propuesta a medida.</p>"
+            "storysubtitle": "<p>Catas guiadas por nuestro equipo, en cualquiera de nuestros locales o a domicilio. Elegimos los vinos contigo según la ocasión.</p>"
           }
         }
       },
       "block_order": [
-        "heading_form",
-        "text_form"
+        "heading_catas",
+        "caption_catas"
       ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
         "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 8
+        "image": "shopify:\/\/shop_images\/Evento_Las_Margaritas.png",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "catering": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_catering": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Catering",
+            "heading_size": "h1"
+          }
+        },
+        "caption_catering": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Llevamos En Copa de Balón a tu evento: selección de vinos y propuesta a medida para que solo tengas que disfrutar.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_catering",
+        "caption_catering"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify:\/\/shop_images\/Evento_Quinta_Aleno_2.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 40
       }
     },
     "forms": {
@@ -196,9 +248,10 @@
   "order": [
     "22b31bd0-3858-4935-b604-8f67a8a3c141",
     "hero_eventos",
-    "tipos_heading",
-    "tipos_eventos",
-    "intro_form",
+    "locales_heading",
+    "locales_grid",
+    "catas",
+    "catering",
     "forms",
     "cierre_contacto"
   ]
