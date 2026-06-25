@@ -57,6 +57,7 @@
         "column_6VGpnG": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/DSC1895.jpg",
             "title": "Horarios",
             "text": "<p>Lunes a viernes: 09:00 - 02:00</p><p>Sábados y domingos: 09:00 - 02:30</p>",
             "link_label": "",
@@ -66,6 +67,7 @@
         "column_DLHFNM": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/ARAVACA.jpg",
             "title": "Dónde estamos",
             "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
             "link_label": "",
@@ -75,6 +77,7 @@
         "column_Ywr6eF": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/DSC1649.jpg",
             "title": "Nuestra carta",
             "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_cocteleria.pdf?v=1782391399\" target=\"_blank\" title=\"Carta coctelería Aravaca\">Cócteles</a></p>",
             "link_label": "",
@@ -84,6 +87,7 @@
         "column_7Yz6dh": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/DSC1908.jpg",
             "title": "Reserva con nosotros",
             "text": "<p>Teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+araravaca&oq=en+copa+de+balon+araravaca&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIUCAEQLhgNGBMYrwEYxwEYgAQYjgUyCggCEAAYDRgTGB4yBwgDEAAY7wXSAQg4ODQ5ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>Reserva desde la web</p>",
             "link_label": "",
