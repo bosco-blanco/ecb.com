@@ -376,7 +376,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "<strong>Vinos entre 20€ - 30€ </strong>",
+        "title": "Vinos entre 20€ - 30€",
         "heading_size": "h0",
         "head_align": "center",
         "collection": "20-30",
@@ -483,10 +483,10 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Vinos para llevar a cualquier casa",
+        "title": "Vino Tinto",
         "heading_size": "h1",
         "head_align": "center",
-        "collection": "20-30",
+        "collection": "vino-tinto",
         "products_to_show": 6,
         "columns_desktop": 6,
         "enable_desktop_slider": false,
@@ -519,10 +519,10 @@
       "type": "featured-collection",
       "custom_css": [],
       "settings": {
-        "title": "Nuestros Vinos",
+        "title": "Vino Blanco",
         "heading_size": "h1",
         "head_align": "center",
-        "collection": "vinos",
+        "collection": "vino-blanco",
         "products_to_show": 8,
         "columns_desktop": 8,
         "enable_desktop_slider": false,
@@ -975,7 +975,7 @@
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<div class=\"ecb-home-claim\"><h1>Comprar vino online —             Vinoteca en Madrid desde 1991</h1><p>5 vinotecas · +1.600 referencias seleccionadas por nuestros sumilleres · Envío 24-48h península</p></div>\n<style>.ecb-home-claim{text-align:center;padding:28px 16px 8px;background:#FFFCF1}.ecb-home-claim h1{font-family:var(--font-heading-family);font-size:calc(var(--font-heading-scale)*2.6rem);color:#1E1E1E;margin:0 0 6px}.ecb-home-claim p{color:#8a7d5a;font-size:1.4rem;margin:0}@media(max-width:749px){.ecb-home-claim h1{font-size:calc(var(--font-heading-scale)*1.9rem)}}</style>",
-        "color_scheme": "background-1",
+        "color_scheme": "accent-1",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -987,11 +987,11 @@
     "text_with_icons_bXeHc3",
     "collection_icon_list_DKBqTm",
     "featured_collection_n8H3FF",
+    "featured_collection_iaeMTg",
+    "featured_collection_dEaFT8",
     "featured_collection_wbeGLF",
     "countdown_with_products_VrWahY",
     "7164a463-55ea-46ef-a91a-8c3f3dd268ef",
-    "featured_collection_iaeMTg",
-    "featured_collection_dEaFT8",
     "countdown_bar_xtAdj8",
     "video_with_text_xkBwah",
     "sponsored_collection_f3fPrp",
