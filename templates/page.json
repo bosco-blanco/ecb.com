@@ -96,13 +96,13 @@
       ],
       "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "layout": "full_bleed",
+        "layout": "grid",
         "slide_height": "adapt_image",
         "slider_visual": "counter",
         "pagicolor": "#fff",
         "pagination_alignment": "center",
         "auto_rotate": false,
-        "change_slides_speed": 5,
+        "change_slides_speed": 3,
         "image_behavior": "none",
         "show_text_below": true,
         "padding_top": 0,
@@ -179,7 +179,7 @@
           "type": "column",
           "settings": {
             "title": "Reserva con nosotros",
-            "text": "<p>Teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+araravaca&oq=en+copa+de+balon+araravaca&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIUCAEQLhgNGBMYrwEYxwEYgAQYjgUyCggCEAAYDRgTGB4yBwgDEAAY7wXSAQg4ODQ5ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>Reserva desde la web</p>",
+            "text": "<p>Teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+araravaca&oq=en+copa+de+balon+araravaca&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIUCAEQLhgNGBMYrwEYxwEYgAQYjgUyCggCEAAYDRgTGB4yBwgDEAAY7wXSAQg4ODQ5ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>Reserva directamente desde la web</p>",
             "link_label": "",
             "link": ""
           }
