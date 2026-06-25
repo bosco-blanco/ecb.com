@@ -16,6 +16,97 @@
         "padding_bottom": 36
       }
     },
+    "image_banner_diK9Vy": {
+      "type": "image-banner",
+      "blocks": {
+        "buttons_3F4XgM": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Reserva",
+            "button_link_1": "",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "buttons_3F4XgM"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/ARAVACA.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_eN3eAQ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_6VGpnG": {
+          "type": "column",
+          "settings": {
+            "title": "Horarios",
+            "text": "<p>Lunes a viernes: 09:00 - 02:00</p><p>Sábados y domingos: 09:00 - 02:30</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_DLHFNM": {
+          "type": "column",
+          "settings": {
+            "title": "Dónde estamos",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Ywr6eF": {
+          "type": "column",
+          "settings": {
+            "title": "Nuestra carta",
+            "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p>Cócteles</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_6VGpnG",
+        "column_DLHFNM",
+        "column_Ywr6eF"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "arrow_position": "inline",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -25,6 +116,8 @@
   },
   "order": [
     "main",
+    "image_banner_diK9Vy",
+    "multicolumn_eN3eAQ",
     "1774875109e67a357d"
   ]
 }
