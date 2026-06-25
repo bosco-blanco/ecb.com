@@ -152,7 +152,7 @@
           "type": "column",
           "settings": {
             "title": "Horarios",
-            "text": "<p>Lunes a viernes: 09:00 - 02:00</p><p>Sábados y domingos: 09:00 - 02:30</p>",
+            "text": "<p>Lunes a viernes: 09:00 - 02:00</p><p>Sábados y domingos: 10:00 - 02:30</p>",
             "link_label": "",
             "link": ""
           }
@@ -170,7 +170,7 @@
           "type": "column",
           "settings": {
             "title": "Nuestra carta",
-            "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_cocteleria.pdf?v=1782391399\" target=\"_blank\" title=\"Carta coctelería Aravaca\">Cócteles</a></p>",
+            "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_cocteleria.pdf?v=1782391399\" target=\"_blank\" title=\"Carta coctelería Aravaca\">Cócteles</a></p><p>Vinos</p>",
             "link_label": "",
             "link": ""
           }
@@ -211,6 +211,51 @@
         "padding_bottom": 32
       }
     },
+    "image_with_text_gLBQz9": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_X3DPrq": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Vinos",
+            "heading_size": "h0"
+          }
+        },
+        "caption_xeHjqW": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Tenemos una amplia selección de vinos en nuestro restaurante. Puedes bebértelo ahí directamente o llevártelo a casa.</p>"
+          }
+        },
+        "button_eLG98T": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a la carta de vinos",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_ARAVACA_2026_1.pdf?v=1782401225",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_X3DPrq",
+        "caption_xeHjqW",
+        "button_eLG98T"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/vinos_restaurante_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
     "custom_liquid_d93E7B": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -233,6 +278,7 @@
     "slideshow_ah7MBe",
     "image_banner_diK9Vy",
     "multicolumn_eN3eAQ",
+    "image_with_text_gLBQz9",
     "custom_liquid_d93E7B",
     "1774875109e67a357d"
   ]
