@@ -36,7 +36,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "full_width": true,
-        "image": "shopify://shop_images/ARAVACA.jpg",
+        "image": "shopify://shop_images/DSC1958.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "adapt_height_first_image": false,
@@ -76,7 +76,16 @@
           "type": "column",
           "settings": {
             "title": "Nuestra carta",
-            "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p>Cócteles</p>",
+            "text": "<p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124\" target=\"_blank\" title=\"Carta comida Aravaca\">Comida</a></p><p><a href=\"https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_cocteleria.pdf?v=1782391399\" target=\"_blank\" title=\"Carta coctelería Aravaca\">Cócteles</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7Yz6dh": {
+          "type": "column",
+          "settings": {
+            "title": "Reserva con nosotros",
+            "text": "<p>Teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+araravaca&oq=en+copa+de+balon+araravaca&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIUCAEQLhgNGBMYrwEYxwEYgAQYjgUyCggCEAAYDRgTGB4yBwgDEAAY7wXSAQg4ODQ5ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>Reserva desde la web</p>",
             "link_label": "",
             "link": ""
           }
@@ -85,7 +94,8 @@
       "block_order": [
         "column_6VGpnG",
         "column_DLHFNM",
-        "column_Ywr6eF"
+        "column_Ywr6eF",
+        "column_7Yz6dh"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
@@ -94,8 +104,8 @@
         "head_align": "center",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
+        "columns_desktop": 4,
+        "column_alignment": "center",
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
@@ -103,8 +113,18 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "arrow_position": "inline",
-        "padding_top": 60,
-        "padding_bottom": 0
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "custom_liquid_d93E7B": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
+        "color_scheme": "accent-1",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "1774875109e67a357d": {
@@ -118,6 +138,7 @@
     "main",
     "image_banner_diK9Vy",
     "multicolumn_eN3eAQ",
+    "custom_liquid_d93E7B",
     "1774875109e67a357d"
   ]
 }
