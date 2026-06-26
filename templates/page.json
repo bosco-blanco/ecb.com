@@ -330,7 +330,7 @@
       "settings": {
         "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
         "color_scheme": "accent-1",
-        "padding_top": 40,
+        "padding_top": 20,
         "padding_bottom": 52
       }
     },
