@@ -217,7 +217,7 @@
         "heading_X3DPrq": {
           "type": "heading",
           "settings": {
-            "storytitle": "Vinos",
+            "storytitle": "Gastronomia",
             "heading_size": "h0"
           }
         },
@@ -256,6 +256,51 @@
         "padding_bottom": 0
       }
     },
+    "image_with_text_CFmHVa": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ckeMkr": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Gastronomía",
+            "heading_size": "h0"
+          }
+        },
+        "caption_yG8inY": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Tenemos comida de la mejor calidad en todos nuestros restaurantes</p>"
+          }
+        },
+        "button_tUpryF": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a la carta",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_-_en_copa_de_balon.pdf?v=1782391124",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ckeMkr",
+        "caption_yG8inY",
+        "button_tUpryF"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 24
+      }
+    },
     "custom_liquid_d93E7B": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -279,6 +324,7 @@
     "image_banner_diK9Vy",
     "multicolumn_eN3eAQ",
     "image_with_text_gLBQz9",
+    "image_with_text_CFmHVa",
     "custom_liquid_d93E7B",
     "1774875109e67a357d"
   ]
