@@ -22,7 +22,7 @@
         "slide_qdrqMp": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/DSC1908.jpg",
+            "image": "shopify://shop_images/IMG_1427.heic",
             "hcaption": "",
             "heading": "",
             "button_h_upp": true,
@@ -161,7 +161,7 @@
           "type": "column",
           "settings": {
             "title": "Dónde estamos",
-            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd422c427507b767:0xb3e3ae672bdbfe03?sa=X&ved=1t:8290&ictx=111\">C. de la Begonia, 135, 28109 Alcobendas, Madrid</a></p>",
             "link_label": "",
             "link": ""
           }
