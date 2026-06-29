@@ -16,6 +16,155 @@
         "padding_bottom": 36
       }
     },
+    "slideshow_GebCVx": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_6YH9TV": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1958.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_JrUrMk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1908.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_yAciUr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1989-_1.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_6YH9TV",
+        "slide_JrUrMk",
+        "slide_yAciUr"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "pagicolor": "#fff",
+        "pagination_alignment": "center",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_7EPejr": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_J3BbD7": {
+          "type": "column",
+          "settings": {
+            "title": "Horario",
+            "text": "<p>Lunes a jueves: 9:00 - 02:00<br/>Viernes: 09:00 - 02:30</p><p>Sábados: 10:00 - 02.30</p><p>Domingos: 10:00 - 02:00</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_8bRYFk": {
+          "type": "column",
+          "settings": {
+            "title": "Dónde estamos",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_XePRNm": {
+          "type": "column",
+          "settings": {
+            "title": "Contacto y reserva",
+            "text": "<p>Puedes reservar por número de teléfono:</p><p> 91 307 92 63</p><p>O directamente a través de la web</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_J3BbD7",
+        "column_8bRYFk",
+        "column_XePRNm"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "arrow_position": "inline",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
     "image_banner_diK9Vy": {
       "type": "image-banner",
       "blocks": {
@@ -61,6 +210,8 @@
   },
   "order": [
     "main",
+    "slideshow_GebCVx",
+    "multicolumn_7EPejr",
     "image_banner_diK9Vy",
     "1774875109e67a357d"
   ]
