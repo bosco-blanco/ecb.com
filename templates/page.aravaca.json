@@ -161,8 +161,8 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "arrow_position": "inline",
-        "padding_top": 24,
-        "padding_bottom": 20
+        "padding_top": 16,
+        "padding_bottom": 36
       }
     },
     "image_with_text_kVXkkt": {
@@ -244,7 +244,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "accent-2",
-        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image": "shopify://shop_images/vinos_restaurante_aravaca.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
@@ -266,7 +266,7 @@
             "heading_size": 32,
             "heading_color": "#000000",
             "heading_alignment": "center",
-            "heading_spacing": 20,
+            "heading_spacing": 5,
             "liquid_code": "",
             "desktop_width_percent": 100
           },
