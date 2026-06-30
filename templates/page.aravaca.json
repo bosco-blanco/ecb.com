@@ -155,12 +155,102 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "primary",
-        "button_label": "Button label",
+        "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "arrow_position": "inline",
+        "padding_top": 24,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_kVXkkt": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_JtmAyM": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Gastronomía",
+            "heading_size": "h0"
+          }
+        },
+        "caption_ycYPLE": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Tenemos una amplia variedad de productos de la mejor calidad</p>"
+          }
+        },
+        "button_NxjdnN": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Accede a la carta",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_junio_2026.pdf?v=1782806786",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JtmAyM",
+        "caption_ycYPLE",
+        "button_NxjdnN"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "accent-1",
+        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_7d9edx": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_bf8G9e": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Vinos",
+            "heading_size": "h0"
+          }
+        },
+        "caption_Lq9bdk": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Nuestra gran variedad y selección de vinos de las mejores denominaciones de origen</p>"
+          }
+        },
+        "button_VyndLU": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Accede a la carta de vinos",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_ARAVACA_2026_1.pdf?v=1782401225",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bf8G9e",
+        "caption_Lq9bdk",
+        "button_VyndLU"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "accent-2",
+        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
         "padding_top": 60,
         "padding_bottom": 0
       }
@@ -212,6 +302,8 @@
     "main",
     "slideshow_GebCVx",
     "multicolumn_7EPejr",
+    "image_with_text_kVXkkt",
+    "image_with_text_7d9edx",
     "image_banner_diK9Vy",
     "1774875109e67a357d"
   ]
