@@ -255,6 +255,40 @@
         "padding_bottom": 0
       }
     },
+    "blocks_pq86KV": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_44b8ef9_DQq9wX": {
+          "type": "ai_gen_block_44b8ef9",
+          "settings": {
+            "heading": "Reserva directamente aquí",
+            "heading_font": "cormorant_n4",
+            "heading_size": 32,
+            "heading_color": "#000000",
+            "heading_alignment": "center",
+            "heading_spacing": 20,
+            "liquid_code": "",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_44b8ef9_DQq9wX"
+      ],
+      "name": "Liquid personalizado",
+      "settings": {}
+    },
+    "custom_liquid_XwXPwL": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "image_banner_diK9Vy": {
       "type": "image-banner",
       "blocks": {
@@ -304,6 +338,8 @@
     "multicolumn_7EPejr",
     "image_with_text_kVXkkt",
     "image_with_text_7d9edx",
+    "blocks_pq86KV",
+    "custom_liquid_XwXPwL",
     "image_banner_diK9Vy",
     "1774875109e67a357d"
   ]
