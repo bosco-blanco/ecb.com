@@ -30,7 +30,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "Reserva",
-            "link": "",
+            "link": "#shopify-section-template--30610328191313__custom_liquid_XwXPwL",
             "button_style": "solid",
             "button_size": "medium-btn",
             "button_txt_upp": false,
@@ -134,7 +134,7 @@
           "type": "column",
           "settings": {
             "title": "Contacto y reserva",
-            "text": "<p>Puedes reservar por número de teléfono:</p><p> 91 307 92 63</p><p>O directamente a través de la web</p>",
+            "text": "<p>Puedes reservar por número de teléfono:</p><p> 91 307 92 63</p><p>O directamente a través de la <a href=\"#shopify-section-template--30610328191313__custom_liquid_XwXPwL\" title=\"#shopify-section-template--30610328191313__custom_liquid_XwXPwL\">web</a></p>",
             "link_label": "",
             "link": ""
           }
