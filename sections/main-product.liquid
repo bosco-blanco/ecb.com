@@ -29,7 +29,7 @@
   {%- endstyle -%}
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'jquery.js' | asset_url }}"></script>
+  {%- comment -%} jQuery ahora se carga globalmente en layout/theme.liquid {%- endcomment -%}
   <script src="{{ 'photoswipe.js' | asset_url }}" async></script>
   <script src="{{ 'photoswipe-ui-default.js' | asset_url }}" async></script>
 

@@ -1,12 +1,7 @@
-{%- comment %}<locksmith:588e>{% endcomment -%}
-  {%- include 'locksmith' -%}
-{%- comment %}</locksmith:588e>{% endcomment -%}
-
 <!doctype html>
 {%- comment -%} cache-bust 2026-05-28T09:58 {%- endcomment -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
-    {{ locksmith_initializations }}
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -52,10 +47,7 @@
     </title>
 
     {% if page_description %}
-      {%- comment %}<locksmith:1d03>{% endcomment -%}
-        {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
-        {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
-      {%- comment %}</locksmith:1d03>{% endcomment -%}
+      <meta name="description" content="{{ page_description | escape }}">
     {% elsif template contains 'product' and product %}
       {%- liquid
         assign _tipo = product.metafields.custom.tipo_de_vino
@@ -85,10 +77,7 @@
         assign _meta = _meta | append: ' · ' | append: _price | append: ' · Envío 24-48h · En Copa de Balón'
         assign _meta = _meta | truncate: 160
       -%}
-      {%- comment %}<locksmith:2167>{% endcomment -%}
-        {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ _meta | escape }}">{% endif -%}
-        {%- comment %}original: <meta name="description" content="{{ _meta | escape }}">{%- endcomment %}
-      {%- comment %}</locksmith:2167>{% endcomment -%}
+      <meta name="description" content="{{ _meta | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
@@ -394,7 +383,17 @@
     {%- endif -%}
 
     {% comment %} Code {% endcomment %}
-    
+
+    {%- comment -%}
+      jQuery: wbcustom.js / magnific-popup.js / wbquickview.js (justo debajo) lo
+      necesitan en TODAS las páginas, pero solo se estaba cargando en
+      main-product.liquid. Fuera de la página de producto, $ / jQuery no
+      existían y esos 3 scripts fallaban en silencio (rompía, entre otras
+      cosas, el desplegable de "Mi cuenta / Cerrar sesión" del header).
+      Carga bloqueante (sin async/defer) para que termine antes de que el
+      parser llegue a los scripts async de abajo.
+    {%- endcomment -%}
+    <script src="{{ 'jquery.js' | asset_url }}"></script>
     <script src="{{ 'wbcustom.js' | asset_url }}" async></script>
     {%- if settings.cart_type == 'notification' and template != 'cart' -%} 
         <script src="{{ 'wbcartdropdown.js' | asset_url }}" async></script>

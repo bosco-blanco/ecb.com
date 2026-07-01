@@ -283,6 +283,7 @@
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
+                  {%- if item.object_type == 'product' and item.tags contains 'preventa' -%}{%- continue -%}{%- endif -%}
                   <li class="grid__item">
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
