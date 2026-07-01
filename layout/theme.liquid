@@ -1,6 +1,6 @@
-{%- comment %}<locksmith:e74e>{% endcomment -%}
+{%- comment %}<locksmith:af38>{% endcomment -%}
   {%- include 'locksmith' -%}
-{%- comment %}</locksmith:e74e>{% endcomment -%}
+{%- comment %}</locksmith:af38>{% endcomment -%}
 
 <!doctype html>
 {%- comment -%} cache-bust 2026-05-28T09:58 {%- endcomment -%}
@@ -52,10 +52,10 @@
     </title>
 
     {% if page_description %}
-      {%- comment %}<locksmith:a6f6>{% endcomment -%}
+      {%- comment %}<locksmith:8854>{% endcomment -%}
         {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
         {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
-      {%- comment %}</locksmith:a6f6>{% endcomment -%}
+      {%- comment %}</locksmith:8854>{% endcomment -%}
     {% elsif template contains 'product' and product %}
       {%- liquid
         assign _tipo = product.metafields.custom.tipo_de_vino
@@ -85,10 +85,10 @@
         assign _meta = _meta | append: ' · ' | append: _price | append: ' · Envío 24-48h · En Copa de Balón'
         assign _meta = _meta | truncate: 160
       -%}
-      {%- comment %}<locksmith:b905>{% endcomment -%}
+      {%- comment %}<locksmith:63a2>{% endcomment -%}
         {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ _meta | escape }}">{% endif -%}
         {%- comment %}original: <meta name="description" content="{{ _meta | escape }}">{%- endcomment %}
-      {%- comment %}</locksmith:b905>{% endcomment -%}
+      {%- comment %}</locksmith:63a2>{% endcomment -%}
     {% endif %}
 
     {% render 'meta-tags' %}
