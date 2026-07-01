@@ -16,42 +16,6 @@
         "padding_bottom": 36
       }
     },
-    "image_banner_diK9Vy": {
-      "type": "image-banner",
-      "blocks": {
-        "buttons_3F4XgM": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Reserva",
-            "button_link_1": "",
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style": "outline"
-          }
-        }
-      },
-      "block_order": [
-        "buttons_3F4XgM"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "full_width": true,
-        "image": "shopify://shop_images/DSC1958.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true,
-        "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -61,7 +25,6 @@
   },
   "order": [
     "main",
-    "image_banner_diK9Vy",
     "1774875109e67a357d"
   ]
 }
