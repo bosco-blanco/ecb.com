@@ -9,21 +9,14 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "vp_brancellao": {
+      "type": "brancellao-vp-julio2026",
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0
+        "product": "pazo-la-cuesta-brancellao"
       }
-    },
-    "vp_access": {
-      "type": "ventas-privadas-acceso",
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "vp_access"
+    "vp_brancellao"
   ]
 }

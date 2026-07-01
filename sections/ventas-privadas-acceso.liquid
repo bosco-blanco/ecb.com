@@ -57,6 +57,12 @@
     background: rgba(212,185,116,.12); border: 1px solid {{ section.settings.accent_color }};
     border-radius: 10px; padding: 1.4rem; margin: 1.2rem auto 0; max-width: 460px;
   }
+  .vp-check {
+    display: flex; align-items: flex-start; gap: .6rem; margin: 1.4rem 0 0;
+    font-size: .88rem; line-height: 1.4; opacity: .9; text-align: left;
+  }
+  .vp-check input { width: auto; margin: .2rem 0 0; flex: 0 0 auto; accent-color: {{ section.settings.accent_color }}; }
+  .vp-check label { display: inline; text-transform: none; font-size: inherit; letter-spacing: normal; margin: 0; opacity: 1; }
 </style>
 
 <div class="vp-access">
@@ -98,6 +104,11 @@
             <label for="vp-body">¿Por qué quieres acceder? (opcional)</label>
             <textarea id="vp-body" name="contact[body]"></textarea>
 
+            <div class="vp-check">
+              <input type="checkbox" id="vp-no-hostel" name="contact[Declaración]" value="No pertenezco al sector de la hostelería ni compro con fines de reventa profesional" required>
+              <label for="vp-no-hostel">Declaro que no formo parte del sector de la hostelería/restauración y que esta compra no tiene fines de reventa profesional.</label>
+            </div>
+
             <button type="submit" class="vp-btn">{{ section.settings.submit_label }}</button>
           </div>
         {%- endif -%}
@@ -129,7 +140,7 @@
     { "type": "text", "id": "member_title", "label": "Título", "default": "Bienvenido al círculo" },
     { "type": "richtext", "id": "member_text", "label": "Texto", "default": "<p>Tienes acceso a las Ventas Privadas. Entra para ver la selección abierta.</p>" },
     { "type": "text", "id": "member_button", "label": "Botón", "default": "Entrar a las Ventas Privadas" },
-    { "type": "url", "id": "collection_url", "label": "URL de la colección", "default": "/collections/ventas-privadas" },
+    { "type": "text", "id": "collection_url", "label": "URL de la colección", "default": "/collections/ventas-privadas" },
     { "type": "header", "content": "Colores" },
     { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#1E1E1E" },
     { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFCF1" },

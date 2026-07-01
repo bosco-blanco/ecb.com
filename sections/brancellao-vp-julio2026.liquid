@@ -1,0 +1,172 @@
+{%- comment -%}
+  Ventas Privadas · Julio 2026 — Pazo de la Cuesta Brancellao 2023
+  Página de la caja de 6 para el círculo de Ventas Privadas.
+
+  Pensada para el template del producto "pazo-la-cuesta-brancellao"
+  (gid://shopify/Product/10898138923345), que ya vive dentro de la
+  colección gated "Ventas Privadas" (candado de Locksmith).
+
+  Precios (confirmados por Bosco, 1-jul-2026):
+   - Precio de línea web de la botella suelta: 29,50€ (Pazo de la Cuesta
+     Brancellao 2023, gid://shopify/Product/9265418797393)
+   - Referencia tachada: 6 botellas = 177,00€
+   - Precio socios Ventas Privadas (caja de 6): 123,90€ (30% dto.)
+{%- endcomment -%}
+
+<style>
+  .bvp {
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    font-family: 'Instrument Sans', sans-serif;
+  }
+  .bvp__hero {
+    display: grid; grid-template-columns: 1fr; gap: 2.2rem;
+    max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 1rem;
+  }
+  @media (min-width: 900px) {
+    .bvp__hero { grid-template-columns: 0.85fr 1.15fr; align-items: center; padding: 4rem 1.5rem 1rem; }
+  }
+  .bvp__img { text-align: center; }
+  .bvp__img img { max-width: 100%; max-height: 480px; }
+  .bvp__eyebrow {
+    text-transform: uppercase; letter-spacing: .2em; font-size: .8rem;
+    color: {{ section.settings.accent_color }}; margin: 0 0 .8rem;
+  }
+  .bvp__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.4vw, 3.1rem); line-height: 1.08; margin: 0 0 1rem;
+  }
+  .bvp__lead { font-size: 1.08rem; line-height: 1.65; opacity: .92; margin: 0 0 1.4rem; }
+  .bvp__badge {
+    display: inline-block; border: 1px solid {{ section.settings.accent_color }};
+    color: {{ section.settings.accent_color }}; border-radius: 999px;
+    padding: .3rem .9rem; font-size: .78rem; letter-spacing: .04em;
+    text-transform: uppercase; margin: 0 0 1.2rem;
+  }
+  .bvp__prices { margin: 1.6rem 0; }
+  .bvp__price-line { font-size: .95rem; opacity: .75; margin: 0 0 .2rem; }
+  .bvp__price-strike { text-decoration: line-through; opacity: .7; }
+  .bvp__price-member {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 2.6rem);
+    color: {{ section.settings.accent_color }}; margin: .1rem 0 .3rem;
+  }
+  .bvp__price-note { font-size: .84rem; opacity: .7; }
+  .bvp-btn {
+    display: inline-block; background: {{ section.settings.accent_color }}; color: #1E1E1E;
+    font-weight: 600; text-decoration: none; padding: 1rem 2.4rem; border-radius: 999px;
+    letter-spacing: .02em; border: 0; cursor: pointer; font-size: 1rem; margin-top: .6rem;
+  }
+  .bvp-btn:hover { opacity: .88; }
+  .bvp__preorder-note {
+    margin-top: .9rem; font-size: .88rem; line-height: 1.5; opacity: .85;
+    max-width: 440px; padding: .8rem 1rem; border-left: 2px solid {{ section.settings.accent_color }};
+  }
+  .bvp__story {
+    max-width: 760px; margin: 1rem auto 0; padding: 2.4rem 1.5rem 3.6rem;
+    border-top: 1px solid rgba(212,185,116,.25);
+  }
+  .bvp__story h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 1rem;
+  }
+  .bvp__story p { font-size: 1.02rem; line-height: 1.7; opacity: .9; margin: 0 0 1.1rem; }
+  .bvp__facts {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem 1.6rem;
+    margin: 1.6rem 0; padding: 1.4rem; border: 1px solid rgba(212,185,116,.3); border-radius: 12px;
+  }
+  @media (min-width: 600px) { .bvp__facts { grid-template-columns: repeat(4, 1fr); } }
+  .bvp__fact-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; opacity: .65; }
+  .bvp__fact-value { font-size: .98rem; font-weight: 600; margin-top: .2rem; }
+</style>
+
+<div class="bvp">
+  <div class="bvp__hero">
+    <div class="bvp__img">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 800 | image_tag }}
+      {%- elsif section.settings.product.featured_image != blank -%}
+        {{ section.settings.product.featured_image | image_url: width: 800 | image_tag }}
+      {%- endif -%}
+    </div>
+    <div>
+      <p class="bvp__eyebrow">{{ section.settings.eyebrow }}</p>
+      <span class="bvp__badge">{{ section.settings.badge }}</span>
+      <h1 class="bvp__title">{{ section.settings.title }}</h1>
+      <div class="bvp__lead">{{ section.settings.lead }}</div>
+
+      <div class="bvp__prices">
+        <p class="bvp__price-line">Precio en tienda: {{ section.settings.bottle_price }} · 6 botellas = <span class="bvp__price-strike">{{ section.settings.compare_price }}</span></p>
+        <p class="bvp__price-member">{{ section.settings.member_price }} <span style="font-size:1rem; opacity:.7;">la caja de 6</span></p>
+        <p class="bvp__price-note">{{ section.settings.price_note }}</p>
+      </div>
+
+      {%- if section.settings.product != blank -%}
+        {%- assign vp_product = section.settings.product -%}
+        {%- assign vp_variant = vp_product.selected_or_first_available_variant -%}
+        <product-form>
+          {%- form 'product', vp_product -%}
+            <input type="hidden" name="id" value="{{ vp_variant.id }}">
+            <button type="submit" class="bvp-btn">{{ section.settings.cta_label }}</button>
+          {%- endform -%}
+        </product-form>
+        <p class="bvp__preorder-note">{{ section.settings.preorder_note }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_countdown -%}
+    {% render 'preventa-countdown-inline', end_datetime: section.settings.end_datetime %}
+  {%- endif -%}
+
+  <div class="bvp__story">
+    <h2>{{ section.settings.story_title }}</h2>
+    {{ section.settings.story_text }}
+
+    <div class="bvp__facts">
+      <div><div class="bvp__fact-label">D.O.</div><div class="bvp__fact-value">{{ section.settings.fact_do }}</div></div>
+      <div><div class="bvp__fact-label">Uva</div><div class="bvp__fact-value">{{ section.settings.fact_uva }}</div></div>
+      <div><div class="bvp__fact-label">Crianza</div><div class="bvp__fact-value">{{ section.settings.fact_crianza }}</div></div>
+      <div><div class="bvp__fact-label">Puntuación</div><div class="bvp__fact-value">{{ section.settings.fact_puntuacion }}</div></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "VP Brancellao Julio",
+  "tag": "section",
+  "class": "section-bvp",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto (caja de 6)" },
+    { "type": "image_picker", "id": "image", "label": "Imagen botella/caja" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "En Copa de Balón · Ventas Privadas · Julio 2026" },
+    { "type": "text", "id": "badge", "label": "Insignia", "default": "95 puntos Decanter" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Pazo de la Cuesta Brancellao 2023" },
+    { "type": "richtext", "id": "lead", "label": "Texto breve", "default": "<p>El vino que abre nuestro círculo de Ventas Privadas. Ribeira Sacra, Brancellao autóctono, 95 puntos Decanter. Solo por cajas de 6, en base de pedido hasta el 15 de julio.</p>" },
+    { "type": "header", "content": "Precios" },
+    { "type": "text", "id": "bottle_price", "label": "Precio botella (web)", "default": "29,50€" },
+    { "type": "text", "id": "compare_price", "label": "Precio tachado (6 botellas)", "default": "177,00€" },
+    { "type": "text", "id": "member_price", "label": "Precio socios (caja de 6)", "default": "123,90€" },
+    { "type": "text", "id": "price_note", "label": "Nota de precio", "default": "30% de descuento exclusivo para el círculo de Ventas Privadas." },
+    { "type": "text", "id": "cta_label", "label": "Botón de compra", "default": "Reservar mi caja" },
+    { "type": "richtext", "id": "preorder_note", "label": "Nota de base de pedido", "default": "<p>Esto es una base de pedido: reservas y pagas tu caja ahora. Cerramos el plazo el 15 de julio, pedimos directamente a la bodega según las cajas confirmadas, y los envíos empiezan a partir del 16 de julio.</p>" },
+    { "type": "header", "content": "Cuenta atrás" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Mostrar cuenta atrás", "default": true },
+    { "type": "text", "id": "end_datetime", "label": "Cierre (ISO)", "default": "2026-07-15T23:59" },
+    { "type": "header", "content": "Historia" },
+    { "type": "text", "id": "story_title", "label": "Título historia", "default": "Por qué hemos elegido este vino" },
+    { "type": "richtext", "id": "story_text", "label": "Texto historia", "default": "<p>Pazo de la Cuesta es la bodega familiar en activo más antigua de Galicia, en plena Ribeira Sacra. Su Brancellao 2023 está elaborado con Brancellao, una variedad autóctona gallega muy poco plantada, junto a Mencía, con 8 meses de envejecimiento. Un vino fragante y ligero, de acidez vibrante y final limpio.</p><p>Lo vendemos por cajas de 6 y en base de pedido: reservas ahora, nosotros pedimos directo a la bodega según las cajas confirmadas, y te llega a partir del 16 de julio.</p>" },
+    { "type": "text", "id": "fact_do", "label": "D.O.", "default": "Ribeira Sacra" },
+    { "type": "text", "id": "fact_uva", "label": "Uva", "default": "Brancellao, Mencía" },
+    { "type": "text", "id": "fact_crianza", "label": "Crianza", "default": "8 meses" },
+    { "type": "text", "id": "fact_puntuacion", "label": "Puntuación", "default": "95 pts Decanter" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#1E1E1E" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFCF1" },
+    { "type": "color", "id": "accent_color", "label": "Acento", "default": "#D4B974" }
+  ],
+  "presets": [
+    { "name": "VP Brancellao Julio" }
+  ]
+}
+{% endschema %}
