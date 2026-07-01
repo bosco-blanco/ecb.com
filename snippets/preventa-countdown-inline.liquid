@@ -1,0 +1,51 @@
+{%- comment -%}
+  Cuenta atrás compacta, para incrustar dentro de otras secciones (p.ej.
+  brancellao-vp-julio2026.liquid) sin duplicar todo el bloque de
+  preventa-countdown.liquid. Recibe end_datetime (ISO) como parámetro.
+{%- endcomment -%}
+
+<div class="pvi-timer" data-pvi-end="{{ end_datetime }}" role="timer" aria-live="polite">
+  <div class="pvi-unit"><div class="pvi-num pvi-days">--</div><div class="pvi-lbl">Días</div></div>
+  <div class="pvi-unit"><div class="pvi-num pvi-hours">--</div><div class="pvi-lbl">Horas</div></div>
+  <div class="pvi-unit"><div class="pvi-num pvi-mins">--</div><div class="pvi-lbl">Min</div></div>
+  <div class="pvi-unit"><div class="pvi-num pvi-secs">--</div><div class="pvi-lbl">Seg</div></div>
+  <p class="pvi-ended" style="display:none;">La base de pedido ha cerrado. Estamos preparando el pedido conjunto a la bodega — los envíos empiezan a partir del 16 de julio.</p>
+</div>
+
+<style>
+  .pvi-timer { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; padding: 1.6rem 1.5rem 0; }
+  .pvi-unit { min-width: 68px; background: #FFFCF1; color: #1E1E1E; border-radius: 10px; padding: .6rem .3rem; text-align: center; }
+  .pvi-num { font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  .pvi-lbl { font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; opacity: .8; margin-top: .25rem; }
+  .pvi-ended { width: 100%; text-align: center; font-weight: 600; margin-top: .8rem; }
+</style>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    while (root && !root.classList.contains('pvi-timer')) { root = root.previousElementSibling; }
+    if (!root) return;
+    var end = new Date(root.getAttribute('data-pvi-end')).getTime();
+    var elDays = root.querySelector('.pvi-days'), elHours = root.querySelector('.pvi-hours'),
+        elMins = root.querySelector('.pvi-mins'), elSecs = root.querySelector('.pvi-secs'),
+        ended = root.querySelector('.pvi-ended');
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function tick() {
+      var diff = end - Date.now();
+      if (diff <= 0) {
+        [elDays, elHours, elMins, elSecs].forEach(function (el) { if (el) el.parentElement.style.display = 'none'; });
+        if (ended) ended.style.display = 'block';
+        clearInterval(timer);
+        return;
+      }
+      var d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000),
+          m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      if (elDays) elDays.textContent = d;
+      if (elHours) elHours.textContent = pad(h);
+      if (elMins) elMins.textContent = pad(m);
+      if (elSecs) elSecs.textContent = pad(s);
+    }
+    var timer = setInterval(tick, 1000);
+    tick();
+  })();
+</script>
