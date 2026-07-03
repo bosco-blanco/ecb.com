@@ -101,10 +101,10 @@
         "slider_visual": "dots",
         "pagicolor": "#fff",
         "pagination_alignment": "center",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 7,
         "image_behavior": "none",
-        "show_text_below": true,
+        "show_text_below": false,
         "padding_top": 0,
         "padding_bottom": 36
       }
