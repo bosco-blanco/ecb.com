@@ -97,8 +97,8 @@
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "adapt_image",
-        "slider_visual": "counter",
+        "slide_height": "medium",
+        "slider_visual": "dots",
         "pagicolor": "#fff",
         "pagination_alignment": "center",
         "auto_rotate": false,
@@ -106,7 +106,7 @@
         "image_behavior": "none",
         "show_text_below": true,
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 36
       }
     },
     "multicolumn_hzDhU8": {
