@@ -16,6 +16,99 @@
         "padding_bottom": 36
       }
     },
+    "slideshow_xM3qQm": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_XbyKLr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ARAVACA.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_iWhtMU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1895.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_B3FXBc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1908.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_XbyKLr",
+        "slide_iWhtMU",
+        "slide_B3FXBc"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "pagicolor": "#fff",
+        "pagination_alignment": "center",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -25,6 +118,7 @@
   },
   "order": [
     "main",
+    "slideshow_xM3qQm",
     "1774875109e67a357d"
   ]
 }
