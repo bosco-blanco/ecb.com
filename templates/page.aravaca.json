@@ -244,7 +244,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "accent-1",
-        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image": "shopify://shop_images/vinos_restaurante_aravaca.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
