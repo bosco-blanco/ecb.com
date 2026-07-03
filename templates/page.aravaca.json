@@ -134,7 +134,7 @@
           "type": "column",
           "settings": {
             "title": "Reserva",
-            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+valdemarin&oq=en+cop&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg7MgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEIMzQwNmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>O directamente desde la web: </p>",
+            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+valdemarin&oq=en+cop&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg7MgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEIMzQwNmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>O directamente desde la <a href=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\" title=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\">web</a>: </p>",
             "link_label": "",
             "link": ""
           }
@@ -148,12 +148,12 @@
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "heading": "",
-        "heading_size": "h1",
+        "heading_size": "h0",
         "head_align": "center",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
