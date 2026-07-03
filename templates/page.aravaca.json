@@ -109,6 +109,62 @@
         "padding_bottom": 0
       }
     },
+    "multicolumn_hzDhU8": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_m7VVQp": {
+          "type": "column",
+          "settings": {
+            "title": "Dónde estamos",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EdHB8g": {
+          "type": "column",
+          "settings": {
+            "title": "Nuestro horario",
+            "text": "<p>Lunes a jueves: 09:00 - 02:00</p><p>Viernes: 09:00 - 02:30</p><p>Sábado: 10:00 - 02:30</p><p>Domingo: 10:00 - 02:00</p><p></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_geJzeE": {
+          "type": "column",
+          "settings": {
+            "title": "Nuestra carta",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_m7VVQp",
+        "column_EdHB8g",
+        "column_geJzeE"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "heading": "Multicolumn",
+        "heading_size": "h1",
+        "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "arrow_position": "inline",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -119,6 +175,7 @@
   "order": [
     "main",
     "slideshow_xM3qQm",
+    "multicolumn_hzDhU8",
     "1774875109e67a357d"
   ]
 }
