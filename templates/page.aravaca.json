@@ -133,8 +133,8 @@
         "column_geJzeE": {
           "type": "column",
           "settings": {
-            "title": "Nuestra carta",
-            "text": "",
+            "title": "Reserva",
+            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+valdemarin&oq=en+cop&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg7MgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEIMzQwNmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>O directamente desde la web: </p>",
             "link_label": "",
             "link": ""
           }
