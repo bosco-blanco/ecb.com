@@ -255,6 +255,26 @@
         "padding_bottom": 0
       }
     },
+    "custom_liquid_tA9WKQ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<h2 style=\"font-family: 'Cormorant', serif; color: var(--text-color); text-align: center; padding: 2rem 1rem; font-size: 2rem; line-height: 1.6; margin: 0; font-weight: bold;\">Reserva directamente aquí</h2>",
+        "color_scheme": "background-1",
+        "padding_top": 12,
+        "padding_bottom": 16
+      }
+    },
+    "custom_liquid_eFMrPd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
+        "color_scheme": "background-1",
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -268,6 +288,8 @@
     "multicolumn_hzDhU8",
     "image_with_text_frGPbk",
     "image_with_text_md8N9E",
+    "custom_liquid_tA9WKQ",
+    "custom_liquid_eFMrPd",
     "1774875109e67a357d"
   ]
 }
