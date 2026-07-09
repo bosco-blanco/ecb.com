@@ -275,6 +275,61 @@
         "padding_bottom": 12
       }
     },
+    "custom_liquid_nyEbxi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<h2 style=\"font-family: 'Cormorant', serif; color: var(--text-color); text-align: center; padding: 2rem 1rem; font-size: 2rem; line-height: 1.6; margin: 0; font-weight: bold;\">Nuestros eventos</h2>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_diMxxc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_phyd8L": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Nuestros vinos",
+            "heading_size": "h0"
+          }
+        },
+        "caption_maAYjQ": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Organizamos <strong>celebraciones privadas, comidas de empresa, catas guiadas y catering </strong>en Madrid: en nuestros propios espacios o en el lugar que elijas. Detrás de cada copa, una <strong>bodega de más de 1.600 referencias </strong>y <strong>35 años de oficio </strong>seleccionando vino.<br/><br/></p>"
+          }
+        },
+        "button_bWaN33": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a la carta de vinos",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_MORALEJA_4.pdf?v=1783603632",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_phyd8L",
+        "caption_maAYjQ",
+        "button_bWaN33"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Evento_Moraleja.png",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "1774875109e67a357d": {
       "type": "apps",
       "settings": {
@@ -290,6 +345,8 @@
     "image_with_text_md8N9E",
     "custom_liquid_tA9WKQ",
     "custom_liquid_eFMrPd",
+    "custom_liquid_nyEbxi",
+    "image_with_text_diMxxc",
     "1774875109e67a357d"
   ]
 }
