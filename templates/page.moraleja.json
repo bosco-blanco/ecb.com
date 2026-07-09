@@ -230,7 +230,7 @@
           "type": "button",
           "settings": {
             "btntxt": "Ir a la carta de vinos",
-            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_ARAVACA_2026_2.pdf?v=1783075241",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_MORALEJA_4.pdf?v=1783603632",
             "button_style": "solid",
             "button_size": "bs_large"
           }
@@ -244,7 +244,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/vinos_restaurante_aravaca.jpg",
+        "image": "shopify://shop_images/vinos_la_moraleja.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
