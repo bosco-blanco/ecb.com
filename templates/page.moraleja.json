@@ -185,7 +185,7 @@
           "type": "button",
           "settings": {
             "btntxt": "Ir a la carta de comida",
-            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_junio2026.pdf?v=1783075084",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_La_Moraleja_2026.pdf?v=1783602865",
             "button_style": "solid",
             "button_size": "bs_large"
           }
@@ -199,7 +199,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "accent-1",
-        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image": "shopify://shop_images/Foto_comida_moraleja.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
