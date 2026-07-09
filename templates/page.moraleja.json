@@ -19,33 +19,10 @@
     "slideshow_xM3qQm": {
       "type": "slideshow",
       "blocks": {
-        "slide_XbyKLr": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Moraleja_1.jpg",
-            "hcaption": "",
-            "heading": "",
-            "button_h_upp": true,
-            "heading_size": "large",
-            "subheading": "",
-            "subheadingtext": "",
-            "button_label": "Reserva",
-            "link": "#shopify-section-template--30671352758609__custom_liquid_eFMrPd",
-            "button_style": "solid",
-            "button_size": "medium-btn",
-            "button_txt_upp": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "accent-1",
-            "text_alignment_mobile": "center"
-          }
-        },
         "slide_iWhtMU": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/DSC1895.jpg",
+            "image": "shopify://shop_images/Moraleja_2.jpg",
             "hcaption": "",
             "heading": "",
             "button_h_upp": true,
@@ -68,7 +45,30 @@
         "slide_B3FXBc": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/DSC1908.jpg",
+            "image": "shopify://shop_images/Moraleja_3.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "#shopify-section-template--30671352758609__custom_liquid_eFMrPd",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_XbyKLr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Moraleja_1.jpg",
             "hcaption": "",
             "heading": "",
             "button_h_upp": true,
@@ -90,9 +90,9 @@
         }
       },
       "block_order": [
-        "slide_XbyKLr",
         "slide_iWhtMU",
-        "slide_B3FXBc"
+        "slide_B3FXBc",
+        "slide_XbyKLr"
       ],
       "name": "t:sections.slideshow.presets.name",
       "settings": {
