@@ -116,7 +116,7 @@
           "type": "column",
           "settings": {
             "title": "Dónde estamos",
-            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd422c427507b767:0xb3e3ae672bdbfe03?sa=X&ved=1t:8290&ictx=111\">C. de la Begonia, 135, 28109 Alcobendas, Madrid</a></p>",
             "link_label": "",
             "link": ""
           }
@@ -125,7 +125,7 @@
           "type": "column",
           "settings": {
             "title": "Nuestro horario",
-            "text": "<p>Lunes a jueves: 09:00 - 02:00</p><p>Viernes: 09:00 - 02:30</p><p>Sábado: 10:00 - 02:30</p><p>Domingo: 10:00 - 02:00</p><p></p>",
+            "text": "<p>Lunes a jueves: 11:00 - 02:00</p><p>Viernes y sábados: 11:00 - 02:30</p><p>Domingo: 11:00 - 01:00</p><p></p>",
             "link_label": "",
             "link": ""
           }
@@ -134,7 +134,7 @@
           "type": "column",
           "settings": {
             "title": "Reserva",
-            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+valdemarin&oq=en+cop&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg7MgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEIMzQwNmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>O directamente desde la <a href=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\" title=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\">web</a>: </p>",
+            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+moraleja&sca_esv=1fae055577f6ba0b&sxsrf=APpeQnsGRK_PZmxS2K-W7yPSKKRXsFrWWw%3A1783593498091&ei=GnpPap2JBbiB9u8P9a22qQg&biw=1536&bih=695&gs_ssp=eJzj4tFP1zcsKKk0NS0zSTFgtFIxqEgxMTJKNjEyNzUwTzI3M7cyqEgyTjVOTDUzN0pKSUpLNTD2kkzNU0jOL0hUSElVSErMyc9TyM0vSsxJzUoEAIGEF_o&oq=en+copa+de+balon+mo&gs_lp=Egxnd3Mtd2l6LXNlcnAiE2VuIGNvcGEgZGUgYmFsb24gbW8qAggAMg4QLhiABBjHARivARiOBTIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgIQJjICECYyBRAAGO8FMgUQABjvBTIIEAAYgAQYogRI6CVQhwhY1BxwBHgBkAEAmAHJAqAB1hCqAQgxNC4zLjEuMbgBAcgBAPgBAZgCF6ACvBHCAgoQABhHGNYEGLADwgILEAAYgAQYsQMYgwHCAgUQABiABMICDhAuGIAEGIoFGLEDGIMBwgIFEC4YgATCAg4QABiABBiKBRixAxiDAcICChAAGIAEGIoFGEPCAgQQABgDwgIREC4YgAQYsQMYgwEYxwEY0QPCAgsQLhiABBixAxiDAcICDhAuGK8BGMcBGIAEGI4FwgILEC4YrwEYxwEYgATCAgsQLhiABBjHARivAZgDAIgGAZAGBZIHCDE0LjcuMS4xoAecnQOyBwgxMC43LjEuMbgHrRHCBwcwLjExLjEyyAdLgAgB&sclient=gws-wiz-serp#\">918 05 30 71</a></p><p>O directamente desde la <a href=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\" title=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\">web</a>: </p>",
             "link_label": "",
             "link": ""
           }
@@ -269,7 +269,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
+        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-lamoraleja\"></script><iframe\n                                                                    id=\"encopadebalon-lamoraleja\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-lamoraleja/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
         "color_scheme": "accent-1",
         "padding_top": 0,
         "padding_bottom": 12
