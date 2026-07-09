@@ -1,0 +1,295 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "slideshow_xM3qQm": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_XbyKLr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ARAVACA.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "#shopify-section-template--30671352758609__custom_liquid_eFMrPd",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_iWhtMU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1895.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "#shopify-section-template--30671352758609__custom_liquid_eFMrPd",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_B3FXBc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DSC1908.jpg",
+            "hcaption": "",
+            "heading": "",
+            "button_h_upp": true,
+            "heading_size": "large",
+            "subheading": "",
+            "subheadingtext": "",
+            "button_label": "Reserva",
+            "link": "#shopify-section-template--30671352758609__custom_liquid_eFMrPd",
+            "button_style": "solid",
+            "button_size": "medium-btn",
+            "button_txt_upp": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_XbyKLr",
+        "slide_iWhtMU",
+        "slide_B3FXBc"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "pagicolor": "#fff",
+        "pagination_alignment": "center",
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_hzDhU8": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_m7VVQp": {
+          "type": "column",
+          "settings": {
+            "title": "Dónde estamos",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4186e640654cd3:0x347dd2de50596a07?sa=X&ved=1t:8290&ictx=111\">Av. de Valdemarín, 165, Moncloa - Aravaca, 28023 Madrid</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EdHB8g": {
+          "type": "column",
+          "settings": {
+            "title": "Nuestro horario",
+            "text": "<p>Lunes a jueves: 09:00 - 02:00</p><p>Viernes: 09:00 - 02:30</p><p>Sábado: 10:00 - 02:30</p><p>Domingo: 10:00 - 02:00</p><p></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_geJzeE": {
+          "type": "column",
+          "settings": {
+            "title": "Reserva",
+            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+valdemarin&oq=en+cop&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBggDEEUYOzIGCAQQRRg7MgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEIMzQwNmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8#\">913 07 92 63</a></p><p>O directamente desde la <a href=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\" title=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\">web</a>: </p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_m7VVQp",
+        "column_EdHB8g",
+        "column_geJzeE"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h0",
+        "head_align": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "arrow_position": "inline",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_frGPbk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RGQncf": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Gastronomía",
+            "heading_size": "h0"
+          }
+        },
+        "caption_CbfaTT": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Tenemos una amplia selección de productos de la mejor calidad que encontrarás en nuestro restaurante.</p>"
+          }
+        },
+        "button_emcGcT": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a la carta de comida",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Aravaca_junio2026.pdf?v=1783075084",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RGQncf",
+        "caption_CbfaTT",
+        "button_emcGcT"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "accent-1",
+        "image": "shopify://shop_images/Comida_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_md8N9E": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_6tHbd3": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Nuestros vinos",
+            "heading_size": "h0"
+          }
+        },
+        "caption_PMrFUU": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Desde vinos tintos, blancos, rosados y espumosos. Una gran selección elegida por nuestro sumiller.</p>"
+          }
+        },
+        "button_3bRYkc": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Ir a la carta de vinos",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/CARTA_VINOS_ARAVACA_2026_2.pdf?v=1783075241",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6tHbd3",
+        "caption_PMrFUU",
+        "button_3bRYkc"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/vinos_restaurante_aravaca.jpg",
+        "image_width": "50%",
+        "image_position": "imgpright",
+        "imgalign": "imgalignmiddle",
+        "image_height": "adapt",
+        "Horizontal_alignment": "center",
+        "mobile_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_tA9WKQ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<h2 style=\"font-family: 'Cormorant', serif; color: var(--text-color); text-align: center; padding: 2rem 1rem; font-size: 2rem; line-height: 1.6; margin: 0; font-weight: bold;\">Reserva directamente aquí</h2>",
+        "color_scheme": "accent-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_eFMrPd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-aravaca\"></script><iframe\n                                                                    id=\"encopadebalon-aravaca\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-aravaca/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
+        "color_scheme": "accent-1",
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "1774875109e67a357d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_xM3qQm",
+    "multicolumn_hzDhU8",
+    "image_with_text_frGPbk",
+    "image_with_text_md8N9E",
+    "custom_liquid_tA9WKQ",
+    "custom_liquid_eFMrPd",
+    "1774875109e67a357d"
+  ]
+}
