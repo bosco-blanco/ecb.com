@@ -243,6 +243,47 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "image_with_text_e9kc8X": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Lp4fVG": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Bodegas Ortega",
+            "heading_size": "h0"
+          }
+        },
+        "caption_Yq6xUW": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p><a href=\"https://www.google.com/search?q=VINOTECA+EN+COPA+DE+BALON+arturo+soria&sca_esv=20b4b65056ec4911&biw=1536&bih=695&sxsrf=APpeQnuCS75Da97CLvhTbjMhHCph_bDH0A%3A1783942667257&ei=C85Uar6cD8OuhbIP5erVAQ&ved=0ahUKEwj-zeynyM-VAxVDV0EAHWV1NQAQ4dUDCBA&uact=5&oq=VINOTECA+EN+COPA+DE+BALON+arturo+soria&gs_lp=Egxnd3Mtd2l6LXNlcnAiJlZJTk9URUNBIEVOIENPUEEgREUgQkFMT04gYXJ0dXJvIHNvcmlhMgYQABgWGB4yAhAmMggQABiABBiiBDIFEAAY7wUyBRAAGO8FMggQABiABBiiBDIFEAAY7wVIwyVQsQVY8iRwCngBkAEBmAHIAaABlRaqAQYwLjE5LjG4AQPIAQD4AQGYAhygAqIUwgIKEAAYRxjWBBiwA8ICFxAuGNwGGLgGGNoGGNgCGMgDGLAD2AEBwgIIEAAYiQUYogTCAgQQIRgVwgIFECEYoAHCAgcQIRgKGKABmAMAiAYBkAYKugYECAEYGZIHBTEwLjE4oAewabIHBDAuMTi4B_cTwgcHMC4xOC4xMMgHTIAIAQ&sclient=gws-wiz-serp#\">915 35 85 57</a></p>"
+          }
+        },
+        "caption_xM94H6": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd422fa93156ba27:0xd706cb6b336f54c4?sa=X&ved=1t:8290&ictx=111\">C. de Arturo Soria, 126, Loc B30, B31, Cdad. Lineal, 28043 Madrid</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Lp4fVG",
+        "caption_Yq6xUW",
+        "caption_xM94H6"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/bodegas_ortega.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
     }
   },
   "order": [
@@ -252,6 +293,7 @@
     "image_with_text_qVG8Vi",
     "image_with_text_fWcNLa",
     "image_with_text_gehGiN",
-    "image_with_text_tNM9zE"
+    "image_with_text_tNM9zE",
+    "image_with_text_e9kc8X"
   ]
 }
