@@ -288,33 +288,15 @@
     "image_with_text_diMxxc": {
       "type": "image-with-text",
       "blocks": {
-        "heading_phyd8L": {
-          "type": "heading",
-          "settings": {
-            "storytitle": "Eventos",
-            "heading_size": "h0"
-          }
-        },
         "caption_maAYjQ": {
           "type": "caption",
           "settings": {
             "storysubtitle": "<p>Organizamos <strong>celebraciones privadas, comidas de empresa, catas guiadas y catering </strong>en Madrid: en nuestros propios espacios o en el lugar que elijas. Detrás de cada copa, una <strong>bodega de más de 1.600 referencias </strong>y <strong>35 años de oficio </strong>seleccionando vino.<br/><br/></p>"
           }
-        },
-        "button_bWaN33": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Haz tu evento con nosotros",
-            "link": "#shopify-block-ANHVZcEVHMXdEeGNKM__79534d0e-3747-4fef-b9f7-136dfe7193aa",
-            "button_style": "solid",
-            "button_size": "bs_large"
-          }
         }
       },
       "block_order": [
-        "heading_phyd8L",
-        "caption_maAYjQ",
-        "button_bWaN33"
+        "caption_maAYjQ"
       ],
       "name": "Image with text",
       "settings": {
@@ -328,6 +310,34 @@
         "mobile_alignment": "center",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "1783935372e7f4a784": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_HgjpGf": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "192704",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_HgjpGf"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "1774875109e67a357d": {
@@ -347,6 +357,7 @@
     "custom_liquid_eFMrPd",
     "custom_liquid_nyEbxi",
     "image_with_text_diMxxc",
+    "1783935372e7f4a784",
     "1774875109e67a357d"
   ]
 }
