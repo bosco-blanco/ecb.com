@@ -106,11 +106,12 @@
   #vpp-{{ SID }} .vpp-card figure { margin:0 0 26px; }
   #vpp-{{ SID }} .vpp-card .vpp-shot { aspect-ratio:3/4; position:relative; overflow:hidden; }
   #vpp-{{ SID }} .vpp-card .vpp-shot > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  #vpp-{{ SID }} .vpp-badge { display:inline-block; align-self:center; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:16px; }
-  #vpp-{{ SID }} .vpp-card h3 { font-weight:600; font-size:26px; text-align:center; margin:0 0 8px; }
-  #vpp-{{ SID }} .vpp-card .vpp-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15.5px; text-align:center; margin:0 0 22px; }
-  #vpp-{{ SID }} .vpp-specs { margin-bottom:22px; }
-  #vpp-{{ SID }} .vpp-spec { display:flex; justify-content:space-between; padding:11px 2px; font-size:12.5px; }
+  #vpp-{{ SID }} .vpp-badge-slot { display:flex; justify-content:center; margin-bottom:16px; min-height:26px; }
+  #vpp-{{ SID }} .vpp-badge { display:inline-block; align-self:center; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 16px; border-radius:20px; }
+  #vpp-{{ SID }} .vpp-card h3 { font-weight:600; font-size:26px; line-height:1.15; text-align:center; margin:0 0 8px; min-height:2.3em; display:flex; align-items:center; justify-content:center; }
+  #vpp-{{ SID }} .vpp-card .vpp-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15.5px; line-height:1.35; text-align:center; margin:0 0 22px; min-height:2.7em; display:flex; align-items:center; justify-content:center; }
+  #vpp-{{ SID }} .vpp-specs { margin-bottom:22px; min-height:164px; }
+  #vpp-{{ SID }} .vpp-spec { display:flex; justify-content:space-between; padding:11px 2px; font-size:12.5px; min-height:38px; box-sizing:border-box; }
   #vpp-{{ SID }} .vpp-spec span:first-child { text-transform:uppercase; letter-spacing:0.1em; font-size:10.5px; }
   #vpp-{{ SID }} .vpp-price { text-align:center; margin-top:auto; }
   #vpp-{{ SID }} .vpp-price-row { display:flex; align-items:baseline; justify-content:center; gap:10px; }
@@ -287,9 +288,12 @@
               </div>
             </figure>
 
-            {%- if block.settings.badge != blank -%}
-              <div class="vpp-badge" style="border:1px solid {{ accent }}; color:{{ accent }};">{{ block.settings.badge }}</div>
-            {%- endif -%}
+            {%- comment -%} Slot de badge siempre reservado (aunque esté vacío) para que el título arranque a la misma altura en todas las tarjetas. {%- endcomment -%}
+            <div class="vpp-badge-slot">
+              {%- if block.settings.badge != blank -%}
+                <div class="vpp-badge" style="border:1px solid {{ accent }}; color:{{ accent }};">{{ block.settings.badge }}</div>
+              {%- endif -%}
+            </div>
 
             {%- if has_link -%}
               <h3 style="color:{{ fg }};"><a href="{{ href }}" style="color:inherit; text-decoration:none;">{{ block.settings.name }}</a></h3>
