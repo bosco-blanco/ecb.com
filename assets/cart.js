@@ -23,13 +23,10 @@ class CartItems extends HTMLElement {
   onChange(event) {
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
-  getSectionsToRender() {
-    return [
-      {
-        id: 'main-cart-items',
-        section: document.getElementById('main-cart-items').dataset.id,
-        selector: '.js-contents',
-      },
+ getSectionsToRender() {
+    const mainCartItems = document.getElementById('main-cart-items');
+    const mainCartFooter = document.getElementById('main-cart-footer');
+    const sections = [
       {
         id: 'cart-icon-bubble',
         section: 'cart-icon-bubble',
@@ -39,19 +36,30 @@ class CartItems extends HTMLElement {
         id: 'cart-live-region-text',
         section: 'cart-live-region-text',
         selector: '.shopify-section'
-      },
-      {
-        id: 'main-cart-footer',
-        section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
-      },
-      {
-        id: 'main-cart-footer',
-        section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents-shiping',
       }
     ];
+    if (mainCartItems) {
+      sections.unshift({
+        id: 'main-cart-items',
+        section: mainCartItems.dataset.id,
+        selector: '.js-contents',
+      });
+    }
+    if (mainCartFooter) {
+      sections.push({
+        id: 'main-cart-footer',
+        section: mainCartFooter.dataset.id,
+        selector: '.js-contents',
+      });
+      sections.push({
+        id: 'main-cart-footer',
+        section: mainCartFooter.dataset.id,
+        selector: '.js-contents-shiping',
+      });
+    }
+    return sections;
   }
+
   updateQuantity(line, quantity, name) {
     this.enableLoading(line);
     const body = JSON.stringify({
