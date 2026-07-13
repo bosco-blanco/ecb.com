@@ -92,7 +92,7 @@
           "type": "column",
           "settings": {
             "title": "Dónde estamos",
-            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd422c427507b767:0xb3e3ae672bdbfe03?sa=X&ved=1t:8290&ictx=111\">C. de la Begonia, 135, 28109 Alcobendas, Madrid</a></p>",
+            "text": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd418720459dcc47:0xba2d4229d993860a?sa=X&ved=1t:8290&ictx=111\">C. Barlovento, 30 Local 238, a 242, 28223 Pozuelo de Alarcón, Madrid</a></p>",
             "link_label": "",
             "link": ""
           }
@@ -101,7 +101,7 @@
           "type": "column",
           "settings": {
             "title": "Nuestro horario",
-            "text": "<p>Lunes a jueves: 11:00 - 02:00</p><p>Viernes y sábados: 11:00 - 02:30</p><p>Domingo: 11:00 - 01:00</p><p></p>",
+            "text": "<p>Lunes a sábado: 10:00 - 02:00</p><p>Domingo: cerrado</p><p></p>",
             "link_label": "",
             "link": ""
           }
@@ -110,7 +110,7 @@
           "type": "column",
           "settings": {
             "title": "Reserva",
-            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+de+balon+moraleja&sca_esv=1fae055577f6ba0b&sxsrf=APpeQnsGRK_PZmxS2K-W7yPSKKRXsFrWWw%3A1783593498091&ei=GnpPap2JBbiB9u8P9a22qQg&biw=1536&bih=695&gs_ssp=eJzj4tFP1zcsKKk0NS0zSTFgtFIxqEgxMTJKNjEyNzUwTzI3M7cyqEgyTjVOTDUzN0pKSUpLNTD2kkzNU0jOL0hUSElVSErMyc9TyM0vSsxJzUoEAIGEF_o&oq=en+copa+de+balon+mo&gs_lp=Egxnd3Mtd2l6LXNlcnAiE2VuIGNvcGEgZGUgYmFsb24gbW8qAggAMg4QLhiABBjHARivARiOBTIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgIQJjICECYyBRAAGO8FMgUQABjvBTIIEAAYgAQYogRI6CVQhwhY1BxwBHgBkAEAmAHJAqAB1hCqAQgxNC4zLjEuMbgBAcgBAPgBAZgCF6ACvBHCAgoQABhHGNYEGLADwgILEAAYgAQYsQMYgwHCAgUQABiABMICDhAuGIAEGIoFGLEDGIMBwgIFEC4YgATCAg4QABiABBiKBRixAxiDAcICChAAGIAEGIoFGEPCAgQQABgDwgIREC4YgAQYsQMYgwEYxwEY0QPCAgsQLhiABBixAxiDAcICDhAuGK8BGMcBGIAEGI4FwgILEC4YrwEYxwEYgATCAgsQLhiABBjHARivAZgDAIgGAZAGBZIHCDE0LjcuMS4xoAecnQOyBwgxMC43LjEuMbgHrRHCBwcwLjExLjEyyAdLgAgB&sclient=gws-wiz-serp#\">918 05 30 71</a></p><p>O directamente desde la <a href=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\" title=\"#shopify-section-template--30671352758609__custom_liquid_eFMrPd\">web</a>: </p>",
+            "text": "<p>Puedes reservar a través de nuestro teléfono: <a href=\"https://www.google.com/search?q=en+copa+club+pozuelo&oq=en+copa+club+poz&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyEAgBEC4YrwEYxwEYgAQYjgUyBggCEEUYOTIICAMQABgWGB4yCAgEEAAYFhgeMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINzU1NGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#\">915 13 81 00</a></p>",
             "link_label": "",
             "link": ""
           }
@@ -161,7 +161,7 @@
           "type": "button",
           "settings": {
             "btntxt": "Ir a la carta de comida",
-            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_La_Moraleja_2026.pdf?v=1783602865",
+            "link": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/Carta_Fisica_Pozuelo_3.pdf?v=1783937367",
             "button_style": "solid",
             "button_size": "bs_large"
           }
@@ -175,7 +175,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "accent-1",
-        "image": "shopify://shop_images/Foto_comida_moraleja.jpg",
+        "image": "shopify://shop_images/Pozuelo_3.jpg",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -220,7 +220,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/vinos_la_moraleja.jpg",
+        "image": "shopify://shop_images/vinos_pozuelo.jpg",
         "image_width": "50%",
         "image_position": "imgpright",
         "imgalign": "imgalignmiddle",
@@ -229,26 +229,6 @@
         "mobile_alignment": "center",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "custom_liquid_tA9WKQ": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<h2 style=\"font-family: 'Cormorant', serif; color: var(--text-color); text-align: center; padding: 2rem 1rem; font-size: 2rem; line-height: 1.6; margin: 0; font-weight: bold;\">Reserva directamente aquí</h2>",
-        "color_scheme": "accent-1",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "custom_liquid_eFMrPd": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<script type=\"text/javascript\"\n                                                                                               src=\"https://www.covermanager.com/js/iframeResizer.min.js\"></script><script type=\"text/javascript\" src=\"https://www.covermanager.com/reserve/gtmcrossdomain/encopadebalon-lamoraleja\"></script><iframe\n                                                                    id=\"encopadebalon-lamoraleja\" title=\"Reservas\" src=\"https://www.covermanager.com/reserve/module_restaurant/encopadebalon-lamoraleja/spanish\"\n                                                                    frameborder=\"0\" height=\"550\" width=\"100%\" onload=\"iFrameResize();\"></iframe>",
-        "color_scheme": "accent-1",
-        "padding_top": 0,
-        "padding_bottom": 12
       }
     },
     "custom_liquid_nyEbxi": {
@@ -277,7 +257,7 @@
       "name": "Image with text",
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify://shop_images/Evento_Moraleja.png",
+        "image": "shopify://shop_images/Evento_Pozuelo.png",
         "image_width": "50%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -329,8 +309,6 @@
     "multicolumn_hzDhU8",
     "image_with_text_frGPbk",
     "image_with_text_md8N9E",
-    "custom_liquid_tA9WKQ",
-    "custom_liquid_eFMrPd",
     "custom_liquid_nyEbxi",
     "image_with_text_diMxxc",
     "1783935372e7f4a784",
