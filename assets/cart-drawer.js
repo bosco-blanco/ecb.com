@@ -105,4 +105,10 @@ class CartDrawerItems extends CartItems {
     ];
   }
 }
-customElements.define('cart-drawer-items', CartDrawerItems);
+if (customElements.get('cart-items')) {
+  customElements.define('cart-drawer-items', CartDrawerItems);
+} else {
+  customElements.whenDefined('cart-items').then(() => {
+    customElements.define('cart-drawer-items', CartDrawerItems);
+  });
+}
