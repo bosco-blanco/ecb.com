@@ -48,22 +48,12 @@
           "settings": {
             "storysubtitle": "<p>C. de Claudio Coello, 121, Salamanca, 28006 Madrid</p>"
           }
-        },
-        "button_BFNRfj": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
-            "button_style": "outline",
-            "button_size": "bs_large"
-          }
         }
       },
       "block_order": [
         "heading_AFMycQ",
         "caption_4p7K7F",
-        "caption_whhV4X",
-        "button_BFNRfj"
+        "caption_whhV4X"
       ],
       "settings": {
         "color_scheme": "background-1",
@@ -99,22 +89,12 @@
           "settings": {
             "storysubtitle": "<p>Calle de Núñez de Balboa 24, 28001 Madrid</p>"
           }
-        },
-        "button_aGrwU7": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
-            "button_style": "outline",
-            "button_size": "bs_large"
-          }
         }
       },
       "block_order": [
         "heading_znwNeX",
         "caption_YRyEtH",
-        "caption_KxnWdU",
-        "button_aGrwU7"
+        "caption_KxnWdU"
       ],
       "settings": {
         "color_scheme": "background-1",
@@ -150,22 +130,12 @@
           "settings": {
             "storysubtitle": "<p>Calle de Arturo Soria 126, 28043 Madrid</p>"
           }
-        },
-        "button_FiVnYn": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Ver Todo",
-            "link": "shopify://collections/all",
-            "button_style": "outline",
-            "button_size": "bs_large"
-          }
         }
       },
       "block_order": [
         "heading_YxwqLx",
         "caption_N8QaXA",
-        "caption_LGh8NT",
-        "button_FiVnYn"
+        "caption_LGh8NT"
       ],
       "settings": {
         "color_scheme": "background-1",
