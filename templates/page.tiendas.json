@@ -149,6 +149,88 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "image_with_text_CzKWCh": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_actPD8": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Majadahonda",
+            "heading_size": "h0"
+          }
+        },
+        "caption_4bkYPL": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 910 34 48 96</p>"
+          }
+        },
+        "caption_egrY7x": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>Ctra. de Majadahonda, 28222, 28222 Majadahonda, Madrid</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_actPD8",
+        "caption_4bkYPL",
+        "caption_egrY7x"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/Majadahonda.webp",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_7Vm7gV": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_GjdcBr": {
+          "type": "heading",
+          "settings": {
+            "storytitle": "Granada",
+            "heading_size": "h0"
+          }
+        },
+        "caption_GnPQYh": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>+34 914 33 84 76</p>"
+          }
+        },
+        "caption_QxCzFV": {
+          "type": "caption",
+          "settings": {
+            "storysubtitle": "<p>C. de Granada, 44, Retiro, 28007 Madrid</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GjdcBr",
+        "caption_GnPQYh",
+        "caption_QxCzFV"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "image": "shopify://shop_images/bodegas_ortega.png",
+        "image_width": "25%",
+        "image_position": "imgpleft",
+        "imgalign": "imgalignmiddle",
+        "image_height": "small",
+        "Horizontal_alignment": "left",
+        "mobile_alignment": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
     }
   },
   "order": [
@@ -156,6 +238,8 @@
     "rich_text_hFjqrw",
     "image_with_text_9VRmWr",
     "image_with_text_ehJBif",
-    "image_with_text_Qzi6hT"
+    "image_with_text_Qzi6hT",
+    "image_with_text_CzKWCh",
+    "image_with_text_7Vm7gV"
   ]
 }
