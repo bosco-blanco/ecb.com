@@ -70,7 +70,6 @@
 
   /* Bloques narrativos partidos */
   #vpp-{{ SID }} .vpp-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); min-height:78vh; }
-  #vpp-{{ SID }} .vpp-split--brancellao { min-height:74vh; }
   #vpp-{{ SID }} .vpp-copy { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 7vw; }
   #vpp-{{ SID }} .vpp-media { position:relative; min-height:420px; }
   #vpp-{{ SID }} .vpp-media > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
@@ -81,6 +80,14 @@
 
   /* Placeholder de imagen (cuando no hay foto) */
   #vpp-{{ SID }} .vpp-ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; background:#EDE7D4; color:#8b8577; font-size:12px; letter-spacing:0.08em; padding:20px; }
+
+  /* Bloque narrativo centrado a ancho completo (sin foto) — "La otra rareza de la casa" */
+  #vpp-{{ SID }} .vpp-single { padding:110px 8vw; background:#F3EFE1; }
+  #vpp-{{ SID }} .vpp-single-inner { max-width:720px; margin:0 auto; text-align:center; }
+  #vpp-{{ SID }} .vpp-single-inner .vpp-eyebrow { margin-bottom:20px; }
+  #vpp-{{ SID }} .vpp-single-inner h2 { font-size:clamp(34px,3.6vw,54px); line-height:1.05; margin:0 0 26px; }
+  #vpp-{{ SID }} .vpp-single-inner p { font-size:15.5px; line-height:1.8; color:#4c473c; margin:0 0 18px; }
+  #vpp-{{ SID }} .vpp-single-inner p:last-child { margin-bottom:0; }
 
   /* La filoxera (fondo oscuro) */
   #vpp-{{ SID }} .vpp-dark { position:relative; background:#191712; color:#FBF8EE; padding:120px 8vw; overflow:hidden; }
@@ -219,20 +226,22 @@
     </div>
   </section>
 
-  {%- comment -%} ══ LA BRANCELLAO ══ {%- endcomment -%}
-  <section class="vpp-split vpp-split--brancellao">
-    <div class="vpp-copy">
+  {%- comment -%}
+    ══ LA OTRA RAREZA DE LA CASA ══
+    Antes era un split texto/foto, pero no hay foto real del racimo de
+    Brancellao (quedaba el placeholder en blanco). Se convierte en un
+    bloque centrado a ancho completo y se amplía el texto: ya no habla
+    solo de la Brancellao, también de lo particular de la Garnacha
+    Tintorera prefiloxérica y, en general, de que cada una de las 5
+    cajas de esta selección tiene detrás algo que no se repite fácil.
+  {%- endcomment -%}
+  <section class="vpp-single">
+    <div class="vpp-single-inner">
       <div class="vpp-eyebrow">La otra rareza de la casa</div>
       <h2>Una uva que casi desapareció</h2>
-      <p>La Brancellao es autóctona de Galicia y estuvo a punto de perderse del todo: racimos pequeños, piel fina, rendimientos tan bajos que casi ninguna bodega quería seguir plantándola.</p>
-      <p>Hoy la recupera un puñado de bodegas en Ribeira Sacra. Sigue siendo, de largo, una de las variedades gallegas más difíciles de encontrar embotellada en solitario.</p>
-    </div>
-    <div class="vpp-media">
-      {%- if section.settings.img_racimo != blank -%}
-        <img src="{{ section.settings.img_racimo | image_url: width: 1200 }}" alt="Racimo de Brancellao" loading="lazy">
-      {%- else -%}
-        <div class="vpp-ph">Foto · racimo de Brancellao</div>
-      {%- endif -%}
+      <p>La Brancellao es autóctona de Galicia y estuvo a punto de perderse del todo: racimos pequeños, piel fina, rendimientos tan bajos que casi ninguna bodega quería seguir plantándola. Hoy la recupera un puñado de bodegas en Ribeira Sacra y sigue siendo, de largo, una de las variedades gallegas más difíciles de encontrar embotellada en solitario.</p>
+      <p>La Garnacha Tintorera prefiloxérica de la casa es un caso todavía más singular: nace de las mismas cepas de pie franco plantadas en 1860, nunca injertadas, que sobrevivieron a la plaga que arrasó casi todos los viñedos de Europa. No hay forma de reponerla — cuando se acaba esa edición numerada, se acaba.</p>
+      <p>Y no son las únicas con algo que contar: el Brancellao con el único oro para un tinto de Ribeira Sacra en los Decanter World Wine Awards, el Mencía elegido mejor tinto español en el International Wine Challenge, el Godello de viñedo histórico, el Brancas con su ensamblaje de cuatro variedades autóctonas. Cada caja de esta selección tiene detrás algo que no se repite fácil.</p>
     </div>
   </section>
 
@@ -426,7 +435,6 @@
     { "type": "header", "content": "Los vinos" },
     { "type": "text", "id": "wines_eyebrow", "label": "Antetítulo grid", "default": "Cinco vinos, una sola reserva de julio" },
     { "type": "text", "id": "wines_title", "label": "Título grid", "default": "Lo raro y lo casi imposible" },
-    { "type": "image_picker", "id": "img_racimo", "label": "Foto racimo de Brancellao (opcional)" },
     { "type": "header", "content": "Reserva y cuenta atrás" },
     { "type": "text", "id": "reserva_text", "label": "Texto de reserva", "default": "Añade al carrito todas las cajas que quieras — pedimos directamente a la bodega según lo reservado. Cerramos la venta el 28 de julio, los envíos empiezan el 20 de julio y llegan en 24-48 horas." },
     { "type": "text", "id": "deadline", "label": "Cierre (cuenta atrás)", "info": "Formato ISO: AAAA-MM-DDTHH:MM:SS", "default": "2026-07-28T23:59:59" }
