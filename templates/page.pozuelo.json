@@ -101,7 +101,7 @@
           "type": "column",
           "settings": {
             "title": "Nuestro horario",
-            "text": "<p>Lunes a sábado: 10:00 - 02:00</p><p>Domingo: cerrado</p><p></p>",
+            "text": "<p>Lunes a viernes: 10:00 - 02:00</p><p>Sábado: 12:00 - 02:30</p><p>Domingo: cerrado</p><p></p>",
             "link_label": "",
             "link": ""
           }
