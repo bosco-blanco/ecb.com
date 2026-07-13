@@ -97,7 +97,10 @@
   #vpp-{{ SID }} .vpp-wines-head { text-align:center; margin-bottom:70px; }
   #vpp-{{ SID }} .vpp-wines-head .vpp-eyebrow { margin-bottom:18px; }
   #vpp-{{ SID }} .vpp-wines-head h2 { font-size:clamp(36px,4.2vw,58px); line-height:1.06; margin:0 auto; max-width:22ch; }
-  #vpp-{{ SID }} .vpp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:4vw; max-width:1280px; margin:0 auto 70px; }
+  #vpp-{{ SID }} .vpp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:28px; max-width:1280px; margin:0 auto 70px; }
+  @media (min-width:1080px) {
+    #vpp-{{ SID }} .vpp-grid { grid-template-columns:repeat(5,minmax(0,1fr)); max-width:1500px; gap:24px; }
+  }
   #vpp-{{ SID }} .vpp-card { display:flex; flex-direction:column; text-decoration:none; color:inherit; border-radius:2px; transition:transform .18s ease, box-shadow .18s ease; }
   #vpp-{{ SID }} .vpp-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(25,23,18,0.14); }
   #vpp-{{ SID }} .vpp-card figure { margin:0 0 26px; }
@@ -116,10 +119,12 @@
   #vpp-{{ SID }} .vpp-tbd { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; }
   #vpp-{{ SID }} .vpp-unit { font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
   #vpp-{{ SID }} .vpp-cta-mini { font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; margin-top:16px; padding-top:14px; }
-  #vpp-{{ SID }} .vpp-atc-form { margin-top:18px; }
-  #vpp-{{ SID }} .vpp-atc { width:100%; cursor:pointer; padding:14px 18px; font-family:'Instrument Sans',sans-serif; font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; transition:opacity .18s ease; }
+  #vpp-{{ SID }} .vpp-atc-form { margin-top:18px; display:block; }
+  #vpp-{{ SID }} .vpp-atc { width:100%; cursor:pointer; padding:14px 18px; font-family:'Instrument Sans',sans-serif; font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; transition:opacity .18s ease; position:relative; }
   #vpp-{{ SID }} .vpp-atc:hover { opacity:.85; }
-  #vpp-{{ SID }} .vpp-atc[disabled] { opacity:.4; cursor:not-allowed; }
+  #vpp-{{ SID }} .vpp-atc[disabled], #vpp-{{ SID }} .vpp-atc[aria-disabled="true"] { opacity:.4; cursor:not-allowed; }
+  #vpp-{{ SID }} .vpp-atc.loading { color:transparent; }
+  #vpp-{{ SID }} .vpp-atc-form .product-form__error-message-wrapper { font-size:11px; color:#b3261e; margin-bottom:8px; text-align:center; }
   #vpp-{{ SID }} .vpp-ficha-link { display:inline-block; margin-top:12px; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; }
 
   /* Reserva + cuenta atrás */
@@ -325,11 +330,30 @@
                 {%- if block.settings.unit != blank -%}<div class="vpp-unit" style="color:{{ fgMuted }};">{{ block.settings.unit }}</div>{%- endif -%}
               {%- endif -%}
               {%- if block.settings.variant_id != blank -%}
-                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="vpp-atc-form" style="border-top:1px solid {{ rule }}; padding-top:16px;">
-                  <input type="hidden" name="id" value="{{ block.settings.variant_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" name="add" class="vpp-atc" style="background:{{ fg }}; color:{{ bg }}; border:1px solid {{ fg }};">Agregar al carrito</button>
-                </form>
+                {%- comment -%}
+                  <product-form> es el web component real del tema (assets/product-form.js,
+                  ya cargado en páginas vía layout/theme.liquid). Intercepta el submit,
+                  hace el add-to-cart por fetch a routes.cart_add_url y abre el
+                  cart-drawer/cart-notification existente del header — sin recargar
+                  ni sacar al cliente de esta página.
+                {%- endcomment -%}
+                <product-form class="vpp-atc-form" style="border-top:1px solid {{ rule }}; padding-top:16px;">
+                  <div class="product-form__error-message-wrapper" role="alert" hidden>
+                    <span class="product-form__error-message"></span>
+                  </div>
+                  <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="form">
+                    <input type="hidden" name="id" value="{{ block.settings.variant_id }}" class="product-variant-id">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" name="add" class="vpp-atc" style="background:{{ fg }}; color:{{ bg }}; border:1px solid {{ fg }};">
+                      <span>Agregar al carrito</span>
+                      <div class="loading-overlay__spinner hidden">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                      </div>
+                    </button>
+                  </form>
+                </product-form>
                 {%- if has_link -%}<a class="vpp-ficha-link" href="{{ href }}" style="color:{{ accent }};">Ver ficha →</a>{%- endif -%}
               {%- else -%}
                 <div class="vpp-cta-mini" style="color:{{ accent }}; border-top:1px solid {{ rule }};">{% if href != '#' and href != blank %}Ver ficha y comprar →{% else %}Próximamente{% endif %}</div>
