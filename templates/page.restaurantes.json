@@ -45,41 +45,31 @@
         "heading_VpMrL6": {
           "type": "heading",
           "settings": {
-            "storytitle": "El Almacén En Copa de Balón Núñez de Balboa, 24",
+            "storytitle": "El Almacén - Núñez de Balboa",
             "heading_size": "h0"
           }
         },
         "caption_4pDEzn": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>+34 91 051 13 65<\/p>"
+            "storysubtitle": "<p><a href=\"https://www.google.com/search?q=Vinoteca+En+Copa+de+Bal%C3%B3n+-+El+Almac%C3%A9n%2C+Calle+de+N%C3%BA%C3%B1ez+de+Balboa%2C+Madrid&sca_esv=20b4b65056ec4911&biw=1536&bih=695&sxsrf=APpeQnvqs3qWXOjjNIeuEKb8BgIml_ADGg%3A1783941510711&ei=hslUauf6KsiYi-gP87DViAY&oq=vinoteca+en+copa+de+balon+nu%C3%B1ez&gs_lp=Egxnd3Mtd2l6LXNlcnAiIHZpbm90ZWNhIGVuIGNvcGEgZGUgYmFsb24gbnXDsWV6KgIIADICECYyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBUjdJVDuB1i2GnAFeAGQAQGYAdQBoAGRDKoBBTEuNy4yuAEByAEA-AEBmAIOoAL2CsICChAAGEcY1gQYsAPCAhcQLhjcBhi4BhjaBhjYAhjIAxiwA9gBAcICBRAhGKABwgIHECEYChigAZgDAIgGAZAGCroGBAgBGBmSBwU2LjcuMaAHySuyBwUxLjcuMbgH3wrCBwUxLjcuNsgHJYAIAQ&sclient=gws-wiz-serp#\">910 51 13 65</a></p>"
           }
         },
         "caption_XygcmY": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>C. de Núñez de Balboa, 24, Salamanca, 28001 Madrid<\/p>"
-          }
-        },
-        "button_cz7x8j": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Reservar mesa",
-            "link": "",
-            "button_style": "link",
-            "button_size": "bs_default"
+            "storysubtitle": "<p>C. de Núñez de Balboa, 24, Salamanca, 28001 Madrid</p>"
           }
         }
       },
       "block_order": [
         "heading_VpMrL6",
         "caption_4pDEzn",
-        "caption_XygcmY",
-        "button_cz7x8j"
+        "caption_XygcmY"
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify:\/\/shop_images\/Majadahonda.webp",
+        "image": "shopify://shop_images/NUNEZ_DE_BALBOA.jpg",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
@@ -96,41 +86,31 @@
         "heading_GQPgdd": {
           "type": "heading",
           "settings": {
-            "storytitle": "Enolounge Moraleja",
+            "storytitle": "Vinoteca  - Majadahonda",
             "heading_size": "h0"
           }
         },
         "caption_hCztiF": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>+34 918 05 30 71<\/p>"
+            "storysubtitle": "<p><a href=\"https://www.google.com/search?q=vinoteca+en+copa+de+balon+majadahonda&sca_esv=20b4b65056ec4911&biw=1536&bih=695&sxsrf=APpeQns9lFk_tBEogzetEzdhupYh2FPW_A%3A1783941464660&ei=WMlUaqjwJ7Koi-gPvv-TkAM&ved=0ahUKEwio_LPqw8-VAxUy1AIHHb7_BDIQ4dUDCBA&uact=5&oq=vinoteca+en+copa+de+balon+majadahonda&gs_lp=Egxnd3Mtd2l6LXNlcnAiJXZpbm90ZWNhIGVuIGNvcGEgZGUgYmFsb24gbWFqYWRhaG9uZGEyBhAAGBYYHjIGEAAYFhgeMgIQJjIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBEjOMlDmBli1MnAFeAGQAQCYAdkCoAHlKaoBCDAuMzcuMC4xuAEDyAEA-AEBmAIroAKzK6gCCsICChAAGEcY1gQYsAPCAhcQLhjcBhi4BhjaBhjYAhjIAxiwA9gBAcICExAuGEMYrwEYxwEYgAQYigUYjgXCAgoQABiABBiKBRhDwgILEC4YgAQYxwEY0QPCAhEQLhiABBixAxiDARjHARjRA8ICIhAuGEMYrwEYxwEYgAQYigUYjgUYlwUY3AQY3gQY4ATYAQLCAhAQABgDGI8BGOoCGLQC2AEBwgIQEC4YAxiPARjqAhi0AtgBAcICBRAAGIAEwgIIEAAYgAQYsQPCAgsQABiABBixAxiDAcICCxAuGIAEGLEDGIMBwgIOEC4YgAQYsQMYxwEY0QPCAhMQLhiABBiKBRhDGMcBGK8BGI4FwgINEAAYgAQYigUYQxixA8ICChAuGIAEGIoFGEPCAhAQABiABBiKBRhDGLEDGIMBwgINEAAYgAQYigUYQxjJA8ICEBAuGEMYgwEYsQMYgAQYigXCAgsQABiABBiKBRiSA8ICDRAuGIAEGIoFGEMYsQPCAhAQABiABBiKBRhDGLEDGMkDwgITEC4YQxjHARixAxjRAxiABBiKBcICCBAuGIAEGLEDwgIIEAAYgAQYkgPCAg4QLhiABBjHARivARiOBcICERAuGIAEGJIDGMcBGK8BGI4FwgIgEC4YgAQYkgMYxwEYrwEYjgUYlwUY3AQY3gQY4ATYAQLCAggQABiABBjJA8ICIhAuGIAEGIoFGEMYxwEYrwEYjgUYlwUY3AQY3gQY4ATYAQLCAgsQLhiABBjHARivAcICGhAuGIAEGMcBGK8BGJcFGNwEGN4EGOAE2AECwgIFECEYoAGYAwXxBbnEkZUVXs5EiAYBkAYKugYECAEYGboGBggCEAEYFJIHCDUuMzcuMC4xoAfs6wOyBwgwLjM3LjAuMbgHmSvCBwkwLjE2LjI2LjHIB5YBgAgB&sclient=gws-wiz-serp#\">910 34 48 96</a></p>"
           }
         },
         "caption_RVAdCm": {
           "type": "caption",
           "settings": {
-            "storysubtitle": "<p>Calle de la Begonia 135, 28109 Alcobendas<\/p>"
-          }
-        },
-        "button_JiYJdG": {
-          "type": "button",
-          "settings": {
-            "btntxt": "Reservar mesa",
-            "link": "",
-            "button_style": "link",
-            "button_size": "bs_default"
+            "storysubtitle": "<p><a href=\"https://www.google.com/maps/place//data=!4m2!3m1!1s0xd4185ff3bf295df:0xd8816c71388cee02?sa=X&ved=1t:8290&ictx=111\">Ctra. de Majadahonda, 28222, 28222 Majadahonda, Madrid</a></p>"
           }
         }
       },
       "block_order": [
         "heading_GQPgdd",
         "caption_hCztiF",
-        "caption_RVAdCm",
-        "button_JiYJdG"
+        "caption_RVAdCm"
       ],
       "settings": {
         "color_scheme": "background-1",
-        "image": "shopify:\/\/shop_images\/Majadahonda.webp",
+        "image": "shopify://shop_images/Majadahonda.webp",
         "image_width": "25%",
         "image_position": "imgpleft",
         "imgalign": "imgalignmiddle",
