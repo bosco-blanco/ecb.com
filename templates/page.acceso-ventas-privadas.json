@@ -17,6 +17,102 @@
         "padding_bottom": 0
       }
     },
+    "vp_pazo": {
+      "type": "ventas-privadas-pazo-julio2026",
+      "blocks": {
+        "brancellao": {
+          "type": "wine",
+          "settings": {
+            "name": "Brancellao 2023",
+            "tagline": "El único tinto de Ribeira Sacra con oro en los Decanter World Wine Awards.",
+            "badge": "Oro · 95 pts DWWA",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Brancellao, Mencía",
+            "spec_2_k": "Crianza", "spec_2_v": "8 meses",
+            "spec_3_k": "D.O.", "spec_3_v": "Ribeira Sacra",
+            "spec_4_k": "Premio", "spec_4_v": "Oro DWWA 2026 · 95 pts",
+            "price_was": "177,00 €",
+            "price_now": "123,90 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "asset_name": "vp-julio2026-botella-brancellao.jpg",
+            "product_url": "/products/pazo-la-cuesta-brancellao",
+            "variant_id": "54132421394769"
+          }
+        },
+        "garnacha": {
+          "type": "wine",
+          "settings": {
+            "name": "Garnacha Tintorera Prefiloxérica",
+            "tagline": "De cepas propias plantadas en 1860, nunca injertadas.",
+            "badge": "Edición numerada",
+            "featured": true,
+            "spec_1_k": "Viña", "spec_1_v": "Pie franco, plantada en 1860",
+            "spec_2_k": "Origen de la variedad", "spec_2_v": "Sur de Francia",
+            "spec_3_k": "D.O.", "spec_3_v": "Ribeira Sacra",
+            "price_was": "239,40 €",
+            "price_now": "167,58 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-garnacha-tintorera-2021-60249288769873.jpg?v=1743413619",
+            "product_url": "/products/pazo-la-cuesta-garnacha-tintorera",
+            "variant_id": "54307098394961"
+          }
+        },
+        "mencia": {
+          "type": "wine",
+          "settings": {
+            "name": "Mencía 2022",
+            "tagline": "Elegido mejor vino tinto español por el International Wine Challenge 2025.",
+            "badge": "Mejor tinto español · IWC 2025",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Mencía",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "spec_3_k": "Distinción", "spec_3_v": "IWC 2025",
+            "price_was": "153,00 €",
+            "price_now": "107,10 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-mencia-2022-60249287852369.jpg?v=1743413618",
+            "product_url": "/products/pazo-la-cuesta-mencia",
+            "variant_id": "54307089154385"
+          }
+        },
+        "godello": {
+          "type": "wine",
+          "settings": {
+            "name": "Godello 2024",
+            "tagline": "Godello de viñedo histórico en Ribeira Sacra.",
+            "badge": "",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Godello",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "price_was": "119,40 €",
+            "price_now": "83,58 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-godello-2023-60249285034321.jpg?v=1743413620",
+            "product_url": "/products/pazo-la-cuesta-godello",
+            "variant_id": "54307096133969"
+          }
+        },
+        "brancas": {
+          "type": "wine",
+          "settings": {
+            "name": "Brancas 2022",
+            "tagline": "Ensamblaje blanco de cuatro variedades autóctonas gallegas.",
+            "badge": "Blanco de bodega",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Treixadura, Godello, Albariño, Loureira",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "price_was": "131,94 €",
+            "price_now": "92,36 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-brancas-2022-60249291424081.jpg?v=1743413616",
+            "product_url": "/products/pazo-la-cuesta-brancas",
+            "variant_id": "54307091972433"
+          }
+        }
+      },
+      "block_order": ["brancellao", "garnacha", "mencia", "godello", "brancas"],
+      "settings": {}
+    },
     "vp_access": {
       "type": "ventas-privadas-acceso",
       "settings": {}
@@ -24,6 +120,7 @@
   },
   "order": [
     "main",
+    "vp_pazo",
     "vp_access"
   ]
 }

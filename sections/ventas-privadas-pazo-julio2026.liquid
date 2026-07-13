@@ -1,0 +1,537 @@
+{%- comment -%}
+  Ventas Privadas · Pazo de la Cuesta — Julio 2026 (En Copa de Balón)
+
+  Página inmersiva para el socio APROBADO (tag 'preventa'). Portada desde el
+  mockup aprobado (design/ventas-privadas-julio-2026/mockup-final.dc.html).
+
+  · Header y footer: se usan los REALES del tema (carrito/cuenta/búsqueda).
+    Esta sección arranca en el Hero y termina en la reserva — NO replica el
+    header/footer del mockup.
+  · Paleta propia de esta landing (edición especial tipo "château"),
+    intencionadamente distinta de los tokens de marca del resto del sitio:
+      fondo #FBF8EE · tinta #191712 · panel claro #F3EFE1
+      acento oliva #8A6D2F · acento dorado #E4C989 (sobre fondo oscuro)
+  · Los vinos son BLOQUES de sección (editables desde el editor de temas).
+  · Cuenta atrás: cierre 28-jul-2026 23:59 (configurable abajo).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+{%- comment -%}
+  Gate: esta sección SOLO se renderiza para el socio aprobado (tag 'preventa').
+  En el editor de temas (request.design_mode) se muestra siempre para poder editarla.
+{%- endcomment -%}
+{%- liquid
+  assign is_member = false
+  if customer and customer.tags contains 'preventa'
+    assign is_member = true
+  endif
+-%}
+{%- if is_member or request.design_mode -%}
+
+{%- liquid
+  assign SID = section.id | replace: '-', '' | replace: '_', ''
+  assign deadline = section.settings.deadline | default: '2026-07-28T23:59:59'
+  assign info_line = section.settings.info_line
+  assign welcome = section.settings.welcome_line | default: 'Bienvenido/a al círculo'
+-%}
+
+<style>
+  #vpp-{{ SID }} {
+    background:#FBF8EE; color:#191712;
+    font-family:'Instrument Sans',sans-serif; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  #vpp-{{ SID }} h1, #vpp-{{ SID }} h2, #vpp-{{ SID }} h3 { font-family:'Cormorant Garamond',serif; font-weight:500; }
+  #vpp-{{ SID }} a { color:#191712; }
+  #vpp-{{ SID }} ::selection { background:#E8DCB8; }
+  #vpp-{{ SID }} .vpp-serif { font-family:'Cormorant Garamond',serif; }
+
+  /* Banda de bienvenida premium */
+  #vpp-{{ SID }} .vpp-welcome {
+    background:#191712; color:#FBF8EE; text-align:center;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:10px 16px; line-height:1.5;
+  }
+  #vpp-{{ SID }} .vpp-welcome b { color:#E4C989; font-weight:600; letter-spacing:0.14em; }
+  #vpp-{{ SID }} .vpp-welcome .vpp-info { display:block; color:rgba(251,248,238,0.6); font-size:10px; letter-spacing:0.16em; margin-top:4px; }
+
+  /* Hero */
+  #vpp-{{ SID }} .vpp-hero { position:relative; height:92vh; min-height:600px; }
+  #vpp-{{ SID }} .vpp-hero > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  #vpp-{{ SID }} .vpp-hero .vpp-scrim { position:absolute; inset:0; background:linear-gradient(180deg, rgba(25,23,18,0.15), rgba(25,23,18,0.55)); }
+  #vpp-{{ SID }} .vpp-hero .vpp-hero-inner { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:6vh 6vw; }
+  #vpp-{{ SID }} .vpp-hero .vpp-place { font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#FBF8EE; opacity:0.85; }
+  #vpp-{{ SID }} .vpp-hero h1 { margin:0; font-size:clamp(46px,7vw,104px); line-height:1.02; color:#FBF8EE; max-width:20ch; text-shadow:0 4px 30px rgba(0,0,0,0.3); }
+  #vpp-{{ SID }} .vpp-hero h1 em { font-style:italic; color:#E4C989; }
+  #vpp-{{ SID }} .vpp-hero p { font-size:16.5px; line-height:1.7; color:rgba(251,248,238,0.88); max-width:52ch; margin:26px 0 0; }
+
+  /* Bloques narrativos partidos */
+  #vpp-{{ SID }} .vpp-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); min-height:78vh; }
+  #vpp-{{ SID }} .vpp-split--brancellao { min-height:74vh; }
+  #vpp-{{ SID }} .vpp-copy { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 7vw; }
+  #vpp-{{ SID }} .vpp-media { position:relative; min-height:420px; }
+  #vpp-{{ SID }} .vpp-media > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  #vpp-{{ SID }} .vpp-eyebrow { font-size:10.5px; letter-spacing:0.26em; text-transform:uppercase; color:#8A6D2F; font-weight:600; margin-bottom:20px; }
+  #vpp-{{ SID }} .vpp-copy h2 { font-size:clamp(34px,3.6vw,54px); line-height:1.05; margin:0 0 22px; }
+  #vpp-{{ SID }} .vpp-copy p { font-size:15.5px; line-height:1.75; color:#4c473c; max-width:44ch; margin:0 0 16px; }
+  #vpp-{{ SID }} .vpp-copy p:last-child { margin-bottom:0; }
+
+  /* Placeholder de imagen (cuando no hay foto) */
+  #vpp-{{ SID }} .vpp-ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; background:#EDE7D4; color:#8b8577; font-size:12px; letter-spacing:0.08em; padding:20px; }
+
+  /* La filoxera (fondo oscuro) */
+  #vpp-{{ SID }} .vpp-dark { position:relative; background:#191712; color:#FBF8EE; padding:120px 8vw; overflow:hidden; }
+  #vpp-{{ SID }} .vpp-dark .vpp-dark-grid { max-width:1300px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:7vw; align-items:center; }
+  #vpp-{{ SID }} .vpp-dark .vpp-eyebrow { color:#E4C989; margin-bottom:22px; }
+  #vpp-{{ SID }} .vpp-dark h2 { font-size:clamp(34px,4vw,58px); line-height:1.06; margin:0 0 28px; color:#FBF8EE; max-width:16ch; }
+  #vpp-{{ SID }} .vpp-dark p { font-size:16px; line-height:1.8; color:rgba(251,248,238,0.82); max-width:48ch; margin:0 0 18px; }
+  #vpp-{{ SID }} .vpp-dark p:last-child { margin-bottom:0; }
+  #vpp-{{ SID }} .vpp-dark .vpp-dark-media { position:relative; aspect-ratio:4/5; border-radius:2px; overflow:hidden; }
+  #vpp-{{ SID }} .vpp-dark .vpp-dark-media > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+  /* Los vinos */
+  #vpp-{{ SID }} .vpp-wines { background:#FBF8EE; padding:110px 8vw 60px; }
+  #vpp-{{ SID }} .vpp-wines-head { text-align:center; margin-bottom:70px; }
+  #vpp-{{ SID }} .vpp-wines-head .vpp-eyebrow { margin-bottom:18px; }
+  #vpp-{{ SID }} .vpp-wines-head h2 { font-size:clamp(36px,4.2vw,58px); line-height:1.06; margin:0 auto; max-width:22ch; }
+  #vpp-{{ SID }} .vpp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:4vw; max-width:1280px; margin:0 auto 70px; }
+  #vpp-{{ SID }} .vpp-card { display:flex; flex-direction:column; text-decoration:none; color:inherit; border-radius:2px; transition:transform .18s ease, box-shadow .18s ease; }
+  #vpp-{{ SID }} .vpp-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(25,23,18,0.14); }
+  #vpp-{{ SID }} .vpp-card figure { margin:0 0 26px; }
+  #vpp-{{ SID }} .vpp-card .vpp-shot { aspect-ratio:3/4; position:relative; overflow:hidden; }
+  #vpp-{{ SID }} .vpp-card .vpp-shot > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  #vpp-{{ SID }} .vpp-badge { display:inline-block; align-self:center; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:16px; }
+  #vpp-{{ SID }} .vpp-card h3 { font-weight:600; font-size:26px; text-align:center; margin:0 0 8px; }
+  #vpp-{{ SID }} .vpp-card .vpp-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15.5px; text-align:center; margin:0 0 22px; }
+  #vpp-{{ SID }} .vpp-specs { margin-bottom:22px; }
+  #vpp-{{ SID }} .vpp-spec { display:flex; justify-content:space-between; padding:11px 2px; font-size:12.5px; }
+  #vpp-{{ SID }} .vpp-spec span:first-child { text-transform:uppercase; letter-spacing:0.1em; font-size:10.5px; }
+  #vpp-{{ SID }} .vpp-price { text-align:center; margin-top:auto; }
+  #vpp-{{ SID }} .vpp-price-row { display:flex; align-items:baseline; justify-content:center; gap:10px; }
+  #vpp-{{ SID }} .vpp-was { font-size:13px; text-decoration:line-through; }
+  #vpp-{{ SID }} .vpp-now { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; }
+  #vpp-{{ SID }} .vpp-tbd { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; }
+  #vpp-{{ SID }} .vpp-unit { font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
+  #vpp-{{ SID }} .vpp-cta-mini { font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; margin-top:16px; padding-top:14px; }
+  #vpp-{{ SID }} .vpp-atc-form { margin-top:18px; }
+  #vpp-{{ SID }} .vpp-atc { width:100%; cursor:pointer; padding:14px 18px; font-family:'Instrument Sans',sans-serif; font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; transition:opacity .18s ease; }
+  #vpp-{{ SID }} .vpp-atc:hover { opacity:.85; }
+  #vpp-{{ SID }} .vpp-atc[disabled] { opacity:.4; cursor:not-allowed; }
+  #vpp-{{ SID }} .vpp-ficha-link { display:inline-block; margin-top:12px; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; }
+
+  /* Reserva + cuenta atrás */
+  #vpp-{{ SID }} .vpp-reserva { display:flex; flex-direction:column; align-items:center; text-align:center; padding:60px 4vw 50px; border-top:1px solid rgba(25,23,18,0.1); }
+  #vpp-{{ SID }} .vpp-reserva h3 { font-size:clamp(28px,3.4vw,42px); line-height:1.1; max-width:22ch; margin:0 0 18px; }
+  #vpp-{{ SID }} .vpp-reserva h3 em { font-style:italic; color:#8A6D2F; }
+  #vpp-{{ SID }} .vpp-reserva > p { font-size:15px; line-height:1.7; color:#4c473c; max-width:54ch; margin:0 0 40px; }
+  #vpp-{{ SID }} .vpp-countdown { display:flex; align-items:stretch; margin-bottom:38px; }
+  #vpp-{{ SID }} .vpp-cd-cell { padding:0 24px; border-right:1px solid rgba(25,23,18,0.18); }
+  #vpp-{{ SID }} .vpp-cd-cell:last-child { border-right:0; }
+  #vpp-{{ SID }} .vpp-cd-num { display:block; font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:500; line-height:1; font-variant-numeric:tabular-nums; }
+  #vpp-{{ SID }} .vpp-cd-cell:last-child .vpp-cd-num { color:#8A6D2F; }
+  #vpp-{{ SID }} .vpp-cd-lbl { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#6d675a; }
+  #vpp-{{ SID }} .vpp-btn { text-decoration:none; background:#191712; color:#FBF8EE; border:1px solid #191712; padding:18px 52px; font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:2px; display:inline-block; transition:background .18s ease, color .18s ease; }
+  #vpp-{{ SID }} .vpp-btn:hover { background:#C2A15B; border-color:#C2A15B; color:#191712; }
+  #vpp-{{ SID }} .vpp-fineprint { font-size:12.5px; color:#6d675a; margin-top:16px; }
+
+  @media (max-width:749px) {
+    #vpp-{{ SID }} .vpp-split, #vpp-{{ SID }} .vpp-dark .vpp-dark-grid { grid-template-columns:1fr; }
+    #vpp-{{ SID }} .vpp-split { min-height:0; }
+    #vpp-{{ SID }} .vpp-media { min-height:60vw; }
+    #vpp-{{ SID }} .vpp-copy { padding:56px 8vw; }
+    #vpp-{{ SID }} .vpp-dark { padding:72px 8vw; }
+    #vpp-{{ SID }} .vpp-hero { height:82vh; }
+    #vpp-{{ SID }} .vpp-wines { padding:72px 6vw 40px; }
+    /* La media va debajo del texto en móvil salvo el bloque château (media primero) */
+    #vpp-{{ SID }} .vpp-split--media-first .vpp-media { order:-1; }
+  }
+</style>
+
+<div id="vpp-{{ SID }}">
+
+  {%- comment -%} ══ Bienvenida premium (socio aprobado) ══ {%- endcomment -%}
+  <div class="vpp-welcome">
+    {{ welcome }}{% if customer and customer.first_name != blank %}, <b>{{ customer.first_name }}</b>{% endif %} · eres miembro de las Ventas Privadas de <b>En Copa de Balón</b>
+    {%- if info_line != blank -%}<span class="vpp-info">{{ info_line }}</span>{%- endif -%}
+  </div>
+
+  {%- comment -%} ══ HERO ══ {%- endcomment -%}
+  <section class="vpp-hero">
+    <img src="{{ 'vp-julio2026-fachada.jpg' | asset_url }}" alt="Pazo de la Cuesta" loading="eager" fetchpriority="high">
+    <div class="vpp-scrim"></div>
+    <div class="vpp-hero-inner">
+      <div class="vpp-place">Pazo de la Cuesta · San Clodio, Ribeira Sacra</div>
+      <div>
+        <h1>El château gallego que la filoxera <em>no pudo tocar</em></h1>
+        <p>La bodega familiar más antigua de Galicia, en pie desde 1608, guarda dos parcelas de viñas centenarias que sobrevivieron a la plaga que arrasó los viñedos de Europa. De ahí sale un vino que hoy es, sencillamente, imposible de replicar — y cuya otra joya, el Brancellao 2023, acaba de ganar el único oro para un tinto de Ribeira Sacra en los Decanter World Wine Awards.</p>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ══ DESDE 1608 ══ {%- endcomment -%}
+  <section id="historia-{{ SID }}" class="vpp-split">
+    <div class="vpp-copy">
+      <div class="vpp-eyebrow">Desde 1608</div>
+      <h2>Catorce generaciones, una misma tierra</h2>
+      <p>En San Clodio, a orillas del Sil, la familia Bellod elabora vino desde 1608. Es la bodega familiar más antigua de Galicia, y hoy la dirige la decimocuarta generación de propietarios del pazo.</p>
+      <p>Cuatro siglos sin vender la finca, sin romper la cadena. No es una bodega que se fundó pensando en crecer rápido — es una que sigue en pie porque nunca se marchó.</p>
+    </div>
+    <div class="vpp-media">
+      <img src="{{ 'vp-julio2026-aereo.jpg' | asset_url }}" alt="Pazo de la Cuesta, vista aérea" loading="lazy">
+    </div>
+  </section>
+
+  {%- comment -%} ══ EL CHÂTEAU GALLEGO (media a la izquierda) ══ {%- endcomment -%}
+  <section class="vpp-split vpp-split--media-first">
+    <div class="vpp-media">
+      <img src="{{ 'vp-julio2026-barricas.jpg' | asset_url }}" alt="Bodega de barricas, Pazo de la Cuesta" loading="lazy">
+    </div>
+    <div class="vpp-copy">
+      <div class="vpp-eyebrow">El primer château gallego</div>
+      <h2>Como en Burdeos, pero en Galicia</h2>
+      <p>Pazo de la Cuesta trabaja al estilo de los grandes châteaux de Burdeos: la bodega rodeada de sus propios viñedos, la uva vendimiada y prensada en la misma finca, sin pasar por manos ajenas. En Galicia, eso sigue siendo raro.</p>
+      <p>Ya en 1862 fueron los primeros de todo el norte de España en etiquetar sus propios vinos — cuando casi nadie en la región firmaba lo que embotellaba.</p>
+    </div>
+  </section>
+
+  {%- comment -%} ══ LA FILOXERA ══ {%- endcomment -%}
+  <section id="filoxera-{{ SID }}" class="vpp-dark">
+    <div class="vpp-dark-grid">
+      <div>
+        <div class="vpp-eyebrow">La plaga que cambió el vino europeo</div>
+        <h2>Lo que la filoxera no llegó a matar</h2>
+        <p>A finales del siglo XIX, una plaga llegada de América destruyó casi todos los viñedos de Europa. La solución, la única que funcionó, fue injertar las variedades europeas sobre raíz americana. Desde entonces, casi ninguna viña del continente crece sobre su propia raíz.</p>
+        <p>En el Pazo de la Cuesta sobreviven dos parcelas diminutas, a orillas del Sil, plantadas en 1860 — antes de que la plaga cruzara el Atlántico. Son cepas de Garnacha Tintorera, una variedad llegada originalmente del sur de Francia, y crecen todavía sobre pie franco: su propia raíz, nunca injertada.</p>
+        <p>Esto no se puede fabricar ni acelerar. No existe forma de "plantar" una viña prefiloxérica hoy — o la tierra la conserva desde antes de la plaga, o ya no existe. Por eso el vino que sale de ahí se embotella en una edición numerada: cuando se acaba, se acaba.</p>
+      </div>
+      <div class="vpp-dark-media">
+        <img src="{{ 'vp-julio2026-cepa.jpg' | asset_url }}" alt="Cepa prefiloxérica de Garnacha Tintorera, plantada en 1860" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ══ LA BRANCELLAO ══ {%- endcomment -%}
+  <section class="vpp-split vpp-split--brancellao">
+    <div class="vpp-copy">
+      <div class="vpp-eyebrow">La otra rareza de la casa</div>
+      <h2>Una uva que casi desapareció</h2>
+      <p>La Brancellao es autóctona de Galicia y estuvo a punto de perderse del todo: racimos pequeños, piel fina, rendimientos tan bajos que casi ninguna bodega quería seguir plantándola.</p>
+      <p>Hoy la recupera un puñado de bodegas en Ribeira Sacra. Sigue siendo, de largo, una de las variedades gallegas más difíciles de encontrar embotellada en solitario.</p>
+    </div>
+    <div class="vpp-media">
+      {%- if section.settings.img_racimo != blank -%}
+        <img src="{{ section.settings.img_racimo | image_url: width: 1200 }}" alt="Racimo de Brancellao" loading="lazy">
+      {%- else -%}
+        <div class="vpp-ph">Foto · racimo de Brancellao</div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ══ LOS VINOS (bloques) ══ {%- endcomment -%}
+  <section id="vinos-{{ SID }}" class="vpp-wines">
+    <div class="vpp-wines-head">
+      <div class="vpp-eyebrow">{{ section.settings.wines_eyebrow | default: 'Cinco vinos, una sola reserva de julio' }}</div>
+      <h2>{{ section.settings.wines_title | default: 'Lo raro y lo casi imposible' }}</h2>
+    </div>
+
+    <div class="vpp-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'wine' -%}
+          {%- liquid
+            if block.settings.featured
+              assign bg = '#191712'
+              assign fg = '#FBF8EE'
+              assign fgMuted = 'rgba(251,248,238,0.55)'
+              assign rule = 'rgba(251,248,238,0.18)'
+              assign accent = '#E4C989'
+              assign pad = '36px 30px'
+            else
+              assign bg = '#FBF8EE'
+              assign fg = '#191712'
+              assign fgMuted = '#8b8577'
+              assign rule = 'rgba(25,23,18,0.16)'
+              assign accent = '#8A6D2F'
+              assign pad = '0px'
+            endif
+
+            assign img = ''
+            if block.settings.bottle_image != blank
+              assign img = block.settings.bottle_image | image_url: width: 900
+            elsif block.settings.image_url != blank
+              assign img = block.settings.image_url
+            elsif block.settings.asset_name != blank
+              assign img = block.settings.asset_name | asset_url
+            endif
+
+            assign href = block.settings.product_url | default: '#'
+          -%}
+          {%- assign has_link = false -%}
+          {%- if href != '#' and href != blank -%}{%- assign has_link = true -%}{%- endif -%}
+          <div class="vpp-card" style="background:{{ bg }}; padding:{{ pad }};" {{ block.shopify_attributes }}>
+            <figure>
+              <div class="vpp-shot">
+                {%- if has_link -%}<a href="{{ href }}" aria-label="{{ block.settings.name | escape }}" style="position:absolute; inset:0; z-index:1;"></a>{%- endif -%}
+                {%- if img != blank -%}
+                  <img src="{{ img }}" alt="{{ block.settings.name | escape }}" loading="lazy">
+                {%- else -%}
+                  <div class="vpp-ph">{{ block.settings.placeholder | default: 'Foto · botella' }}</div>
+                {%- endif -%}
+              </div>
+            </figure>
+
+            {%- if block.settings.badge != blank -%}
+              <div class="vpp-badge" style="border:1px solid {{ accent }}; color:{{ accent }};">{{ block.settings.badge }}</div>
+            {%- endif -%}
+
+            {%- if has_link -%}
+              <h3 style="color:{{ fg }};"><a href="{{ href }}" style="color:inherit; text-decoration:none;">{{ block.settings.name }}</a></h3>
+            {%- else -%}
+              <h3 style="color:{{ fg }};">{{ block.settings.name }}</h3>
+            {%- endif -%}
+            {%- if block.settings.tagline != blank -%}
+              <p class="vpp-tagline" style="color:{{ fgMuted }};">{{ block.settings.tagline }}</p>
+            {%- endif -%}
+
+            {%- assign has_specs = false -%}
+            {%- for i in (1..4) -%}
+              {%- assign k = 'spec_' | append: i | append: '_k' -%}
+              {%- assign v = 'spec_' | append: i | append: '_v' -%}
+              {%- if block.settings[k] != blank and block.settings[v] != blank -%}{%- assign has_specs = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- if has_specs -%}
+              <div class="vpp-specs" style="border-top:1px solid {{ rule }};">
+                {%- for i in (1..4) -%}
+                  {%- assign k = 'spec_' | append: i | append: '_k' -%}
+                  {%- assign v = 'spec_' | append: i | append: '_v' -%}
+                  {%- if block.settings[k] != blank and block.settings[v] != blank -%}
+                    <div class="vpp-spec" style="border-bottom:1px solid {{ rule }}; color:{{ fg }};"><span style="color:{{ fgMuted }};">{{ block.settings[k] }}</span><span>{{ block.settings[v] }}</span></div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            <div class="vpp-price">
+              {%- if block.settings.price_now != blank -%}
+                <div class="vpp-price-row">
+                  {%- if block.settings.price_was != blank -%}<span class="vpp-was" style="color:{{ fgMuted }};">{{ block.settings.price_was }}</span>{%- endif -%}
+                  <span class="vpp-now" style="color:{{ fg }};">{{ block.settings.price_now }}</span>
+                </div>
+                {%- if block.settings.unit != blank -%}<div class="vpp-unit" style="color:{{ accent }};">{{ block.settings.unit }}</div>{%- endif -%}
+              {%- elsif block.settings.price_tbd != blank -%}
+                <div class="vpp-tbd" style="color:{{ accent }};">{{ block.settings.price_tbd }}</div>
+                {%- if block.settings.unit != blank -%}<div class="vpp-unit" style="color:{{ fgMuted }};">{{ block.settings.unit }}</div>{%- endif -%}
+              {%- endif -%}
+              {%- if block.settings.variant_id != blank -%}
+                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="vpp-atc-form" style="border-top:1px solid {{ rule }}; padding-top:16px;">
+                  <input type="hidden" name="id" value="{{ block.settings.variant_id }}">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" name="add" class="vpp-atc" style="background:{{ fg }}; color:{{ bg }}; border:1px solid {{ fg }};">Agregar al carrito</button>
+                </form>
+                {%- if has_link -%}<a class="vpp-ficha-link" href="{{ href }}" style="color:{{ accent }};">Ver ficha →</a>{%- endif -%}
+              {%- else -%}
+                <div class="vpp-cta-mini" style="color:{{ accent }}; border-top:1px solid {{ rule }};">{% if href != '#' and href != blank %}Ver ficha y comprar →{% else %}Próximamente{% endif %}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} ══ RESERVA + CUENTA ATRÁS ══ {%- endcomment -%}
+    <div id="reserva-{{ SID }}" class="vpp-reserva">
+      <h3>Reserva tu caja: <em>la oportunidad de probar algo único</em></h3>
+      <p>{{ section.settings.reserva_text | default: 'Añade al carrito todas las cajas que quieras — pedimos directamente a la bodega según lo reservado. Cerramos la venta el 28 de julio, los envíos empiezan el 20 de julio y llegan en 24-48 horas.' }}</p>
+
+      <div class="vpp-countdown" data-vpp-countdown data-deadline="{{ deadline }}">
+        <div class="vpp-cd-cell"><span class="vpp-cd-num" data-cd="days">--</span><span class="vpp-cd-lbl">días</span></div>
+        <div class="vpp-cd-cell"><span class="vpp-cd-num" data-cd="hours">--</span><span class="vpp-cd-lbl">horas</span></div>
+        <div class="vpp-cd-cell"><span class="vpp-cd-num" data-cd="mins">--</span><span class="vpp-cd-lbl">min</span></div>
+        <div class="vpp-cd-cell"><span class="vpp-cd-num" data-cd="secs">--</span><span class="vpp-cd-lbl">seg</span></div>
+      </div>
+
+      <a class="vpp-btn" href="#vinos-{{ SID }}">Elegir mi caja</a>
+      {%- if info_line != blank -%}<div class="vpp-fineprint">{{ info_line }}</div>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('vpp-{{ SID }}');
+    if (!root) return;
+    var cd = root.querySelector('[data-vpp-countdown]');
+    if (!cd) return;
+    var deadline = new Date(cd.getAttribute('data-deadline')).getTime();
+    var els = {
+      days: cd.querySelector('[data-cd="days"]'),
+      hours: cd.querySelector('[data-cd="hours"]'),
+      mins: cd.querySelector('[data-cd="mins"]'),
+      secs: cd.querySelector('[data-cd="secs"]')
+    };
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var diff = Math.max(0, deadline - Date.now());
+      els.days.textContent = pad(Math.floor(diff / 86400000));
+      els.hours.textContent = pad(Math.floor(diff / 3600000) % 24);
+      els.mins.textContent = pad(Math.floor(diff / 60000) % 60);
+      els.secs.textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "VP · Pazo de la Cuesta",
+  "tag": "section",
+  "class": "section-vp-pazo",
+  "settings": [
+    { "type": "header", "content": "Bienvenida premium (socio aprobado)" },
+    { "type": "text", "id": "welcome_line", "label": "Saludo de bienvenida", "default": "Bienvenido/a al círculo" },
+    { "type": "text", "id": "info_line", "label": "Línea de info (venta/envíos)", "default": "Venta abierta hasta el 28 de julio · Envíos desde el 20 de julio · Entrega en 24–48h" },
+    { "type": "header", "content": "Los vinos" },
+    { "type": "text", "id": "wines_eyebrow", "label": "Antetítulo grid", "default": "Cinco vinos, una sola reserva de julio" },
+    { "type": "text", "id": "wines_title", "label": "Título grid", "default": "Lo raro y lo casi imposible" },
+    { "type": "image_picker", "id": "img_racimo", "label": "Foto racimo de Brancellao (opcional)" },
+    { "type": "header", "content": "Reserva y cuenta atrás" },
+    { "type": "text", "id": "reserva_text", "label": "Texto de reserva", "default": "Añade al carrito todas las cajas que quieras — pedimos directamente a la bodega según lo reservado. Cerramos la venta el 28 de julio, los envíos empiezan el 20 de julio y llegan en 24-48 horas." },
+    { "type": "text", "id": "deadline", "label": "Cierre (cuenta atrás)", "info": "Formato ISO: AAAA-MM-DDTHH:MM:SS", "default": "2026-07-28T23:59:59" }
+  ],
+  "blocks": [
+    {
+      "type": "wine",
+      "name": "Vino (caja)",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Nombre" },
+        { "type": "text", "id": "tagline", "label": "Tagline" },
+        { "type": "text", "id": "badge", "label": "Badge (premio/distinción)" },
+        { "type": "checkbox", "id": "featured", "label": "Destacado (tarjeta oscura)", "default": false },
+        { "type": "header", "content": "Ficha — hasta 4 filas (deja vacío para ocultar)" },
+        { "type": "text", "id": "spec_1_k", "label": "Fila 1 · etiqueta" },
+        { "type": "text", "id": "spec_1_v", "label": "Fila 1 · valor" },
+        { "type": "text", "id": "spec_2_k", "label": "Fila 2 · etiqueta" },
+        { "type": "text", "id": "spec_2_v", "label": "Fila 2 · valor" },
+        { "type": "text", "id": "spec_3_k", "label": "Fila 3 · etiqueta" },
+        { "type": "text", "id": "spec_3_v", "label": "Fila 3 · valor" },
+        { "type": "text", "id": "spec_4_k", "label": "Fila 4 · etiqueta" },
+        { "type": "text", "id": "spec_4_v", "label": "Fila 4 · valor" },
+        { "type": "header", "content": "Precio" },
+        { "type": "text", "id": "price_was", "label": "Precio anterior (tachado)" },
+        { "type": "text", "id": "price_now", "label": "Precio socios" },
+        { "type": "text", "id": "price_tbd", "label": "Texto si no hay precio (a confirmar)" },
+        { "type": "text", "id": "unit", "label": "Texto de unidad", "default": "Caja de 6 · −30% ventas privadas" },
+        { "type": "header", "content": "Imagen y enlace" },
+        { "type": "image_picker", "id": "bottle_image", "label": "Foto botella (sube aquí)" },
+        { "type": "text", "id": "image_url", "label": "O URL de imagen externa (CDN Shopify)" },
+        { "type": "text", "id": "asset_name", "label": "O nombre de asset del tema", "info": "Ej: vp-julio2026-botella-brancellao.jpg" },
+        { "type": "text", "id": "placeholder", "label": "Texto si no hay imagen", "default": "Foto · botella" },
+        { "type": "url", "id": "product_url", "label": "Enlace al producto (caja)" },
+        { "type": "text", "id": "variant_id", "label": "ID de variante (Agregar al carrito)", "info": "ID numérico de la variante de la caja de 6. Necesario para el botón de carrito." }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "VP · Pazo de la Cuesta",
+      "blocks": [
+        {
+          "type": "wine",
+          "settings": {
+            "name": "Brancellao 2023",
+            "tagline": "El único tinto de Ribeira Sacra con oro en los Decanter World Wine Awards.",
+            "badge": "Oro · 95 pts DWWA",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Brancellao, Mencía",
+            "spec_2_k": "Crianza", "spec_2_v": "8 meses",
+            "spec_3_k": "D.O.", "spec_3_v": "Ribeira Sacra",
+            "spec_4_k": "Premio", "spec_4_v": "Oro DWWA 2026 · 95 pts",
+            "price_was": "177,00 €",
+            "price_now": "123,90 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "asset_name": "vp-julio2026-botella-brancellao.jpg",
+            "product_url": "/products/pazo-la-cuesta-brancellao",
+            "variant_id": "54132421394769"
+          }
+        },
+        {
+          "type": "wine",
+          "settings": {
+            "name": "Garnacha Tintorera Prefiloxérica",
+            "tagline": "De cepas propias plantadas en 1860, nunca injertadas.",
+            "badge": "Edición numerada",
+            "featured": true,
+            "spec_1_k": "Viña", "spec_1_v": "Pie franco, plantada en 1860",
+            "spec_2_k": "Origen de la variedad", "spec_2_v": "Sur de Francia",
+            "spec_3_k": "D.O.", "spec_3_v": "Ribeira Sacra",
+            "price_was": "239,40 €",
+            "price_now": "167,58 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-garnacha-tintorera-2021-60249288769873.jpg?v=1743413619",
+            "product_url": "/products/pazo-la-cuesta-garnacha-tintorera",
+            "variant_id": "54307098394961"
+          }
+        },
+        {
+          "type": "wine",
+          "settings": {
+            "name": "Mencía 2022",
+            "tagline": "Elegido mejor vino tinto español por el International Wine Challenge 2025.",
+            "badge": "Mejor tinto español · IWC 2025",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Mencía",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "spec_3_k": "Distinción", "spec_3_v": "IWC 2025",
+            "price_was": "153,00 €",
+            "price_now": "107,10 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-mencia-2022-60249287852369.jpg?v=1743413618",
+            "product_url": "/products/pazo-la-cuesta-mencia",
+            "variant_id": "54307089154385"
+          }
+        },
+        {
+          "type": "wine",
+          "settings": {
+            "name": "Godello 2024",
+            "tagline": "Godello de viñedo histórico en Ribeira Sacra.",
+            "badge": "",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Godello",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "price_was": "119,40 €",
+            "price_now": "83,58 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-godello-2023-60249285034321.jpg?v=1743413620",
+            "product_url": "/products/pazo-la-cuesta-godello",
+            "variant_id": "54307096133969"
+          }
+        },
+        {
+          "type": "wine",
+          "settings": {
+            "name": "Brancas 2022",
+            "tagline": "Ensamblaje blanco de cuatro variedades autóctonas gallegas.",
+            "badge": "Blanco de bodega",
+            "featured": false,
+            "spec_1_k": "Uva", "spec_1_v": "Treixadura, Godello, Albariño, Loureira",
+            "spec_2_k": "D.O.", "spec_2_v": "Ribeira Sacra",
+            "price_was": "131,94 €",
+            "price_now": "92,36 €",
+            "unit": "Caja de 6 · −30% ventas privadas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0805/2516/4881/files/en-copa-de-balon-simple-default-title-pazo-de-la-cuesta-brancas-2022-60249291424081.jpg?v=1743413616",
+            "product_url": "/products/pazo-la-cuesta-brancas",
+            "variant_id": "54307091972433"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

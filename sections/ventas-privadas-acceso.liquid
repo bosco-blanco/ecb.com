@@ -65,18 +65,17 @@
   .vp-check label { display: inline; text-transform: none; font-size: inherit; letter-spacing: normal; margin: 0; opacity: 1; }
 </style>
 
+{%- comment -%}
+  Socio aprobado (tag 'preventa') → NO renderiza aquí; la experiencia inmersiva
+  la muestra la sección 'ventas-privadas-pazo-julio2026' (misma plantilla).
+  Esta sección solo cubre los estados "visitante / logueado sin aprobar" (formulario).
+  En el editor de temas se muestra siempre para poder editarla.
+{%- endcomment -%}
+{%- unless is_member and request.design_mode == false -%}
 <div class="vp-access">
   <div class="vp-access__inner">
 
-    {%- if is_member -%}
-      {%- comment -%} Estado 1: aprobado {%- endcomment -%}
-      <p class="vp-access__eyebrow">{{ section.settings.eyebrow }}</p>
-      <h1 class="vp-access__title">{{ section.settings.member_title }}</h1>
-      <p class="vp-access__lead">{{ section.settings.member_text }}</p>
-      <a class="vp-btn" href="{{ section.settings.collection_url }}">{{ section.settings.member_button }}</a>
-
-    {%- else -%}
-      {%- comment -%} Estados 2 y 3: solicitar acceso {%- endcomment -%}
+    {%- comment -%} Estados 2 y 3: solicitar acceso {%- endcomment -%}
       <p class="vp-access__eyebrow">{{ section.settings.eyebrow }}</p>
       <h1 class="vp-access__title">{{ section.settings.title }}</h1>
       <p class="vp-access__lead">{{ section.settings.lead }}</p>
@@ -115,10 +114,9 @@
         <p class="vp-note">¿Ya tienes acceso? <a href="/account/login">Inicia sesión</a> para entrar.</p>
       {%- endunless -%}
 
-    {%- endif -%}
-
   </div>
 </div>
+{%- endunless -%}
 
 {% schema %}
 {
@@ -133,11 +131,7 @@
     { "type": "text", "id": "submit_label", "label": "Botón del formulario", "default": "Solicitar acceso" },
     { "type": "text", "id": "success_title", "label": "Éxito · título", "default": "Solicitud recibida" },
     { "type": "text", "id": "success_text", "label": "Éxito · texto", "default": "Gracias. Revisaremos tu solicitud y te escribiremos si hay hueco en el círculo." },
-    { "type": "header", "content": "Estado: cliente aprobado" },
-    { "type": "text", "id": "member_title", "label": "Título", "default": "Bienvenido al círculo" },
-    { "type": "richtext", "id": "member_text", "label": "Texto", "default": "<p>Tienes acceso a las Ventas Privadas. Entra para ver la selección abierta.</p>" },
-    { "type": "text", "id": "member_button", "label": "Botón", "default": "Entrar a las Ventas Privadas" },
-    { "type": "text", "id": "collection_url", "label": "URL de la colección", "default": "/collections/ventas-privadas" },
+    { "type": "header", "content": "Cliente aprobado (tag 'preventa')", "info": "El socio aprobado NO ve esta sección: se le muestra la sección inmersiva 'VP · Pazo de la Cuesta' de la misma plantilla. Los antiguos ajustes de botón/colección ya no se usan." },
     { "type": "header", "content": "Colores" },
     { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFCF1" },
     { "type": "color", "id": "text_color", "label": "Texto", "default": "#1E1E1E" },
