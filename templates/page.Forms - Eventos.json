@@ -32,11 +32,21 @@
           "settings": {
             "storysubtitle": "<p>Organizamos <strong>celebraciones privadas, comidas de empresa, catas guiadas y catering</strong> en Madrid: en nuestros propios espacios o en el lugar que elijas. Detrás de cada copa, una <strong>bodega de más de 1.600 referencias</strong> y <strong>35 años de oficio</strong> seleccionando vino. <br/><br/>Elegimos las botellas contigo según la ocasión, las personas y el presupuesto, y nos ocupamos del resto. Eventos a medida en Madrid, con criterio sumiller y sin complicaciones.</p>"
           }
+        },
+        "button_yn9tMQ": {
+          "type": "button",
+          "settings": {
+            "btntxt": "Solicita información",
+            "link": "#shopify-section-template--30647978033489__forms",
+            "button_style": "solid",
+            "button_size": "bs_large"
+          }
         }
       },
       "block_order": [
         "heading_hero",
-        "caption_hero"
+        "caption_hero",
+        "button_yn9tMQ"
       ],
       "settings": {
         "color_scheme": "background-1",
