@@ -46,7 +46,7 @@
           "type": "textarea",
           "settings": {
             "heading": "Contacto",
-            "contsubtext": "<p>Contacta con nosotros<\\/p>",
+            "contsubtext": "<p>Contacta con nosotros</p>",
             "footer_address": "",
             "footer_contact_no": "+34 672 31 08 43",
             "footer_contact_id": ""
