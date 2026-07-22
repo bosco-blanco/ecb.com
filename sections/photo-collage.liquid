@@ -4,6 +4,8 @@
       <div class="collage-item collage-item--{{ block.settings.size }}">
         {% if block.settings.image %}
           <img src="{{ block.settings.image | image_url: width: 800 }}" 
+               width="800"
+               height="{{ 800 | divided_by: block.settings.image.aspect_ratio }}"
                alt="{{ block.settings.image.alt | escape }}" 
                loading="lazy">
         {% endif %}
