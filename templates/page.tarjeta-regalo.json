@@ -22,6 +22,37 @@
         "include_margins": true
       }
     },
+    "rich_text_jyP6LC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_zgNNcR": {
+          "type": "heading",
+          "settings": {
+            "heading": "¿No sabes qué vino regalar?",
+            "heading_size": "h1"
+          }
+        },
+        "text_r6tD9W": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>El regalo perfecto para cualquier amante del vino. Elige el importe y que decidan ellos qué botella se llevan a casa. Solo válida en tienda online, no en tienda física ni restaurante.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zgNNcR",
+        "text_r6tD9W"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 0
+      }
+    },
     "featured_collection_GHMCAm": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -62,6 +93,7 @@
   "order": [
     "main",
     "1774875109e67a357d",
+    "rich_text_jyP6LC",
     "featured_collection_GHMCAm"
   ]
 }
