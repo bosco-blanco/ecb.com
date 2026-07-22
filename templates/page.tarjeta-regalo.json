@@ -21,10 +21,21 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "custom_liquid_KdNLbC": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign gift_product = all_products['tarjeta-regalo-en-copa-de-balon'] %}\n\n<div class=\"gift-cards-wrapper\" style=\"max-width: 1100px; margin: 40px auto; padding: 0 20px;\">\n\n  <h2 style=\"text-align: center; font-family: 'Cormorant', serif; font-size: 32px; color: #1a1a1a; margin-bottom: 10px;\">\n    Tarjetas Regalo\n  </h2>\n  <p style=\"text-align: center; font-family: Helvetica, sans-serif; color: #555; max-width: 600px; margin: 0 auto 40px;\">\n    ¿No sabes qué vino regalar? Acierta seguro. Elige el importe y que tu destinatario elija su vino favorito.\n    <br><strong>Válida solo en tienda online, no en tienda física ni restaurante.</strong>\n  </p>\n\n  <div style=\"display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;\">\n\n    {% for variant in gift_product.variants %}\n      <div style=\"flex: 1; min-width: 240px; max-width: 300px; border: 1px solid #e5e5e5; border-radius: 8px; padding: 30px 20px; text-align: center; background: #fff;\">\n        \n        <p style=\"font-family: Helvetica, sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: #999; margin-bottom: 8px;\">\n          Tarjeta Regalo\n        </p>\n        \n        <p style=\"font-family: 'Cormorant', serif; font-size: 42px; color: #d4b974; margin: 0 0 20px;\">\n          {{ variant.price | money_without_trailing_zeros }}\n        </p>\n\n        <form method=\"post\" action=\"/cart/add\">\n          <input type=\"hidden\" name=\"id\" value=\"{{ variant.id }}\">\n          <input type=\"hidden\" name=\"quantity\" value=\"1\">\n          <button type=\"submit\" style=\"width: 100%; padding: 12px; background: #1a1a1a; color: #fff; border: none; border-radius: 4px; font-family: Helvetica, sans-serif; font-size: 14px; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase;\">\n            Comprar\n          </button>\n        </form>\n\n      </div>\n    {% endfor %}\n\n  </div>\n\n  <p style=\"text-align: center; font-size: 12px; color: #999; margin-top: 30px; font-family: Helvetica, sans-serif;\">\n    Sin fecha de caducidad · Entrega 100% digital por email\n  </p>\n\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
-    "1774875109e67a357d"
+    "1774875109e67a357d",
+    "custom_liquid_KdNLbC"
   ]
 }
