@@ -89,7 +89,7 @@
             "subheading": "",
             "subheadingtext": "",
             "button_label": "",
-            "link": "shopify://collections",
+            "link": "/collections/vinos",
             "button_style": "outline",
             "button_size": "medium-btn",
             "button_txt_upp": false,
