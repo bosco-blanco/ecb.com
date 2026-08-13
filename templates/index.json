@@ -159,7 +159,7 @@
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
-        "slider_visual": "numbers",
+        "slider_visual": "dots",
         "pagicolor": "#ffffff",
         "pagination_alignment": "left",
         "auto_rotate": true,
