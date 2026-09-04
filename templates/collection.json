@@ -14,8 +14,8 @@
       "settings": {
         "heading_size": "h0",
         "head_align": "center",
-        "show_collection_description": true,
-        "show_collection_image": true,
+        "show_collection_description": false,
+        "show_collection_image": false,
         "hero_layout": "column",
         "coll_bgcolor": "#000000",
         "coll_color": "#ffffff",
