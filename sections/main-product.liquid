@@ -388,6 +388,7 @@
                 <h1 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
                   {{ product.title | escape }}
                 </h1>
+                {%- render 'product-rating-inline', product: product -%}
 
               {%- when 'bodega_link' -%}
                 {% if product.metafields.custom.bodega_link.value.title %}
@@ -532,6 +533,7 @@
                       {%- endif -%}
                     </div>
                   {%- endif -%}
+                  {%- render 'product-scores-inline', product: product -%}
                 </div>
                 <div class="wbspayinstall" {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
