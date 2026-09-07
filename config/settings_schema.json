@@ -1331,13 +1331,14 @@
         "type": "checkbox",
         "id": "wbenable_ship",
         "label": "Show free shipping minimum amount",
-        "default": false,
+        "default": true,
         "info": "Make sure that you have properly configured your [shipping rates](\/admin\/settings\/shipping)."
       },
       {
         "type": "text",
         "id": "wbmin_order",
         "label": "Minimum order amount to free shipping",
+        "default": "EUR:130",
         "info": "Enter amount using number only. If using multiple currencies, separate each currency code with its amount, e.g. USD:70,EUR:80,INR:9000"
       },
       {
