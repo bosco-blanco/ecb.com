@@ -228,28 +228,10 @@
 {%- endstyle -%}
 
 <div class="wpi">
-  {%- if has_scores -%}
-    <div class="wpi__scores">
-      {%- if parker != blank -%}
-        <div class="wpi__score">
-          <span class="wpi__score-num wpi__score-num--parker">{{ parker }}</span>
-          <span class="wpi__score-meta">
-            <span class="wpi__score-source">Robert Parker</span>
-            <span class="wpi__score-label">puntos</span>
-          </span>
-        </div>
-      {%- endif -%}
-      {%- if penin != blank -%}
-        <div class="wpi__score">
-          <span class="wpi__score-num wpi__score-num--penin">{{ penin }}</span>
-          <span class="wpi__score-meta">
-            <span class="wpi__score-source">Guía Peñín</span>
-            <span class="wpi__score-label">puntos</span>
-          </span>
-        </div>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
+  {% comment %}
+    Las puntuaciones Parker/Penin se pintan ahora junto al precio
+    ('product-scores-inline'). Aqui se quitaron para no duplicarlas.
+  {% endcomment %}
 
   <div class="wpi__tags">
     {%- if tipo_vino != blank -%}
@@ -295,12 +277,6 @@
     {%- endif -%}
     {%- if estilo != blank -%}
       <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.estilo={{ estilo | url_encode }}" class="wpi__tag wpi__tag--estilo">&#10024; {{ estilo }}</a>
-    {%- endif -%}
-    {%- if parker != blank -%}
-      <span class="wpi__tag wpi__tag--parker"><svg width="14" height="14" viewBox="0 0 24 24" fill="#722F37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Parker {{ parker }}</span>
-    {%- endif -%}
-    {%- if penin != blank -%}
-      <span class="wpi__tag wpi__tag--penin"><svg width="14" height="14" viewBox="0 0 24 24" fill="#8B6D00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Peñín {{ penin }}</span>
     {%- endif -%}
     {%- assign qty = product.selected_or_first_available_variant.inventory_quantity -%}
     {%- if product.available and qty <= 12 and qty > 0 -%}
@@ -367,15 +343,11 @@
 
   {% comment %} Estilo moved to chips row above {% endcomment %}
 
-  {%- if product.description != blank -%}
-    {%- assign desc_text = product.description | strip_html | strip -%}
-    {%- if desc_text.size > 50 -%}
-      <div class="wpi__desc">
-        <strong>Nota de cata</strong><br>
-        {{ desc_text | truncatewords: 100 }}
-        
-      </div>
-    {%- endif -%}
-  {%- endif -%}
+  {% comment %}
+    La nota de cata se ha quitado de aqui: repetia el cuerpo de la descripcion
+    del producto (truncado a 100 palabras) que ya pinta entero el bloque
+    'description' de main-product.liquid. Se dejaba el mismo texto dos veces
+    en la misma ficha. Fuente unica: el bloque 'description'.
+  {% endcomment %}
 </div>
 {%- endif -%}

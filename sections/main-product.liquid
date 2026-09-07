@@ -388,6 +388,7 @@
                 <h1 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
                   {{ product.title | escape }}
                 </h1>
+                {%- render 'product-rating-inline', product: product -%}
 
               {%- when 'bodega_link' -%}
                 {% if product.metafields.custom.bodega_link.value.title %}
@@ -532,6 +533,7 @@
                       {%- endif -%}
                     </div>
                   {%- endif -%}
+                  {%- render 'product-scores-inline', product: product -%}
                 </div>
                 <div class="wbspayinstall" {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
@@ -1189,73 +1191,13 @@
     <script src="{{ 'product-model.js' | asset_url }}" defer></script>
   {%- endif -%}
 
-  {%- liquid
-    if product.selected_or_first_available_variant.featured_media
-      assign seo_media = product.selected_or_first_available_variant.featured_media
-    else
-      assign seo_media = product.featured_media
-    endif
-  -%}
-
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org/",
-      "@type": "Product",
-      "name": {{ product.title | json }},
-      "url": {{ request.origin | append: product.url | json }},
-      {% if seo_media -%}
-          "image": [
-            {{ seo_media | image_url: width: seo_media.preview_image.width | prepend: "https:" | json }}
-          ],
-        {%- endif %}
-      "description": {{ product.description | strip_html | json }},
-      {% if product.selected_or_first_available_variant.sku != blank -%}
-        "sku": {{ product.selected_or_first_available_variant.sku | json }},
-        "mpn": {{ product.selected_or_first_available_variant.sku | json }},
-      {%- endif %}
-      "brand": {
-        "@type": "Brand",
-        "name": {{ product.vendor | json }}
-      },
-      "offers": [
-        {%- for variant in product.variants -%}
-          {
-            "@type" : "Offer",
-            {%- if variant.sku != blank -%}
-              "sku": {{ variant.sku | json }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 12 -%}
-              "gtin12": {{ variant.barcode }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 13 -%}
-              "gtin13": {{ variant.barcode }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 14 -%}
-              "gtin14": {{ variant.barcode }},
-            {%- endif -%}
-            "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-            "price" : {{ variant.price | divided_by: 100.00 | json }},
-            "priceCurrency" : {{ cart.currency.iso_code | json }},
-            "priceValidUntil" : "{{ 'now' | date: '%Y' | plus: 1 }}-12-31",
-            "seller" : {
-              "@type": "Organization",
-              "name": "En Copa de Balón"
-            },
-            "url" : {{ request.origin | append: variant.url | json }}
-          }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]
-      {%- assign jm_count = product.metafields.reviews.rating_count | plus: 0 -%}
-      {%- if jm_count > 0 and product.metafields.reviews.rating.value != blank -%}
-      ,"aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": {{ product.metafields.reviews.rating.value.rating | json }},
-        "bestRating": {{ product.metafields.reviews.rating.value.scale_max | json }},
-        "reviewCount": {{ jm_count | json }}
-      }
-      {%- endif -%}
-    }
-  </script>
+  {% comment %}
+    JSON-LD Product: eliminado de aqui a proposito.
+    La ficha pintaba DOS bloques Product por pagina: este y el de la app
+    Smart SEO (app embed en el head). Se deja el de Smart SEO por ser el mas
+    completo: incluye ademas weight, itemCondition, validFrom y
+    shippingDetails, y ya emite aggregateRating desde Judge.me.
+  {% endcomment %}
 </section>
 
 {% schema %}

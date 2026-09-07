@@ -1,0 +1,72 @@
+{%- comment -%}
+  Puntuaciones Robert Parker / Guia Penin, para pintar junto al precio.
+
+  Metafields reales de la tienda (verificados via Admin API, no inventados):
+  - product.metafields.custom.puntos_robert_parker  (number_integer)
+  - product.metafields.custom.puntos_guia_pe_in     (single_line_text_field)
+
+  Solo pinta cada insignia si su metafield existe y tiene valor.
+  Si no hay ninguna de las dos, no pinta nada.
+
+  Uso:
+  {% render 'product-scores-inline', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign psi_parker = product.metafields.custom.puntos_robert_parker
+  assign psi_penin = product.metafields.custom.puntos_guia_pe_in
+-%}
+
+{%- if psi_parker != blank or psi_penin != blank -%}
+  {%- style -%}
+    .psi {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+    }
+    .psi__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border: 1px solid #ddd5c3;
+      border-radius: 8px;
+      background: #faf6ee;
+      line-height: 1.1;
+    }
+    .psi__num {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .psi__num--parker {
+      color: #8a1538;
+    }
+    .psi__num--penin {
+      color: #1a5276;
+    }
+    .psi__meta {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  {%- endstyle -%}
+  <div class="psi">
+    {%- if psi_parker != blank -%}
+      <span class="psi__badge">
+        <span class="psi__num psi__num--parker">{{ psi_parker }}</span>
+        <span class="psi__meta">Robert Parker</span>
+      </span>
+    {%- endif -%}
+    {%- if psi_penin != blank -%}
+      <span class="psi__badge">
+        <span class="psi__num psi__num--penin">{{ psi_penin }}</span>
+        <span class="psi__meta">Guía Peñín</span>
+      </span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

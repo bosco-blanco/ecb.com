@@ -73,6 +73,50 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {%- comment -%}
+        CTA de pago arriba del drawer (ademas del de abajo).
+        Envia el mismo formulario que el boton inferior via el atributo form=,
+        asi que no duplica logica ni depende de JS.
+      {%- endcomment -%}
+      {%- unless cart == empty -%}
+        {%- style -%}
+          .cart-drawer__top-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 1.5rem 12px;
+          }
+          .cart-drawer__top-cta .cart-drawer__top-subtotal {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+          }
+          .cart-drawer__top-cta .cart__checkout-button {
+            margin: 0;
+            min-width: 0;
+            flex: 1 1 auto;
+          }
+        {%- endstyle -%}
+        <div class="cart-drawer__top-cta">
+          <span class="cart-drawer__top-subtotal">
+            {%- if settings.currency_code_enabled -%}
+              {{ cart.total_price | money_with_currency }}
+            {%- else -%}
+              {{ cart.total_price | money }}
+            {%- endif -%}
+          </span>
+          <button
+            type="submit"
+            id="CartDrawer-Checkout-Top"
+            class="cart__checkout-button button button--primary"
+            name="checkout"
+            form="CartDrawer-Form"
+          >
+            {{ 'sections.cart.checkout' | t }}
+          </button>
+        </div>
+      {%- endunless -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
