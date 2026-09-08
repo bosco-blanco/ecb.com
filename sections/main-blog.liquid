@@ -14,10 +14,34 @@
 }
 {%- endstyle -%}
 
-{%- paginate blog.articles by 6 -%}
+{%- assign articulos_por_pagina = section.settings.articles_per_page | default: 6 -%}
+{%- paginate blog.articles by articulos_por_pagina -%}
 
   <div class="wbmainblog container section-{{ section.id }}-padding">
     <h1 class="heading text-center"><span>{{ blog.title | escape }}</span></h1>
+
+    {%- comment -%}
+      Filtro por etiqueta. La lista se escribe a mano en el ajuste de la seccion
+      porque blog.all_tags devuelve 0 en esta tienda (comprobado el 2026-09-08
+      tambien en /blogs/news, con 207 articulos). Formato: "etiqueta|Texto
+      visible", separados por comas; si no hay texto visible se usa la etiqueta.
+    {%- endcomment -%}
+    {%- if section.settings.show_tag_filter -%}
+      {%- assign etiquetas_filtro = section.settings.tag_filter_list | split: ',' -%}
+      {%- if etiquetas_filtro.size > 0 -%}
+      <nav class="wbblogtagfilter text-center" aria-label="{{ blog.title | escape }}">
+        <a href="{{ blog.url }}"{% unless current_tags %} aria-current="page"{% endunless %}>Todo</a>
+        {%- for par in etiquetas_filtro -%}
+          {%- assign trozos = par | split: '|' -%}
+          {%- assign etiqueta = trozos[0] | strip -%}
+          {%- if etiqueta != blank -%}
+            {%- assign visible = trozos[1] | default: etiqueta | strip -%}
+            <a href="{{ blog.url }}/tagged/{{ etiqueta | handle }}"{% if current_tags contains etiqueta %} aria-current="page"{% endif %}>{{ visible }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+      {%- endif -%}
+    {%- endif -%}
 
     <div class="row blog-articles {% if section.settings.layout == 'collage' %}wbbloglist {% else %} text-center {% endif %}">
       {%- for article in blog.articles -%}
@@ -38,6 +62,27 @@
     "name": "t:sections.main-blog.name",
     "tag": "section",
     "settings": [
+      {
+        "type": "range",
+        "id": "articles_per_page",
+        "min": 6,
+        "max": 48,
+        "step": 6,
+        "default": 6,
+        "label": "Artículos por página"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tag_filter",
+        "default": false,
+        "label": "Mostrar filtro por etiqueta"
+      },
+      {
+        "type": "text",
+        "id": "tag_filter_list",
+        "label": "Etiquetas del filtro",
+        "info": "Separadas por comas. Formato etiqueta|Texto visible. Ej.: concepto|Conceptos, variedad|Variedades. Vacío = sin filtro."
+      },
       {
         "type": "header",
         "content": "t:sections.main-blog.settings.header.content"

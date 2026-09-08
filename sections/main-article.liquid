@@ -1,28 +1,11 @@
-{%- comment -%} BEGIN ECB JSON-LD ARTICLE+VIDEO (Bloque 7+8) {%- endcomment -%}
+{%- comment -%}
+  BEGIN ECB JSON-LD VIDEO (Bloque 8)
+
+  El JSON-LD Article que habia aqui se ha quitado (plan 100k, tanda 2): la app
+  Smart SEO ya emite uno por articulo desde el <head>, y este fichero emitia
+  ademas otro al final. Eran tres Article por pagina. Se deja solo el de la app.
+{%- endcomment -%}
 {%- if template contains 'article' and article -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": {{ article.title | json }},
-  {%- if article.image %}
-  "image": ["{{ article.image | image_url: width: 1200 }}"],
-  {%- endif %}
-  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
-  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
-  "author": {
-    "@type": "Person",
-    "name": {%- if article.author != blank %}{{ article.author | json }}{%- else %}"Equipo En Copa de Balón"{%- endif %},
-    "url": "{{ shop.url }}/pages/quienes-somos"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    "logo": {"@type": "ImageObject", "url": "{{ 'logo.png' | asset_url }}"}
-  },
-  "mainEntityOfPage": "{{ shop.url }}{{ article.url }}"
-}
-</script>
 {%- assign _yt_parts = article.content | split: 'youtube.com/embed/' -%}
 {%- if _yt_parts.size > 1 -%}
   {%- assign _yt_id_raw = _yt_parts[1] | split: '"' | first -%}
@@ -40,7 +23,7 @@
 </script>
 {%- endif -%}
 {%- endif -%}
-{%- comment -%} END ECB JSON-LD ARTICLE+VIDEO {%- endcomment -%}
+{%- comment -%} END ECB JSON-LD VIDEO {%- endcomment -%}
 
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
@@ -293,46 +276,6 @@
         </div>
     </div>
 </article>
-
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "articleBody": {{ article.content | strip_html | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
-    },
-    "headline": {{ article.title | json }},
-    {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
-    {% endif %}
-    {% if article.image %}
-      "image": [
-        {{ article | image_url: width: article.image.width | prepend: "https:" | json }}
-      ],
-    {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "author": {
-      "@type": "Person",
-      "name": {{ article.author | json }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      {% if settings.share_image %}
-        "logo": {
-          "@type": "ImageObject",
-          "height": {{ settings.share_image.height | json }},
-          "url": {{ settings.share_image | image_url: width: settings.share_image.width | prepend: "https:" | json }},
-          "width": {{ settings.share_image.width | json }}
-        },
-      {% endif %}
-      "name": {{ shop.name | json }}
-    }
-  }
-  </script>
-
 
 {% schema %}
   {
