@@ -14,10 +14,20 @@
 }
 {%- endstyle -%}
 
-{%- paginate blog.articles by 6 -%}
+{%- assign articulos_por_pagina = section.settings.articles_per_page | default: 6 -%}
+{%- paginate blog.articles by articulos_por_pagina -%}
 
   <div class="wbmainblog container section-{{ section.id }}-padding">
     <h1 class="heading text-center"><span>{{ blog.title | escape }}</span></h1>
+
+    {%- if section.settings.show_tag_filter and blog.all_tags.size > 0 -%}
+      <nav class="wbblogtagfilter text-center" aria-label="{{ blog.title | escape }}">
+        <a href="{{ blog.url }}"{% unless current_tags %} aria-current="page"{% endunless %}>Todo</a>
+        {%- for etiqueta in blog.all_tags -%}
+          <a href="{{ blog.url }}/tagged/{{ etiqueta | handle }}"{% if current_tags contains etiqueta %} aria-current="page"{% endif %}>{{ etiqueta }}</a>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
 
     <div class="row blog-articles {% if section.settings.layout == 'collage' %}wbbloglist {% else %} text-center {% endif %}">
       {%- for article in blog.articles -%}
@@ -38,6 +48,21 @@
     "name": "t:sections.main-blog.name",
     "tag": "section",
     "settings": [
+      {
+        "type": "range",
+        "id": "articles_per_page",
+        "min": 6,
+        "max": 48,
+        "step": 6,
+        "default": 6,
+        "label": "Artículos por página"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tag_filter",
+        "default": false,
+        "label": "Mostrar filtro por etiqueta"
+      },
       {
         "type": "header",
         "content": "t:sections.main-blog.settings.header.content"

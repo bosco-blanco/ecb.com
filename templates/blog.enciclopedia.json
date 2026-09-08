@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "articles_per_page": 24,
+        "show_tag_filter": true,
+        "layout": "grid",
+        "image_height": "adapt",
+        "show_image": false,
+        "show_date": false,
+        "show_author": false,
+        "show_desc": true,
+        "show_cmment": false,
+        "show_tags": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
