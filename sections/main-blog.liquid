@@ -20,13 +20,27 @@
   <div class="wbmainblog container section-{{ section.id }}-padding">
     <h1 class="heading text-center"><span>{{ blog.title | escape }}</span></h1>
 
-    {%- if section.settings.show_tag_filter and blog.all_tags.size > 0 -%}
+    {%- comment -%}
+      Filtro por etiqueta. La lista se escribe a mano en el ajuste de la seccion
+      porque blog.all_tags devuelve 0 en esta tienda (comprobado el 2026-09-08
+      tambien en /blogs/news, con 207 articulos). Formato: "etiqueta|Texto
+      visible", separados por comas; si no hay texto visible se usa la etiqueta.
+    {%- endcomment -%}
+    {%- if section.settings.show_tag_filter -%}
+      {%- assign etiquetas_filtro = section.settings.tag_filter_list | split: ',' -%}
+      {%- if etiquetas_filtro.size > 0 -%}
       <nav class="wbblogtagfilter text-center" aria-label="{{ blog.title | escape }}">
         <a href="{{ blog.url }}"{% unless current_tags %} aria-current="page"{% endunless %}>Todo</a>
-        {%- for etiqueta in blog.all_tags -%}
-          <a href="{{ blog.url }}/tagged/{{ etiqueta | handle }}"{% if current_tags contains etiqueta %} aria-current="page"{% endif %}>{{ etiqueta }}</a>
+        {%- for par in etiquetas_filtro -%}
+          {%- assign trozos = par | split: '|' -%}
+          {%- assign etiqueta = trozos[0] | strip -%}
+          {%- if etiqueta != blank -%}
+            {%- assign visible = trozos[1] | default: etiqueta | strip -%}
+            <a href="{{ blog.url }}/tagged/{{ etiqueta | handle }}"{% if current_tags contains etiqueta %} aria-current="page"{% endif %}>{{ visible }}</a>
+          {%- endif -%}
         {%- endfor -%}
       </nav>
+      {%- endif -%}
     {%- endif -%}
 
     <div class="row blog-articles {% if section.settings.layout == 'collage' %}wbbloglist {% else %} text-center {% endif %}">
@@ -62,6 +76,12 @@
         "id": "show_tag_filter",
         "default": false,
         "label": "Mostrar filtro por etiqueta"
+      },
+      {
+        "type": "text",
+        "id": "tag_filter_list",
+        "label": "Etiquetas del filtro",
+        "info": "Separadas por comas. Formato etiqueta|Texto visible. Ej.: concepto|Conceptos, variedad|Variedades. Vacío = sin filtro."
       },
       {
         "type": "header",
