@@ -1626,3 +1626,35 @@ a.product__text {
   text-transform: uppercase;
   opacity: 0.75;
 }
+
+/* ── Descripcion del producto (WEB-03) ──────────────────────────────────────
+   Abre por defecto y el titulo baja a la escala del tema (.h4). Los estilos
+   que estaban incrustados en el HTML viven ahora aqui. */
+.product__desc-summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.6rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.product__desc-summary::-webkit-details-marker {
+  display: none;
+}
+
+.product__desc-titulo {
+  margin: 0;
+}
+
+/* El "+" gira a una equis cuando esta abierto, para que no mienta. */
+.product__desc-summary .icon-plus {
+  flex-shrink: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform 0.15s ease;
+}
+
+.product__desc[open] > .product__desc-summary .icon-plus {
+  transform: rotate(45deg);
+}

@@ -573,10 +573,22 @@
 
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <details>
-                    <summary style="display:flex; align-items:center; justify-content:start; gap:16px;">
+                  {%- comment -%}
+                    WEB-03. Estaba en un <details> CERRADO: el texto de venta
+                    no se veia sin hacer clic. Y su <summary> llevaba un
+                    <h2 style="font-size:1.75rem"> incrustado, casi el tamano
+                    del H1, compitiendo con el nombre del vino.
+
+                    Ahora abre por defecto (el acordeon se queda, por si
+                    alguien quiere plegarlo) y el titulo usa la escala
+                    tipografica del tema -- h4 -- en vez de un style= a pelo.
+                    El icono gira a una equis cuando esta abierto, para que el
+                    "+" no mienta. Todo en CSS, sin JavaScript.
+                  {%- endcomment -%}
+                  <details class="product__desc" open>
+                    <summary class="product__desc-summary">
                       {% if block.settings.pdesc_title != blank %}
-                        <h2 style="font-size:1.75rem; padding-top:4px;">{{ block.settings.pdesc_title }}</h2>
+                        <h2 class="product__desc-titulo h4">{{ block.settings.pdesc_title }}</h2>
                         {% render 'icon-plus' %}
                       {% endif %}
                     </summary>
