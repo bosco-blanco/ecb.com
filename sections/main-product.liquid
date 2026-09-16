@@ -407,30 +407,48 @@
                   </div>
                 {% endif %}
               {%- when 'product_meta' -%}
-                <ul class="wbmeta_main">
-                  <li>
-                    {% if block.settings.show_vendor %}
-                      <span>{{ 'wbcustomlabel.wballtext.vendor_show' | t }}</span>
-                      <p class="vendor-capitalize">{{ product.vendor }}</p>
-                    {% endif %}
-                  </li>
-                  <li>
-                    {% if block.settings.display_product_type and product.type.size > 0 %}
-                      <span>{{ 'wbcustomlabel.wballtext.product_type_show' | t }}</span>
-                      <p>{{ product.type }}</p>
-                    {% endif %}
-                  </li>
-                  <li>
-                    {% if block.settings.display_tags and product.tags.size > 0 %}
-                      <span>{{ 'wbcustomlabel.wballtext.tags_show' | t }}</span>
-                      {% for tag in product.tags %}
-                        {% assign tag_coll = '/collections/all/' | append: tag %}
-                        {{ tag | capitalize | link_to: tag_coll -}}
-                        {%- unless forloop.last %},&nbsp;{% endunless %}
-                      {% endfor %}
-                    {% endif %}
-                  </li>
-                </ul>
+                {%- comment -%}
+                  WEB-02. Antes esto pintaba siempre la <ul> con sus tres <li>,
+                  y cada <li> decidia por dentro si tenia algo que decir. Con
+                  los tres ajustes apagados -- que es como esta la tienda --
+                  salian tres elementos vacios debajo del H1 y un hueco
+                  fantasma entre el titulo y el resto de la ficha.
+
+                  Ahora cada <li> se monta antes en una variable y solo se
+                  imprime si trae contenido; si no queda ninguno, tampoco se
+                  imprime la <ul>. Los tres ajustes del editor siguen mandando
+                  igual: lo unico que cambia es que apagarlos ya no deja hueco.
+                {%- endcomment -%}
+                {%- capture meta_vendor -%}
+                  {%- if block.settings.show_vendor -%}
+                    <span>{{ 'wbcustomlabel.wballtext.vendor_show' | t }}</span>
+                    <p class="vendor-capitalize">{{ product.vendor }}</p>
+                  {%- endif -%}
+                {%- endcapture -%}
+                {%- capture meta_type -%}
+                  {%- if block.settings.display_product_type and product.type.size > 0 -%}
+                    <span>{{ 'wbcustomlabel.wballtext.product_type_show' | t }}</span>
+                    <p>{{ product.type }}</p>
+                  {%- endif -%}
+                {%- endcapture -%}
+                {%- capture meta_tags -%}
+                  {%- if block.settings.display_tags and product.tags.size > 0 -%}
+                    <span>{{ 'wbcustomlabel.wballtext.tags_show' | t }}</span>
+                    {%- for tag in product.tags -%}
+                      {%- assign tag_coll = '/collections/all/' | append: tag -%}
+                      {{ tag | capitalize | link_to: tag_coll -}}
+                      {%- unless forloop.last %},&nbsp;{% endunless -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if meta_vendor != blank or meta_type != blank or meta_tags != blank -%}
+                  <ul class="wbmeta_main">
+                    {%- if meta_vendor != blank %}<li>{{ meta_vendor }}</li>{% endif -%}
+                    {%- if meta_type != blank %}<li>{{ meta_type }}</li>{% endif -%}
+                    {%- if meta_tags != blank %}<li>{{ meta_tags }}</li>{% endif -%}
+                  </ul>
+                {%- endif -%}
 
               {%- when 'wbimage_section' -%}
                 <div class="{{ block.settings.alignment }} wb_gap_image">
@@ -543,12 +561,34 @@
                   {%- endform -%}
                 </div>
 
+              {%- when 'ficha_cata' -%}
+                {%- comment -%}
+                  El snippet decide solo si hay algo que pintar: si el producto
+                  no tiene metafields `cata`, no imprime ni el contenedor.
+                {%- endcomment -%}
+                {%- render 'ficha-cata',
+                  product: product,
+                  shopify_attributes: block.shopify_attributes
+                -%}
+
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <details>
-                    <summary style="display:flex; align-items:center; justify-content:start; gap:16px;">
+                  {%- comment -%}
+                    WEB-03. Estaba en un <details> CERRADO: el texto de venta
+                    no se veia sin hacer clic. Y su <summary> llevaba un
+                    <h2 style="font-size:1.75rem"> incrustado, casi el tamano
+                    del H1, compitiendo con el nombre del vino.
+
+                    Ahora abre por defecto (el acordeon se queda, por si
+                    alguien quiere plegarlo) y el titulo usa la escala
+                    tipografica del tema -- h4 -- en vez de un style= a pelo.
+                    El icono gira a una equis cuando esta abierto, para que el
+                    "+" no mienta. Todo en CSS, sin JavaScript.
+                  {%- endcomment -%}
+                  <details class="product__desc" open>
+                    <summary class="product__desc-summary">
                       {% if block.settings.pdesc_title != blank %}
-                        <h2 style="font-size:1.75rem; padding-top:4px;">{{ block.settings.pdesc_title }}</h2>
+                        <h2 class="product__desc-titulo h4">{{ block.settings.pdesc_title }}</h2>
                         {% render 'icon-plus' %}
                       {% endif %}
                     </summary>
@@ -1439,6 +1479,17 @@
           "default": false,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "ficha_cata",
+      "name": "Ficha de cata (Copa Academy)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Pinta las notas de cata y las escalas desde los metafields del namespace cata. Si el producto no los tiene, no se ve nada. Se puede mover o quitar desde aqui sin tocar codigo."
         }
       ]
     },

@@ -31,6 +31,10 @@
           "disabled": true,
           "settings": {}
         },
+        "ficha_cata": {
+          "type": "ficha_cata",
+          "settings": {}
+        },
         "description": {
           "type": "description",
           "settings": {
@@ -113,6 +117,7 @@
         "title",
         "3293aa46-ec0c-4c30-b783-8c210ee66f5e",
         "73cf297d-259e-464c-bd6e-a4dc3925716f",
+        "ficha_cata",
         "description",
         "price",
         "smile_io_smile_points_on_product_page_7pAJV4",
