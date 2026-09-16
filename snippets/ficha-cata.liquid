@@ -1,10 +1,10 @@
 {%- comment -%}
-  Ficha de cata de Copa Academy en la pagina de producto.
+  Ficha de cata de Copa Academy en la pagina de producto — "Asi lo catamos".
 
   Pinta los nueve metafields del namespace `cata` que escribe la funcion
   `publicar-fichas-web` del repo ecbacademia (tanda 1 de WEB-01):
   vista / nariz / boca / conclusion (texto), dulzor / acidez / tanino / cuerpo
-  (entero 1-5) y final_boca (texto).
+  (entero 1-5) y final_boca (texto: corto / medio / largo).
 
   REGLA: si el producto no tiene ficha, esto no imprime NADA -- ni contenedor,
   ni titulo, ni un hueco. La mayoria del catalogo todavia no la tiene, y los
@@ -17,74 +17,173 @@
 
   Parametros:
     product             - el producto (obligatorio)
-    shopify_attributes  - block.shopify_attributes, para que el bloque se pueda
-                          mover y quitar desde el editor de temas
+    shopify_attributes  - block.shopify_attributes, para que se pueda mover y
+                          quitar desde el editor de temas
+    mostrar_logo        - false para ocultar el logo de Copa Academy
 {%- endcomment -%}
 
 {%- liquid
   assign cata = product.metafields.cata
+
   assign notas_claves = 'vista,nariz,boca,conclusion' | split: ','
   assign notas_titulos = 'Vista,Nariz,Boca,En resumen' | split: ','
+
   assign escalas_claves = 'dulzor,acidez,tanino,cuerpo' | split: ','
   assign escalas_titulos = 'Dulzor,Acidez,Tanino,Cuerpo' | split: ','
+
+  comment
+    La palabra que va bajo los puntos. El metafield solo guarda el numero
+    1-5, asi que el vocabulario vive aqui: una lista por eje, en orden
+    ascendente, separada por comas. Para retocarlo no hace falta tocar nada
+    mas de este archivo.
+  endcomment
+  assign palabras_dulzor = 'Seco,Casi seco,Semidulce,Dulce,Muy dulce' | split: ','
+  assign palabras_acidez = 'Baja,Fresca,Equilibrada,Alta,Muy alta' | split: ','
+  assign palabras_tanino = 'Sedoso,Ligero,Suave,Marcado,Potente' | split: ','
+  assign palabras_cuerpo = 'Ligero,Medio-ligero,Medio,Medio-alto,Potente' | split: ','
 -%}
 
 {%- if cata.vista != blank -%}
-  <section class="ficha-cata" {{ shopify_attributes }}>
-    <header class="ficha-cata__cabecera">
-      <h2 class="ficha-cata__titulo">Ficha de cata</h2>
-      <p class="ficha-cata__firma">de Copa Academy</p>
-    </header>
+  {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
+  {%- render 'ecdb-fuentes' -%}
 
-    {%- for clave in notas_claves -%}
-      {%- assign nota = cata[clave].value -%}
-      {%- if nota != blank -%}
-        <div class="ficha-cata__nota">
-          <h3 class="ficha-cata__nota-titulo">{{ notas_titulos[forloop.index0] }}</h3>
-          {%- comment -%}
-            El texto sale tal cual esta en la ficha: ni recortado ni reescrito.
-            `newline_to_br` solo respeta los saltos de linea que ya trae.
-          {%- endcomment -%}
-          <p class="ficha-cata__nota-texto">{{ nota | newline_to_br }}</p>
+  <section class="ecdb-fp" aria-labelledby="ecdb-cata-titulo-{{ product.id }}" {{ shopify_attributes }}>
+    <div class="ecdb-cata">
+      <span class="ecdb-cata__blob" aria-hidden="true"></span>
+
+      <header class="ecdb-cata__cabecera">
+        <div>
+          <p class="ecdb-fp__kicker">Ficha de cata</p>
+          <h2 class="ecdb-cata__titulo" id="ecdb-cata-titulo-{{ product.id }}">Así lo catamos</h2>
         </div>
-      {%- endif -%}
-    {%- endfor -%}
+        {%- unless mostrar_logo == false -%}
+          {%- comment -%}
+            Ancho y alto reales del asset para que el navegador reserve el
+            hueco y la cabecera no salte al cargar.
+          {%- endcomment -%}
+          <img
+            class="ecdb-cata__logo"
+            src="{{ 'copa-academy-crop.png' | asset_url }}"
+            alt="Copa Academy"
+            width="1835"
+            height="1388"
+            loading="lazy"
+          >
+        {%- endunless -%}
+      </header>
 
-    {%- capture escalas -%}
-      {%- for clave in escalas_claves -%}
-        {%- assign valor = cata[clave].value -%}
-        {%- if valor != blank and valor >= 1 and valor <= 5 -%}
-          {%- assign etiqueta = escalas_titulos[forloop.index0] -%}
-          <div class="ficha-cata__escala">
-            <dt class="ficha-cata__escala-etiqueta">{{ etiqueta }}</dt>
-            {%- comment -%}
-              Los puntos son decoracion: el valor se lee del aria-label, que es
-              lo unico que oye un lector de pantalla.
-            {%- endcomment -%}
-            <dd class="ficha-cata__escala-valor">
-              <span class="ficha-cata__puntos" role="img" aria-label="{{ etiqueta }} {{ valor }} de 5">
-                {%- for punto in (1..5) -%}
-                  <span
-                    class="ficha-cata__punto{% if punto <= valor %} ficha-cata__punto--lleno{% endif %}"
-                    aria-hidden="true"
-                  ></span>
-                {%- endfor -%}
-              </span>
+      <div class="ecdb-cata__notas">
+        {%- for clave in notas_claves -%}
+          {%- assign nota = cata[clave].value -%}
+          {%- if nota != blank -%}
+            <div>
+              <h3 class="ecdb-cata__nota-titulo">{{ notas_titulos[forloop.index0] }}</h3>
+              {%- comment -%}
+                El texto sale tal cual esta en la ficha: ni recortado ni
+                reescrito. `newline_to_br` solo respeta los saltos de linea
+                que ya trae.
+              {%- endcomment -%}
+              <p class="ecdb-cata__nota-texto">{{ nota | newline_to_br }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- capture escalas -%}
+        {%- for clave in escalas_claves -%}
+          {%- assign valor = cata[clave].value -%}
+          {%- if valor != blank and valor >= 1 and valor <= 5 -%}
+            {%- liquid
+              assign etiqueta = escalas_titulos[forloop.index0]
+              case clave
+                when 'dulzor'
+                  assign palabras = palabras_dulzor
+                when 'acidez'
+                  assign palabras = palabras_acidez
+                when 'tanino'
+                  assign palabras = palabras_tanino
+                else
+                  assign palabras = palabras_cuerpo
+              endcase
+              assign indice = valor | minus: 1
+              assign palabra = palabras[indice]
+            -%}
+            <div class="ecdb-cata__escala">
+              <dt class="ecdb-cata__escala-etiqueta">{{ etiqueta }}</dt>
+              <dd class="ecdb-cata__escala-valor">
+                {%- comment -%}
+                  Los puntos son decoracion: el valor se lee del aria-label,
+                  que es lo unico que oye un lector de pantalla.
+                {%- endcomment -%}
+                <span class="ecdb-cata__puntos" role="img" aria-label="{{ etiqueta }} {{ valor }} de 5">
+                  {%- for punto in (1..5) -%}
+                    <span
+                      class="ecdb-cata__punto{% if punto <= valor %} ecdb-cata__punto--lleno{% endif %}"
+                      aria-hidden="true"
+                    ></span>
+                  {%- endfor -%}
+                </span>
+                {%- if palabra != blank -%}
+                  <p class="ecdb-cata__escala-texto">{{ palabra }}</p>
+                {%- endif -%}
+              </dd>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%}
+          "Final de boca" es el quinto eje, pero su metafield es texto
+          (corto / medio / largo), no un 1-5. Se traduce a puntos aqui para
+          que la fila de escalas se lea igual que las otras cuatro.
+        {%- endcomment -%}
+        {%- assign final_boca = cata.final_boca.value | strip -%}
+        {%- if final_boca != blank -%}
+          {%- liquid
+            assign final_normalizado = final_boca | downcase
+            case final_normalizado
+              when 'corto'
+                assign final_valor = 2
+              when 'medio'
+                assign final_valor = 3
+              when 'largo'
+                assign final_valor = 4
+              when 'muy largo'
+                assign final_valor = 5
+              else
+                assign final_valor = 0
+            endcase
+            assign final_etiqueta = final_boca | capitalize
+          -%}
+          <div class="ecdb-cata__escala">
+            <dt class="ecdb-cata__escala-etiqueta">Final de boca</dt>
+            <dd class="ecdb-cata__escala-valor">
+              {%- comment -%}
+                Si llega un valor que no esta en la tabla, se pinta la palabra
+                sin puntos en vez de una fila vacia o un dato inventado.
+              {%- endcomment -%}
+              {%- if final_valor > 0 -%}
+                <span
+                  class="ecdb-cata__puntos"
+                  role="img"
+                  aria-label="Final de boca {{ final_valor }} de 5"
+                >
+                  {%- for punto in (1..5) -%}
+                    <span
+                      class="ecdb-cata__punto{% if punto <= final_valor %} ecdb-cata__punto--lleno{% endif %}"
+                      aria-hidden="true"
+                    ></span>
+                  {%- endfor -%}
+                </span>
+              {%- endif -%}
+              <p class="ecdb-cata__escala-texto">{{ final_etiqueta }}</p>
             </dd>
           </div>
         {%- endif -%}
-      {%- endfor -%}
-    {%- endcapture -%}
+      {%- endcapture -%}
 
-    {%- if escalas != blank -%}
-      <dl class="ficha-cata__escalas">{{ escalas }}</dl>
-    {%- endif -%}
-
-    {%- if cata.final_boca != blank -%}
-      <p class="ficha-cata__final">
-        <span class="ficha-cata__final-etiqueta">Final de boca:</span>
-        {{ cata.final_boca.value }}
-      </p>
-    {%- endif -%}
+      {%- if escalas != blank -%}
+        <dl class="ecdb-cata__escalas">{{ escalas }}</dl>
+      {%- endif -%}
+    </div>
   </section>
 {%- endif -%}

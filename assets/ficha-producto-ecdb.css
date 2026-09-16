@@ -1,0 +1,463 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Ficha de producto ECDB — formato visual "Organic + burdeos"
+   Origen: handoff de Claude Design, `Ficha Producto Protos.dc.html`.
+
+   TODO lo de este archivo vive bajo `.ecdb-fp` o bajo una clase `ecdb-`.
+   Nada toca selectores del tema: si mañana se quita el <link>, la ficha
+   vuelve a verse exactamente como antes.
+
+   Los colores están arriba, en un solo sitio. Cambiar la marca de arena a
+   crema (#FFFCF1) es cambiar --ecdb-bg y --ecdb-surface y nada más.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.ecdb-fp {
+  /* Fondos */
+  --ecdb-bg: #f5ead8;          /* arena — fondo de página del diseño */
+  --ecdb-surface: #ebddc5;     /* arena oscura — bloque "Así lo catamos" */
+  --ecdb-surface-deep: #e1d1b4;/* círculo decorativo */
+  --ecdb-paper: #fffcf1;       /* crema — cajas y selector de cantidad */
+
+  /* Tinta */
+  --ecdb-ink: #201e1d;
+  --ecdb-ink-soft: #4a4339;
+  --ecdb-muted: #645c50;
+
+  /* Burdeos — único acento */
+  --ecdb-wine: #7a2440;
+  --ecdb-wine-hover: #661d35;
+  --ecdb-wine-light: #8f3352;
+  --ecdb-wine-kicker: #e8c9d3;
+  --ecdb-wine-body: #f0dfe5;
+
+  /* Verde: solo confirmaciones e iconos de garantía */
+  --ecdb-leaf-bg: #e1eecc;
+  --ecdb-leaf-ink: #56633f;
+
+  /* Forma */
+  --ecdb-r-lg: 32px;
+  --ecdb-r-md: 20px;
+  --ecdb-r-pill: 999px;
+  --ecdb-line: rgba(32, 30, 29, 0.1);
+
+  /* Tipografía */
+  --ecdb-display: 'Caprasimo', Georgia, serif;
+  --ecdb-sans: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  font-family: var(--ecdb-sans);
+  color: var(--ecdb-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ecdb-fp *,
+.ecdb-fp *::before,
+.ecdb-fp *::after {
+  box-sizing: border-box;
+}
+
+/* Caprasimo es muy expresiva: solo titulares y cifras grandes, nunca
+   etiquetas de 11-13px (acuerdo del turno 3, chat de Copa Academy). */
+.ecdb-fp h2,
+.ecdb-fp h3 {
+  font-family: var(--ecdb-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.ecdb-fp__kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ecdb-muted);
+}
+
+/* ── Bloque "Así lo catamos" ───────────────────────────────────────────── */
+
+.ecdb-cata {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 40px 44px 44px;
+  border-radius: var(--ecdb-r-lg);
+  background: var(--ecdb-surface);
+}
+
+/* El círculo es decoración pura: fuera del flujo y sin peso semántico. */
+.ecdb-cata__blob {
+  position: absolute;
+  top: -140px;
+  right: -90px;
+  width: 320px;
+  height: 320px;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-surface-deep);
+  pointer-events: none;
+}
+
+.ecdb-cata__cabecera {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ecdb-cata__titulo {
+  margin-top: 6px;
+  font-size: 36px;
+  line-height: 1;
+}
+
+/* El logo se dibuja a su tamaño real, sin transformaciones: recortado ya
+   viene del asset. Ampliarlo por CSS es lo que lo pixelaba. */
+.ecdb-cata__logo {
+  flex: none;
+  width: auto;
+  height: 72px;
+}
+
+.ecdb-cata__notas {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 40px;
+  margin: 34px 0 0;
+}
+
+.ecdb-cata__nota-titulo {
+  font-family: var(--ecdb-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ecdb-wine);
+}
+
+.ecdb-cata__nota-texto {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.ecdb-cata__escalas {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 38px 0 0;
+  padding-top: 30px;
+  border-top: 1.5px solid var(--ecdb-line);
+}
+
+.ecdb-cata__escala {
+  margin: 0;
+}
+
+.ecdb-cata__escala-etiqueta {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ecdb-muted);
+}
+
+.ecdb-cata__escala-valor {
+  margin: 0;
+}
+
+.ecdb-cata__puntos {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ecdb-cata__punto {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(32, 30, 29, 0.28);
+  border-radius: var(--ecdb-r-pill);
+  background: transparent;
+}
+
+.ecdb-cata__punto--lleno {
+  border-color: var(--ecdb-wine);
+  background: var(--ecdb-wine);
+}
+
+.ecdb-cata__escala-texto {
+  margin: 8px 0 0;
+  font-family: var(--ecdb-display);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 749px) {
+  .ecdb-cata {
+    padding: 28px 22px 30px;
+  }
+
+  .ecdb-cata__titulo {
+    font-size: 28px;
+  }
+
+  .ecdb-cata__logo {
+    height: 52px;
+  }
+
+  .ecdb-cata__notas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .ecdb-cata__escalas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── "Sobre este vino" ─────────────────────────────────────────────────── */
+
+/* 68ch: el texto de venta se lee de corrido, no en líneas de pared a pared. */
+.ecdb-sobre {
+  max-width: 68ch;
+}
+
+.ecdb-sobre__titulo {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.ecdb-sobre__cuerpo {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ecdb-ink-soft);
+}
+
+.ecdb-sobre__cuerpo > :first-child {
+  margin-top: 0;
+}
+
+.ecdb-sobre__cuerpo > :last-child {
+  margin-bottom: 0;
+}
+
+.ecdb-sobre__cuerpo p {
+  margin: 14px 0 0;
+}
+
+/* La descripción viene del admin y puede traer negritas, listas o enlaces. */
+.ecdb-sobre__cuerpo strong,
+.ecdb-sobre__cuerpo b {
+  color: var(--ecdb-ink);
+}
+
+.ecdb-sobre__cuerpo a {
+  color: var(--ecdb-wine);
+}
+
+.ecdb-sobre__cuerpo a:hover {
+  color: var(--ecdb-wine-hover);
+}
+
+@media screen and (max-width: 749px) {
+  .ecdb-sobre__titulo {
+    font-size: 24px;
+  }
+}
+
+/* ── Garantías bajo el botón de compra ─────────────────────────────────── */
+
+.ecdb-garantias {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px 28px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+@media screen and (min-width: 750px) {
+  .ecdb-garantias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ecdb-garantias__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ecdb-garantias__icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-leaf-bg);
+  color: var(--ecdb-leaf-ink);
+}
+
+.ecdb-garantias__icono svg {
+  display: block;
+}
+
+/* ── Banner "Bájate Copa Academy" ──────────────────────────────────────── */
+
+.ecdb-academy {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: center;
+  padding: 48px 52px;
+  border-radius: var(--ecdb-r-lg);
+  background: var(--ecdb-wine);
+  color: var(--ecdb-bg);
+}
+
+.ecdb-academy__blob {
+  position: absolute;
+  border-radius: var(--ecdb-r-pill);
+  pointer-events: none;
+}
+
+.ecdb-academy__blob--1 {
+  top: -200px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  background: var(--ecdb-wine-light);
+}
+
+.ecdb-academy__blob--2 {
+  bottom: -110px;
+  left: 30%;
+  width: 220px;
+  height: 220px;
+  background: var(--ecdb-wine-hover);
+}
+
+.ecdb-academy__texto {
+  position: relative;
+}
+
+.ecdb-academy__kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ecdb-wine-kicker);
+}
+
+.ecdb-academy__titulo {
+  max-width: 16ch;
+  margin: 10px 0 0;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.ecdb-academy__cuerpo {
+  max-width: 46ch;
+  margin: 16px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ecdb-wine-body);
+}
+
+.ecdb-academy__acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* `white-space: nowrap` es deliberado: sin él, "App Store" parte en dos
+   líneas y el botón se deforma. */
+.ecdb-academy__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 22px;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-bg);
+  color: var(--ecdb-ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.ecdb-academy__boton:hover,
+.ecdb-academy__boton:focus-visible {
+  background: var(--ecdb-paper);
+  color: var(--ecdb-ink);
+}
+
+.ecdb-academy__boton svg {
+  display: block;
+  flex: none;
+}
+
+.ecdb-academy__nota {
+  align-self: center;
+  font-size: 14px;
+  color: var(--ecdb-wine-kicker);
+}
+
+.ecdb-academy__medallon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  width: 240px;
+  height: 240px;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-bg);
+}
+
+.ecdb-academy__medallon img {
+  width: 64%;
+  height: auto;
+}
+
+@media screen and (max-width: 989px) {
+  .ecdb-academy {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 36px 26px 40px;
+  }
+
+  .ecdb-academy__titulo {
+    font-size: 32px;
+  }
+
+  .ecdb-academy__medallon {
+    justify-self: start;
+    width: 160px;
+    height: 160px;
+  }
+
+  /* El segundo círculo se cruza con el medallón al apilar. */
+  .ecdb-academy__blob--2 {
+    display: none;
+  }
+}
+
+/* Respeta el ajuste del sistema: nada de esto necesita animarse. */
+@media (prefers-reduced-motion: reduce) {
+  .ecdb-academy__boton {
+    transition: none;
+  }
+}

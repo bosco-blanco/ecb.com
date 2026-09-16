@@ -33,10 +33,12 @@
         },
         "ficha_cata": {
           "type": "ficha_cata",
+          "disabled": true,
           "settings": {}
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "pdesc_title": "Saber más sobre este producto"
           }
@@ -137,6 +139,36 @@
         "enable_video_looping": false,
         "enable_desctab": false,
         "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "ficha_cata_ancho": {
+      "type": "ficha-cata",
+      "settings": {
+        "mostrar_logo": true,
+        "padding_top": 64,
+        "padding_bottom": 0
+      }
+    },
+    "sobre_este_vino": {
+      "type": "sobre-este-vino",
+      "settings": {
+        "titulo": "Sobre este vino",
+        "padding_top": 56,
+        "padding_bottom": 0
+      }
+    },
+    "copa_academy_banner": {
+      "type": "copa-academy-banner",
+      "settings": {
+        "url_app_store": "",
+        "texto_boton": "App Store",
+        "kicker": "Nuestra app",
+        "titulo": "Bájate Copa Academy y aprende a catar ya",
+        "cuerpo": "Las fichas de cata que ves aquí salen de la app. Cata tus vinos, guarda tu bodega y aprende con cursos cortos, gratis.",
+        "nota": "Gratis · Pronto en Android",
+        "mostrar_logo": true,
+        "padding_top": 72,
         "padding_bottom": 0
       }
     },
@@ -319,6 +351,9 @@
   },
   "order": [
     "main",
+    "ficha_cata_ancho",
+    "sobre_este_vino",
+    "copa_academy_banner",
     "46f83f39-a714-4b34-981d-fa50a976f0f0",
     "ced13132-2bac-4df9-9a2b-db1a3b442dec",
     "text_with_icons_UPaiMz",

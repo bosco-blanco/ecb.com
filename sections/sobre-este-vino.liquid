@@ -1,0 +1,97 @@
+{%- comment -%}
+  "Sobre este vino" — la descripcion del producto, a ancho de pagina.
+
+  Es el mismo `product.description` que hasta ahora vivia dentro de la columna
+  de compra, metido en un <details>. En el diseno sale de ahi: columna propia
+  de 68ch, titulo en Caprasimo y el texto siempre abierto. El acordeon no
+  aportaba nada -- ya estaba `open` -- y comprimia el texto de venta contra el
+  formulario de compra.
+
+  Al activar esta seccion hay que desactivar el bloque `description` de
+  main-product, o la descripcion sale dos veces.
+{%- endcomment -%}
+
+{%- if product.description != blank -%}
+  {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
+  {%- render 'ecdb-fuentes' -%}
+
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    @media screen and (max-width: 749px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="page-width section-{{ section.id }}-padding">
+    <section class="ecdb-fp ecdb-sobre" aria-labelledby="ecdb-sobre-titulo-{{ section.id }}">
+      <h2 class="ecdb-sobre__titulo" id="ecdb-sobre-titulo-{{ section.id }}">
+        {{ section.settings.titulo | escape }}
+      </h2>
+      {%- comment -%}
+        La descripcion es HTML del admin: sale sin escapar, como en el tema.
+        Sin la clase `rte` a proposito: component-rte.css se carga despues de
+        este CSS y le ganaria el tamano y el color al texto.
+      {%- endcomment -%}
+      <div class="ecdb-sobre__cuerpo">{{ product.description }}</div>
+    </section>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sobre este vino",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Muestra la descripción del producto. Desactiva el bloque «Descripción» dentro de la sección de producto para que no salga dos veces."
+    },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Sobre este vino"
+    },
+    {
+      "type": "header",
+      "content": "Márgenes"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen superior",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen inferior",
+      "default": 0
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "Sobre este vino"
+    }
+  ]
+}
+{% endschema %}
