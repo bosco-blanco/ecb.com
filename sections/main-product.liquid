@@ -543,6 +543,16 @@
                   {%- endform -%}
                 </div>
 
+              {%- when 'ficha_cata' -%}
+                {%- comment -%}
+                  El snippet decide solo si hay algo que pintar: si el producto
+                  no tiene metafields `cata`, no imprime ni el contenedor.
+                {%- endcomment -%}
+                {%- render 'ficha-cata',
+                  product: product,
+                  shopify_attributes: block.shopify_attributes
+                -%}
+
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <details>
@@ -1439,6 +1449,17 @@
           "default": false,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "ficha_cata",
+      "name": "Ficha de cata (Copa Academy)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Pinta las notas de cata y las escalas desde los metafields del namespace cata. Si el producto no los tiene, no se ve nada. Se puede mover o quitar desde aqui sin tocar codigo."
         }
       ]
     },

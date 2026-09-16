@@ -1525,3 +1525,104 @@ a.product__text {
         margin-top: 30px;
     }
 }
+/* ── Ficha de cata de Copa Academy (WEB-01) ─────────────────────────────────
+   Se pinta desde snippets/ficha-cata.liquid con los metafields del namespace
+   `cata`. Solo tokens del tema: ni un color ni una fuente nueva. Sin sombras,
+   borde de 1px y el mismo radio que las cards del tema. */
+.ficha-cata {
+  border: 1px solid rgba(var(--color-foreground), 0.08);
+  border-radius: var(--card-corner-radius);
+  padding: 2rem;
+  margin: 0 0 2rem;
+}
+
+.ficha-cata__cabecera {
+  margin-bottom: 1.6rem;
+}
+
+.ficha-cata__titulo {
+  font-family: var(--font-heading-family);
+  font-size: calc(var(--font-heading-scale) * 1.6rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ficha-cata__firma {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  margin: 0.2rem 0 0;
+}
+
+.ficha-cata__nota + .ficha-cata__nota {
+  margin-top: 1.4rem;
+}
+
+.ficha-cata__nota-titulo {
+  font-family: var(--font-heading-family);
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin: 0 0 0.3rem;
+}
+
+.ficha-cata__nota-texto {
+  margin: 0;
+}
+
+/* Cuatro escalas en una fila; dos por fila en movil. */
+.ficha-cata__escalas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem 2rem;
+  margin: 2rem 0 0;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+@media screen and (min-width: 750px) {
+  .ficha-cata__escalas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ficha-cata__escala-etiqueta {
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin: 0 0 0.5rem;
+}
+
+.ficha-cata__escala-valor {
+  margin: 0;
+}
+
+.ficha-cata__puntos {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.ficha-cata__punto {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid rgba(var(--color-foreground), 0.35);
+  border-radius: 50%;
+}
+
+.ficha-cata__punto--lleno {
+  background-color: rgb(var(--color-foreground));
+  border-color: rgb(var(--color-foreground));
+}
+
+.ficha-cata__final {
+  margin: 1.6rem 0 0;
+}
+
+.ficha-cata__final-etiqueta {
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}

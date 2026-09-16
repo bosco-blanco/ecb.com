@@ -1,0 +1,90 @@
+{%- comment -%}
+  Ficha de cata de Copa Academy en la pagina de producto.
+
+  Pinta los nueve metafields del namespace `cata` que escribe la funcion
+  `publicar-fichas-web` del repo ecbacademia (tanda 1 de WEB-01):
+  vista / nariz / boca / conclusion (texto), dulzor / acidez / tanino / cuerpo
+  (entero 1-5) y final_boca (texto).
+
+  REGLA: si el producto no tiene ficha, esto no imprime NADA -- ni contenedor,
+  ni titulo, ni un hueco. La mayoria del catalogo todavia no la tiene, y los
+  accesorios y lotes no la tendran nunca; su pagina tiene que quedar igual que
+  antes, byte a byte.
+
+  `vista` hace de centinela: es el primer campo de una ficha y la funcion de
+  sincronizacion borra los metafields vacios en vez de escribir cadena vacia,
+  asi que "existe vista" equivale a "hay ficha".
+
+  Parametros:
+    product             - el producto (obligatorio)
+    shopify_attributes  - block.shopify_attributes, para que el bloque se pueda
+                          mover y quitar desde el editor de temas
+{%- endcomment -%}
+
+{%- liquid
+  assign cata = product.metafields.cata
+  assign notas_claves = 'vista,nariz,boca,conclusion' | split: ','
+  assign notas_titulos = 'Vista,Nariz,Boca,En resumen' | split: ','
+  assign escalas_claves = 'dulzor,acidez,tanino,cuerpo' | split: ','
+  assign escalas_titulos = 'Dulzor,Acidez,Tanino,Cuerpo' | split: ','
+-%}
+
+{%- if cata.vista != blank -%}
+  <section class="ficha-cata" {{ shopify_attributes }}>
+    <header class="ficha-cata__cabecera">
+      <h2 class="ficha-cata__titulo">Ficha de cata</h2>
+      <p class="ficha-cata__firma">de Copa Academy</p>
+    </header>
+
+    {%- for clave in notas_claves -%}
+      {%- assign nota = cata[clave].value -%}
+      {%- if nota != blank -%}
+        <div class="ficha-cata__nota">
+          <h3 class="ficha-cata__nota-titulo">{{ notas_titulos[forloop.index0] }}</h3>
+          {%- comment -%}
+            El texto sale tal cual esta en la ficha: ni recortado ni reescrito.
+            `newline_to_br` solo respeta los saltos de linea que ya trae.
+          {%- endcomment -%}
+          <p class="ficha-cata__nota-texto">{{ nota | newline_to_br }}</p>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- capture escalas -%}
+      {%- for clave in escalas_claves -%}
+        {%- assign valor = cata[clave].value -%}
+        {%- if valor != blank and valor >= 1 and valor <= 5 -%}
+          {%- assign etiqueta = escalas_titulos[forloop.index0] -%}
+          <div class="ficha-cata__escala">
+            <dt class="ficha-cata__escala-etiqueta">{{ etiqueta }}</dt>
+            {%- comment -%}
+              Los puntos son decoracion: el valor se lee del aria-label, que es
+              lo unico que oye un lector de pantalla.
+            {%- endcomment -%}
+            <dd class="ficha-cata__escala-valor">
+              <span class="ficha-cata__puntos" role="img" aria-label="{{ etiqueta }} {{ valor }} de 5">
+                {%- for punto in (1..5) -%}
+                  <span
+                    class="ficha-cata__punto{% if punto <= valor %} ficha-cata__punto--lleno{% endif %}"
+                    aria-hidden="true"
+                  ></span>
+                {%- endfor -%}
+              </span>
+            </dd>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- if escalas != blank -%}
+      <dl class="ficha-cata__escalas">{{ escalas }}</dl>
+    {%- endif -%}
+
+    {%- if cata.final_boca != blank -%}
+      <p class="ficha-cata__final">
+        <span class="ficha-cata__final-etiqueta">Final de boca:</span>
+        {{ cata.final_boca.value }}
+      </p>
+    {%- endif -%}
+  </section>
+{%- endif -%}
