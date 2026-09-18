@@ -104,6 +104,7 @@
         },
         "27036c39-0467-41e3-84cb-e6b47122d064": {
           "type": "complementary",
+          "disabled": true,
           "settings": {
             "block_heading": "Pairs well with",
             "image_ratio": "square",

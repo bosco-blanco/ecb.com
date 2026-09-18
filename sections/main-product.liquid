@@ -1240,6 +1240,12 @@
     completo: incluye ademas weight, itemCondition, validFrom y
     shippingDetails, y ya emite aggregateRating desde Judge.me.
   {% endcomment %}
+
+  {%- comment -%}
+    Barra de compra fija en movil. Va aqui, al final de la seccion, para que
+    quede fuera de la columna sticky de escritorio.
+  {%- endcomment -%}
+  {%- render 'ecdb-barra-compra', product: product, section_id: section.id -%}
 </section>
 
 {% schema %}
