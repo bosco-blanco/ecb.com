@@ -298,10 +298,17 @@
         "padding_bottom": 0
       }
     },
+    "relacionados": {
+      "type": "relacionados",
+      "settings": {
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "Productos Relacionados{{ product.metafields.custom.tipo_de_uva_link | metafield_text: field: 'variedad' }}",
+        "heading": "Productos relacionados",
         "heading_size": "h1",
         "head_align": "center",
         "products_to_show": 8,
@@ -357,8 +364,9 @@
     "copa_academy_banner",
     "46f83f39-a714-4b34-981d-fa50a976f0f0",
     "ced13132-2bac-4df9-9a2b-db1a3b442dec",
-    "text_with_icons_UPaiMz",
+    "relacionados",
     "product-recommendations",
+    "text_with_icons_UPaiMz",
     "17129047484f8be952"
   ]
 }

@@ -10,7 +10,8 @@
    crema (#FFFCF1) es cambiar --ecdb-bg y --ecdb-surface y nada más.
    ══════════════════════════════════════════════════════════════════════ */
 
-.ecdb-fp {
+.ecdb-fp,
+.ecdb-pdp {
   /* Fondos */
   --ecdb-bg: #f5ead8;          /* arena — fondo de página del diseño */
   --ecdb-surface: #ebddc5;     /* arena oscura — bloque "Así lo catamos" */
@@ -52,6 +53,525 @@
 .ecdb-fp *::before,
 .ecdb-fp *::after {
   box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Cabecera de la ficha — la columna de compra de main-product.liquid.
+
+   Aquí no hay markup propio: se viste el que ya pinta el tema (Dawn + WB),
+   selector a selector, bajo `.ecdb-pdp`. Este archivo se carga el último en
+   la sección de producto precisamente para que estas reglas ganen.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* — Rejilla foto | compra: 5/6 con 56px de aire, como en el diseño — */
+@media screen and (min-width: 990px) {
+  .ecdb-pdp .product.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 56px;
+    margin: 0;
+    align-items: start;
+  }
+
+  .ecdb-pdp .product.grid > .grid__item {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* — Foto sobre tarjeta blanca redondeada — */
+.ecdb-pdp .product__media {
+  border-radius: var(--ecdb-r-lg);
+  background: #fff;
+  overflow: hidden;
+}
+
+.ecdb-pdp .product__media > img {
+  padding: 8%;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+/* — Columna de compra —
+   Es una rejilla de dos columnas para que cantidad y "Añadir a la cesta"
+   compartan fila. Todo hijo directo ocupa las dos columnas salvo esos dos. */
+.ecdb-pdp .product__info-container {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 0;
+  align-items: start;
+  font-family: var(--ecdb-sans);
+  color: var(--ecdb-ink);
+}
+
+.ecdb-pdp .product__info-container > * {
+  grid-column: 1 / -1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* El bloque de compra se "disuelve" (display: contents) para que el botón
+   real sea hijo de la rejilla y pueda ir junto a la cantidad. El formulario
+   sigue siendo un formulario: display no cambia cómo se envía. */
+.ecdb-pdp .ecdb-compra,
+.ecdb-pdp .ecdb-compra > product-form,
+.ecdb-pdp .ecdb-compra .form,
+.ecdb-pdp .ecdb-compra .product-form__buttons {
+  display: contents;
+}
+
+.ecdb-pdp .product-form__quantity {
+  grid-column: 1;
+  margin-top: 22px;
+}
+
+.ecdb-pdp .product-form__submit {
+  grid-column: 2;
+  margin-top: 22px;
+}
+
+/* Lo que va después del botón real, todo a lo ancho. `order` coloca el aviso
+   de error (que en el DOM va antes del botón) justo debajo de la fila. */
+.ecdb-pdp .shopify-payment-button,
+.ecdb-pdp .product-form__error-message-wrapper,
+.ecdb-pdp .gift-card-recipient-form {
+  grid-column: 1 / -1;
+}
+
+.ecdb-pdp .product-form__error-message-wrapper {
+  order: 1;
+  margin-top: 12px;
+}
+
+.ecdb-pdp .shopify-payment-button,
+.ecdb-pdp .ecdb-compra ~ * {
+  order: 2;
+}
+
+/* — Kicker, título, resumen — */
+.ecdb-pdp .ecdb-pdp__kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ecdb-wine);
+}
+
+.ecdb-pdp .ecdb-pdp__kicker a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ecdb-pdp .ecdb-pdp__kicker a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ecdb-pdp .product__info-container .product__title {
+  margin: 8px 0 0;
+  font-family: var(--ecdb-display);
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.ecdb-pdp .pri {
+  margin: 12px 0 0;
+}
+
+.ecdb-pdp .ecdb-pdp__resumen {
+  max-width: 52ch;
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ecdb-ink-soft);
+}
+
+/* — Precio — */
+.ecdb-pdp .wbpricetax {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-top: 28px;
+}
+
+.ecdb-pdp .mainp-price,
+.ecdb-pdp .product__info-container .price {
+  margin: 0;
+}
+
+.ecdb-pdp .product__info-container .price {
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ecdb-pdp .product__info-container .price .price-item {
+  font-family: var(--ecdb-display);
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ecdb-ink);
+}
+
+/* En oferta: el precio de antes, tachado y pequeño, en el cuerpo. */
+.ecdb-pdp .product__info-container .price--on-sale .price-item--regular {
+  font-family: var(--ecdb-sans);
+  font-size: 16px;
+  color: var(--ecdb-muted);
+}
+
+/* Solo cuando hay oferta: fuera de ese caso el tema lo oculta y hay que
+   dejarle hacerlo, o el precio sale dos veces. */
+.ecdb-pdp .product__info-container .price--on-sale .price__sale {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ecdb-pdp .product__info-container .badge {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-wine);
+  color: var(--ecdb-bg);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ecdb-pdp .product__tax {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ecdb-muted);
+}
+
+.ecdb-pdp .product__tax a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+/* Puntuaciones Parker / Peñín: su propia línea bajo el precio. */
+.ecdb-pdp .psi {
+  flex-basis: 100%;
+  margin: 4px 0 0;
+}
+
+.ecdb-pdp .wbspayinstall:empty {
+  display: none;
+}
+
+/* — Cantidad: píldora — */
+.ecdb-pdp .product-form__quantity .form__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.ecdb-pdp .quantity {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  min-height: 0;
+  height: 56px;
+  border: 1.5px solid rgba(32, 30, 29, 0.16);
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-paper);
+}
+
+.ecdb-pdp .quantity::before,
+.ecdb-pdp .quantity::after {
+  content: none;
+}
+
+.ecdb-pdp .quantity__button {
+  width: 52px;
+  height: 100%;
+  flex: none;
+  border: 0;
+  background: none;
+  color: var(--ecdb-ink);
+  cursor: pointer;
+}
+
+.ecdb-pdp .quantity__button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.ecdb-pdp .quantity__input {
+  width: 28px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--ecdb-sans);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ecdb-ink);
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.ecdb-pdp .quantity__input::-webkit-inner-spin-button,
+.ecdb-pdp .quantity__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* — Añadir a la cesta: píldora burdeos — */
+.ecdb-pdp .product-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 56px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: var(--ecdb-r-pill);
+  background: var(--ecdb-wine);
+  color: var(--ecdb-bg);
+  font-family: var(--ecdb-display);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  box-shadow: 0 8px 20px rgba(122, 36, 64, 0.28);
+  transition: background 0.15s ease;
+}
+
+.ecdb-pdp .product-form__submit::before,
+.ecdb-pdp .product-form__submit::after {
+  content: none;
+}
+
+.ecdb-pdp .product-form__submit:hover:not(:disabled) {
+  background: var(--ecdb-wine-hover);
+}
+
+.ecdb-pdp .product-form__submit:disabled {
+  background: var(--ecdb-muted);
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* La flecha que el tema mete en el botón no está en el diseño. */
+.ecdb-pdp .product-form__submit > svg {
+  display: none;
+}
+
+/* — Pago dinámico (Shop Pay / Apple Pay) — */
+.ecdb-pdp .shopify-payment-button {
+  margin-top: 12px;
+}
+
+.ecdb-pdp .shopify-payment-button__button {
+  min-height: 56px;
+  border-radius: var(--ecdb-r-pill) !important;
+  overflow: hidden;
+}
+
+.ecdb-pdp .shopify-payment-button__button--unbranded {
+  background: #5a31f4;
+  font-family: var(--ecdb-sans);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ecdb-pdp .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background: #4a25d9;
+}
+
+.ecdb-pdp .shopify-payment-button__more-options {
+  margin: 10px 0 0;
+  font-family: var(--ecdb-sans);
+  font-size: 14px;
+  color: var(--ecdb-muted);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* — Aviso de stock — */
+.ecdb-pdp .ecdb-stock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ecdb-wine);
+}
+
+.ecdb-pdp .ecdb-stock svg {
+  flex: none;
+}
+
+/* — Garantías: el hueco que marca el diseño bajo los botones — */
+.ecdb-pdp .ecdb-garantias {
+  margin-top: 30px;
+}
+
+/* — Recogida en tienda: tarjeta crema — */
+.ecdb-pdp .ecdb-recogida {
+  display: block;
+  margin-top: 26px;
+}
+
+.ecdb-pdp .ecdb-recogida:empty {
+  display: none;
+}
+
+.ecdb-pdp .pickup-availability-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 16px 20px;
+  border: 1px solid rgba(32, 30, 29, 0.08);
+  border-radius: var(--ecdb-r-md);
+  background: var(--ecdb-paper);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.ecdb-pdp .pickup-availability-preview > svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.ecdb-pdp .pickup-availability-info p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.ecdb-pdp .pickup-availability-info .caption {
+  color: var(--ecdb-muted);
+}
+
+.ecdb-pdp .pickup-availability-info strong {
+  font-weight: 700;
+}
+
+.ecdb-pdp .pickup-availability-info .color-foreground {
+  color: var(--ecdb-ink);
+  text-transform: none;
+}
+
+.ecdb-pdp .pickup-availability-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ecdb-wine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* — Móvil — */
+@media screen and (max-width: 749px) {
+  .ecdb-pdp .product__info-container .product__title {
+    font-size: 36px;
+  }
+
+  .ecdb-pdp .product__info-container .price .price-item {
+    font-size: 32px;
+  }
+
+  .ecdb-pdp .product-form__quantity,
+  .ecdb-pdp .product-form__submit {
+    margin-top: 18px;
+  }
+
+  .ecdb-pdp .product-form__submit {
+    min-width: 0;
+    padding: 0 16px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Datos del vino dentro de "Sobre este vino"
+   ══════════════════════════════════════════════════════════════════════ */
+
+.ecdb-datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px 28px;
+  margin: 28px 0 0;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--ecdb-line);
+}
+
+.ecdb-datos__item {
+  margin: 0;
+}
+
+.ecdb-datos dt {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ecdb-muted);
+}
+
+.ecdb-datos dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ecdb-ink);
+}
+
+.ecdb-datos dd a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(32, 30, 29, 0.35);
+}
+
+.ecdb-datos dd a:hover {
+  color: var(--ecdb-wine);
+  border-bottom-color: var(--ecdb-wine);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   "Si te gusta este vino" al final: solo el título, para que no desentone
+   ══════════════════════════════════════════════════════════════════════ */
+
+.ecdb-relacionados .related-products {
+  margin: 0 auto;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ecdb-relacionados .related-products__title {
+  margin: 0 0 24px;
+  font-family: var(--ecdb-display, 'Caprasimo', Georgia, serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #201e1d;
 }
 
 /* Caprasimo es muy expresiva: solo titulares y cifras grandes, nunca
