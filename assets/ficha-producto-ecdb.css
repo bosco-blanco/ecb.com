@@ -63,6 +63,47 @@
    la sección de producto precisamente para que estas reglas ganen.
    ══════════════════════════════════════════════════════════════════════ */
 
+/* — La página entera sobre arena, como el diseño.
+     La cabecera del sitio conserva su propio esquema de color. — */
+body.template-product {
+  background: #f5ead8;
+}
+
+/* — Migas: "Inicio · Vinos · Protos Roble 2024" — */
+body.template-product .breadcrumb {
+  padding: 24px 0 0;
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 13px;
+  color: #645c50;
+}
+
+body.template-product .breadcrumb__list {
+  gap: 8px;
+}
+
+body.template-product .breadcrumb__link {
+  color: #645c50;
+}
+
+body.template-product .breadcrumb__link:hover {
+  color: #201e1d;
+}
+
+body.template-product .breadcrumb__sep {
+  font-size: 0;
+  color: #645c50;
+}
+
+body.template-product .breadcrumb__sep::before {
+  content: '·';
+  font-size: 13px;
+}
+
+body.template-product .breadcrumb__current {
+  color: #201e1d;
+  font-weight: 400;
+}
+
 /* — Rejilla foto | compra: 5/6 con 56px de aire, como en el diseño — */
 @media screen and (min-width: 990px) {
   .ecdb-pdp .product.grid {
@@ -81,8 +122,12 @@
   }
 }
 
-/* — Foto sobre tarjeta blanca redondeada — */
+/* — Foto sobre tarjeta blanca redondeada, siempre 4:5 —
+     El tema mete la proporción de la imagen como padding-top en línea; el
+     !important es para que todas las fichas tengan la misma tarjeta vertical,
+     con la botella centrada dentro, salga la foto como salga. */
 .ecdb-pdp .product__media {
+  padding-top: 125% !important;
   border-radius: var(--ecdb-r-lg);
   background: #fff;
   overflow: hidden;
@@ -92,6 +137,22 @@
   padding: 8%;
   object-fit: contain;
   box-sizing: border-box;
+}
+
+/* En móvil la foto va a todo el ancho, no en una caja pequeña a la izquierda. */
+@media screen and (max-width: 989px) {
+  .ecdb-pdp .product__media-wrapper,
+  .ecdb-pdp .product__media-list,
+  .ecdb-pdp .product__media-list .product__media-item {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .ecdb-pdp .product__media-list {
+    padding: 0;
+  }
 }
 
 /* — Columna de compra —
