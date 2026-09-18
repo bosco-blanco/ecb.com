@@ -560,6 +560,21 @@
           </button>
         </div>
 
+        {%- comment -%}
+          Pago acelerado (Apple Pay, Shop Pay, PayPal, Google Pay: los que
+          esten activos en Pagos). La pagina del carrito ya lo tenia; el
+          drawer no, y es donde la mayoria termina la compra. Shopify solo
+          admite `content_for_additional_checkout_buttons` una vez por
+          pagina: no hay choque porque el drawer no se pinta en /cart
+          (layout/theme.liquid). Va fuera del <form>, igual que en
+          main-cart-footer.liquid: los botones leen el carrito por JS.
+        {%- endcomment -%}
+        {%- if additional_checkout_buttons and cart != empty -%}
+          <div class="cart__dynamic-checkout-buttons additional-checkout-buttons cart-drawer__dynamic-checkout">
+            {{ content_for_additional_checkout_buttons }}
+          </div>
+        {%- endif -%}
+
         {%- if settings.show_cartpayment -%}
           <div class="cartdrawfpay text-center">
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>

@@ -564,3 +564,15 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     display: none;
   }
 }
+
+/* Pago acelerado en el drawer (Apple Pay, Shop Pay...). Las reglas de
+   distribucion (#dynamic-checkout-cart ul) ya existen mas arriba bajo
+   .drawer__footer; aqui solo el aire y el radio del tema. */
+.cart-drawer .cart-drawer__dynamic-checkout {
+  max-width: 100%;
+  margin: 12px 0 0;
+}
+.cart-drawer .cart-drawer__dynamic-checkout div[role='button'],
+.cart-drawer .cart-drawer__dynamic-checkout iframe {
+  border-radius: var(--buttons-radius-outset) !important;
+}
