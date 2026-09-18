@@ -565,17 +565,21 @@ body.template-product .breadcrumb__current {
     margin-top: 18px;
   }
 
-  /* A 390px la fila cantidad + botón va justa: píldora más estrecha y el
-     texto del botón en una sola línea, o "Añadir a la cesta" parte en dos. */
+  /* A 390px la fila cantidad + botón va justa: píldora más estrecha y botón
+     a 17px. Si aun así "Añadir a la cesta" no cabe en una línea, parte en
+     dos y el botón crece; nunca recorta el texto. */
   .ecdb-pdp .quantity__button {
     width: 42px;
   }
 
   .ecdb-pdp .product-form__submit {
     min-width: 0;
-    padding: 0 14px;
+    height: auto;
+    min-height: 56px;
+    padding: 10px 14px;
     font-size: 17px;
-    white-space: nowrap;
+    line-height: 1.15;
+    text-align: center;
   }
 }
 
