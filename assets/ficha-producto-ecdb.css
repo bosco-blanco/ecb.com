@@ -308,6 +308,84 @@
   display: block;
 }
 
+/* ── Barra de compra fija en móvil ─────────────────────────────────────── */
+
+/* Solo móvil: en escritorio el botón real ya vive en una columna sticky. */
+.ecdb-barra-compra {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .ecdb-barra-compra {
+    position: fixed;
+    z-index: 4;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: var(--ecdb-paper);
+    border-top: 1px solid var(--ecdb-line);
+    box-shadow: 0 -6px 20px rgba(32, 30, 29, 0.1);
+  }
+
+  .ecdb-barra-compra[hidden] {
+    display: none;
+  }
+
+  /* Que la barra no tape el final de la página. */
+  body.ecdb-con-barra-compra {
+    padding-bottom: 76px;
+  }
+
+  .ecdb-barra-compra__texto {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ecdb-barra-compra__titulo {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    color: var(--ecdb-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ecdb-barra-compra__precio {
+    margin: 2px 0 0;
+    font-family: var(--ecdb-display);
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .ecdb-barra-compra__precio:empty {
+    display: none;
+  }
+
+  .ecdb-barra-compra__boton {
+    flex: none;
+    height: 48px;
+    padding: 0 26px;
+    border: 0;
+    border-radius: var(--ecdb-r-pill);
+    background: var(--ecdb-wine);
+    color: var(--ecdb-bg);
+    font-family: var(--ecdb-display);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .ecdb-barra-compra__boton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
 /* ── Banner "Bájate Copa Academy" ──────────────────────────────────────── */
 
 .ecdb-academy {

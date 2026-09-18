@@ -1,0 +1,81 @@
+{%- comment -%}
+  Barra de compra fija en movil.
+
+  En movil la columna de compra queda muy arriba: en cuanto bajas a leer la
+  ficha de cata, el boton de comprar ya no esta. Esta barra lo mantiene a
+  mano sin duplicar logica: NO es un segundo formulario, es un boton que
+  pulsa el de verdad (`ProductSubmitButton-<section_id>`). Asi la cantidad,
+  la variante elegida y el carrito en drawer siguen funcionando igual.
+
+  Se espeja del boton real su texto y su estado `disabled`, y del bloque de
+  precio su contenido, para que "Agotado" o un cambio de variante se reflejen
+  solos. Si el JS falla, la barra simplemente no aparece y la pagina queda
+  como estaba.
+
+  Parametros:
+    product     - el producto (obligatorio)
+    section_id  - section.id, para encontrar el boton y el precio reales
+{%- endcomment -%}
+
+{%- if product.available -%}
+  <div
+    class="ecdb-fp ecdb-barra-compra"
+    id="EcdbBarraCompra-{{ section_id }}"
+    data-boton="ProductSubmitButton-{{ section_id }}"
+    data-precio="price-{{ section_id }}"
+    hidden
+  >
+    <div class="ecdb-barra-compra__texto">
+      <p class="ecdb-barra-compra__titulo">{{ product.title | escape }}</p>
+      <p class="ecdb-barra-compra__precio" data-destino-precio></p>
+    </div>
+    <button type="button" class="ecdb-barra-compra__boton" data-accion>
+      {{ 'products.product.add_to_cart' | t }}
+    </button>
+  </div>
+
+  <script>
+    (function () {
+      var barra = document.getElementById('EcdbBarraCompra-{{ section_id }}');
+      if (!barra) return;
+
+      var real = document.getElementById(barra.dataset.boton);
+      var precioReal = document.getElementById(barra.dataset.precio);
+      var boton = barra.querySelector('[data-accion]');
+      var destinoPrecio = barra.querySelector('[data-destino-precio]');
+
+      // Sin boton real no hay nada que reflejar: la barra mentiria.
+      if (!real || !boton) return;
+
+      function espejar() {
+        var etiqueta = real.querySelector('span');
+        if (etiqueta) boton.textContent = etiqueta.textContent.trim();
+        boton.disabled = real.disabled;
+        if (precioReal && destinoPrecio) destinoPrecio.textContent = precioReal.textContent.trim();
+      }
+
+      espejar();
+
+      // El tema reescribe boton y precio al cambiar de variante.
+      var observador = new MutationObserver(espejar);
+      observador.observe(real, { childList: true, subtree: true, attributes: true });
+      if (precioReal) observador.observe(precioReal, { childList: true, subtree: true });
+
+      boton.addEventListener('click', function () {
+        real.click();
+      });
+
+      // La barra sale cuando el boton de verdad no esta en pantalla.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entradas) {
+          var visible = entradas[0].isIntersecting;
+          barra.hidden = visible;
+          document.body.classList.toggle('ecdb-con-barra-compra', !visible);
+        }, { threshold: 0 }).observe(real);
+      } else {
+        barra.hidden = false;
+        document.body.classList.add('ecdb-con-barra-compra');
+      }
+    })();
+  </script>
+{%- endif -%}
