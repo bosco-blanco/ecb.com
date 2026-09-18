@@ -1,0 +1,97 @@
+{%- comment -%}
+  Datos tecnicos del vino, en una fila compacta dentro de "Sobre este vino".
+
+  Sustituye a la tabla BODEGA / ORIGEN / GRADO / CRIANZA / TEMPERATURA que
+  `wine-product-info.liquid` metia en la columna de compra, con estilos
+  incrustados. Mismos metafields, mismo vocabulario de etiquetas que las
+  escalas de la ficha de cata, cero estilos en linea.
+
+  La temperatura de servicio no es un metafield: se deduce del tipo de vino,
+  exactamente igual que hacia el snippet anterior.
+
+  Parametros:
+    product - el producto (obligatorio)
+{%- endcomment -%}
+
+{%- liquid
+  assign d_bodega = product.metafields.custom.bodega.value | strip
+  assign d_do = product.metafields.custom.denominaci_n_de_origen.value | strip
+  assign d_uva = product.metafields.custom.tipo_de_uva.value | strip
+  assign d_anada = product.metafields.custom.a_ada.value
+  assign d_pais = product.metafields.custom.pa_s_de_origen.value | strip
+  assign d_grado = product.metafields.custom.grado_alcoh_lico.value
+  assign d_env = product.metafields.custom.envejecimiento.value | strip
+  assign d_tipo = product.metafields.custom.tipo_de_vino.value | strip | downcase
+
+  assign d_temp = ''
+  case d_tipo
+    when 'tinto'
+      assign d_temp = '16-18 °C'
+    when 'blanco'
+      assign d_temp = '8-10 °C'
+    when 'rosado'
+      assign d_temp = '8-10 °C'
+    when 'espumoso'
+      assign d_temp = '6-8 °C'
+    when 'dulce'
+      assign d_temp = '6-8 °C'
+    when 'generoso'
+      assign d_temp = '12-14 °C'
+  endcase
+-%}
+
+{%- capture datos -%}
+  {%- if d_bodega != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Bodega</dt>
+      <dd><a href="{{ routes.collections_url }}/all?q={{ d_bodega | url_encode }}">{{ d_bodega | escape }}</a></dd>
+    </div>
+  {%- endif -%}
+  {%- if d_do != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>D.O.</dt>
+      <dd><a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.denominaci_n_de_origen={{ d_do | url_encode }}">{{ d_do | escape }}</a></dd>
+    </div>
+  {%- endif -%}
+  {%- if d_uva != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Uva</dt>
+      <dd><a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.tipo_de_uva={{ d_uva | url_encode }}">{{ d_uva | escape }}</a></dd>
+    </div>
+  {%- endif -%}
+  {%- if d_anada != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Añada</dt>
+      <dd>{{ d_anada }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if d_pais != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Origen</dt>
+      <dd>{{ d_pais | escape }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if d_grado != blank -%}
+    {%- assign d_grado_pct = d_grado | times: 100 | round: 1 -%}
+    <div class="ecdb-datos__item">
+      <dt>Grado</dt>
+      <dd>{{ d_grado_pct }}% vol.</dd>
+    </div>
+  {%- endif -%}
+  {%- if d_env != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Crianza</dt>
+      <dd>{{ d_env | escape }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if d_temp != blank -%}
+    <div class="ecdb-datos__item">
+      <dt>Servir a</dt>
+      <dd>{{ d_temp }}</dd>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if datos != blank -%}
+  <dl class="ecdb-datos">{{ datos }}</dl>
+{%- endif -%}

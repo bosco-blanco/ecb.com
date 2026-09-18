@@ -11,7 +11,12 @@
   main-product, o la descripcion sale dos veces.
 {%- endcomment -%}
 
-{%- if product.description != blank -%}
+{%- capture datos_vino -%}
+  {%- render 'ecdb-datos-vino', product: product -%}
+{%- endcapture -%}
+{%- assign datos_vino = datos_vino | strip -%}
+
+{%- if product.description != blank or datos_vino != blank -%}
   {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
   {%- render 'ecdb-fuentes' -%}
 
@@ -39,7 +44,14 @@
         Sin la clase `rte` a proposito: component-rte.css se carga despues de
         este CSS y le ganaria el tamano y el color al texto.
       {%- endcomment -%}
-      <div class="ecdb-sobre__cuerpo">{{ product.description }}</div>
+      {%- if product.description != blank -%}
+        <div class="ecdb-sobre__cuerpo">{{ product.description }}</div>
+      {%- endif -%}
+      {%- comment -%}
+        Bodega, D.O., uva, anada, grado, crianza... Antes era una tabla con
+        estilos incrustados en la columna de compra; aqui es donde encaja.
+      {%- endcomment -%}
+      {{ datos_vino }}
     </section>
   </div>
 {%- endif -%}

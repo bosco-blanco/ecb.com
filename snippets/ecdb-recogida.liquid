@@ -1,0 +1,42 @@
+{%- comment -%}
+  Caja de recogida en tienda, separada del boton de compra.
+
+  Es el mismo bloque que `buy-buttons.liquid` pinta cuando se le pasa
+  `show_pickup_availability: true`; se ha sacado aqui para poder colocarlo
+  DESPUES de las garantias, como en el diseno, sin tocar un snippet que usan
+  otras plantillas. El contenido lo rellena `pickup-availability.js` a partir
+  de `sections/pickup-availability.liquid`, igual que antes.
+
+  Parametros:
+    product - el producto (obligatorio)
+{%- endcomment -%}
+
+{{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+{%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+  | where: 'pick_up_enabled', true
+-%}
+
+<pickup-availability
+  class="product__pickup-availabilities no-js-hidden quick-add-hidden ecdb-recogida"
+  {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+    available
+  {% endif %}
+  data-root-url="{{ routes.root_url }}"
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  data-has-only-default-variant="{{ product.has_only_default_variant }}"
+>
+  <template>
+    <pickup-availability-preview class="pickup-availability-preview">
+      {% render 'icon-unavailable' %}
+      <div class="pickup-availability-info">
+        <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+        <button class="pickup-availability-button link link--text underlined-link">
+          {{ 'products.product.pickup_availability.refresh' | t }}
+        </button>
+      </div>
+    </pickup-availability-preview>
+  </template>
+</pickup-availability>
+
+<script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>

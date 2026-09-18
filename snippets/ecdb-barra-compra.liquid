@@ -47,11 +47,23 @@
       // Sin boton real no hay nada que reflejar: la barra mentiria.
       if (!real || !boton) return;
 
+      // Solo el precio que se VE. El bloque de precio lleva etiquetas ocultas
+      // para lectores de pantalla ("Precio habitual", "Precio de oferta") y el
+      // tachado del precio anterior: copiarlo entero sacaba un churro de
+      // tres lineas en la barra.
+      function precioVisible() {
+        if (!precioReal) return '';
+        var caja = precioReal.querySelector('.price');
+        var enOferta = caja && caja.classList.contains('price--on-sale');
+        var el = precioReal.querySelector(enOferta ? '.price__sale .price-item--sale' : '.price__regular .price-item--regular');
+        return el ? el.textContent.trim() : '';
+      }
+
       function espejar() {
         var etiqueta = real.querySelector('span');
         if (etiqueta) boton.textContent = etiqueta.textContent.trim();
         boton.disabled = real.disabled;
-        if (precioReal && destinoPrecio) destinoPrecio.textContent = precioReal.textContent.trim();
+        if (destinoPrecio) destinoPrecio.textContent = precioVisible();
       }
 
       espejar();

@@ -1,15 +1,9 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding"
+  class="page-width section-{{ section.id }}-padding ecdb-pdp"
   data-section="{{ section.id }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-  {%- comment -%}
-    Formato visual de la ficha (arena + burdeos). Todo lo que trae vive bajo
-    `.ecdb-fp`: quitando estas dos lineas la pagina vuelve a como estaba.
-  {%- endcomment -%}
-  {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
-  {%- render 'ecdb-fuentes' -%}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-rte.css' | asset_url | stylesheet_tag }}
@@ -20,6 +14,14 @@
 
   {{ 'photoswipe.css' | asset_url | stylesheet_tag }}
   {{ 'default-skin.css' | asset_url | stylesheet_tag }}
+  {%- comment -%}
+    Formato visual de la ficha (arena + burdeos). Va el ULTIMO a proposito:
+    sus reglas tienen que ganar a las del tema en la cabecera (titulo, precio,
+    cantidad, boton). Todo lo que trae vive bajo `.ecdb-pdp` / `.ecdb-fp`:
+    quitando estas dos lineas la pagina vuelve a como estaba.
+  {%- endcomment -%}
+  {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
+  {%- render 'ecdb-fuentes' -%}
 
   {%- style -%}
     .section-{{ section.id }}-padding {
@@ -391,10 +393,19 @@
                 {% endif %}
 
               {%- when 'title' -%}
+                {%- comment -%}
+                  Cabecera del diseno: linea de contexto (D.O. · uva · crianza),
+                  titulo, valoracion y, si hay ficha de cata, su resumen como
+                  frase de entrada. Todo lo que no exista se salta en silencio.
+                {%- endcomment -%}
+                {%- render 'ecdb-kicker', product: product -%}
                 <h1 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
                   {{ product.title | escape }}
                 </h1>
                 {%- render 'product-rating-inline', product: product -%}
+                {%- if product.metafields.cata.conclusion != blank -%}
+                  <p class="ecdb-pdp__resumen">{{ product.metafields.cata.conclusion.value | strip | escape | newline_to_br }}</p>
+                {%- endif -%}
 
               {%- when 'bodega_link' -%}
                 {% if product.metafields.custom.bodega_link.value.title %}
@@ -948,32 +959,29 @@
                 </noscript>
 
               {%- when 'buy_buttons' -%}
+                {%- comment -%}
+                  Orden del diseno bajo el boton: aviso de stock, las cuatro
+                  garantias y la caja de recogida. La recogida se pinta aparte
+                  (`ecdb-recogida`) en vez de dentro de buy-buttons, para que
+                  quede despues de las garantias y no antes.
+
+                  La tabla de datos del vino (`wine-product-info`) ya no va en
+                  la columna: sus datos salen ahora en "Sobre este vino"
+                  (`ecdb-datos-vino`). Y `trust-badges` sigue fuera: era una
+                  segunda fila de sellos pegada a la primera, con "Embalaje
+                  reforzado" repetido; el snippet sigue en su sitio por si
+                  hace falta.
+                {%- endcomment -%}
                 {%- render 'buy-buttons',
                   block: block,
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: false
                 -%}
-                {%- comment -%}
-                  Las cuatro garantias, justo debajo del boton de compra.
-                  Antes eran cuatro divs con emoji y un `style` incrustado;
-                  ahora van en `snippets/ecdb-garantias.liquid`, con iconos de
-                  verdad y dos textos corregidos (ver el comentario de cabecera
-                  de ese archivo: ni cadena de frio, ni devolucion gratis).
-                {%- endcomment -%}
-                {%- render 'ecdb-garantias' -%}
-                {%- render 'wine-product-info', product: product -%}
                 {%- render 'stock-urgency', product: product -%}
-                {%- comment -%}
-                  `trust-badges` queda fuera: son OTROS cuatro sellos, justo
-                  debajo de los cuatro de arriba, y uno de ellos repetia
-                  "Embalaje reforzado". Dos filas de sellos seguidas es
-                  precisamente lo que el rediseno venia a quitar. El snippet
-                  sigue en `snippets/trust-badges.liquid`: para recuperarlo,
-                  quitarle el comentario a la linea siguiente.
-                {%- endcomment -%}
-                {%- comment -%}{%- render 'trust-badges' -%}{%- endcomment -%}
+                {%- render 'ecdb-garantias' -%}
+                {%- render 'ecdb-recogida', product: product -%}
 
               {%- when 'complementary' -%}
                 {{ 'component-card.css' | asset_url | stylesheet_tag }}
@@ -1134,8 +1142,11 @@
       </div>
     </div>
 
-    {%- comment -%} Contextual cross-sell — same bodega / D.O. / uva / price band {%- endcomment -%}
-    {%- render 'related-products', product: product -%}
+    {%- comment -%}
+      "Si te gusta este vino..." (`related-products`) ya no se pinta aqui:
+      es la seccion `relacionados`, colocada al final de la pagina desde
+      templates/product.json. Aqui se colaba entre la compra y la ficha.
+    {%- endcomment -%}
 
     {%- if section.settings.enable_desctab -%}
       <div class="wbproducttab spaced-section quick-add-hidden row">

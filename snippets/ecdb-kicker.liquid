@@ -1,0 +1,47 @@
+{%- comment -%}
+  Linea de contexto sobre el titulo: "Ribera del Duero · Tempranillo · Roble".
+
+  Sale de los metafields `custom` que ya tiene la tienda. D.O. y uva llevan
+  enlace a la coleccion filtrada (los mismos que tenia la fila de chips que
+  esto sustituye), la crianza va en texto. Si el producto no es un vino y no
+  trae nada de eso, cae a tipo · pais. Si tampoco, no imprime nada.
+
+  Parametros:
+    product - el producto (obligatorio)
+{%- endcomment -%}
+
+{%- liquid
+  assign k_do = product.metafields.custom.denominaci_n_de_origen.value | strip
+  assign k_uva = product.metafields.custom.tipo_de_uva.value | strip
+  assign k_env = product.metafields.custom.envejecimiento.value | strip
+  assign k_tipo = product.metafields.custom.tipo_de_vino.value | strip
+  assign k_pais = product.metafields.custom.pa_s_de_origen.value | strip
+-%}
+
+{%- capture kicker -%}
+  {%- if k_do != blank -%}
+    <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.denominaci_n_de_origen={{ k_do | url_encode }}">{{ k_do | escape }}</a>
+  {%- endif -%}
+  {%- if k_uva != blank -%}
+    {%- if k_do != blank %}<span aria-hidden="true"> · </span>{% endif -%}
+    <a href="{{ routes.collections_url }}/vinos?filter.p.m.custom.tipo_de_uva={{ k_uva | url_encode }}">{{ k_uva | escape }}</a>
+  {%- endif -%}
+  {%- if k_env != blank -%}
+    {%- if k_do != blank or k_uva != blank %}<span aria-hidden="true"> · </span>{% endif -%}
+    <span>{{ k_env | escape }}</span>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if kicker == blank -%}
+  {%- capture kicker -%}
+    {%- if k_tipo != blank -%}<span>{{ k_tipo | escape }}</span>{%- endif -%}
+    {%- if k_pais != blank -%}
+      {%- if k_tipo != blank %}<span aria-hidden="true"> · </span>{% endif -%}
+      <span>{{ k_pais | escape }}</span>
+    {%- endif -%}
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- if kicker != blank -%}
+  <p class="ecdb-pdp__kicker">{{ kicker }}</p>
+{%- endif -%}
