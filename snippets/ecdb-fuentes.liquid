@@ -1,0 +1,16 @@
+{%- comment -%}
+  Fuentes del formato visual de la ficha de producto (Caprasimo + Figtree).
+
+  Se renderiza desde las dos piezas que las usan. Si aparece dos veces en la
+  misma página no pasa nada: el navegador deduplica peticiones al mismo href.
+
+  Caprasimo solo va en titulares y cifras grandes; el cuerpo es Figtree. No
+  sustituyen a las fuentes del tema, solo viven dentro de `.ecdb-fp`.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700&display=swap"
+>

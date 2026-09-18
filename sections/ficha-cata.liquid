@@ -1,0 +1,89 @@
+{%- comment -%}
+  "Asi lo catamos" a ancho completo, debajo de la ficha de producto.
+
+  En el diseno este bloque ya no vive en la columna de la derecha: ocupa el
+  ancho de la pagina, para que las cuatro notas quepan a dos columnas y las
+  cinco escalas entren en una sola fila.
+
+  El bloque `ficha_cata` de main-product.liquid sigue existiendo para quien lo
+  quiera dentro de la columna; los dos pintan el mismo snippet, asi que hay
+  que tener uno u otro activo, no los dos.
+
+  Si el producto no tiene metafields `cata`, el snippet no imprime nada y esta
+  seccion queda reducida a su margen.
+{%- endcomment -%}
+
+{%- if product.metafields.cata.vista != blank -%}
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    @media screen and (max-width: 749px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.6 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.6 | round: 0 }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- render 'ficha-cata',
+      product: product,
+      mostrar_logo: section.settings.mostrar_logo
+    -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Ficha de cata",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Pinta las notas y las escalas desde los metafields del namespace cata. Si el producto no los tiene, no se ve nada."
+    },
+    {
+      "type": "checkbox",
+      "id": "mostrar_logo",
+      "label": "Mostrar el logo de Copa Academy",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Márgenes"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen superior",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen inferior",
+      "default": 0
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "Ficha de cata"
+    }
+  ]
+}
+{% endschema %}

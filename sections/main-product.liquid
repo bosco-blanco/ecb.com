@@ -4,6 +4,12 @@
   data-section="{{ section.id }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {%- comment -%}
+    Formato visual de la ficha (arena + burdeos). Todo lo que trae vive bajo
+    `.ecdb-fp`: quitando estas dos lineas la pagina vuelve a como estaba.
+  {%- endcomment -%}
+  {{ 'ficha-producto-ecdb.css' | asset_url | stylesheet_tag }}
+  {%- render 'ecdb-fuentes' -%}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-rte.css' | asset_url | stylesheet_tag }}
@@ -949,29 +955,25 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                {%- comment -%} Trust microcopy — directly below the Add-to-Cart button {%- endcomment -%}
-                <div class="trust-microcopy">
-                  <div>📦 Embalaje reforzado anti-impactos</div>
-                  <div>❄️ Cadena de frío garantizada</div>
-                  <div>🚚 Envío 24-48h península</div>
-                  <div>↩️ Devolución gratis si no te gusta</div>
-                </div>
-                {%- style -%}
-                  .trust-microcopy {
-                    margin-top: 12px;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 8px;
-                    font-size: 13px;
-                    color: #555;
-                  }
-                  @media screen and (min-width: 990px) {
-                    .trust-microcopy { grid-template-columns: repeat(4, 1fr); }
-                  }
-                {%- endstyle -%}
+                {%- comment -%}
+                  Las cuatro garantias, justo debajo del boton de compra.
+                  Antes eran cuatro divs con emoji y un `style` incrustado;
+                  ahora van en `snippets/ecdb-garantias.liquid`, con iconos de
+                  verdad y dos textos corregidos (ver el comentario de cabecera
+                  de ese archivo: ni cadena de frio, ni devolucion gratis).
+                {%- endcomment -%}
+                {%- render 'ecdb-garantias' -%}
                 {%- render 'wine-product-info', product: product -%}
                 {%- render 'stock-urgency', product: product -%}
-                {%- render 'trust-badges' -%}
+                {%- comment -%}
+                  `trust-badges` queda fuera: son OTROS cuatro sellos, justo
+                  debajo de los cuatro de arriba, y uno de ellos repetia
+                  "Embalaje reforzado". Dos filas de sellos seguidas es
+                  precisamente lo que el rediseno venia a quitar. El snippet
+                  sigue en `snippets/trust-badges.liquid`: para recuperarlo,
+                  quitarle el comentario a la linea siguiente.
+                {%- endcomment -%}
+                {%- comment -%}{%- render 'trust-badges' -%}{%- endcomment -%}
 
               {%- when 'complementary' -%}
                 {{ 'component-card.css' | asset_url | stylesheet_tag }}
