@@ -171,8 +171,8 @@
         "image_available": "La imagen {{ index }} ya está disponible en la vista de la galería"
       },
       "view_full_details": "Ver todos los detalles",
-      "include_taxes": "Impuesto incluido.",
-      "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pago."
+      "include_taxes": "Impuesto incluido",
+      "shipping_policy_html": "· <a href=\"{{ link }}\">gastos de envío<\/a> en el pago"
     },
     "modal": {
       "label": "Galería multimedia"
