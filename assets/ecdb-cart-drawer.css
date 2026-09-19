@@ -513,9 +513,18 @@ cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__item {
   color: var(--ecdb-ink-soft);
 }
 
+/* En la ficha de producto se cargan las dos hojas a la vez, y allí el icono
+   es un círculo verde de 36px. Sin este reset, el carrito se vería distinto
+   en la ficha que en el resto del sitio. Aquí el icono va desnudo. */
 cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__icono {
+  display: block;
   flex: 0 0 auto;
+  width: auto;
+  height: auto;
   margin-top: 1px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
   color: var(--ecdb-leaf-ink);
 }
 
