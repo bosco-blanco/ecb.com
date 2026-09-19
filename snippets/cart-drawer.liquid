@@ -12,6 +12,12 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Formato visual ECDB del carrito lateral. Va el ultimo para ganar a las
+  hojas del tema, y todo lo suyo cuelga de `cart-drawer.ecdb-cart`.
+{%- endcomment -%}
+{%- render 'ecdb-fuentes' -%}
+{{ 'ecdb-cart-drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
 <style>
@@ -20,7 +26,7 @@
   }
 </style>
 
-<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+<cart-drawer class="drawer ecdb-cart{% if cart == empty %} is-empty{% endif %}">
   <div id="CartDrawer" class="cart-drawer">
     <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
     <div
@@ -63,7 +69,14 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <div class="drawer__heading">{{ 'sections.cart.title' | t }}</div>
+        <div class="drawer__heading">
+          {{ 'sections.cart.title' | t }}
+          {%- unless cart == empty -%}
+            <span class="ecdb-cart__contador">
+              {{- 'sections.header.cart_count' | t: count: cart.item_count -}}
+            </span>
+          {%- endunless -%}
+        </div>
         <button
           class="drawer__close focus-inset"
           type="button"
@@ -74,49 +87,11 @@
         </button>
       </div>
       {%- comment -%}
-        CTA de pago arriba del drawer (ademas del de abajo).
-        Envia el mismo formulario que el boton inferior via el atributo form=,
-        asi que no duplica logica ni depende de JS.
+        Aqui vivia un segundo boton de "Pagar pedido" con el subtotal al lado.
+        Se quita: el pie del carrito ahora esta anclado (`position: sticky`),
+        asi que el boton de abajo nunca se va de la vista y el de arriba solo
+        repetia subtotal y llamada a la accion en un panel de 440px.
       {%- endcomment -%}
-      {%- unless cart == empty -%}
-        {%- style -%}
-          .cart-drawer__top-cta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 1.5rem 12px;
-          }
-          .cart-drawer__top-cta .cart-drawer__top-subtotal {
-            font-size: 14px;
-            font-weight: 600;
-            white-space: nowrap;
-          }
-          .cart-drawer__top-cta .cart__checkout-button {
-            margin: 0;
-            min-width: 0;
-            flex: 1 1 auto;
-          }
-        {%- endstyle -%}
-        <div class="cart-drawer__top-cta">
-          <span class="cart-drawer__top-subtotal">
-            {%- if settings.currency_code_enabled -%}
-              {{ cart.total_price | money_with_currency }}
-            {%- else -%}
-              {{ cart.total_price | money }}
-            {%- endif -%}
-          </span>
-          <button
-            type="submit"
-            id="CartDrawer-Checkout-Top"
-            class="cart__checkout-button button button--primary"
-            name="checkout"
-            form="CartDrawer-Form"
-          >
-            {{ 'sections.cart.checkout' | t }}
-          </button>
-        </div>
-      {%- endunless -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -537,15 +512,21 @@
 
         {% comment %} CTAs {% endcomment %}
 
+        {%- comment -%}
+          Un solo boton principal.
+
+          Antes "Ver cesta" y "Pagar pedido" eran los dos `button--primary`,
+          uno al lado del otro y del mismo tamano. Competian entre si, y el
+          que ganaba clics sacaba al cliente del carrito hacia /cart, que es
+          un paso mas hasta el pago. "Ver cesta" pasa a enlace discreto: sigue
+          estando para quien lo busque, pero ya no compite.
+        {%- endcomment -%}
         <div class="cart__ctas cartdrawbtn" {{ block.shopify_attributes }}>
           <noscript>
             <button type="submit" class="cart__update-button button button--secondary" form="CartDrawer-Form">
               {{ 'sections.cart.update' | t }}
             </button>
           </noscript>
-          <a href="{{ routes.cart_url }}" class="button button--primary btn-block">
-            {{- 'wbcustomlabel.wballtext.viewcart' | t -}}
-          </a>
           <button
             type="submit"
             id="CartDrawer-Checkout"
@@ -558,6 +539,9 @@
           >
             {{ 'sections.cart.checkout' | t }}
           </button>
+          <a href="{{ routes.cart_url }}" class="ecdb-cart__ver-cesta">
+            {{- 'wbcustomlabel.wballtext.viewcart' | t -}}
+          </a>
         </div>
 
         {%- comment -%}
@@ -574,6 +558,15 @@
             {{ content_for_additional_checkout_buttons }}
           </div>
         {%- endif -%}
+
+        {%- comment -%}
+          Las mismas cuatro garantias de la ficha de producto, aqui en dos
+          columnas. El carrito es donde vuelven las dudas de envio y de que
+          la botella llegue entera; decirlo junto al boton no cuesta scroll.
+        {%- endcomment -%}
+        {%- unless cart == empty -%}
+          {%- render 'ecdb-garantias', variante: 'carrito' -%}
+        {%- endunless -%}
 
         {%- if settings.show_cartpayment -%}
           <div class="cartdrawfpay text-center">

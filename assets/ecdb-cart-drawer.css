@@ -1,0 +1,640 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Carrito lateral ECDB — mismo formato visual que la ficha de producto
+   ("Organic + burdeos": arena, crema, burdeos, Caprasimo + Figtree).
+
+   TODO vive bajo `cart-drawer.ecdb-cart`. La clase va en el custom element
+   `<cart-drawer>`, que es lo único que el JS del tema NO reemplaza: al
+   actualizar el carrito se rehace el interior de `.drawer__inner`, y como
+   ese HTML sale del mismo snippet, las reglas siguen aplicando.
+
+   Si mañana se quita la clase del snippet, el carrito vuelve a verse
+   exactamente como estaba. No se toca ni un selector del tema.
+   ══════════════════════════════════════════════════════════════════════ */
+
+cart-drawer.ecdb-cart {
+  --ecdb-bg: #f5ead8;
+  --ecdb-surface: #ebddc5;
+  --ecdb-paper: #fffcf1;
+
+  --ecdb-ink: #201e1d;
+  --ecdb-ink-soft: #4a4339;
+  --ecdb-muted: #645c50;
+
+  --ecdb-wine: #7a2440;
+  --ecdb-wine-hover: #661d35;
+
+  --ecdb-leaf-bg: #e1eecc;
+  --ecdb-leaf-ink: #56633f;
+
+  --ecdb-r-md: 20px;
+  --ecdb-r-sm: 14px;
+  --ecdb-r-pill: 999px;
+  --ecdb-line: rgba(32, 30, 29, 0.1);
+
+  --ecdb-display: 'Caprasimo', Georgia, serif;
+  --ecdb-sans: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* ── El panel ────────────────────────────────────────────────────────────
+   Antes: borde gris de 1px y cero sombra — el panel parecía pegado con
+   cinta sobre la página. Ahora se despega con sombra y el velo se difumina. */
+
+cart-drawer.ecdb-cart.drawer {
+  background-color: rgba(32, 30, 29, 0.45);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+cart-drawer.ecdb-cart .drawer__inner {
+  width: 440px;
+  max-width: calc(100vw - 24px);
+  padding: 0;
+  border: 0;
+  background-color: var(--ecdb-paper);
+  box-shadow: -24px 0 64px rgba(32, 30, 29, 0.22);
+  font-family: var(--ecdb-sans);
+  color: var(--ecdb-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  cart-drawer.ecdb-cart .drawer__inner {
+    width: 460px;
+  }
+}
+
+/* ── Cabecera ─────────────────────────────────────────────────────────── */
+
+cart-drawer.ecdb-cart .drawer__header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--ecdb-line);
+  background-color: var(--ecdb-paper);
+  align-items: flex-start;
+}
+
+cart-drawer.ecdb-cart .drawer__heading {
+  font-family: var(--ecdb-display);
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .ecdb-cart__contador {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ecdb-muted);
+}
+
+/* Cerrar: antes una X suelta sin área de toque clara. */
+cart-drawer.ecdb-cart .drawer__close {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  margin: -4px -6px 0 0;
+  border-radius: var(--ecdb-r-pill);
+  color: var(--ecdb-ink-soft);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+cart-drawer.ecdb-cart .drawer__close:hover {
+  background-color: var(--ecdb-surface);
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .drawer__close svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ── Zona de scroll ───────────────────────────────────────────────────── */
+
+cart-drawer.ecdb-cart cart-drawer-items {
+  padding: 0 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ecdb-surface) transparent;
+}
+
+cart-drawer.ecdb-cart cart-drawer-items::-webkit-scrollbar {
+  width: 4px;
+}
+
+cart-drawer.ecdb-cart cart-drawer-items::-webkit-scrollbar-thumb {
+  background-color: var(--ecdb-surface);
+  border-radius: var(--ecdb-r-pill);
+}
+
+cart-drawer.ecdb-cart cart-drawer-items::-webkit-scrollbar-track-piece {
+  margin-top: 0;
+}
+
+/* ── Barra de envío gratis ────────────────────────────────────────────────
+   Ya existía (ajuste "Envío gratis" del tema). Solo cambia el aspecto:
+   raíl de arena, relleno burdeos, y el texto legible en vez de 12px gris. */
+
+cart-drawer.ecdb-cart .wbship {
+  margin: 18px 0 4px;
+  padding: 14px 16px;
+  background-color: var(--ecdb-bg);
+  border-radius: var(--ecdb-r-sm);
+}
+
+cart-drawer.ecdb-cart .wbship .progress {
+  height: 8px;
+  background-color: rgba(32, 30, 29, 0.09);
+  border-radius: var(--ecdb-r-pill);
+  overflow: hidden;
+}
+
+cart-drawer.ecdb-cart .wbship .determinate {
+  height: 100%;
+  background-color: var(--ecdb-wine);
+  border-radius: var(--ecdb-r-pill);
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* El icono del camión venía dentro de la barra y la deformaba. */
+cart-drawer.ecdb-cart .wbship .determinate svg {
+  display: none;
+}
+
+cart-drawer.ecdb-cart .wbship p {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ecdb-ink-soft);
+}
+
+cart-drawer.ecdb-cart .wbship p b {
+  font-weight: 700;
+  color: var(--ecdb-wine);
+}
+
+/* ── Líneas del carrito ───────────────────────────────────────────────────
+   Antes: rejilla de 3 columnas con la cantidad debajo, separaciones
+   irregulares y precio pegado al nombre. Ahora: foto | texto | precio,
+   con la cantidad y "quitar" en su propia fila y aire real entre líneas. */
+
+cart-drawer.ecdb-cart .cart-drawer .cart-item {
+  gap: 0 16px;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--ecdb-line);
+}
+
+cart-drawer.ecdb-cart .cart-item:last-child {
+  border-bottom: 0;
+}
+
+cart-drawer.ecdb-cart .cart-item__media {
+  width: 84px;
+  min-width: 84px;
+}
+
+cart-drawer.ecdb-cart .cart-item__image {
+  border-radius: var(--ecdb-r-sm);
+  background-color: var(--ecdb-bg);
+}
+
+cart-drawer.ecdb-cart .cart-item__media a,
+cart-drawer.ecdb-cart .cart-item__media img {
+  border-radius: var(--ecdb-r-sm);
+}
+
+cart-drawer.ecdb-cart .cart-item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+cart-drawer.ecdb-cart .cart-item__name,
+cart-drawer.ecdb-cart cart-drawer-items .cart-item__name {
+  font-family: var(--ecdb-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ecdb-ink);
+  text-decoration: none;
+}
+
+cart-drawer.ecdb-cart .cart-item__name:hover {
+  color: var(--ecdb-wine);
+}
+
+cart-drawer.ecdb-cart .cart-item__details .light,
+cart-drawer.ecdb-cart .product-option,
+cart-drawer.ecdb-cart .product-option dt,
+cart-drawer.ecdb-cart .product-option dd {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ecdb-muted);
+}
+
+cart-drawer.ecdb-cart cart-drawer-items .cart-item__price-wrapper {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart cart-drawer-items .cart-item__old-price {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ecdb-muted);
+}
+
+cart-drawer.ecdb-cart .cart-item__discounted-prices .price--end {
+  color: var(--ecdb-wine);
+}
+
+cart-drawer.ecdb-cart .discounts__discount {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  padding: 3px 10px;
+  border-radius: var(--ecdb-r-pill);
+  background-color: var(--ecdb-leaf-bg);
+  color: var(--ecdb-leaf-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Cantidad: pastilla, no tres cajas cuadradas pegadas. */
+cart-drawer.ecdb-cart cart-drawer-items .cart-item__quantity-wrapper quantity-input.quantity {
+  min-width: 108px;
+  height: 40px;
+  border: 1px solid var(--ecdb-line);
+  border-radius: var(--ecdb-r-pill);
+  background-color: var(--ecdb-paper);
+  overflow: hidden;
+}
+
+cart-drawer.ecdb-cart .quantity__button {
+  width: 36px;
+  color: var(--ecdb-ink-soft);
+  transition: color 0.18s ease;
+}
+
+cart-drawer.ecdb-cart .quantity__button:hover {
+  color: var(--ecdb-wine);
+}
+
+cart-drawer.ecdb-cart .quantity__input {
+  font-family: var(--ecdb-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .quantity:after {
+  box-shadow: none;
+}
+
+/* Quitar: el icono venía con trazo 0.25 — prácticamente invisible. */
+cart-drawer.ecdb-cart cart-remove-button .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--ecdb-r-pill);
+  color: var(--ecdb-muted);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+cart-drawer.ecdb-cart cart-remove-button .button:hover {
+  background-color: var(--ecdb-surface);
+  color: var(--ecdb-wine);
+}
+
+cart-drawer.ecdb-cart cart-remove-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+cart-drawer.ecdb-cart cart-remove-button svg path {
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+/* ── Recomendados ─────────────────────────────────────────────────────── */
+
+cart-drawer.ecdb-cart .wbcartupsell {
+  margin: 0;
+  padding: 16px 24px;
+  border-top: 1px solid var(--ecdb-line);
+  background-color: var(--ecdb-bg);
+}
+
+cart-drawer.ecdb-cart .upshead {
+  margin-bottom: 12px;
+  font-family: var(--ecdb-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ecdb-muted);
+}
+
+cart-drawer.ecdb-cart .wbcartupsell .product-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .wbcartupsell .product-form .cartb {
+  background-color: var(--ecdb-wine);
+  color: #fff;
+  border-radius: var(--ecdb-r-pill);
+  min-height: 38px;
+  font-weight: 600;
+}
+
+cart-drawer.ecdb-cart .wbcartupsell .product-form .cartb:hover {
+  background-color: var(--ecdb-wine-hover);
+  color: #fff;
+}
+
+/* ── Pie: subtotal, CTA, garantías ────────────────────────────────────────
+   Se ancla abajo. En pantallas bajas el tema deja que todo el panel haga
+   scroll; con `sticky` el botón de pagar no se va de la vista igualmente. */
+
+cart-drawer.ecdb-cart .drawer__footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  padding: 18px 24px 20px;
+  border-top: 1px solid var(--ecdb-line);
+  background-color: var(--ecdb-paper);
+  box-shadow: 0 -12px 28px rgba(32, 30, 29, 0.07);
+}
+
+cart-drawer.ecdb-cart .drawer__footer summary {
+  padding: 12px 14px;
+  border-radius: var(--ecdb-r-sm);
+  background-color: var(--ecdb-bg);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ecdb-ink-soft);
+}
+
+cart-drawer.ecdb-cart #CartDrawer-Note {
+  border-radius: var(--ecdb-r-sm);
+  font-family: var(--ecdb-sans);
+  font-size: 14px;
+}
+
+cart-drawer.ecdb-cart .cart-drawer__footer > * + * {
+  margin-top: 0;
+}
+
+cart-drawer.ecdb-cart .totals {
+  align-items: baseline;
+  margin: 0;
+}
+
+cart-drawer.ecdb-cart .totals__subtotal {
+  font-family: var(--ecdb-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ecdb-ink-soft);
+}
+
+cart-drawer.ecdb-cart .totals__subtotal-value {
+  font-family: var(--ecdb-display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .tax-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ecdb-muted);
+  text-align: left;
+}
+
+cart-drawer.ecdb-cart .tax-note a {
+  color: var(--ecdb-muted);
+  text-decoration: underline;
+}
+
+/* Un solo botón principal. "Ver cesta" baja a enlace: antes competía de
+   tú a tú con "Pagar pedido" y se llevaba clics fuera del carrito. */
+cart-drawer.ecdb-cart .cart__ctas {
+  display: block;
+  margin-top: 14px;
+}
+
+cart-drawer.ecdb-cart .cart__checkout-button {
+  width: 100%;
+  min-height: 54px;
+  margin: 0;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--ecdb-r-pill);
+  background-color: var(--ecdb-wine);
+  color: #fff;
+  font-family: var(--ecdb-sans);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 18px rgba(122, 36, 64, 0.26);
+  transition: background-color 0.18s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+cart-drawer.ecdb-cart .cart__checkout-button:hover:not([disabled]) {
+  background-color: var(--ecdb-wine-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(122, 36, 64, 0.32);
+}
+
+cart-drawer.ecdb-cart .cart__checkout-button::after,
+cart-drawer.ecdb-cart .cart__checkout-button::before {
+  box-shadow: none;
+}
+
+cart-drawer.ecdb-cart .ecdb-cart__ver-cesta {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ecdb-muted);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+cart-drawer.ecdb-cart .ecdb-cart__ver-cesta:hover {
+  color: var(--ecdb-wine);
+}
+
+/* Pago acelerado (Apple Pay, Shop Pay…) justo debajo del botón. */
+cart-drawer.ecdb-cart .cart-drawer__dynamic-checkout {
+  margin-top: 10px;
+}
+
+/* ── Garantías en el pie ──────────────────────────────────────────────────
+   Mismo texto y mismos iconos que la ficha de producto: el snippet es uno
+   solo, aquí cambia la rejilla. Es donde más dudas hay, y no cuesta scroll. */
+
+cart-drawer.ecdb-cart .ecdb-garantias--carrito {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 14px;
+  margin: 16px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--ecdb-line);
+  list-style: none;
+}
+
+cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--ecdb-ink-soft);
+}
+
+/* En la ficha de producto se cargan las dos hojas a la vez, y allí el icono
+   es un círculo verde de 36px. Sin este reset, el carrito se vería distinto
+   en la ficha que en el resto del sitio. Aquí el icono va desnudo. */
+cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__icono {
+  display: block;
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  margin-top: 1px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ecdb-leaf-ink);
+}
+
+cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__icono svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Medios de pago ───────────────────────────────────────────────────── */
+
+cart-drawer.ecdb-cart .cartdrawfpay {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ecdb-line);
+  opacity: 0.75;
+}
+
+cart-drawer.ecdb-cart .cartdrawfpay li svg {
+  width: 38px;
+  height: 22px;
+}
+
+/* ── Carrito vacío ────────────────────────────────────────────────────────
+   Antes: un texto suelto centrado en mitad del panel. */
+
+cart-drawer.ecdb-cart .drawer__inner-empty {
+  padding: 0 24px;
+  background-color: var(--ecdb-paper);
+}
+
+cart-drawer.ecdb-cart .cart-drawer__empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+cart-drawer.ecdb-cart .cart__empty-text {
+  font-family: var(--ecdb-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ecdb-ink);
+  margin-bottom: 20px;
+}
+
+cart-drawer.ecdb-cart .cart-drawer__warnings .drawer__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+cart-drawer.ecdb-cart .drawer__inner-empty .button--primary {
+  min-height: 50px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: var(--ecdb-r-pill);
+  background-color: var(--ecdb-wine);
+  color: #fff;
+  font-family: var(--ecdb-sans);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+cart-drawer.ecdb-cart .drawer__inner-empty .button--primary:hover {
+  background-color: var(--ecdb-wine-hover);
+}
+
+cart-drawer.ecdb-cart .cart__login-title {
+  margin-top: 28px;
+  font-family: var(--ecdb-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ecdb-ink);
+}
+
+cart-drawer.ecdb-cart .cart__login-paragraph,
+cart-drawer.ecdb-cart .cart__login-paragraph a {
+  font-size: 13px;
+  color: var(--ecdb-muted);
+}
+
+/* ── Móvil ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  cart-drawer.ecdb-cart .drawer__inner {
+    max-width: 100vw;
+    width: 100vw;
+  }
+
+  cart-drawer.ecdb-cart .drawer__header,
+  cart-drawer.ecdb-cart cart-drawer-items,
+  cart-drawer.ecdb-cart .drawer__footer,
+  cart-drawer.ecdb-cart .wbcartupsell {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  cart-drawer.ecdb-cart .cart-item__media {
+    width: 72px;
+    min-width: 72px;
+  }
+
+  /* Cuatro garantías en dos filas se comen la pantalla en móvil. */
+  cart-drawer.ecdb-cart .ecdb-garantias--carrito {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  cart-drawer.ecdb-cart .ecdb-garantias--carrito .ecdb-garantias__item:nth-child(n + 3) {
+    display: none;
+  }
+}

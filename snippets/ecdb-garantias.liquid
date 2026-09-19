@@ -18,7 +18,12 @@
   en linea para no pedir un sprite por una fila de cuatro.
 {%- endcomment -%}
 
-<ul class="ecdb-fp ecdb-garantias">
+{%- comment -%}
+  `variante: 'carrito'` solo anade una clase: el carrito lateral las coloca en
+  dos columnas y mas pequenas. El texto es el mismo en los dos sitios a
+  proposito — son afirmaciones de politica comercial y se cambian una vez.
+{%- endcomment -%}
+<ul class="ecdb-fp ecdb-garantias{% if variante != blank %} ecdb-garantias--{{ variante }}{% endif %}">
   <li class="ecdb-garantias__item">
     <span class="ecdb-garantias__icono" aria-hidden="true">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
